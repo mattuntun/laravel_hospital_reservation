@@ -55,7 +55,7 @@
         </form><!--終了　患者のカテゴリー　終了-->
 
 
-        <form action="index/hospital_index" method="POST" name="hospital-index"><!--病院のカテゴリー-->
+        <form action="/index/hospital_index" method="POST" name="hospital-index"><!--病院のカテゴリー-->
         {{csrf_field()}}
           <section class="hospital">
             <div class="adm-id"><!--病院のID入力欄-->

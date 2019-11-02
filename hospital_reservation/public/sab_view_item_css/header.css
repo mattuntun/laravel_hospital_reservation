@@ -1,0 +1,16 @@
+@charset"UTF-8";
+/*ヘッダーのcss*/
+
+header{
+	text-align: center;
+	font-size: 30px;
+}
+
+header h1{
+	padding-top: 50px;
+	border-top: 5px dotted rgb(6, 71, 250);
+	font-weight: bold;
+}
+
+
+

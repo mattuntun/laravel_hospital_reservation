@@ -1,0 +1,8 @@
+@charset"UTF-8";
+
+.btn.btn-info.btn-lg.btn-block{
+	height: 170px;
+	font-size: 50px;
+	margin: 50px 0 50px 0;
+	border-radius:30px;/*ボーダーの角を丸くする*/
+}

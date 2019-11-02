@@ -12,6 +12,6 @@ class Indexcontroller extends Controller
 
 
     public function hospital_index(){
-        return view('hospital_index');
+        return view('hospital_view.hospital_index');
     }
 }
