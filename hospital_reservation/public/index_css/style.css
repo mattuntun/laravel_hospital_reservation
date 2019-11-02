@@ -1,0 +1,98 @@
+@charset"UTF-8";
+
+html{
+	font-family:san-serif;
+}
+
+/*全体*/
+li{
+  list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+
+/*body全体*/
+body {
+	background-color: #EEF9FF;
+	margin:0 0 0 0;
+	}
+
+/*全体の親要素ラッパー編集*/
+.wrapper{
+	margin :0 auto 0 auto;
+	max-width:960px;
+	
+}
+
+input{
+	font-size: 20px
+	}
+
+
+/*ヘッダー全体*/	
+header{
+	text-align: center;
+	font-size: 30px;
+}
+
+/*患者のカテゴリー*/
+.patient{
+	text-align: center;
+	font-size: 25px;
+	
+}
+
+/*患者のID入力　増減ボタン消去*/
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+	-moz-appearance:textfield;
+}
+
+/*患者のカテゴリー(ログインボタン)*/
+.switch{
+	padding: 50px 0px 0px 40px;
+	margin-top: -3em
+	
+}
+/*病院のカテゴリー*/
+.hospital{
+	text-align: right; 
+}
+
+/*病院のカテゴリー(入力欄・ボタン)*/
+.input-id-number{
+	font-size:15px 
+}
+
+.input-pass-number{
+	font-size:15px 
+}
+
+
+/*管理者ID*/
+.adm-id-name{
+  padding:0px 115px 0px 0px ;
+
+}
+/*管理者パスワード*/
+.adm-pass-name{
+	padding: 0px 100px 0px 0px;
+}
+
+
+
+
+
+
+
+
+
+
