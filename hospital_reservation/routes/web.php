@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('index','Indexcontroller@index');
+Route::get('index/hospital_index','Indexcontroller@hospital_index');
