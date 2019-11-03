@@ -22,7 +22,7 @@
         @include('sab_view_item.large_tagged_bottom',
                   ['large_bottom_tag'=>'設定画面',
                    'large_bottom_value'=>'予約設定の変更をする',
-                   'large_bottom_access'=>'/hospital_view/Common_reservation_setting_screen'])
+                   'large_bottom_access'=>'/hospital_menu/Common_reservation_setting_screen'])
 <br>
 <br>
 <br>
@@ -33,12 +33,12 @@
         @include('sab_view_item.large_tagged_bottom',
                   ['large_bottom_tag'=>'患者設定',
                    'large_bottom_value'=>'新規患者登録・変更・削除',
-                   'large_bottom_access'=>'/hospital_view/patient_registration_change_deletion'])
+                   'large_bottom_access'=>'/hospital_menu/patient_registration_change_deletion'])
 
         {{-- シンプルボタン(large) --}}
         @include('sab_view_item.large_sinple_bottom',
                   ['large_bottom_value'=>'患者予約情報編集',
-                   'large_bottom_access'=>'/hospital_view/edit_patient_appoimtment_information'])
+                   'large_bottom_access'=>'/hospital_menu/edit_patient_appoimtment_information'])
 @endsection
 
 
@@ -50,7 +50,7 @@
                   'footerbottom2'=>'ログイン画面へ',
                   'footerbottom3'=>'医療機関HPトップ',
                   'footerbottom4'=>'予約情報ダウンロード',
-                  'footerbottom_access1'=>'/index/hospital_index',
+                  'footerbottom_access1'=>'/index/hospital_menu',
                   'footerbottom_access2'=>'/index',
                   'footerbottom_access3'=>'/index',
                   'footerbottom_access4'=>'/index' ])

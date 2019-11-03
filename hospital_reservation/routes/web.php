@@ -16,21 +16,21 @@ return view('welcome');
 });
 
 //indexページへ
-Route::get('index','Indexcontroller@index');
+Route::get('index','Indexcontroller@Index');
 
 
 
-//病院indexページへ
-Route::post('index/hospital_index','IndexController@hospital_index');
+//病院menuページへ
+Route::post('index/hospital_menu','IndexController@HospitalMenu');
 
-//病院indexページへ
-Route::get('index/hospital_index','IndexController@hospital_index');
+//病院menuページへ
+Route::get('index/hospital_menu','IndexController@HospitalMenu');
 
 //全科共通予約画面設定のページへ
-Route::get('hospital_view/Common_reservation_setting_screen','HospitalController@CommonReservationSettingScreen');
+Route::get('hospital_menu/Common_reservation_setting_screen','HospitalController@CommonReservationSettingScreen');
 
 //患者情報編集のページへ
-Route::get('hospital_view/patient_registration_change_deletion','HospitalController@PatientRegistrationChangeDeletion');
+Route::get('hospital_menu/patient_registration_change_deletion','HospitalController@PatientRegistrationChangeDeletion');
 
 //新規患者情報登録のページへ
 Route::get('patient_registration_change_deletion/new_patient_registration','ApointmentEditController@CheckReservationStatus');
@@ -38,10 +38,10 @@ Route::get('patient_registration_change_deletion/new_patient_registration','Apoi
 
 
 //患者予約情報編集のページへ
-Route::get('hospital_view/edit_patient_appoimtment_information','HospitalController@EditPatientAppoimtmentInformation');
+Route::get('hospital_menu/edit_patient_appoimtment_information','HospitalController@EditPatientAppoimtmentInformation');
 
 //予約状況確認のページへ
-Route::get('edit_patient_appoimtment_information/CheckReservationStatus','ApointmentEditController@CheckReservationStatus');
+Route::get('edit_patient_appoimtment_information/check_reservation_status','ApointmentEditController@CheckReservationStatus');
 
 
 

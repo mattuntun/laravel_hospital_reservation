@@ -10,7 +10,7 @@ class ApointmentEditController extends Controller
 {
     //全科共通予約画面設定へのアクション
     public function CheckReservationStatus() {
-        return view('hospital_view.CheckReservationStatus');
+        return view('hospital_menu.check_reservation_status');
     }
 
 

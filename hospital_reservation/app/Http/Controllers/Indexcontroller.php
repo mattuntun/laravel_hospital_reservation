@@ -6,12 +6,12 @@ use Illuminate\Http\Request;
 
 class Indexcontroller extends Controller
 {
-    public function index(){
+    public function Index(){
         return view('index');
     }
 
 
-    public function hospital_index(){
-        return view('hospital_view.hospital_index');
+    public function HospitalMenu(){
+        return view('hospital_menu.hospital_menu');
     }
 }

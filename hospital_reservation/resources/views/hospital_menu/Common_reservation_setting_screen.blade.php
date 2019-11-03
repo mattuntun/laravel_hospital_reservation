@@ -61,7 +61,7 @@
                   'footerbottom2'=>'ログイン画面へ',
                   'footerbottom3'=>'医療機関HPトップ',
                   'footerbottom4'=>'患者情報ダウンロード',
-                  'footerbottom_access1'=>'/index/hospital_index',
+                  'footerbottom_access1'=>'/index/hospital_menu',
                   'footerbottom_access2'=>'/index',
                   'footerbottom_access3'=>'/index',
                   'footerbottom_access4'=>'/index' ])

@@ -1,14 +1,14 @@
 <?php
 
-//予約情報編集のコントローラ
+//編集中
 
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class Patient_registrationcontoroller extends Controller
+class PatientRegistrationContoroller extends Controller
 {
-    //全科共通予約画面設定へのアクション
+    //編集中
     public function check_reservation_status() {
         return view('hospital_view.check_reservation_status');
     }
