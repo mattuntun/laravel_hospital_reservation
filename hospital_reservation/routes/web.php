@@ -31,9 +31,8 @@ Route::get('hospital_menu/Common_reservation_setting_screen','HospitalController
 
 //患者情報編集のページへ
 Route::get('hospital_menu/patient_registration_change_deletion','HospitalController@PatientRegistrationChangeDeletion');
-
 //新規患者情報登録のページへ
-Route::get('patient_registration_change_deletion/new_patient_registration','ApointmentEditController@CheckReservationStatus');
+Route::get('patient_registration_change_deletion/new_patient_registration','PatientRegistrationContoroller@NewPatient');
 
 
 

@@ -20,7 +20,7 @@
 {{-- シンプルボタン(large) --}}
         @include('sab_view_item.large_sinple_bottom',
                   ['large_bottom_value'=>'新規患者登録',
-                   'large_bottom_access'=>'/index'])
+                   'large_bottom_access'=>'/patient_registration_change_deletion/new_patient_registration'])
 
 {{-- シンプルボタン(large) --}}
         @include('sab_view_item.large_sinple_bottom',

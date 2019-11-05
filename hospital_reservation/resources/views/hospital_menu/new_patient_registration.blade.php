@@ -1,196 +1,95 @@
-<!DOCTYPE html><!--このサイトはhtmlだよ-->
-<html lang="ja"><!--ここからhtmlが始まるよ-->
-  <head><!--このサイトの設定だよ-->
-    <meta charset="utf-8"><!--このサイトの構成文字はutf-8だよ-->
-      <!-- Bootstrap CSS -->
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-   
-      <link rel="stylesheet" href="{{asset('hospital_index_css/style.css')}}"><!--ファビコン(サイトのバーの画像)の種類(拡張子)と場所　　　　　入力！！！！-->
-    <meta name="description" content="予約アプリ"><!--descriptionは概要・説明の事 その後に説明文を入れてあげる　　入力！！！！-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <script language="JavaScript">
-      
-        function check() {
-            if(document.nyuuryoku.pt_id.value == "") {
-                alert("IDを入力してください");
-                return false;
-            }
-            if(document.nyuuryoku.kanji_last_name.value == "") {
-                alert("名前を入力してください");
-                return false;
-            }
-            if(document.nyuuryoku.kanji_name.value == "") {
-                alert("名前を入力してください");
-                return false;
-            }
-            if(document.nyuuryoku.kata_last_name.value == "") {
-                alert("名前を入力してください");
-                return false;
-            }
-            if(document.nyuuryoku.kata_name.value == "") {
-                alert("名前を入力してください");
-                return false;
-            }
-            if(document.nyuuryoku.birthday.value == "") {
-                alert("生年月日を入力してください");
-                return false;
-            }
-            if(document.nyuuryoku.mail_address.value == "") {
-                alert("メールアドレスを入力して下さい");
-                return false;
-            }
-           
-        }
-       
-      </script>
+{{-- レイアウトベースはlayout_hospital_base --}}
+@extends('layout.layout_hospital_base')
 
 
-    
-    <title>新規患者登録</title><!--サイトのバータイトルを　　　　　　　　　　　　入力！！！-->
-    <!--<style>
-    *{
-      outline: 1px solid #ff0000;
-    }
-    </style>-->
-  </head><!--ここで設定終了-->
-  
-  <body><!--ここから本文が始まるよ-->
-  <div class="wrapper"><!--body全体のclassをラッパーとする-->
-    
-    <header><!--ここからヘッダー始まるよ-->
-      <br>
-      <h1>新規患者登録</h1>    
-
-    </header><!--ここでヘッダー終わり-->
-  <br>
-  <br>
-  <br><!--ヘッダーとメインの間のスペース-->
-  <br>
-  <br>
-  
-    <main>
-      <form method="POST" action="pt_Confirmation/pt_Confirmation_page.php" name="nyuuryoku" onsubmit="return check()">
-        <section class="new-patient-registration"><!--開始　new-patient-registration　開始-->
-          <div class="form-group">
-            <label class="control-label" id="new-patient-registration">患者ID登録</label>
-            <input class="form-control" id="new-patient-registration" type="text" name="pt_id">
-          </div>
-
-          <br>
-          <br>
-
-          <div class="form-group">
-            <h2>患者名登録</h2>
-
-            <table>
-              <tr>
-                <td>
-                  <label class="control-label">姓(漢字)</label>
-                  <input class="form-control" type="text" name="kanji_last_name">
-                </td>
-                <td>
-                  <label class="control-label">名(漢字)</label>
-                  <input class="form-control" type="text" name="kanji_name">
-                </td>
-              </tr>
-              <tr>
-              <td>
-                  <label class="control-label">姓(カタカナ)</label>
-                  <input class="form-control" type="text" name="kata_last_name">
-                </td>
-                <td>
-                  <label class="control-label">名(カタカナ)</label>
-                  <input class="form-control" type="text" name="kata_name">
-                </td>
-              </tr>
-              
-            </table>
-          </div>
-          <div class="form-group">
-            <h2>生年月日・性別・アドレス登録</h2>
-              <table>
-                  <tr>
-                    <td>
-                      <label class="control-label">生年月日</label>
-                      <input class="form-control" type="text" name="birthday">
-                    </td>
-                    <td>
-                        <label class="control-label">メールアドレス</label>
-                        <input class="form-control" type="text" name="mail_address">
-                       </td>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td> 
-                        <label class="control-label">性別</label>
-                        <select name="sex" class="form-control">
-                            <option value="man" class="form-control">男</option>
-                            <option value="woman" class="form-control">女</option>
-                        </select>
-                      
-                  </tr>
-                </table>
-            </div>
-            
-            <div class="apply">
-              <h2>内容を確認して情報を登録</h2>
-              
-                <button type="submit" class="btn btn-primary btn-danger btn-lg disabled" onclick="location.href='pt_Confirmation/pt_Confirmation_page.php'">
-                  内容を登録
-                </button>
-             </div>
-             
-         </section><!--終了　new-patient-registration　終了-->
-      </form>  
-    </main>
-
-      <footer><!--フッターだよ-->
-        <section class="anything-top"><!--各ボタン-->
-          <table>
-            <tr>
-              <td>
-                <a href="../../hospital top.html"><button type="button" class="btn btn-outline-info">設定画面トップ</button></a>
-              </td>
-              <td>
-                  <button type="button" class="btn btn-outline-info">医療機関HPトップ</button>
-              </td>
-            </tr>
-            <tr>
-             <td>
-                <a href="../../../reservation top .html"><button type="button" class="btn btn-outline-info">ログイン画面へ</button></a>
-              </td>
-            </tr>
-          </table>
-        </section>
-      </footer>
-      
+{{-- ヘッド --}}
+@section('web_title','新規患者登録')
 
 
+{{-- ヘッダー --}}
 
+@section('header_content')
+        @include('sab_view_item.header',
+                  ['main_theme'=>'新規患者登録'])
+@endsection
 
-      
+{{-- メイン --}}
+@section('main_content')
 
-      <section><!--本文内のカテゴリーだよ-->
-        
-      </section><!--本文内のカテゴリー終わり-->
+        {{-- このコンポーネントはformとしての囲い(メソッドはpost) --}}
+        @component('component_item.form')
+                 @slot('form_action')
+                 pt_Confirmation/pt_Confirmation_page.php
+                 @endslot
 
-      <section><!--本文内のカテゴリーだよ-->
-      
-      </section><!--本文内のカテゴリー終わり-->
-      
-      <section><!--本文内のカテゴリーだよ-->
-      
-      </section><!--本文内のカテゴリー終わり-->
-      
+                 @slot('form_item1')
+                        {{-- 1箇所テキスト(ロング) --}}
+                        @include('sab_view_item.texts_one_long',
+                                ['label_value'=>'患者ID登録',
+                                'label_id'=>'new-patient-registration',
+                                'input_id'=>'new-patient-registration',
+                                'input_name'=>'pt_id'])
+                 @endslot
+                       
+                 @slot('form_item2')
+                        {{-- 4箇所入力テキスト(タグ付き) --}}
+                        @include('sab_view_item.texts_four_tagged',
+                                        ['tagged_value'=>'患者名登録',
+                                        'label_value1'=>'姓(漢字)',
+                                        'label_value2'=>'名(漢字)',
+                                        'label_value3'=>'姓(カタカナ)',
+                                        'label_value4'=>'名(カタカナ)',
+                                        'input_name1'=>'kanji_last_name',
+                                        'input_name2'=>'kanji_name',
+                                        'input_name3'=>'kata_last_name',
+                                        'input_name4'=>'kata_name'])
+                 @endslot
 
+                 @slot('form_item3')
+                        {{-- 2箇所入力+1箇所セレクトテキスト(タグ付き) --}}
+                        @include('sab_view_item.texts_two_select_one_tagged',
+                                        ['tagged_value'=>'生年月日・性別・アドレス登録',
+                                        'label_value1'=>'生年月日',
+                                        'label_value2'=>'メールアドレス',
+                                        'input_name1'=>'birthday',
+                                        'input_name2'=>'mail_address',
+                                        'select_label'=>'性別',
+                                        'select_name'=>'sex',
+                                        'option_lavel1'=>'男',
+                                        'option_lavel2'=>'女',
+                                        'option_value1'=>'man',
+                                        'option_value2'=>'woman'])
+                 @endslot
 
+                 @slot('form_item4')
+                        {{-- タグ付ボタン(スモール) --}}
+                        @include('sab_view_item.small_tagged_bottom',
+                                        ['tagged_value'=>'内容を確認して情報を登録',
+                                        'bottom_value'=>'内容を登録',
+                                        'bottom_access'=>'pt_Confirmation/pt_Confirmation_page.php'])
+                 @endslot
 
-    </div><!--body全体のclassをラッパー終わり-->
-  </body><!--ここで本文終わりだよ-->
+                 @slot('form_name')
+                 nyuuryoku
+                 @endslot
 
-</html><!--ここでhtmlが終わるよ-->
+         @endcomponent
+
+@endsection
+
+{{-- フッター --}}
+@section('footer_content')
+        @include('sab_view_item.footer',
+                  ['footerbottom1'=>'設定画面トップ',
+                  'footerbottom2'=>'ログイン画面へ',
+                  'footerbottom3'=>'医療機関HPトップ',
+                  'footerbottom4'=>'予約情報ダウンロード',
+                  'footerbottom_access1'=>'/index/hospital_menu',
+                  'footerbottom_access2'=>'/index',
+                  'footerbottom_access3'=>'/index',
+                  'footerbottom_access4'=>'/index' ])
+@endsection
+
 
 
 
