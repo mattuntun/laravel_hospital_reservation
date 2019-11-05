@@ -36,6 +36,8 @@ Route::get('patient_registration_change_deletion/new_patient_registration','Pati
 Route::get('patient_registration_change_deletion/change_patient_information','PatientRegistrationContoroller@ChangePatient');
 //患者情報削除のページへ
 Route::get('patient_registration_change_deletion/delete_patient_information','PatientRegistrationContoroller@DeletePatient');
+//削除用パスワード設定のページへ
+Route::get('patient_registration_change_deletion/delete_password_patient_change','PatientRegistrationContoroller@ChangePass');
 
 
 

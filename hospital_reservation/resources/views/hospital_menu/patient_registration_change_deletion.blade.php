@@ -35,7 +35,7 @@
 {{-- シンプルボタン(large) --}}
         @include('sab_view_item.large_sinple_buttom',
                   ['large_buttom_value'=>'患者削除用パスワード設定',
-                   'large_buttom_access'=>'/index'])
+                   'large_buttom_access'=>'/patient_registration_change_deletion/delete_password_patient_change'])
                    
 @endsection
 
