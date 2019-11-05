@@ -63,10 +63,10 @@
 
                  @slot('form_item4')
                         {{-- タグ付ボタン(スモール) --}}
-                        @include('sab_view_item.small_tagged_bottom',
+                        @include('sab_view_item.small_tagged_buttom',
                                         ['tagged_value'=>'内容を確認して情報を登録',
-                                        'bottom_value'=>'内容を登録',
-                                        'bottom_access'=>'pt_Confirmation/pt_Confirmation_page.php'])
+                                        'buttom_value'=>'内容を登録',
+                                        'buttom_access'=>'pt_Confirmation/pt_Confirmation_page.php'])
                  @endslot
 
                  @slot('form_name')
@@ -80,14 +80,14 @@
 {{-- フッター --}}
 @section('footer_content')
         @include('sab_view_item.footer',
-                  ['footerbottom1'=>'設定画面トップ',
-                  'footerbottom2'=>'ログイン画面へ',
-                  'footerbottom3'=>'医療機関HPトップ',
-                  'footerbottom4'=>'予約情報ダウンロード',
-                  'footerbottom_access1'=>'/index/hospital_menu',
-                  'footerbottom_access2'=>'/index',
-                  'footerbottom_access3'=>'/index',
-                  'footerbottom_access4'=>'/index' ])
+                  ['footerbuttom1'=>'設定画面トップ',
+                  'footerbuttom2'=>'ログイン画面へ',
+                  'footerbuttom3'=>'医療機関HPトップ',
+                  'footerbuttom4'=>'予約情報ダウンロード',
+                  'footerbuttom_access1'=>'/index/hospital_menu',
+                  'footerbuttom_access2'=>'/index',
+                  'footerbuttom_access3'=>'/index',
+                  'footerbuttom_access4'=>'/index' ])
 @endsection
 
 
