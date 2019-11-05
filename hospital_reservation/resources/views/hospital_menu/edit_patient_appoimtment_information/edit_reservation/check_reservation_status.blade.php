@@ -20,7 +20,7 @@
         {{-- シンプルボタン(large) --}}
         @include('sab_view_item.large_sinple_buttom',
                   ['large_buttom_value'=>'患者別確認',
-                   'large_buttom_access'=>'/index'])
+                   'large_buttom_access'=>'/check_reservation_status/patient'])
 
         {{-- シンプルボタン(large) --}}
         @include('sab_view_item.large_sinple_buttom',

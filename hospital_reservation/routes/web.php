@@ -40,7 +40,6 @@ Route::get('patient_registration_change_deletion/delete_patient_information','Pa
 Route::get('patient_registration_change_deletion/delete_password_patient_change','PatientRegistrationContoroller@ChangePass');
 
 
-
 //患者予約情報編集のページへ
 Route::get('hospital_menu/edit_patient_appoimtment_information','HospitalController@EditPatientAppoimtmentInformation');
 //予約新規追加のページへ
@@ -49,6 +48,8 @@ Route::get('edit_patient_appoimtment_information/newreservation','ApointmentEdit
 Route::get('edit_patient_appoimtment_information/deretereservation','ApointmentEditController@DeleteReservation');
 //予約状況確認のページへ
 Route::get('edit_patient_appoimtment_information/check_reservation_status','ApointmentEditController@CheckReservationStatus');
+//予約状況確認(患者別)のページへ
+Route::get('check_reservation_status/patient','ApointmentEditController@CheckReservationPatient');
 
 
 

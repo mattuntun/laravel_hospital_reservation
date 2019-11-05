@@ -23,5 +23,10 @@ class ApointmentEditController extends Controller
         return view('hospital_menu.edit_patient_appoimtment_information.edit_reservation.check_reservation_status');
     }
 
+    //予約状況確認(患者別)のコントローラ
+    public function CheckReservationPatient() {
+        return view('hospital_menu.edit_patient_appoimtment_information.edit_reservation.check_reservation.check_reservation_patient');
+    }
+
 
 }
