@@ -34,6 +34,8 @@ Route::get('hospital_menu/patient_registration_change_deletion','HospitalControl
 Route::get('patient_registration_change_deletion/new_patient_registration','PatientRegistrationContoroller@NewPatient');
 //患者情報変更のページへ
 Route::get('patient_registration_change_deletion/change_patient_information','PatientRegistrationContoroller@ChangePatient');
+//患者情報削除のページへ
+Route::get('patient_registration_change_deletion/delete_patient_information','PatientRegistrationContoroller@DeletePatient');
 
 
 

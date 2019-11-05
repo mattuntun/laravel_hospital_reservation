@@ -3,19 +3,19 @@
 
 
 {{-- ヘッド --}}
-@section('web_title','患者情報変更')
+@section('web_title','患者情報削除')
 
 
 {{-- ヘッダー --}}
 
 @section('header_content')
         @include('sab_view_item.header',
-                  ['main_theme'=>'患者情報変更'])
+                  ['main_theme'=>'患者情報削除'])
 @endsection
 
 {{-- メイン --}}
 @section('main_content')
-<h2>変更したい患者IDを入力してください</h2>
+<h2>削除したい患者IDを入力してください</h2>
 
         {{-- このコンポーネントはformとしての囲い(メソッドはpost) --}}
         @component('component_item.form')

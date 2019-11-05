@@ -18,5 +18,10 @@ class PatientRegistrationContoroller extends Controller
         return view('hospital_menu.change_patient_information');
     }
 
+    //患者情報削除
+    public function DeletePatient() {
+        return view('hospital_menu.delete_patient_information');
+    }
+
 
 }
