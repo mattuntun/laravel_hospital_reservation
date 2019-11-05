@@ -19,10 +19,10 @@
 
 @section('main_content')
         {{-- タグ付きボタン(large) --}}
-        @include('sab_view_item.large_tagged_bottom',
-                  ['large_bottom_tag'=>'設定画面',
-                   'large_bottom_value'=>'予約設定の変更をする',
-                   'large_bottom_access'=>'/hospital_menu/Common_reservation_setting_screen'])
+        @include('sab_view_item.large_tagged_buttom',
+                  ['large_buttom_tag'=>'設定画面',
+                   'large_buttom_value'=>'予約設定の変更をする',
+                   'large_buttom_access'=>'/hospital_menu/Common_reservation_setting_screen'])
 <br>
 <br>
 <br>
@@ -30,15 +30,15 @@
 <br>
 
         {{-- タグ付きボタン(large) --}}
-        @include('sab_view_item.large_tagged_bottom',
-                  ['large_bottom_tag'=>'患者設定',
-                   'large_bottom_value'=>'新規患者登録・変更・削除',
-                   'large_bottom_access'=>'/hospital_menu/patient_registration_change_deletion'])
+        @include('sab_view_item.large_tagged_buttom',
+                  ['large_buttom_tag'=>'患者設定',
+                   'large_buttom_value'=>'新規患者登録・変更・削除',
+                   'large_buttom_access'=>'/hospital_menu/patient_registration_change_deletion'])
 
         {{-- シンプルボタン(large) --}}
-        @include('sab_view_item.large_sinple_bottom',
-                  ['large_bottom_value'=>'患者予約情報編集',
-                   'large_bottom_access'=>'/hospital_menu/edit_patient_appoimtment_information'])
+        @include('sab_view_item.large_sinple_buttom',
+                  ['large_buttom_value'=>'患者予約情報編集',
+                   'large_buttom_access'=>'/hospital_menu/edit_patient_appoimtment_information'])
 @endsection
 
 
@@ -46,12 +46,12 @@
 
 @section('footer_content')
         @include('sab_view_item.footer',
-                  ['footerbottom1'=>'設定画面トップ',
-                  'footerbottom2'=>'ログイン画面へ',
-                  'footerbottom3'=>'医療機関HPトップ',
-                  'footerbottom4'=>'予約情報ダウンロード',
-                  'footerbottom_access1'=>'/index/hospital_menu',
-                  'footerbottom_access2'=>'/index',
-                  'footerbottom_access3'=>'/index',
-                  'footerbottom_access4'=>'/index' ])
+                  ['footerbuttom1'=>'設定画面トップ',
+                  'footerbuttom2'=>'ログイン画面へ',
+                  'footerbuttom3'=>'医療機関HPトップ',
+                  'footerbuttom4'=>'予約情報ダウンロード',
+                  'footerbuttom_access1'=>'/index/hospital_menu',
+                  'footerbuttom_access2'=>'/index',
+                  'footerbuttom_access3'=>'/index',
+                  'footerbuttom_access4'=>'/index' ])
 @endsection

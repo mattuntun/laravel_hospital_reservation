@@ -20,34 +20,34 @@
 
 @section('main_content')
         {{-- シンプルボタン(middle) --}}
-        @include('sab_view_item.middle_sinple_bottom',
-                  ['middle_bottom_value'=>'予約表示設定',
-                   'middle_bottom_access'=>'/index'])
+        @include('sab_view_item.middle_sinple_buttom',
+                  ['middle_buttom_value'=>'予約表示設定',
+                   'middle_buttom_access'=>'/index'])
 
         {{-- シンプルボタン(middle) --}}      
-        @include('sab_view_item.middle_sinple_bottom',
-                  ['middle_bottom_value'=>'休診日設定',
-                   'middle_bottom_access'=>'/index'])
+        @include('sab_view_item.middle_sinple_buttom',
+                  ['middle_buttom_value'=>'休診日設定',
+                   'middle_buttom_access'=>'/index'])
 
         {{-- シンプルボタン(middle) --}}
-        @include('sab_view_item.middle_sinple_bottom',
-                  ['middle_bottom_value'=>'開診時間(受付時間)設定',
-                   'middle_bottom_access'=>'/index'])
+        @include('sab_view_item.middle_sinple_buttom',
+                  ['middle_buttom_value'=>'開診時間(受付時間)設定',
+                   'middle_buttom_access'=>'/index'])
 
         {{-- シンプルボタン(middle) --}}
-        @include('sab_view_item.middle_sinple_bottom',
-                  ['middle_bottom_value'=>'予約数・状況表示設定',
-                   'middle_bottom_access'=>'/index'])
+        @include('sab_view_item.middle_sinple_buttom',
+                  ['middle_buttom_value'=>'予約数・状況表示設定',
+                   'middle_buttom_access'=>'/index'])
 
         {{-- シンプルボタン(middle) --}}
-        @include('sab_view_item.middle_sinple_bottom',
-                  ['middle_bottom_value'=>'診療不可設定(訪問診療・往診等)',
-                   'middle_bottom_access'=>'/index'])
+        @include('sab_view_item.middle_sinple_buttom',
+                  ['middle_buttom_value'=>'診療不可設定(訪問診療・往診等)',
+                   'middle_buttom_access'=>'/index'])
 
         {{-- シンプルボタン(middle) --}}
-        @include('sab_view_item.middle_sinple_bottom',
-                  ['middle_bottom_value'=>'診療科個別設定',
-                   'middle_bottom_access'=>'/index'])
+        @include('sab_view_item.middle_sinple_buttom',
+                  ['middle_buttom_value'=>'診療科個別設定',
+                   'middle_buttom_access'=>'/index'])
 
 
 @endsection
@@ -57,12 +57,12 @@
 
 @section('footer_content')
         @include('sab_view_item.footer',
-                  ['footerbottom1'=>'設定画面トップ',
-                  'footerbottom2'=>'ログイン画面へ',
-                  'footerbottom3'=>'医療機関HPトップ',
-                  'footerbottom4'=>'患者情報ダウンロード',
-                  'footerbottom_access1'=>'/index/hospital_menu',
-                  'footerbottom_access2'=>'/index',
-                  'footerbottom_access3'=>'/index',
-                  'footerbottom_access4'=>'/index' ])
+                  ['footerbuttom1'=>'設定画面トップ',
+                  'footerbuttom2'=>'ログイン画面へ',
+                  'footerbuttom3'=>'医療機関HPトップ',
+                  'footerbuttom4'=>'患者情報ダウンロード',
+                  'footerbuttom_access1'=>'/index/hospital_menu',
+                  'footerbuttom_access2'=>'/index',
+                  'footerbuttom_access3'=>'/index',
+                  'footerbuttom_access4'=>'/index' ])
 @endsection
