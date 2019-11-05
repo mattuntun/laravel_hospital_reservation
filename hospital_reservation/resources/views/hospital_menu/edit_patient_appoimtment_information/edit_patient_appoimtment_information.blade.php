@@ -20,12 +20,12 @@
 {{-- シンプルボタン(large) --}}
         @include('sab_view_item.large_sinple_buttom',
                   ['large_buttom_value'=>'新規追加',
-                   'large_buttom_access'=>'/index'])
+                   'large_buttom_access'=>'/edit_patient_appoimtment_information/newreservation'])
 
 {{-- シンプルボタン(large) --}}
         @include('sab_view_item.large_sinple_buttom',
                   ['large_buttom_value'=>'予約削除',
-                   'large_buttom_access'=>'/index'])
+                   'large_buttom_access'=>'/edit_patient_appoimtment_information/deretereservation'])
 
 {{-- シンプルボタン(large) --}}
         @include('sab_view_item.large_sinple_buttom',
