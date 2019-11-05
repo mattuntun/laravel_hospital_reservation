@@ -22,7 +22,6 @@ Route::get('index','Indexcontroller@Index');
 
 //病院menuページへ
 Route::post('index/hospital_menu','IndexController@HospitalMenu');
-
 //病院menuページへ
 Route::get('index/hospital_menu','IndexController@HospitalMenu');
 
@@ -33,6 +32,8 @@ Route::get('hospital_menu/Common_reservation_setting_screen','HospitalController
 Route::get('hospital_menu/patient_registration_change_deletion','HospitalController@PatientRegistrationChangeDeletion');
 //新規患者情報登録のページへ
 Route::get('patient_registration_change_deletion/new_patient_registration','PatientRegistrationContoroller@NewPatient');
+//患者情報変更のページへ
+Route::get('patient_registration_change_deletion/change_patient_information','PatientRegistrationContoroller@ChangePatient');
 
 
 

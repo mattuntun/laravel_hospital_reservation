@@ -25,7 +25,7 @@
 {{-- シンプルボタン(large) --}}
         @include('sab_view_item.large_sinple_buttom',
                   ['large_buttom_value'=>'患者情報変更',
-                   'large_buttom_access'=>'/index'])
+                   'large_buttom_access'=>'/patient_registration_change_deletion/change_patient_information'])
 
 {{-- シンプルボタン(large) --}}
         @include('sab_view_item.large_sinple_buttom',
