@@ -8,9 +8,12 @@ use Illuminate\Http\Request;
 
 class ApointmentEditController extends Controller
 {
-    //全科共通予約画面設定へのアクション
+    //予約新規追加のコントローラ
+    //予約削除のコントローラ
+
+    //予約状況確認のコントローラ
     public function CheckReservationStatus() {
-        return view('hospital_menu.check_reservation_status');
+        return view('hospital_menu.edit_patient_appoimtment_information.edit_reservation.check_reservation_status');
     }
 
 
