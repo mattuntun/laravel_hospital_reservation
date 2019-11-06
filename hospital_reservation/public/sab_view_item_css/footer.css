@@ -1,0 +1,22 @@
+@charset"UTF-8";
+
+
+footer{
+	text-align: center;
+	margin: 200px 0 100px 0;
+	}
+
+	/*フッターのボタン要素の大きさ*/
+.btn.btn-outline-info{
+	height: 60px;
+	width: 400px;
+	border-style: solid; border-width: thick;/*ボーダーを太くする*/
+	font-weight: bold;
+}
+
+
+table{
+	display: inline-block;/*tableをインラインブロックにする*/
+	border-collapse:separate;/*tdの要素を分割(セパレートする)*/
+	border-spacing:40px;/*tableの間隔を空ける*/
+}
