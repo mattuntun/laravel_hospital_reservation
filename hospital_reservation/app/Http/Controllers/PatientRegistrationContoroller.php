@@ -17,6 +17,11 @@ class PatientRegistrationContoroller extends Controller
     public function ChangePatient() {
         return view('hospital_menu.patient_registration_change_deletion.patient_information.change_patient_information');
     }
+    //患者情報変更ID検索後、詳細入力
+    public function ChangePatientDetails() {
+        return view('hospital_menu.patient_registration_change_deletion.patient_information.change_patient_information_details');
+    }
+    
 
     //患者情報削除
     public function DeletePatient() {

@@ -20,7 +20,7 @@
         {{-- このコンポーネントはformとしての囲い(メソッドはpost) --}}
         @component('component_item.form')
                  @slot('form_action')
-                 /index
+                 /change_patient_information/change_patient_information_details
                  @endslot
 
                  @slot('form_item1')
@@ -37,7 +37,7 @@
                         @include('sab_view_item.small_tagged_buttom',
                                         ['tagged_value'=>'IDの確認後、検索',
                                         'buttom_value'=>'患者ID検索',
-                                        'buttom_access'=>'/index'])
+                                        'buttom_access'=>'/change_patient_information/change_patient_information_details'])
                  @endslot
 
                  @slot('form_name')

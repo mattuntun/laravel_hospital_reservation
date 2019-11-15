@@ -27,6 +27,8 @@ Route::get('index/hospital_menu','IndexController@HospitalMenu');
 
 //全科共通予約画面設定のページへ
 Route::get('hospital_menu/Common_reservation_setting_screen','HospitalController@CommonReservationSettingScreen');
+//予約期限・期間のページへ
+Route::get('common_reservation_setting_screen/set_period_and_deadline','CommonSettingScreenController@SetPeriodAndDeadline');
 
 //患者情報編集のページへ
 Route::get('hospital_menu/patient_registration_change_deletion','HospitalController@PatientRegistrationChangeDeletion');
@@ -34,6 +36,9 @@ Route::get('hospital_menu/patient_registration_change_deletion','HospitalControl
 Route::get('patient_registration_change_deletion/new_patient_registration','PatientRegistrationContoroller@NewPatient');
 //患者情報変更のページへ
 Route::get('patient_registration_change_deletion/change_patient_information','PatientRegistrationContoroller@ChangePatient');
+//患者情報変更ID検索後、詳細入力
+Route::post('change_patient_information/change_patient_information_details','PatientRegistrationContoroller@ChangePatientDetails');
+
 //患者情報削除のページへ
 Route::get('patient_registration_change_deletion/delete_patient_information','PatientRegistrationContoroller@DeletePatient');
 //削除用パスワード設定のページへ
