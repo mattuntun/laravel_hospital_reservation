@@ -1,5 +1,5 @@
 {{-- レイアウトベースはsample_set_period_and_deadline --}}
-@extends('layout.sample_set_period_and_deadline')
+@extends('layout.layout_hospital_base')
 
 {{-- ヘッド --}}
 @section('web_title','予約表示設定')
@@ -24,27 +24,44 @@
                  @endslot
 
                  @slot('form_item2')
-                 <select name="period" class="form-control" size="1" style="height: 100px; font-size: 32px;">
-                  <option disabled selected value>選択してください</option>
-                  <option value="１カ月先まで予約可能">１カ月先まで予約可能</option>
-                  <option value="２カ月先まで予約可能">２カ月先まで予約可能</option>
-                  <option value="３カ月先まで予約可能">３カ月先まで予約可能</option>
-                  <option value="４カ月先まで予約可能">４カ月先まで予約可能</option>
-                  <option value="５カ月先まで予約可能">５カ月先まで予約可能</option>
-                  <option value="６カ月先まで予約可能">６カ月先まで予約可能</option>              
-                </select>
+                    <select name="reservation_period" class="form-control" size="1" style="height: 100px; font-size: 32px;">
+                        <option disabled selected value>選択してください</option>
+                        <option value="1mouth">１カ月先まで予約可能</option>
+                        <option value="2mouth">２カ月先まで予約可能</option>
+                        <option value="3mouth">３カ月先まで予約可能</option>
+                        <option value="4mouth">４カ月先まで予約可能</option>
+                        <option value="5mouth">５カ月先まで予約可能</option>
+                        <option value="6mouth">６カ月先まで予約可能</option>              
+                    </select>
+                 @endslot
+
+                 @slot('form_item3')
+                     <br>
+                     <br>
+                     <br>
+
+                     <h2>予約の締め切り日時の設定を行ってください</h2>
                  @endslot
 
 
+                 @slot('form_item4')
+                    <select name="reservation_deadline" class="form-control" size="1" style="height: 100px; font-size: 32px;">
+                        <option disabled selected value>選択してください</option>
+                        <option value="1day">診察日当日より１日以内の予約不可</option>
+                        <option value="2day">診察日当日より２日以内の予約不可</option>
+                        <option value="3day">診察日当日より３日以内の予約不可</option>
+                        <option value="4day">診察日当日より４日以内の予約不可</option>
+                        <option value="5day">診察日当日より５日以内の予約不可</option>
+                        <option value="6day">診察日当日より６日以内の予約不可</option>
+                        <option value="7day">診察日当日より７日以内の予約不可</option>              
+                    </select>
+                 @endslot
                  @slot('form_name')
                  nyuuryoku
                  @endslot
     @endcomponent
 
-
 @endsection
-
-
 
 
 {{-- フッター --}}
