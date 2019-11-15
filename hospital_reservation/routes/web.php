@@ -29,6 +29,9 @@ Route::get('index/hospital_menu','IndexController@HospitalMenu');
 Route::get('hospital_menu/Common_reservation_setting_screen','HospitalController@CommonReservationSettingScreen');
 //予約期限・期間のページへ
 Route::get('common_reservation_setting_screen/set_period_and_deadline','CommonSettingScreenController@SetPeriodAndDeadline');
+//全科共通の、休診日設定
+Route::get('common_reservation_setting_screen/closed_setting','CommonSettingScreenController@ClosedSetting');
+
 
 //患者情報編集のページへ
 Route::get('hospital_menu/patient_registration_change_deletion','HospitalController@PatientRegistrationChangeDeletion');
