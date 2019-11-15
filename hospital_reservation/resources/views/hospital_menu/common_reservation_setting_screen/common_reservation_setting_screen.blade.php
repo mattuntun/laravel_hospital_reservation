@@ -27,11 +27,11 @@
         {{-- シンプルボタン(middle) --}}      
         @include('sab_view_item.middle_sinple_buttom',
                   ['middle_buttom_value'=>'休診日設定',
-                   'middle_buttom_access'=>'/common_reservation_setting_screen/closed_setting'])
+                   'middle_buttom_access'=>'/common_reservation_setting_screen/horiday_setting'])
 
         {{-- シンプルボタン(middle) --}}
         @include('sab_view_item.middle_sinple_buttom',
-                  ['middle_buttom_value'=>'開診時間(受付時間)設定',
+                  ['middle_buttom_value'=>'開診･休憩･閉診設定',
                    'middle_buttom_access'=>'/index'])
 
         {{-- シンプルボタン(middle) --}}

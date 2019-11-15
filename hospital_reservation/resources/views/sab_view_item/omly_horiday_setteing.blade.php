@@ -1,5 +1,5 @@
 <head>
-    <link rel="stylesheet" href="{{asset('sab_view_item_css/only_close_setting.css')}}">
+    <link rel="stylesheet" href="{{asset('sab_view_item_css/only_horiday_setting.css')}}">
 </head>
 <div class = "close-setting">
 <h2>適用させる場合は&#x2611;</h2>       

@@ -28,7 +28,7 @@
                  @endslot
                  @slot('form_item2')
                      {{-- このビューページ専用のサブビューを参照します --}}
-                     @include('sab_view_item.omly_close_setteing')
+                     @include('sab_view_item.omly_horiday_setteing')
                  @endslot
 
                  @slot('form_item3')
@@ -40,7 +40,7 @@
                  @endslot
                  @slot('form_item4')
                      {{-- このビューページ専用のサブビューを参照します --}}
-                     @include('sab_view_item.omly_close_setteing')
+                     @include('sab_view_item.omly_horiday_setteing')
                  @endslot
 
                  @slot('form_item5')
@@ -52,7 +52,7 @@
                  @endslot
                  @slot('form_item6')
                      {{-- このビューページ専用のサブビューを参照します --}}
-                     @include('sab_view_item.omly_close_setteing')
+                     @include('sab_view_item.omly_horiday_setteing')
                  @endslot
 
                  @slot('form_item7')
@@ -64,7 +64,7 @@
                  @endslot
                  @slot('form_item8')
                      {{-- このビューページ専用のサブビューを参照します --}}
-                     @include('sab_view_item.omly_close_setteing')
+                     @include('sab_view_item.omly_horiday_setteing')
                  @endslot
 
                  @slot('form_item9')
