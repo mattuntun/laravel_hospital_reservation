@@ -35,7 +35,7 @@
 
 
 {{-- 使用例・使用方法 --}}
-{{-- 4箇所入力テキスト(タグ付き) --}}
+{{-- セレクトボックス入力テキスト(タグ付き) --}}
 {{--     @include('sab_view_item.select_box',
                   ['select_name'=>'piriod',
                    'option_value1'=>'1_mouth',
