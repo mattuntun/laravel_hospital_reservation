@@ -15,4 +15,9 @@ class CommonSettingScreenController extends Controller
     public function HoridaySetting(){
         return view('hospital_menu.common_reservation_setting_screen.horiday_setting');
     }
+
+    //開院・休憩・閉診設定
+    public function OpeningRestClosingTime(){
+        return view('hospital_menu.common_reservation_setting_screen.opening_rest_closing_time');
+    }
 }

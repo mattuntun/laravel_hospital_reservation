@@ -50,6 +50,21 @@
 <p>{{$form_item10}}</p>
 @endisset
 
+@isset($form_item10)
+<p>{{$form_item11}}</p>
+@endisset
+
+@isset($form_item10)
+<p>{{$form_item12}}</p>
+@endisset
+
+@isset($form_item10)
+<p>{{$form_item13}}</p>
+@endisset
+
+@isset($form_item10)
+<p>{{$form_item14}}</p>
+@endisset
 
 </form>  
 

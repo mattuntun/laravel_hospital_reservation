@@ -31,6 +31,9 @@ Route::get('hospital_menu/Common_reservation_setting_screen','HospitalController
 Route::get('common_reservation_setting_screen/set_period_and_deadline','CommonSettingScreenController@SetPeriodAndDeadline');
 //全科共通の休診日設定
 Route::get('common_reservation_setting_screen/horiday_setting','CommonSettingScreenController@HoridaySetting');
+//全科共通開院・休憩・閉診設定
+Route::get('common_reservation_setting_screen/opening_rest_closing_time','CommonSettingScreenController@OpeningRestClosingTime');
+
 
 
 //患者情報編集のページへ

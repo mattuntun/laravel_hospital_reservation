@@ -1,7 +1,7 @@
 <head>
     <link rel="stylesheet" href="{{asset('sab_view_item_css/only_horiday_setting.css')}}">
 </head>
-<div class = "close-setting">
+<div class = "horiday-setting">
 <h2>適用させる場合は&#x2611;</h2>       
     <table>
         <tr>
@@ -104,7 +104,7 @@
                 </select>
             </td>
             <td>
-                <p class="close_term">を休診設定</p>
+                <p class="horiday_term">を休診設定</p>
             </td>
         </tr>  
     </table>
