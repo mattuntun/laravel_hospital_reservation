@@ -23,23 +23,22 @@
                      <h2>何カ月先までの予約が可能(カレンダー表示)か、選択してください</h2>
                  @endslot
 
-                 @slot('form_item2')
-                 {{-- セレクトボックス入力テキスト(タグ付き) --}}
-     @include('sab_view_item.select_box',
-                  ['select_name'=>'piriod',
-                   'option_value1'=>'1_mouth',
-                   'option_value2'=>'2_mouth',
-                   'option_value3'=>'3_mouth',
-                   'option_value4'=>'4_mouth',
-                   'option_value5'=>'5_mouth',
-                   'option_value6'=>'6_mouth',
-                   'option_display1'=>'1カ月先まで予約可能',
-                   'option_display2'=>'2カ月先まで予約可能',
-                   'option_display3'=>'3カ月先まで予約可能',
-                   'option_display4'=>'4カ月先まで予約可能',
-                   'option_display5'=>'5カ月先まで予約可能',
-                   'option_display6'=>'6カ月先まで予約可能',])
-                    
+                 @slot('form_item2')                 
+                    {{-- セレクトボックス入力テキスト --}}
+                    @include('sab_view_item.select_box',
+                             ['select_name'=>'piriod',
+                              'option_value1'=>'1_mouth',
+                              'option_value2'=>'2_mouth',
+                              'option_value3'=>'3_mouth',
+                              'option_value4'=>'4_mouth',
+                              'option_value5'=>'5_mouth',
+                              'option_value6'=>'6_mouth',
+                              'option_display1'=>'1カ月先まで予約可能',
+                              'option_display2'=>'2カ月先まで予約可能',
+                              'option_display3'=>'3カ月先まで予約可能',
+                              'option_display4'=>'4カ月先まで予約可能',
+                              'option_display5'=>'5カ月先まで予約可能',
+                              'option_display6'=>'6カ月先まで予約可能',])                    
                  @endslot
 
                  @slot('form_item3')
@@ -52,17 +51,22 @@
 
 
                  @slot('form_item4')
-                    <select name="reservation_deadline" class="form-control" size="1" style="height: 100px; font-size: 32px;">
-                        <option disabled selected value>選択してください</option>
-                        <option value="1day">診察日当日より１日以内の予約不可</option>
-                        <option value="2day">診察日当日より２日以内の予約不可</option>
-                        <option value="3day">診察日当日より３日以内の予約不可</option>
-                        <option value="4day">診察日当日より４日以内の予約不可</option>
-                        <option value="5day">診察日当日より５日以内の予約不可</option>
-                        <option value="6day">診察日当日より６日以内の予約不可</option>
-                        <option value="7day">診察日当日より７日以内の予約不可</option>              
-                    </select>
+                    @include('sab_view_item.select_box',
+                                ['select_name'=>'reservation_deadline',
+                                'option_value1'=>'1day',
+                                'option_value2'=>'2day',
+                                'option_value3'=>'3day',
+                                'option_value4'=>'4day',
+                                'option_value5'=>'5day',
+                                'option_value6'=>'6day',
+                                'option_display1'=>'診察日当日より１日以内の予約不可',
+                                'option_display2'=>'診察日当日より２日以内の予約不可',
+                                'option_display3'=>'診察日当日より３日以内の予約不可',
+                                'option_display4'=>'診察日当日より４日以内の予約不可',
+                                'option_display5'=>'診察日当日より５日以内の予約不可',
+                                'option_display6'=>'診察日当日より６日以内の予約不可',])
                  @endslot
+
                  @slot('form_name')
                  nyuuryoku
                  @endslot
