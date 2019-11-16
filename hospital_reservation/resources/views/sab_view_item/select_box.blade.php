@@ -35,7 +35,7 @@
 
 
 {{-- 使用例・使用方法 --}}
-{{-- セレクトボックス入力テキスト(タグ付き) --}}
+{{-- セレクトボックス入力テキスト --}}
 {{--     @include('sab_view_item.select_box',
                   ['select_name'=>'piriod',
                    'option_value1'=>'1_mouth',
@@ -57,4 +57,4 @@
                    'option_display7'=>'7カ月先まで予約可能',
                    'option_display8'=>'8カ月先まで予約可能',
                    'option_display9'=>'9カ月先まで予約可能',
-                   'option_display10'=>'10カ月先まで予約可能'])
+                   'option_display10'=>'10カ月先まで予約可能']) --}}

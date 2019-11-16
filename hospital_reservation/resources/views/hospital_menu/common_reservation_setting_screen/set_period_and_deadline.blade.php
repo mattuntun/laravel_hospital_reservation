@@ -24,15 +24,22 @@
                  @endslot
 
                  @slot('form_item2')
-                    <select name="reservation_period" class="form-control" size="1" style="height: 100px; font-size: 32px;">
-                        <option disabled selected value>選択してください</option>
-                        <option value="1mouth">１カ月先まで予約可能</option>
-                        <option value="2mouth">２カ月先まで予約可能</option>
-                        <option value="3mouth">３カ月先まで予約可能</option>
-                        <option value="4mouth">４カ月先まで予約可能</option>
-                        <option value="5mouth">５カ月先まで予約可能</option>
-                        <option value="6mouth">６カ月先まで予約可能</option>              
-                    </select>
+                 {{-- セレクトボックス入力テキスト(タグ付き) --}}
+     @include('sab_view_item.select_box',
+                  ['select_name'=>'piriod',
+                   'option_value1'=>'1_mouth',
+                   'option_value2'=>'2_mouth',
+                   'option_value3'=>'3_mouth',
+                   'option_value4'=>'4_mouth',
+                   'option_value5'=>'5_mouth',
+                   'option_value6'=>'6_mouth',
+                   'option_display1'=>'1カ月先まで予約可能',
+                   'option_display2'=>'2カ月先まで予約可能',
+                   'option_display3'=>'3カ月先まで予約可能',
+                   'option_display4'=>'4カ月先まで予約可能',
+                   'option_display5'=>'5カ月先まで予約可能',
+                   'option_display6'=>'6カ月先まで予約可能',])
+                    
                  @endslot
 
                  @slot('form_item3')
