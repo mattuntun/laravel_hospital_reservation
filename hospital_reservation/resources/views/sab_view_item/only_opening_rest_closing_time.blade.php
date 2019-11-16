@@ -15,42 +15,42 @@
         <tr>
             <td>
                 <select name="h-open-time1" class="form-control" size="1" style="height: 100px; font-size: 32px;">
-                    <option value="0時">0時</option>
-                    <option value="1時">1時</option>
-                    <option value="2時">2時</option>
-                    <option value="3時">3時</option>
-                    <option value="4時">4時</option>
-                    <option value="5時">5時</option>
-                    <option value="6時">6時</option>
-                    <option value="7時">7時</option>
-                    <option value="8時">8時</option>
-                    <option value="9時">9時</option>
-                    <option value="10時">10時</option>
-                    <option value="11時">11時</option>
-                    <option value="12時">12時</option>
-                    <option value="13時">13時</option>
-                    <option value="14時">14時</option>
-                    <option value="15時">15時</option>
-                    <option value="16時">16時</option>
-                    <option value="17時">17時</option>
-                    <option value="18時">18時</option>
-                    <option value="19時">19時</option>
-                    <option value="20時">20時</option>
-                    <option value="21時">21時</option>
-                    <option value="22時">22時</option>
-                    <option value="23時">23時</option>
-                    <option value="24時">24時</option> 
+                    <option value="0oclock">0時</option>
+                    <option value="1oclock">1時</option>
+                    <option value="2oclock">2時</option>
+                    <option value="3oclock">3時</option>
+                    <option value="4oclock">4時</option>
+                    <option value="5oclock">5時</option>
+                    <option value="6oclock">6時</option>
+                    <option value="7oclock">7時</option>
+                    <option value="8oclock">8時</option>
+                    <option value="9oclock">9時</option>
+                    <option value="10oclock">10時</option>
+                    <option value="11oclock">11時</option>
+                    <option value="12oclock">12時</option>
+                    <option value="13oclock">13時</option>
+                    <option value="14oclock">14時</option>
+                    <option value="15oclock">15時</option>
+                    <option value="16oclock">16時</option>
+                    <option value="17oclock">17時</option>
+                    <option value="18oclock">18時</option>
+                    <option value="19oclock">19時</option>
+                    <option value="20oclock">20時</option>
+                    <option value="21oclock">21時</option>
+                    <option value="22oclock">22時</option>
+                    <option value="23oclock">23時</option>
+                    <option value="24oclock">24時</option> 
                 </select>
             </td>
             <td>
                 <select name="m-open-time1" class="form-control" size="1" style="height: 100px; font-size: 32px;">
-                    <option value="00分">00分</option>
-                    <option value="10分">10分</option>
-                    <option value="20分">20分</option>
-                    <option value="30分">30分</option>
-                    <option value="40分">40分</option>
-                    <option value="50分">50分</option>
-                    <option value="60分">60分</option>              
+                    <option value="00min">00分</option>
+                    <option value="10min">10分</option>
+                    <option value="20min">20分</option>
+                    <option value="30min">30分</option>
+                    <option value="40min">40分</option>
+                    <option value="50min">50分</option>
+                    <option value="60min">60分</option>              
                 </select>
             </td>
             <td>
@@ -68,42 +68,42 @@
         <tr>
             <td>
                 <select name="h-open-time2" class="form-control" size="1" style="height: 100px; font-size: 32px;">
-                    <option value="0時">0時</option>
-                    <option value="1時">1時</option>
-                    <option value="2時">2時</option>
-                    <option value="3時">3時</option>
-                    <option value="4時">4時</option>
-                    <option value="5時">5時</option>
-                    <option value="6時">6時</option>
-                    <option value="7時">7時</option>
-                    <option value="8時">8時</option>
-                    <option value="9時">9時</option>
-                    <option value="10時">10時</option>
-                    <option value="11時">11時</option>
-                    <option value="12時">12時</option>
-                    <option value="13時">13時</option>
-                    <option value="14時">14時</option>
-                    <option value="15時">15時</option>
-                    <option value="16時">16時</option>
-                    <option value="17時">17時</option>
-                    <option value="18時">18時</option>
-                    <option value="19時">19時</option>
-                    <option value="20時">20時</option>
-                    <option value="21時">21時</option>
-                    <option value="22時">22時</option>
-                    <option value="23時">23時</option>
-                    <option value="24時">24時</option> 
+                    <option value="0oclock">0時</option>
+                    <option value="1oclock">1時</option>
+                    <option value="2oclock">2時</option>
+                    <option value="3oclock">3時</option>
+                    <option value="4oclock">4時</option>
+                    <option value="5oclock">5時</option>
+                    <option value="6oclock">6時</option>
+                    <option value="7oclock">7時</option>
+                    <option value="8oclock">8時</option>
+                    <option value="9oclock">9時</option>
+                    <option value="10oclock">10時</option>
+                    <option value="11oclock">11時</option>
+                    <option value="12oclock">12時</option>
+                    <option value="13oclock">13時</option>
+                    <option value="14oclock">14時</option>
+                    <option value="15oclock">15時</option>
+                    <option value="16oclock">16時</option>
+                    <option value="17oclock">17時</option>
+                    <option value="18oclock">18時</option>
+                    <option value="19oclock">19時</option>
+                    <option value="20oclock">20時</option>
+                    <option value="21oclock">21時</option>
+                    <option value="22oclock">22時</option>
+                    <option value="23oclock">23時</option>
+                    <option value="24oclock">24時</option> 
                 </select>
             </td>
             <td>
                 <select name="m-open-time2" class="form-control" size="1" style="height: 100px; font-size: 32px;">
-                    <option value="00分">00分</option>
-                    <option value="10分">10分</option>
-                    <option value="20分">20分</option>
-                    <option value="30分">30分</option>
-                    <option value="40分">40分</option>
-                    <option value="50分">50分</option>
-                    <option value="60分">60分</option>              
+                <option value="00min">00分</option>
+                    <option value="10min">10分</option>
+                    <option value="20min">20分</option>
+                    <option value="30min">30分</option>
+                    <option value="40min">40分</option>
+                    <option value="50min">50分</option>
+                    <option value="60min">60分</option>               
                 </select>
             </td>
             <td>
@@ -130,42 +130,42 @@
         <tr>
             <td>
                 <select name="h-rest-start1" class="form-control" size="1" style="height: 100px; font-size: 32px;">
-                    <option value="0時">0時</option>
-                    <option value="1時">1時</option>
-                    <option value="2時">2時</option>
-                    <option value="3時">3時</option>
-                    <option value="4時">4時</option>
-                    <option value="5時">5時</option>
-                    <option value="6時">6時</option>
-                    <option value="7時">7時</option>
-                    <option value="8時">8時</option>
-                    <option value="9時">9時</option>
-                    <option value="10時">10時</option>
-                    <option value="11時">11時</option>
-                    <option value="12時">12時</option>
-                    <option value="13時">13時</option>
-                    <option value="14時">14時</option>
-                    <option value="15時">15時</option>
-                    <option value="16時">16時</option>
-                    <option value="17時">17時</option>
-                    <option value="18時">18時</option>
-                    <option value="19時">19時</option>
-                    <option value="20時">20時</option>
-                    <option value="21時">21時</option>
-                    <option value="22時">22時</option>
-                    <option value="23時">23時</option>
-                    <option value="24時">24時</option> 
+                   <option value="0oclock">0時</option>
+                    <option value="1oclock">1時</option>
+                    <option value="2oclock">2時</option>
+                    <option value="3oclock">3時</option>
+                    <option value="4oclock">4時</option>
+                    <option value="5oclock">5時</option>
+                    <option value="6oclock">6時</option>
+                    <option value="7oclock">7時</option>
+                    <option value="8oclock">8時</option>
+                    <option value="9oclock">9時</option>
+                    <option value="10oclock">10時</option>
+                    <option value="11oclock">11時</option>
+                    <option value="12oclock">12時</option>
+                    <option value="13oclock">13時</option>
+                    <option value="14oclock">14時</option>
+                    <option value="15oclock">15時</option>
+                    <option value="16oclock">16時</option>
+                    <option value="17oclock">17時</option>
+                    <option value="18oclock">18時</option>
+                    <option value="19oclock">19時</option>
+                    <option value="20oclock">20時</option>
+                    <option value="21oclock">21時</option>
+                    <option value="22oclock">22時</option>
+                    <option value="23oclock">23時</option>
+                    <option value="24oclock">24時</option> 
                 </select>
             </td>
             <td>
                 <select name="m-rest-start1" class="form-control" size="1" style="height: 100px; font-size: 32px;">
-                    <option value="00分">00分</option>
-                    <option value="10分">10分</option>
-                    <option value="20分">20分</option>
-                    <option value="30分">30分</option>
-                    <option value="40分">40分</option>
-                    <option value="50分">50分</option>
-                    <option value="60分">60分</option>              
+                    <option value="00min">00分</option>
+                    <option value="10min">10分</option>
+                    <option value="20min">20分</option>
+                    <option value="30min">30分</option>
+                    <option value="40min">40分</option>
+                    <option value="50min">50分</option>
+                    <option value="60min">60分</option>           
             </td>
             <td>
                 <p class="term">を休診開始時間</p>
@@ -174,42 +174,42 @@
         <tr>
             <td>
                 <select name="h-rest-stop1" class="form-control" size="1" style="height: 100px; font-size: 32px;">
-                    <option value="0時">0時</option>
-                    <option value="1時">1時</option>
-                    <option value="2時">2時</option>
-                    <option value="3時">3時</option>
-                    <option value="4時">4時</option>
-                    <option value="5時">5時</option>
-                    <option value="6時">6時</option>
-                    <option value="7時">7時</option>
-                    <option value="8時">8時</option>
-                    <option value="9時">9時</option>
-                    <option value="10時">10時</option>
-                    <option value="11時">11時</option>
-                    <option value="12時">12時</option>
-                    <option value="13時">13時</option>
-                    <option value="14時">14時</option>
-                    <option value="15時">15時</option>
-                    <option value="16時">16時</option>
-                    <option value="17時">17時</option>
-                    <option value="18時">18時</option>
-                    <option value="19時">19時</option>
-                    <option value="20時">20時</option>
-                    <option value="21時">21時</option>
-                    <option value="22時">22時</option>
-                    <option value="23時">23時</option>
-                    <option value="24時">24時</option> 
+                   <option value="0oclock">0時</option>
+                    <option value="1oclock">1時</option>
+                    <option value="2oclock">2時</option>
+                    <option value="3oclock">3時</option>
+                    <option value="4oclock">4時</option>
+                    <option value="5oclock">5時</option>
+                    <option value="6oclock">6時</option>
+                    <option value="7oclock">7時</option>
+                    <option value="8oclock">8時</option>
+                    <option value="9oclock">9時</option>
+                    <option value="10oclock">10時</option>
+                    <option value="11oclock">11時</option>
+                    <option value="12oclock">12時</option>
+                    <option value="13oclock">13時</option>
+                    <option value="14oclock">14時</option>
+                    <option value="15oclock">15時</option>
+                    <option value="16oclock">16時</option>
+                    <option value="17oclock">17時</option>
+                    <option value="18oclock">18時</option>
+                    <option value="19oclock">19時</option>
+                    <option value="20oclock">20時</option>
+                    <option value="21oclock">21時</option>
+                    <option value="22oclock">22時</option>
+                    <option value="23oclock">23時</option>
+                    <option value="24oclock">24時</option> 
                 </select>
             </td>
             <td>
                 <select name="m-rest-stop1" class="form-control" size="1" style="height: 100px; font-size: 32px;">
-                    <option value="00分">00分</option>
-                    <option value="10分">10分</option>
-                    <option value="20分">20分</option>
-                    <option value="30分">30分</option>
-                    <option value="40分">40分</option>
-                    <option value="50分">50分</option>
-                    <option value="60分">60分</option>              
+                   <option value="00min">00分</option>
+                    <option value="10min">10分</option>
+                    <option value="20min">20分</option>
+                    <option value="30min">30分</option>
+                    <option value="40min">40分</option>
+                    <option value="50min">50分</option>
+                    <option value="60min">60分</option>                 
                 </select> 
             </td>
             <td>
@@ -227,42 +227,42 @@
         <tr>
             <td>
                 <select name="h-rest-start2" class="form-control" size="1" style="height: 100px; font-size: 32px;">
-                    <option value="0時">0時</option>
-                    <option value="1時">1時</option>
-                    <option value="2時">2時</option>
-                    <option value="3時">3時</option>
-                    <option value="4時">4時</option>
-                    <option value="5時">5時</option>
-                    <option value="6時">6時</option>
-                    <option value="7時">7時</option>
-                    <option value="8時">8時</option>
-                    <option value="9時">9時</option>
-                    <option value="10時">10時</option>
-                    <option value="11時">11時</option>
-                    <option value="12時">12時</option>
-                    <option value="13時">13時</option>
-                    <option value="14時">14時</option>
-                    <option value="15時">15時</option>
-                    <option value="16時">16時</option>
-                    <option value="17時">17時</option>
-                    <option value="18時">18時</option>
-                    <option value="19時">19時</option>
-                    <option value="20時">20時</option>
-                    <option value="21時">21時</option>
-                    <option value="22時">22時</option>
-                    <option value="23時">23時</option>
-                    <option value="24時">24時</option> 
+                    <option value="0oclock">0時</option>
+                    <option value="1oclock">1時</option>
+                    <option value="2oclock">2時</option>
+                    <option value="3oclock">3時</option>
+                    <option value="4oclock">4時</option>
+                    <option value="5oclock">5時</option>
+                    <option value="6oclock">6時</option>
+                    <option value="7oclock">7時</option>
+                    <option value="8oclock">8時</option>
+                    <option value="9oclock">9時</option>
+                    <option value="10oclock">10時</option>
+                    <option value="11oclock">11時</option>
+                    <option value="12oclock">12時</option>
+                    <option value="13oclock">13時</option>
+                    <option value="14oclock">14時</option>
+                    <option value="15oclock">15時</option>
+                    <option value="16oclock">16時</option>
+                    <option value="17oclock">17時</option>
+                    <option value="18oclock">18時</option>
+                    <option value="19oclock">19時</option>
+                    <option value="20oclock">20時</option>
+                    <option value="21oclock">21時</option>
+                    <option value="22oclock">22時</option>
+                    <option value="23oclock">23時</option>
+                    <option value="24oclock">24時</option>  
                 </select>
             </td>
             <td>
                 <select name="m-rest-start2" class="form-control" size="1" style="height: 100px; font-size: 32px;">
-                    <option value="00分">00分</option>
-                    <option value="10分">10分</option>
-                    <option value="20分">20分</option>
-                    <option value="30分">30分</option>
-                    <option value="40分">40分</option>
-                    <option value="50分">50分</option>
-                    <option value="60分">60分</option>              
+                    <option value="00min">00分</option>
+                    <option value="10min">10分</option>
+                    <option value="20min">20分</option>
+                    <option value="30min">30分</option>
+                    <option value="40min">40分</option>
+                    <option value="50min">50分</option>
+                    <option value="60min">60分</option>              
                 </select>
             </td>
             <td>
@@ -272,42 +272,42 @@
         <tr>
             <td>
                 <select name="h-rest-stop2" class="form-control" size="1" style="height: 100px; font-size: 32px;">
-                    <option value="0時">0時</option>
-                    <option value="1時">1時</option>
-                    <option value="2時">2時</option>
-                    <option value="3時">3時</option>
-                    <option value="4時">4時</option>
-                    <option value="5時">5時</option>
-                    <option value="6時">6時</option>
-                    <option value="7時">7時</option>
-                    <option value="8時">8時</option>
-                    <option value="9時">9時</option>
-                    <option value="10時">10時</option>
-                    <option value="11時">11時</option>
-                    <option value="12時">12時</option>
-                    <option value="13時">13時</option>
-                    <option value="14時">14時</option>
-                    <option value="15時">15時</option>
-                    <option value="16時">16時</option>
-                    <option value="17時">17時</option>
-                    <option value="18時">18時</option>
-                    <option value="19時">19時</option>
-                    <option value="20時">20時</option>
-                    <option value="21時">21時</option>
-                    <option value="22時">22時</option>
-                    <option value="23時">23時</option>
-                    <option value="24時">24時</option> 
+                    <option value="0oclock">0時</option>
+                    <option value="1oclock">1時</option>
+                    <option value="2oclock">2時</option>
+                    <option value="3oclock">3時</option>
+                    <option value="4oclock">4時</option>
+                    <option value="5oclock">5時</option>
+                    <option value="6oclock">6時</option>
+                    <option value="7oclock">7時</option>
+                    <option value="8oclock">8時</option>
+                    <option value="9oclock">9時</option>
+                    <option value="10oclock">10時</option>
+                    <option value="11oclock">11時</option>
+                    <option value="12oclock">12時</option>
+                    <option value="13oclock">13時</option>
+                    <option value="14oclock">14時</option>
+                    <option value="15oclock">15時</option>
+                    <option value="16oclock">16時</option>
+                    <option value="17oclock">17時</option>
+                    <option value="18oclock">18時</option>
+                    <option value="19oclock">19時</option>
+                    <option value="20oclock">20時</option>
+                    <option value="21oclock">21時</option>
+                    <option value="22oclock">22時</option>
+                    <option value="23oclock">23時</option>
+                    <option value="24oclock">24時</option> 
                 </select>
             </td>
             <td>
                 <select name="h-rest-stop2" class="form-control" size="1" style="height: 100px; font-size: 32px;">
-                    <option value="00分">00分</option>
-                    <option value="10分">10分</option>
-                    <option value="20分">20分</option>
-                    <option value="30分">30分</option>
-                    <option value="40分">40分</option>
-                    <option value="50分">50分</option>
-                    <option value="60分">60分</option>              
+                   <option value="00min">00分</option>
+                    <option value="10min">10分</option>
+                    <option value="20min">20分</option>
+                    <option value="30min">30分</option>
+                    <option value="40min">40分</option>
+                    <option value="50min">50分</option>
+                    <option value="60min">60分</option>              
                 </select>
             </td>
             <td>
@@ -332,42 +332,42 @@
         <tr>
             <td>
                 <select name="h-close-time1" class="form-control" size="1" style="height: 100px; font-size: 32px;">
-                    <option value="0時">0時</option>
-                    <option value="1時">1時</option>
-                    <option value="2時">2時</option>
-                    <option value="3時">3時</option>
-                    <option value="4時">4時</option>
-                    <option value="5時">5時</option>
-                    <option value="6時">6時</option>
-                    <option value="7時">7時</option>
-                    <option value="8時">8時</option>
-                    <option value="9時">9時</option>
-                    <option value="10時">10時</option>
-                    <option value="11時">11時</option>
-                    <option value="12時">12時</option>
-                    <option value="13時">13時</option>
-                    <option value="14時">14時</option>
-                    <option value="15時">15時</option>
-                    <option value="16時">16時</option>
-                    <option value="17時">17時</option>
-                    <option value="18時">18時</option>
-                    <option value="19時">19時</option>
-                    <option value="20時">20時</option>
-                    <option value="21時">21時</option>
-                    <option value="22時">22時</option>
-                    <option value="23時">23時</option>
-                    <option value="24時">24時</option> 
+                    <option value="0oclock">0時</option>
+                    <option value="1oclock">1時</option>
+                    <option value="2oclock">2時</option>
+                    <option value="3oclock">3時</option>
+                    <option value="4oclock">4時</option>
+                    <option value="5oclock">5時</option>
+                    <option value="6oclock">6時</option>
+                    <option value="7oclock">7時</option>
+                    <option value="8oclock">8時</option>
+                    <option value="9oclock">9時</option>
+                    <option value="10oclock">10時</option>
+                    <option value="11oclock">11時</option>
+                    <option value="12oclock">12時</option>
+                    <option value="13oclock">13時</option>
+                    <option value="14oclock">14時</option>
+                    <option value="15oclock">15時</option>
+                    <option value="16oclock">16時</option>
+                    <option value="17oclock">17時</option>
+                    <option value="18oclock">18時</option>
+                    <option value="19oclock">19時</option>
+                    <option value="20oclock">20時</option>
+                    <option value="21oclock">21時</option>
+                    <option value="22oclock">22時</option>
+                    <option value="23oclock">23時</option>
+                    <option value="24oclock">24時</option> 
                 </select>
             </td>
             <td>
                 <select name="m-close-time1" class="form-control" size="1" style="height: 100px; font-size: 32px;">
-                    <option value="00分">00分</option>
-                    <option value="10分">10分</option>
-                    <option value="20分">20分</option>
-                    <option value="30分">30分</option>
-                    <option value="40分">40分</option>
-                    <option value="50分">50分</option>
-                    <option value="60分">60分</option>              
+                    <option value="00min">00分</option>
+                    <option value="10min">10分</option>
+                    <option value="20min">20分</option>
+                    <option value="30min">30分</option>
+                    <option value="40min">40分</option>
+                    <option value="50min">50分</option>
+                    <option value="60min">60分</option>                  
                 </select>
             </td>
             <td>
@@ -385,42 +385,42 @@
         <tr>
             <td>
                 <select name="h-close-time2" class="form-control" size="1" style="height: 100px; font-size: 32px;">
-                    <option value="0時">0時</option>
-                    <option value="1時">1時</option>
-                    <option value="2時">2時</option>
-                    <option value="3時">3時</option>
-                    <option value="4時">4時</option>
-                    <option value="5時">5時</option>
-                    <option value="6時">6時</option>
-                    <option value="7時">7時</option>
-                    <option value="8時">8時</option>
-                    <option value="9時">9時</option>
-                    <option value="10時">10時</option>
-                    <option value="11時">11時</option>
-                    <option value="12時">12時</option>
-                    <option value="13時">13時</option>
-                    <option value="14時">14時</option>
-                    <option value="15時">15時</option>
-                    <option value="16時">16時</option>
-                    <option value="17時">17時</option>
-                    <option value="18時">18時</option>
-                    <option value="19時">19時</option>
-                    <option value="20時">20時</option>
-                    <option value="21時">21時</option>
-                    <option value="22時">22時</option>
-                    <option value="23時">23時</option>
-                    <option value="24時">24時</option> 
+                    <option value="0oclock">0時</option>
+                    <option value="1oclock">1時</option>
+                    <option value="2oclock">2時</option>
+                    <option value="3oclock">3時</option>
+                    <option value="4oclock">4時</option>
+                    <option value="5oclock">5時</option>
+                    <option value="6oclock">6時</option>
+                    <option value="7oclock">7時</option>
+                    <option value="8oclock">8時</option>
+                    <option value="9oclock">9時</option>
+                    <option value="10oclock">10時</option>
+                    <option value="11oclock">11時</option>
+                    <option value="12oclock">12時</option>
+                    <option value="13oclock">13時</option>
+                    <option value="14oclock">14時</option>
+                    <option value="15oclock">15時</option>
+                    <option value="16oclock">16時</option>
+                    <option value="17oclock">17時</option>
+                    <option value="18oclock">18時</option>
+                    <option value="19oclock">19時</option>
+                    <option value="20oclock">20時</option>
+                    <option value="21oclock">21時</option>
+                    <option value="22oclock">22時</option>
+                    <option value="23oclock">23時</option>
+                    <option value="24oclock">24時</option> 
                 </select>
             </td>
             <td>
                 <select name="m-close-time2" class="form-control" size="1" style="height: 100px; font-size: 32px;">
-                    <option value="00分">00分</option>
-                    <option value="10分">10分</option>
-                    <option value="20分">20分</option>
-                    <option value="30分">30分</option>
-                    <option value="40分">40分</option>
-                    <option value="50分">50分</option>
-                    <option value="60分">60分</option>              
+                    <option value="00min">00分</option>
+                    <option value="10min">10分</option>
+                    <option value="20min">20分</option>
+                    <option value="30min">30分</option>
+                    <option value="40min">40分</option>
+                    <option value="50min">50分</option>
+                    <option value="60min">60分</option>                 
                 </select>
             </td>
             <td>
