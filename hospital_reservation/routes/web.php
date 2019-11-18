@@ -39,21 +39,24 @@ Route::get('common_reservation_setting_screen/number_of_reservation_screen
 //全科共通の予約状況表示数設定
 Route::post('common_reservation_setting_screen/status_display_setting
 ','CommonSettingScreenController@StatusDisplaySetting');
-
+//診療不可設定
+//個別診療科設定メニュー画面へ
+Route::get('common_reservation_setting_screen/individual_setting_menu
+','IndividualSettingMenuController@IndividualSettingMenu');
 
 //患者情報編集のページへ
 Route::get('hospital_menu/patient_registration_change_deletion','HospitalController@PatientRegistrationChangeDeletion');
 //新規患者情報登録のページへ
-Route::get('patient_registration_change_deletion/new_patient_registration','PatientRegistrationContoroller@NewPatient');
+Route::get('patient_registration_change_deletion/new_patient_registration','PatientRegistrationController@NewPatient');
 //患者情報変更のページへ
-Route::get('patient_registration_change_deletion/change_patient_information','PatientRegistrationContoroller@ChangePatient');
+Route::get('patient_registration_change_deletion/change_patient_information','PatientRegistrationController@ChangePatient');
 //患者情報変更ID検索後、詳細入力
-Route::post('change_patient_information/change_patient_information_details','PatientRegistrationContoroller@ChangePatientDetails');
+Route::post('change_patient_information/change_patient_information_details','PatientRegistrationController@ChangePatientDetails');
 
 //患者情報削除のページへ
-Route::get('patient_registration_change_deletion/delete_patient_information','PatientRegistrationContoroller@DeletePatient');
+Route::get('patient_registration_change_deletion/delete_patient_information','PatientRegistrationController@DeletePatient');
 //削除用パスワード設定のページへ
-Route::get('patient_registration_change_deletion/delete_password_patient_change','PatientRegistrationContoroller@ChangePass');
+Route::get('patient_registration_change_deletion/delete_password_patient_change','PatientRegistrationController@ChangePass');
 
 
 //患者予約情報編集のページへ

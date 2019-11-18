@@ -47,7 +47,7 @@
         {{-- シンプルボタン(middle) --}}
         @include('sab_view_item.middle_sinple_buttom',
                   ['middle_buttom_value'=>'診療科個別設定',
-                   'middle_buttom_access'=>'/index'])
+                   'middle_buttom_access'=>'/common_reservation_setting_screen/individual_setting_menu'])
 
 
 @endsection
