@@ -33,7 +33,12 @@ Route::get('common_reservation_setting_screen/set_period_and_deadline','CommonSe
 Route::get('common_reservation_setting_screen/horiday_setting','CommonSettingScreenController@HoridaySetting');
 //全科共通開院・休憩・閉診設定
 Route::get('common_reservation_setting_screen/opening_rest_closing_time','CommonSettingScreenController@OpeningRestClosingTime');
-
+//全科共通の予約数設定
+Route::get('common_reservation_setting_screen/number_of_reservation_screen
+','CommonSettingScreenController@NumberOfReservationScreen');
+//全科共通の予約状況表示数設定
+Route::post('common_reservation_setting_screen/status_display_setting
+','CommonSettingScreenController@StatusDisplaySetting');
 
 
 //患者情報編集のページへ

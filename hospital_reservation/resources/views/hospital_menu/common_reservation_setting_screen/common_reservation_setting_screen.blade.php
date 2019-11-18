@@ -37,7 +37,7 @@
         {{-- シンプルボタン(middle) --}}
         @include('sab_view_item.middle_sinple_buttom',
                   ['middle_buttom_value'=>'予約数・状況表示設定',
-                   'middle_buttom_access'=>'/index'])
+                   'middle_buttom_access'=>'/common_reservation_setting_screen/number_of_reservation_screen'])
 
         {{-- シンプルボタン(middle) --}}
         @include('sab_view_item.middle_sinple_buttom',
