@@ -1,0 +1,9 @@
+@charset"UTF-8";
+
+
+.form-control{    /*入力するところ*/
+	height: 150px;
+  font-size: 50px;
+  border-radius:30px;/*ボーダーの角を丸くする*/
+}
+

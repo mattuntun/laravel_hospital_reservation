@@ -9,18 +9,18 @@
     <table>
       <tr>
         <td>
-          <button type="button" class="btn btn-outline-info" onclick="location.href='{{$footerbottom_access1}}'">{{$footerbottom1}}</button>
+          <button type="button" class="btn btn-outline-info" onclick="location.href='{{$footerbuttom_access1}}'">{{$footerbuttom1}}</button>
         </td>
         <td>
-          <button type="button" class="btn btn-outline-info" onclick="location.href='{{$footerbottom_access2}}'">{{$footerbottom2}}</button></a>
+          <button type="button" class="btn btn-outline-info" onclick="location.href='{{$footerbuttom_access2}}'">{{$footerbuttom2}}</button></a>
         </td>
       </tr>
       <tr>
         <td>
-          <button type="button" class="btn btn-outline-info" onclick="location.href='{{$footerbottom_access3}}'">{{$footerbottom3}}</button>
+          <button type="button" class="btn btn-outline-info" onclick="location.href='{{$footerbuttom_access3}}'">{{$footerbuttom3}}</button>
         </td>
         <td>
-          <button type="button" class="btn btn-outline-info" onclick="location.href='{{$footerbottom_access4}}'">{{$footerbottom4}}</button>
+          <button type="button" class="btn btn-outline-info" onclick="location.href='{{$footerbuttom_access4}}'">{{$footerbuttom4}}</button>
         </td>
       </tr>
     </table>

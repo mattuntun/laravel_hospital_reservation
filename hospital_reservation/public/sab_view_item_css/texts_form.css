@@ -1,0 +1,13 @@
+@charset"UTF-8";
+
+
+.control-label{    /*ラベル*/
+	font-size: 30px;
+  
+}
+
+.form-control{    /*入力するところ*/
+	height: 50px;
+  font-size: 30px;
+  border-radius:10px;/*ボーダーの角を丸くする*/
+}

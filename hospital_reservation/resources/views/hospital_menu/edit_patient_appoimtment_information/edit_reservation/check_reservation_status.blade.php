@@ -1,44 +1,33 @@
 {{-- レイアウトベースはlayout_hospital_base --}}
+
 @extends('layout.layout_hospital_base')
 
 {{-- ヘッド --}}
-@section('web_title','○○医院')
+@section('web_title','予約状況確認')
 
 
 {{-- ヘッダー --}}
 
 @section('header_content')
         @include('sab_view_item.header',
-                  ['main_theme'=>'○○医院'])
+                  ['main_theme'=>'予約状況確認'])
 @endsection
 
 
 
 {{-- メイン --}}
-
-
 @section('main_content')
-        {{-- タグ付きボタン(large) --}}
-        @include('sab_view_item.large_tagged_buttom',
-                  ['large_buttom_tag'=>'設定画面',
-                   'large_buttom_value'=>'予約設定の変更をする',
-                   'large_buttom_access'=>'/hospital_menu/Common_reservation_setting_screen'])
-<br>
-<br>
-<br>
-<br>
-<br>
-
-        {{-- タグ付きボタン(large) --}}
-        @include('sab_view_item.large_tagged_buttom',
-                  ['large_buttom_tag'=>'患者設定',
-                   'large_buttom_value'=>'新規患者登録・変更・削除',
-                   'large_buttom_access'=>'/hospital_menu/patient_registration_change_deletion'])
+        {{-- シンプルボタン(large) --}}
+        @include('sab_view_item.large_simple_buttom',
+                  ['large_buttom_value'=>'患者別確認',
+                   'large_buttom_access'=>'/check_reservation_status/patient'])
 
         {{-- シンプルボタン(large) --}}
         @include('sab_view_item.large_simple_buttom',
-                  ['large_buttom_value'=>'患者予約情報編集',
-                   'large_buttom_access'=>'/hospital_menu/edit_patient_appoimtment_information'])
+                  ['large_buttom_value'=>'日付別確認',
+                   'large_buttom_access'=>'/index'])
+
+
 @endsection
 
 
