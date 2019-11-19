@@ -18,17 +18,17 @@
 
 @section('main_content')
 {{-- シンプルボタン(large) --}}
-        @include('sab_view_item.large_sinple_buttom',
+        @include('sab_view_item.large_simple_buttom',
                   ['large_buttom_value'=>'新規追加',
                    'large_buttom_access'=>'/edit_patient_appoimtment_information/newreservation'])
 
 {{-- シンプルボタン(large) --}}
-        @include('sab_view_item.large_sinple_buttom',
+        @include('sab_view_item.large_simple_buttom',
                   ['large_buttom_value'=>'予約削除',
                    'large_buttom_access'=>'/edit_patient_appoimtment_information/deretereservation'])
 
 {{-- シンプルボタン(large) --}}
-        @include('sab_view_item.large_sinple_buttom',
+        @include('sab_view_item.large_simple_buttom',
                   ['large_buttom_value'=>'予約状況確認',
                    'large_buttom_access'=>'/edit_patient_appoimtment_information/check_reservation_status'])
 @endsection

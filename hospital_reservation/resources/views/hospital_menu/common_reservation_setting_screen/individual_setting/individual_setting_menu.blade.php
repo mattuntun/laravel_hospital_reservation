@@ -18,22 +18,22 @@
 
 @section('main_content')
 {{-- シンプルボタン(large) --}}
-        @include('sab_view_item.large_sinple_buttom',
+        @include('sab_view_item.large_simple_buttom',
                   ['large_buttom_value'=>'診療科　追加',
                    'large_buttom_access'=>'/index'])
 
 {{-- シンプルボタン(large) --}}
-        @include('sab_view_item.large_sinple_buttom',
+        @include('sab_view_item.large_simple_buttom',
                   ['large_buttom_value'=>'診療科　削除',
                    'large_buttom_access'=>'/index'])
 
 {{-- シンプルボタン(large) --}}
-        @include('sab_view_item.large_sinple_buttom',
+        @include('sab_view_item.large_simple_buttom',
                   ['large_buttom_value'=>'診療科別設定',
                    'large_buttom_access'=>'/index'])
 
 {{-- シンプルボタン(large) --}}
-        @include('sab_view_item.large_sinple_buttom',
+        @include('sab_view_item.large_simple_buttom',
                   ['large_buttom_value'=>'診療科　追加・削除用パスワード設定',
                    'large_buttom_access'=>'/index'])
                    

@@ -18,12 +18,12 @@
 {{-- メイン --}}
 @section('main_content')
         {{-- シンプルボタン(large) --}}
-        @include('sab_view_item.large_sinple_buttom',
+        @include('sab_view_item.large_simple_buttom',
                   ['large_buttom_value'=>'患者別確認',
                    'large_buttom_access'=>'/check_reservation_status/patient'])
 
         {{-- シンプルボタン(large) --}}
-        @include('sab_view_item.large_sinple_buttom',
+        @include('sab_view_item.large_simple_buttom',
                   ['large_buttom_value'=>'日付別確認',
                    'large_buttom_access'=>'/index'])
 

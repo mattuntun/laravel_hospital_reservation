@@ -36,7 +36,7 @@
                    'large_buttom_access'=>'/hospital_menu/patient_registration_change_deletion'])
 
         {{-- シンプルボタン(large) --}}
-        @include('sab_view_item.large_sinple_buttom',
+        @include('sab_view_item.large_simple_buttom',
                   ['large_buttom_value'=>'患者予約情報編集',
                    'large_buttom_access'=>'/hospital_menu/edit_patient_appoimtment_information'])
 @endsection

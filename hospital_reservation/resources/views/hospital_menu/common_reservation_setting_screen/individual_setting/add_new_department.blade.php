@@ -2,13 +2,13 @@
 @extends('layout.layout_hospital_base')
 
 {{-- ヘッド --}}
-@section('web_title','患者情報編集')
+@section('web_title','診療科新規追加')
 
 {{-- ヘッダー --}}
 
 @section('header_content')
         @include('sab_view_item.header',
-                  ['main_theme'=>'患者情報編集'])
+                  ['main_theme'=>'診療科新規追加'])
 @endsection
 
 
@@ -19,23 +19,23 @@
 @section('main_content')
 {{-- シンプルボタン(large) --}}
         @include('sab_view_item.large_simple_buttom',
-                  ['large_buttom_value'=>'新規患者登録',
-                   'large_buttom_access'=>'/patient_registration_change_deletion/new_patient_registration'])
+                  ['large_buttom_value'=>'診療科　追加',
+                   'large_buttom_access'=>'/index'])
 
 {{-- シンプルボタン(large) --}}
         @include('sab_view_item.large_simple_buttom',
-                  ['large_buttom_value'=>'患者情報変更',
-                   'large_buttom_access'=>'/patient_registration_change_deletion/change_patient_information'])
+                  ['large_buttom_value'=>'診療科　削除',
+                   'large_buttom_access'=>'/index'])
 
 {{-- シンプルボタン(large) --}}
         @include('sab_view_item.large_simple_buttom',
-                  ['large_buttom_value'=>'患者削除',
-                   'large_buttom_access'=>'/patient_registration_change_deletion/delete_patient_information'])
+                  ['large_buttom_value'=>'診療科別設定',
+                   'large_buttom_access'=>'/index'])
 
 {{-- シンプルボタン(large) --}}
         @include('sab_view_item.large_simple_buttom',
-                  ['large_buttom_value'=>'患者削除用パスワード設定',
-                   'large_buttom_access'=>'/patient_registration_change_deletion/delete_password_patient_change'])
+                  ['large_buttom_value'=>'診療科　追加・削除用パスワード設定',
+                   'large_buttom_access'=>'/index'])
                    
 @endsection
 

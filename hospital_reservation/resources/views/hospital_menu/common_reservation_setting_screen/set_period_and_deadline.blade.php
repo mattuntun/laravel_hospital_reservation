@@ -67,6 +67,19 @@
                                 'option_display6'=>'診察日当日より６日以内の予約不可',])
                  @endslot
 
+
+                 @slot('form_item5')
+                 <br>
+                 <br>
+                 <br>
+
+                 {{-- タグ付ボタン(スモール) --}}
+                     @include('sab_view_item.small_tagged_buttom',
+                              ['tagged_value'=>'内容を確認して情報を登録',
+                                'buttom_value'=>'内容を登録',
+                                'buttom_access'=>'index'])
+                 @endslot
+
                  @slot('form_name')
                  nyuuryoku
                  @endslot

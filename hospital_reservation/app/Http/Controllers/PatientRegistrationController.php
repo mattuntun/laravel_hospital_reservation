@@ -6,7 +6,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class PatientRegistrationContoroller extends Controller
+class PatientRegistrationController extends Controller
 {
     //新規患者登録
     public function NewPatient() {
