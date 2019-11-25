@@ -23,6 +23,10 @@ class CreateClinicalDepartmentTable extends Migration
             $table->time('break_time_close')->comment('診療休診終了時間'); 
             $table->time('close_time')->comment('診療終了時間');
             $table->timestamps();
+
+            $table->index('clinical_department');
+            
+            $table->foreign('clinical_department')->reference('reservation_department')->on('reservation_data')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
