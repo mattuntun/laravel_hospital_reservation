@@ -26,9 +26,20 @@ class CreateReservationDataTable extends Migration
             $table->timestamps();
 
             $table->index('pt_id');
-            
-            $table->foreign('pt_id')->reference('pt_id')->on('pt_data')->onDelete('cascade')->onUpdate('cascade');
-            });
+            $table->index('reservation_department');
+
+            $table->foreign('pt_id')
+                  ->references('pt_id')
+                  ->on('pt_data')
+                  ->onDelete('cascade')
+                  ->onUpdate('cascade');
+
+            $table->foreign('reservation_department')
+                  ->references('clinical_department')
+                  ->on('clinical_departments')
+                  ->onDelete('cascade')
+                  ->onUpdate('cascade');
+        });
     }
 
     /**

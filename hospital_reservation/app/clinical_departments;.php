@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class clinical_department extends Model
+class clinical_departments extends Model
 {
-    protected $table = 'clinical_department';
+    protected $table = 'clinical_departments';
     protected $guarded = array('No');
     public $timestamps = true;
     protected $fillable = [
