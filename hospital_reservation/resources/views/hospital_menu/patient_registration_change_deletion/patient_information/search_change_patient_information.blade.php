@@ -3,74 +3,45 @@
 
 
 {{-- ヘッド --}}
-@section('web_title','患者情報削除')
+@section('web_title','患者情報変更')
 
 
 {{-- ヘッダー --}}
 
 @section('header_content')
         @include('sab_view_item.header',
-                  ['main_theme'=>'患者情報削除'])
+                  ['main_theme'=>'患者情報変更'])
 @endsection
 
 {{-- メイン --}}
 @section('main_content')
-<h2>該当患者情報</h2>
-@foreach($pt_datas as $pt_data)
-<h3>ID:{{$pt_data->pt_id}}</h3>
-<h6>{{var_dump($pt_datas)}}</h6>
+<h2>変更したい患者IDを入力してください</h2>
 
-<table>
-    <tr>
-        <th>
-            <h4>患者姓(漢字)</h4>
-        </th>
-        <th>
-            <h4>患者名前(漢字)</h4>
-        </th>
-    <tr>
-        <td>
-            <h3>{{$pt_data->pt_last_name}}</h3>
-        </td>
-        <td>
-            <h3>{{$pt_data->pt_name}}</h3>
-        </td>
-    </tr>
-</table>
-<table>
-    <tr>
-        <th>
-            <h4>患者姓(カナ)</h4>
-        </th>
-        <th>
-            <h4>患者名前(カナ)</h4>
-        </th>
-    <tr>
-        <td>
-            <h3>{{$pt_data->pt_last_name_kata}}</h3>
-        </td>
-        <td>
-            <h3>{{$pt_data->pt_name_kata}}</h3>
-        </td>
-    </tr>
-</table>
-@endforeach
         {{-- このコンポーネントはformとしての囲い(メソッドはpost) --}}
         @component('component_item.form')
                  @slot('form_action')
-                 /index
+                 /change_patient_information/change_patient_information
                  @endslot
 
-                 @slot('form_item3')
+                 @slot('form_item1')
+                        {{-- 1箇所テキスト(ロング) --}}
+                        @include('sab_view_item.texts_one_long',
+                                ['label_value'=>'患者ID検索',
+                                'label_id'=>'pt_id_search',
+                                'input_id'=>'pt_id_search',
+                                'input_name'=>'search_pt_id'])
+                 @endslot
+                       
+                 @slot('form_item2')
                         {{-- タグ付ボタン(スモール) --}}
                         @include('sab_view_item.small_tagged_buttom',
-                                        ['tagged_value'=>'患者情報確認後、削除',
-                                        'buttom_value'=>'患者情報削除',
-                                        'buttom_access'=>'/index'])
+                                        ['tagged_value'=>'IDの確認後、検索',
+                                        'buttom_value'=>'患者ID検索',
+                                        'buttom_access'=>'/change_patient_information/change_patient_information_details'])
                  @endslot
 
                  @slot('form_name')
-                 pt_delete_search
+                 
                  @endslot
 
          @endcomponent

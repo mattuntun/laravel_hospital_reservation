@@ -15,29 +15,61 @@
 
 {{-- メイン --}}
 @section('main_content')
-<h2>変更したい患者IDを入力してください</h2>
+<h2>該当患者情報</h2>
+@foreach($pt_datas as $pt_data)
+<h6>{{var_dump($pt_datas)}}</h6>
+
+<h3>ID:{{$pt_data->pt_id}}</h3>
+
+<table>
+    <tr>
+        <th>
+            <h4>患者姓(漢字)</h4>
+        </th>
+        <th>
+            <h4>患者名前(漢字)</h4>
+        </th>
+    <tr>
+        <td>
+            <h3>{{$pt_data->pt_last_name}}</h3>
+        </td>
+        <td>
+            <h3>{{$pt_data->pt_name}}</h3>
+        </td>
+    </tr>
+</table>
+<table>
+    <tr>
+        <th>
+            <h4>患者姓(カナ)</h4>
+        </th>
+        <th>
+            <h4>患者名前(カナ)</h4>
+        </th>
+    <tr>
+        <td>
+            <h3>{{$pt_data->pt_last_name_kata}}</h3>
+        </td>
+        <td>
+            <h3>{{$pt_data->pt_name_kata}}</h3>
+        </td>
+    </tr>
+</table>
+@endforeach
 
         {{-- このコンポーネントはformとしての囲い(メソッドはpost) --}}
         @component('component_item.form')
                  @slot('form_action')
-                 /change_patient_information/change_patient_information_details
+                 /index
                  @endslot
 
-                 @slot('form_item1')
-                        {{-- 1箇所テキスト(ロング) --}}
-                        @include('sab_view_item.texts_one_long',
-                                ['label_value'=>'患者ID検索',
-                                'label_id'=>'pt_id_search',
-                                'input_id'=>'pt_id_search',
-                                'input_name'=>'pt_id'])
-                 @endslot
-                       
-                 @slot('form_item2')
+                 
+                 @slot('form_item3')
                         {{-- タグ付ボタン(スモール) --}}
                         @include('sab_view_item.small_tagged_buttom',
-                                        ['tagged_value'=>'IDの確認後、検索',
-                                        'buttom_value'=>'患者ID検索',
-                                        'buttom_access'=>'/change_patient_information/change_patient_information_details'])
+                                        ['tagged_value'=>'登録内容確認後、登録',
+                                        'buttom_value'=>'登録',
+                                        'buttom_access'=>'/index'])
                  @endslot
 
                  @slot('form_name')
