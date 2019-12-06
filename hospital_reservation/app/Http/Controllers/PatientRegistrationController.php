@@ -7,7 +7,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\getPatientDataModel;
 use App\Models\AddNewPtModel;
-use Carbon\Carbon; 
 
 class PatientRegistrationController extends Controller
 {
@@ -17,7 +16,7 @@ class PatientRegistrationController extends Controller
     }
     //新規患者登録完了
     public function CompleteNewPatient(Request $request) {
-        $newPtAdd = new AddNewPtModel;
+        /*$newPtAdd = new AddNewPtModel;
         $newPtAdd->pt_id = $request->input('pt_id');
         $newPtAdd->pt_last_name = $request->input('pt_last_name');
         $newPtAdd->pt_name = $request->input('pt_name');
@@ -27,12 +26,13 @@ class PatientRegistrationController extends Controller
         $newPtAdd->email_adress = $request->input('email_adress');
         $newPtAdd->sex = $request->input('sex');
         $newPtAdd->save();
+        */
+        $appNewPt = AddNewPtModel::AddNewPtData($request);
 
         $ptdata ='患者データ';
-        
-        /*$newPtDatas = AddNewPtModel::AddNewDatas($request->newPtDatas);*/
+        $ptData = getPatientDataModel::getPtData($request->pt_id);
 
-        return view('hospital_menu.patient_registration_change_deletion.patient_information.complete_new_patient',['ptdata'=>$ptdata]);
+        return view('hospital_menu.patient_registration_change_deletion.patient_information.complete_new_patient',['ptdata'=>$ptdata,'ptData'=>$ptData]);
     }
 
     //患者情報変更

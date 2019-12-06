@@ -18,6 +18,7 @@
 患者情報を新規登録しました
 
 <p>{{$ptdata}}</p>
+<p>{{var_dump($ptData)}}</p>
 
         {{-- このコンポーネントはformとしての囲い(メソッドはpost) --}}
         @component('component_item.form')
