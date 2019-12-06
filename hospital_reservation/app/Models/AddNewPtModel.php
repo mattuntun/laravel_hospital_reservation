@@ -11,7 +11,7 @@ class AddNewPtModel extends Model
     protected $guarded = array('No');
     
     public static function AddNewPtData($request){
-        $newPtAdd = DB::table('pt_data');
+        $newPtAdd = new AddNewPtModel;
         $newPtAdd->pt_id = $request->input('pt_id');
         $newPtAdd->pt_last_name = $request->input('pt_last_name');
         $newPtAdd->pt_name = $request->input('pt_name');
