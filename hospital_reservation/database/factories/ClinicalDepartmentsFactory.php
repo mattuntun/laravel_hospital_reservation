@@ -30,7 +30,7 @@ $factory->define(App\clinical_departments::class, function (Faker $faker) {
     ];
 
     return [
-        'data_maked_day'=> $faker->date($format = 'Y-m-d', $max = 'now'),
+        //'data_maked_day'=> $faker->date($format = 'Y-m-d', $max = 'now'),
         'clinical_department'=> $faker->realText($maxNbChars = 20,$indexsize = 1),
         'possible_peoples'=> $faker->numberBetween(1,100),
         'start_time'=> $faker->randomElement($opens),

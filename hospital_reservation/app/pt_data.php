@@ -10,7 +10,7 @@ class pt_data extends Model
     protected $guarded = array('No');
     public $timestamps = true;
     protected $fillable = [
-        'data_maked_day',
+       // 'data_maked_day',
         'pt_id',
         'pt_last_name',
         'pt_name',

@@ -15,7 +15,7 @@ class CreatePtDataTable extends Migration
     {
         Schema::create('pt_data', function (Blueprint $table) {
             $table->increments('No')->comment('主キー');
-            $table->date('data_maked_day')->comment('データ作成日');
+            //$table->date('data_maked_day')->comment('データ作成日');
             $table->unsignedInteger('pt_id')->unique()->comment('患者ID');  
             $table->string('pt_last_name',20)->comment('患者姓');  
             $table->string('pt_name',20)->comment('患者名');  

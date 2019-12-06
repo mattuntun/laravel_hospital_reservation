@@ -10,7 +10,7 @@ class Reservation_data extends Model
     protected $guarder =array('No');
     public $timestamps = true;
     protected $fillabele = [
-        'data_maked_day',
+        //'data_maked_day',
         'reservation_date',
         'reservation_time',
         'reservation_department',

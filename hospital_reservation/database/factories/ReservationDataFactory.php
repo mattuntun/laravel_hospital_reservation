@@ -10,7 +10,7 @@ $factory->define(App\Reservation_data::class, function (Faker $faker) {
     $reservationDepartments = App\clinical_departments::pluck('clinical_department')->all();
     
     return [
-            'data_maked_day'=>$faker->date($format = 'Y-m-d', $max = 'now'),
+            //'data_maked_day'=>$faker->date($format = 'Y-m-d', $max = 'now'),
             'reservation_date'=>$faker->date($format = 'Y-m-d', $max = 'now'),
             'reservation_time'=>$faker->time($format = 'H:i:s', $max = 'now'),
             'reservation_department'=>$faker->randomElement($reservationDepartments),

@@ -15,7 +15,7 @@ class CreateReservationDataTable extends Migration
     {
         Schema::create('reservation_data', function (Blueprint $table) {
             $table->increments('No')->comment('主キー');
-            $table->date('data_maked_day')->comment('データ作成日');
+            //$table->date('data_maked_day')->comment('データ作成日');
             $table->date('reservation_date')->comment('予約日');  
             $table->time('reservation_time')->comment('予約時間');  
             $table->string('reservation_department',50)->comment('予約診療科');  

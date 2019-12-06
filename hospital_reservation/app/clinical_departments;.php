@@ -10,7 +10,7 @@ class clinical_departments extends Model
     protected $guarded = array('No');
     public $timestamps = true;
     protected $fillable = [
-        'data_maked_day',
+        //'data_maked_day',
         'clinical_department',
         'possible_peoples',
         'start_time',

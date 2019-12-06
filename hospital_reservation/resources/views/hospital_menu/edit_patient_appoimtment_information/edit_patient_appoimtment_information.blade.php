@@ -20,7 +20,7 @@
 {{-- シンプルボタン(large) --}}
         @include('sab_view_item.large_simple_buttom',
                   ['large_buttom_value'=>'新規追加',
-                   'large_buttom_access'=>'/edit_patient_appoimtment_information/newreservation'])
+                   'large_buttom_access'=>'/edit_patient_appoimtment_information/search_pt_new_reservation'])
 
 {{-- シンプルボタン(large) --}}
         @include('sab_view_item.large_simple_buttom',

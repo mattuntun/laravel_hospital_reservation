@@ -15,7 +15,7 @@ class CreateClinicalDepartmentsTable extends Migration
     {
         Schema::create('clinical_departments', function (Blueprint $table) {
             $table->increments('No')->comment('主キー');
-            $table->date('data_maked_day')->comment('データ作成日');
+            //$table->date('data_maked_day')->comment('データ作成日');
             $table->string('clinical_department',50)->unique()->comment('診療科');  
             $table->unsignedInteger('possible_peoples')->comment('予約可能人数');  
             $table->time('start_time')->comment('診療開始時間');  

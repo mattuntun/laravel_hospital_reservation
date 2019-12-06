@@ -50,6 +50,8 @@ Route::get('individual_setting_menu/add_new_department
 Route::get('hospital_menu/patient_registration_change_deletion','HospitalController@PatientRegistrationChangeDeletion');
 //新規患者情報登録のページへ
 Route::get('patient_registration_change_deletion/new_patient_registration','PatientRegistrationController@NewPatient');
+//新規登録完了のページへ
+Route::post('patient_registration_change_deletion/complete_new_patient','PatientRegistrationController@CompleteNewPatient');
 
 //患者情報変更の検索ページへ
 Route::get('patient_registration_change_deletion/search_change_patient_information','PatientRegistrationController@SearchChangePatient');
@@ -68,8 +70,13 @@ Route::get('patient_registration_change_deletion/delete_password_patient_change'
 
 //患者予約情報編集のページへ
 Route::get('hospital_menu/edit_patient_appoimtment_information','HospitalController@EditPatientAppoimtmentInformation');
-//予約新規追加のページへ
-Route::get('edit_patient_appoimtment_information/newreservation','ApointmentEditController@NewReservation');
+
+//予約新規追加の患者検索のページへ
+Route::get('edit_patient_appoimtment_information/search_pt_new_reservation','ApointmentEditController@SearchPtNewReservation');
+//予約新規追加の患者情報確認画面のページへ
+Route::post('edit_patient_appoimtment_information/new_reservation','ApointmentEditController@NewReservation');
+
+
 //予約削除のページへ
 Route::get('edit_patient_appoimtment_information/deretereservation','ApointmentEditController@DeleteReservation');
 //予約状況確認のページへ

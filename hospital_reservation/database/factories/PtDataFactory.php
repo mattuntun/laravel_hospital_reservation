@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(App\pt_data::class, function (Faker $faker) {
     return [
-            'data_maked_day'=>$faker->date($format = 'Y-m-d', $max = 'now'),
+            //'data_maked_day'=>$faker->date($format = 'Y-m-d', $max = 'now'),
             'pt_id'=>$faker->numberBetween(10000,20000),
             'pt_last_name'=>$faker->lastName,
             'pt_name'=>$faker->firstName ,
