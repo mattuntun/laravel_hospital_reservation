@@ -17,7 +17,6 @@
 @section('main_content')
 患者情報を新規登録しました
 
-<p>{{$ptdata}}</p>
 <p>{{var_dump($ptData)}}</p>
 
         {{-- このコンポーネントはformとしての囲い(メソッドはpost) --}}

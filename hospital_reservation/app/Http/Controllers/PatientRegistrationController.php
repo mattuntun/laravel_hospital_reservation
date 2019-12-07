@@ -5,58 +5,46 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\getPatientDataModel;
-use App\Models\AddNewPtModel;
+use App\Models\PatientDataModel;
 
 class PatientRegistrationController extends Controller
 {
-    //新規患者登録
+    //新規患者登録、データ入力画面
     public function NewPatient() {
         return view('hospital_menu.patient_registration_change_deletion.patient_information.new_patient_registration');
     }
     //新規患者登録完了
     public function CompleteNewPatient(Request $request) {
-        /*$newPtAdd = new AddNewPtModel;
-        $newPtAdd->pt_id = $request->input('pt_id');
-        $newPtAdd->pt_last_name = $request->input('pt_last_name');
-        $newPtAdd->pt_name = $request->input('pt_name');
-        $newPtAdd->pt_last_name_kata = $request->input('pt_last_name_kata');
-        $newPtAdd->pt_name_kata = $request->input('pt_name_kata');
-        $newPtAdd->birthday = $request->input('birthday');
-        $newPtAdd->email_adress = $request->input('email_adress');
-        $newPtAdd->sex = $request->input('sex');
-        $newPtAdd->save();
-        */
-        $appNewPt = AddNewPtModel::AddNewPtData($request);
-
-        $ptdata ='患者データ';
-        $ptData = getPatientDataModel::getPtData($request->pt_id);
-
-        return view('hospital_menu.patient_registration_change_deletion.patient_information.complete_new_patient',['ptdata'=>$ptdata,'ptData'=>$ptData]);
+        //モデルから新規患者データ登録メソッド呼び出し
+        $appNewPt = PatientDataModel::AddNewPtData($request);
+        //モデルから患者データ検索メソッド呼び出し
+        $ptData = PatientDataModel::getPtData($request->pt_id);
+        return view('hospital_menu.patient_registration_change_deletion.patient_information.complete_new_patient',['ptData'=>$ptData]);
     }
 
-    //患者情報変更
+    //患者情報変更検索画面
     public function SearchChangePatient() {
         return view('hospital_menu.patient_registration_change_deletion.patient_information.search_change_patient_information');
     }
-    //患者情報変更ID検索後、詳細入力
+    //患者情報、サーチ後の画面
     public function ChangePatient(Request $request) {
-        $pt_datas = getPatientDataModel::getPtData($request->search_pt_id);
+        //モデルから患者データ検索メソッド呼び出し
+        $pt_datas = PatientDataModel::getPtData($request->search_pt_id);
         return view('hospital_menu.patient_registration_change_deletion.patient_information.change_patient_information',['pt_datas'=>$pt_datas]);
     }
     
 
-    //患者情報削除
+    //患者情報削除検索画面
     public function SearchDeletePatient() {
         return view('hospital_menu.patient_registration_change_deletion.patient_information.search_delete_patient_information');
     }
-    //患者情報削除
+    //患者情報削除、サーチ後の画面
     public function DeletePatient(Request $request) {
-        $pt_datas = getPatientDataModel::getPtData($request->search_pt_id);
+        $pt_datas = PatientDataModel::getPtData($request->search_pt_id);
         return view('hospital_menu.patient_registration_change_deletion.patient_information.delete_patient_information',['pt_datas'=>$pt_datas]);
     }
 
-    //患者情報削除
+    //患者データ削除用パスワード変更画面
     public function ChangePass() {
         return view('hospital_menu.patient_registration_change_deletion.patient_information.delete_password_patient_change');
     }
