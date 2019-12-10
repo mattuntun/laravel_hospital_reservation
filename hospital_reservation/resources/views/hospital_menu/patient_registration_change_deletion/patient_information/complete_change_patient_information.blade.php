@@ -3,78 +3,32 @@
 
 
 {{-- ヘッド --}}
-@section('web_title','予約追加')
-
+@section('web_title','患者情報変更')
 
 {{-- ヘッダー --}}
 
 @section('header_content')
         @include('sab_view_item.header',
-                  ['main_theme'=>'患者予約情報変更',
-                   'sub_theme'=>'新規追加'])
+                  ['main_theme'=>'患者情報変更'])
 @endsection
 
 {{-- メイン --}}
 @section('main_content')
-<h2>予約を追加したい患者の情報を確認</h2>
-@foreach($reservation_datas as $reservation_data)
-<h3>{{var_dump($reservation_datas)}}</h3>
-
-@endforeach
-
-
-
-@foreach($pt_datas as $pt_data)
-<h3>{{var_dump($pt_datas)}}</h3>
 <h2>該当患者情報</h2>
-<h3>ID:{{$pt_data->pt_id}}</h3>
-
-<table>
-    <tr>
-        <th>
-            <h4>患者姓(漢字)</h4>
-        </th>
-        <th>
-            <h4>患者名前(漢字)</h4>
-        </th>
-    <tr>
-        <td>
-            <h3>{{$pt_data->pt_last_name}}</h3>
-        </td>
-        <td>
-            <h3>{{$pt_data->pt_name}}</h3>
-        </td>
-    </tr>
-</table>
-<table>
-    <tr>
-        <th>
-            <h4>患者姓(カナ)</h4>
-        </th>
-        <th>
-            <h4>患者名前(カナ)</h4>
-        </th>
-    <tr>
-        <td>
-            <h3>{{$pt_data->pt_last_name_kata}}</h3>
-        </td>
-        <td>
-            <h3>{{$pt_data->pt_name_kata}}</h3>
-        </td>
-    </tr>
-</table>
+<h3>患者情報を変更しました</h3>
 
         {{-- このコンポーネントはformとしての囲い(メソッドはpost) --}}
         @component('component_item.form')
                  @slot('form_action')
                  /index
                  @endslot
-                       
-                 @slot('form_item2')
+
+                 
+                 @slot('form_item3')
                         {{-- タグ付ボタン(スモール) --}}
                         @include('sab_view_item.small_tagged_buttom',
-                                        ['tagged_value'=>'IDの確認後、検索',
-                                        'buttom_value'=>'患者ID検索',
+                                        ['tagged_value'=>'登録内容確認後、登録',
+                                        'buttom_value'=>'登録',
                                         'buttom_access'=>'/index'])
                  @endslot
 
@@ -83,7 +37,7 @@
                  @endslot
 
          @endcomponent
-@endforeach
+
 @endsection
 
 {{-- フッター --}}

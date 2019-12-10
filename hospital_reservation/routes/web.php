@@ -57,6 +57,8 @@ Route::post('patient_registration_change_deletion/complete_new_patient','Patient
 Route::get('patient_registration_change_deletion/search_change_patient_information','PatientRegistrationController@SearchChangePatient');
 //患者情報変更ID検索後、詳細入力
 Route::post('change_patient_information/change_patient_information','PatientRegistrationController@ChangePatient');
+//患者情報変更完了
+Route::post('change_patient_information/complete_change_patient_information','PatientRegistrationController@CompleteChangePatient');
 
 
 //患者情報削除の検索ページへ

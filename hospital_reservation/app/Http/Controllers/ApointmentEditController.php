@@ -5,7 +5,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\getPatientDataModel;
+use App\Models\PatientDataModel;
+use App\Models\ReservationDataModel;
 
 class ApointmentEditController extends Controller
 {
@@ -15,8 +16,9 @@ class ApointmentEditController extends Controller
     }
     //予約新規追加の患者情報確認画面コントローラ
     public function NewReservation(Request $request) {
-        $pt_datas = getPatientDataModel::getPtData($request->search_pt_id);
-        return view('hospital_menu.edit_patient_appoimtment_information.edit_reservation.new_reservation',['pt_datas'=>$pt_datas]);
+        $pt_datas = PatientDataModel::getPtData($request->search_pt_id);
+        $reservation_datas = ReservationDataModel::SearchReservation($request->search_pt_id);
+        return view('hospital_menu.edit_patient_appoimtment_information.edit_reservation.new_reservation',['pt_datas'=>$pt_datas,'reservation_datas'=>$reservation_datas]);
     }
 
     //予約削除のコントローラ

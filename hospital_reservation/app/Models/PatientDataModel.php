@@ -27,6 +27,8 @@ class PatientDataModel extends Model
         $newPtAdd->sex = $request->input('sex');
         $newPtAdd->save();
     }
-
-  
+ 
 }
+
+
+
