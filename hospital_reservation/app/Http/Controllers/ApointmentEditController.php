@@ -18,7 +18,10 @@ class ApointmentEditController extends Controller
     public function NewReservation(Request $request) {
         $pt_datas = PatientDataModel::getPtData($request->search_pt_id);
         $reservation_datas = ReservationDataModel::SearchReservation($request->search_pt_id);
-        return view('hospital_menu.edit_patient_appoimtment_information.edit_reservation.new_reservation',['pt_datas'=>$pt_datas,'reservation_datas'=>$reservation_datas]);
+
+        $reservationAndPtdatas = new ReservationDataModel;
+        $foreignDatas = $reservationAndPtdatas->ForeignPatientData($request->search_pt_id);
+        return view('hospital_menu.edit_patient_appoimtment_information.edit_reservation.new_reservation',['pt_datas'=>$pt_datas,'reservation_datas'=>$reservation_datas,'foreignDatas'=>$foreignDatas]);
     }
 
     //予約削除のコントローラ

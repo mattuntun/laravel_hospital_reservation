@@ -23,6 +23,12 @@
 @endforeach
 
 
+<h2>これは外部データで接続した値を表示</h2>
+@foreach($foreignDatas as $foreignData)
+<h3>{{var_dump($foreignDatas)}}</h3>
+
+@endforeach
+<h2>これは外部データで接続した値終了</h2>
 
 @foreach($pt_datas as $pt_data)
 <h3>{{var_dump($pt_datas)}}</h3>
