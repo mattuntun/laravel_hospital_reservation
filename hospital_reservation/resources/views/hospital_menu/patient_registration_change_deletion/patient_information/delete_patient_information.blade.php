@@ -59,21 +59,9 @@
 $search_pt_id = $pt_data->pt_id;
 @endphp
 
-<form action="/patient_registration_change_deletion/complete_delete_patient_information" method = post>
-{{ csrf_field() }}
-
-<input type="hidden" name="search_pt_id" value={{$search_pt_id}}>
-
-{{-- タグ付ボタン(スモール) --}}
-        @include('sab_view_item.small_tagged_buttom',
-                        ['tagged_value'=>'患者情報確認後、削除',
-                        'buttom_value'=>'患者情報削除',
-                        'buttom_access'=>'/patient_registration_change_deletion/complete_delete_patient_information'])
-
-</form>
-        
+      
         {{-- このコンポーネントはformとしての囲い(メソッドはpost) --}}
-        {{--   @component('component_item.form')
+            @component('component_item.form')
                  @slot('form_action')
                  /patient_registration_change_deletion/complete_delete_patient_information
                  @endslot
@@ -82,19 +70,19 @@ $search_pt_id = $pt_data->pt_id;
                 <input type="hidden" value = {{$search_pt_id}} name = "search_pt_id">
                  @endslot
 
-                 @slot('form_item3')--}}
+                 @slot('form_item3')
                         {{-- タグ付ボタン(スモール) --}}
-                        {{-- @include('sab_view_item.small_tagged_buttom',
+                        @include('sab_view_item.small_tagged_buttom',
                                         ['tagged_value'=>'患者情報確認後、削除',
                                         'buttom_value'=>'患者情報削除',
                                         'buttom_access'=>'/patient_registration_change_deletion/complete_delete_patient_information'])
                  @endslot
 
                  @slot('form_name')
-                 $search_pt_id
+                 
                  @endslot
 
-         @endcomponent  --}}
+         @endcomponent
 
 @endsection
 @endforeach
