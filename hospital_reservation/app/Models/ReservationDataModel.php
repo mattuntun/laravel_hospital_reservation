@@ -17,8 +17,8 @@ class ReservationDataModel extends Model
     }
 
     //患者データとの外部接続
-    public function ForeignPatientData($search_pt_id){
-        return $this->hasMany('app\Models\PatientDataModel','pt_id','No')->where('pt_id',$search_pt_id)->get();
+    public function ForeignPatientData(){
+        return $this->belongsTo('app\Models\PatientDataModel','pt_id','No');//->where('pt_id',$search_pt_id)->get();
     }
   
     

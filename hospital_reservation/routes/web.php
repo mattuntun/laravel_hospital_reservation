@@ -65,6 +65,8 @@ Route::post('change_patient_information/complete_change_patient_information','Pa
 Route::get('patient_registration_change_deletion/search_delete_patient_information','PatientRegistrationController@SearchDeletePatient');
 //患者情報削除のページへ
 Route::post('patient_registration_change_deletion/delete_patient_information','PatientRegistrationController@DeletePatient');
+//患者情報削除完了のページへ
+Route::post('patient_registration_change_deletion/complete_delete_patient_information','PatientRegistrationController@CompleteDeletePatient');
 
 //削除用パスワード設定のページへ
 Route::get('patient_registration_change_deletion/delete_password_patient_change','PatientRegistrationController@ChangePass');

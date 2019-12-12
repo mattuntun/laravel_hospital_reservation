@@ -20,7 +20,7 @@ class ApointmentEditController extends Controller
         $reservation_datas = ReservationDataModel::SearchReservation($request->search_pt_id);
 
         $reservationAndPtdatas = new ReservationDataModel;
-        $foreignDatas = $reservationAndPtdatas->ForeignPatientData($request->search_pt_id);
+        $foreignDatas = $reservationAndPtdatas->ForeignPatientData();//($request->search_pt_id);
         return view('hospital_menu.edit_patient_appoimtment_information.edit_reservation.new_reservation',['pt_datas'=>$pt_datas,'reservation_datas'=>$reservation_datas,'foreignDatas'=>$foreignDatas]);
     }
 

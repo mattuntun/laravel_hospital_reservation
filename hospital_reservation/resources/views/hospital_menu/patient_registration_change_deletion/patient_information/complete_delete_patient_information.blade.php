@@ -15,42 +15,27 @@
 
 {{-- メイン --}}
 @section('main_content')
-<h2>削除したい患者IDを入力してください</h2>
+<h2>患者情報を削除しました</h2>
+
+
+
 
         {{-- このコンポーネントはformとしての囲い(メソッドはpost) --}}
         @component('component_item.form')
                  @slot('form_action')
-                 /patient_registration_change_deletion/delete_patient_information
+                 /index
                  @endslot
 
-                 @slot('form_item1')
-                        {{-- 1箇所テキスト(ロング) --}}
-                        @include('sab_view_item.texts_one_long',
-                                ['label_value'=>'患者ID検索',
-                                'label_id'=>'pt_id_search',
-                                'input_id'=>'pt_id_search',
-                                'input_name'=>'search_pt_id'])
-                 @endslot
-
-                @slot('form_item2')
-                        {{-- 1箇所テキスト(ロング) --}}
-                        @include('sab_view_item.texts_one_long',
-                                ['label_value'=>'削除用PASS入力',
-                                'label_id'=>'delete_pass',
-                                'input_id'=>'delete_pass',
-                                'input_name'=>'delete_password'])
-                 @endslot
-                       
                  @slot('form_item3')
                         {{-- タグ付ボタン(スモール) --}}
                         @include('sab_view_item.small_tagged_buttom',
-                                        ['tagged_value'=>'IDの確認後、検索',
-                                        'buttom_value'=>'患者ID検索',
-                                        'buttom_access'=>'/patient_registration_change_deletion/delete_patient_information'])
+                                        ['tagged_value'=>'患者情報確認後、削除',
+                                        'buttom_value'=>'患者情報削除',
+                                        'buttom_access'=>'/index'])
                  @endslot
 
                  @slot('form_name')
-                 
+                 pt_delete_search
                  @endslot
 
          @endcomponent

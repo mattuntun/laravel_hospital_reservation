@@ -18,7 +18,7 @@ class PatientDataModel extends Model
 
     //予約情報との外部接続
     public function ForeignReservationData(){
-        return $this->belongsTo('APP\Models\ReservationModel');
+        return $this->hasMany('APP\Models\ReservationModel','No','pt_id');//->where('pt_id',$search_pt_id);
     }
 
     //テーブル患者情報入力
@@ -33,6 +33,13 @@ class PatientDataModel extends Model
         $newPtAdd->email_adress = $request->input('email_adress');
         $newPtAdd->sex = $request->input('sex');
         $newPtAdd->save();
+    }
+
+    //テーブル患者情報削除
+    public static function DeletePatientData($search_pt_id){
+        $deletePt = DB::table('pt_data')->where('pt_id',$search_pt_id)->delete();
+        return $deletePt;
+
     }
  
 }

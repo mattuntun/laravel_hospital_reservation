@@ -47,6 +47,13 @@ class PatientRegistrationController extends Controller
         $pt_datas = PatientDataModel::getPtData($request->search_pt_id);
         return view('hospital_menu.patient_registration_change_deletion.patient_information.delete_patient_information',['pt_datas'=>$pt_datas]);
     }
+    //患者情報削除完了のページ
+    public function CompleteDeletePatient(Request $request) {
+        $deletePtId = $request->search_pt_id;
+        //$pt_deletes = PatientDataModel::getPtData($deletePtId);
+        $pt_deletes = PatientDataModel::DeletePatientData($deletePtId);
+        return view('hospital_menu.patient_registration_change_deletion.patient_information.complete_delete_patient_information');
+    }
 
     //患者データ削除用パスワード変更画面
     public function ChangePass() {
