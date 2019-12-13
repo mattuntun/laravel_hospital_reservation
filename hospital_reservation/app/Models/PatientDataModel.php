@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 class PatientDataModel extends Model
 {
     protected $table = 'pt_data';
+    protected $primaryKey ='No';
     protected $guarded = array('No');
 
     //患者情報の取得
@@ -34,6 +35,19 @@ class PatientDataModel extends Model
         $newPtAdd->sex = $request->input('sex');
         $newPtAdd->save();
     }
+
+    //テーブル患者情報変更
+    public static function ChangePtData($request){
+        $ChangePts = new PatientDataModel;
+        $ChangePts->where('pt_id',17746)->first();
+        
+        $ChangePts->pt_last_name = $request->ptLastName;
+        //$ChangePts->pt_name = $request->ptName;
+        //$ChangePts->pt_last_name_kata = $request->ptLastNameKata;
+        //$ChangePts->pt_name_kata = $request->ptNameKata;
+        $ChangePts->save();
+    }
+
 
     //テーブル患者情報削除
     public static function DeletePatientData($search_pt_id){

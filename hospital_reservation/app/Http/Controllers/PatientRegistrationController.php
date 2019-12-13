@@ -33,8 +33,27 @@ class PatientRegistrationController extends Controller
         return view('hospital_menu.patient_registration_change_deletion.patient_information.change_patient_information',['pt_datas'=>$pt_datas]);
     }
     //患者情報変更完了の画面
-    public function CompleteChangePatient() {
-        return view('hospital_menu.patient_registration_change_deletion.patient_information.complete_change_patient_information');
+    public function CompleteChangePatient(Request $request) {
+        //$sample = 'aaaaaaaaaa';
+        //$pt_datas = PatientDataModel::getPtData($request->search_pt_id);
+
+
+        $changePtDatas=array('search_pt_id'=>$request->search_pt_id,
+                             'ptLastName'=>$request->change_pt_last_name,
+                             'ptName'=>$request->change_pt_name,
+                             'ptLastNameKata'=>$request->change_pt_last_name_kata,
+                             'ptNameKata'=>$request->change_pt_name_kata,
+                            );
+        //$changePtActions = PatientDataModel::ChangePtData($request);
+
+        $changePtActions = PatientDataModel::where('pt_id',$request->search_pt_id)->first();
+        $changePtActions->pt_last_name = $request->change_pt_last_name;
+        $changePtActions->pt_name = $request->change_pt_name;
+        $changePtActions->pt_last_name_kata = $request->change_pt_last_name_kata;
+        $changePtActions->pt_name_kata = $request->change_pt_name_kata;
+        $changePtActions->save();
+
+        return view('hospital_menu.patient_registration_change_deletion.patient_information.complete_change_patient_information',['changePtDatas'=>$changePtDatas]);
     }
     
 

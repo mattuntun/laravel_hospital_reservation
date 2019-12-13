@@ -23,9 +23,8 @@
 
 <h3>ID:{{$pt_data->pt_id}}</h3>
 
-
-<div class="form-group">
 @php
+$ptId = $pt_data->pt_id;
 $ptLastName = $pt_data->pt_last_name;
 $ptName = $pt_data->pt_name;
 $ptLastNameKata = $pt_data->pt_last_name_kata;
@@ -43,6 +42,23 @@ switch($pt_data->sex){
 echo $ptSeX;
 @endphp
 
+{{--
+<form action="/change_patient_information/complete_change_patient_information" method = post>
+{{ csrf_field() }}
+<input type="hidden" name = "search_pt_id" value="{{$pt_data->pt_id}}">
+<input type="hidden" name = "change_pt_last_name" value="{{$pt_data->pt_last_name}}"> 
+<input type="hidden" name = "change_pt_name" value="{{$pt_data->pt_last_name_kata}}"> 
+<input type="hidden" name = "change_pt_last_name_kata" value="{{$ptLastNameKata}}"> 
+<input type="hidden" name = "change_pt_name_kata" value="{{$pt_data->pt_name_kata}}">
+@include('sab_view_item.small_tagged_buttom',
+                                        ['tagged_value'=>'登録内容確認後、登録',
+                                        'buttom_value'=>'登録',
+                                        'buttom_access'=>'/change_patient_information/complete_change_patient_information'])
+
+</form> --}}
+
+
+
         {{-- このコンポーネントはformとしての囲い(メソッドはpost) --}}
         @component('component_item.form')
                  @slot('form_action')
@@ -50,22 +66,27 @@ echo $ptSeX;
                  @endslot
 
                  @slot('form_item1')
+                 <input type="hidden" name = "search_pt_id" value="{{$pt_data->pt_id}}"> 
+                
+                 @endslot
+
+                 @slot('form_item2')
                         @include('sab_view_item.texts_four_simple_set_value',
                                                 ['label_value1'=>'姓(漢字)',
                                                 'label_value2'=>'名(漢字)',
                                                 'label_value3'=>'姓(カタカナ)',
                                                 'label_value4'=>'名(カタカナ)',
-                                                'input_name1'=>'kanji_last_name',
-                                                'input_name2'=>'kanji_name',
-                                                'input_name3'=>'kata_last_name',
-                                                'input_name4'=>'kata_name',
+                                                'input_name1'=>'change_pt_last_name',
+                                                'input_name2'=>'change_pt_name',
+                                                'input_name3'=>'change_pt_last_name_kata',
+                                                'input_name4'=>'change_pt_name_kata',
                                                 'defaultValue1'=>"$ptLastName",
                                                 'defaultValue2'=>"$ptName",
                                                 'defaultValue3'=>"$ptLastNameKata",
                                                 'defaultValue4'=>"$ptNameKata"])                
                  @endslot
 
-                 @slot('form_item2')
+                 @slot('form_item3')
                  
                  @endslot
 
@@ -80,7 +101,7 @@ echo $ptSeX;
                  @endslot
 
                  @slot('form_name')
-                 nyuuryoku
+                 {{$pt_datas}}
                  @endslot
 
          @endcomponent

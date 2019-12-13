@@ -16,6 +16,7 @@
 @section('main_content')
 <h2>該当患者情報</h2>
 <h3>患者情報を変更しました</h3>
+<h3>{{var_dump($changePtDatas)}}</h3>
 
         {{-- このコンポーネントはformとしての囲い(メソッドはpost) --}}
         @component('component_item.form')
