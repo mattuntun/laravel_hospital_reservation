@@ -35,12 +35,11 @@ class PatientRegistrationController extends Controller
     //患者情報変更完了の画面
     public function CompleteChangePatient(Request $request) {
         $changePtDatas = array('search_pt_id'=>$request->search_pt_id,
-                             'ptLastName'=>$request->change_pt_last_name,
-                             'ptName'=>$request->change_pt_name,
-                             'ptLastNameKata'=>$request->change_pt_last_name_kata,
-                             'ptNameKata'=>$request->change_pt_name_kata,
-                            );
-            
+                               'ptLastName'=>$request->change_pt_last_name,
+                               'ptName'=>$request->change_pt_name,
+                               'ptLastNameKata'=>$request->change_pt_last_name_kata,
+                               'ptNameKata'=>$request->change_pt_name_kata,);
+        //モデルから患者情報変更メソッドの呼び出し
         PatientDataModel::ChangePtData($request);
         return view('hospital_menu.patient_registration_change_deletion.patient_information.complete_change_patient_information',['changePtDatas'=>$changePtDatas]);
     }
@@ -52,14 +51,14 @@ class PatientRegistrationController extends Controller
     }
     //患者情報削除、サーチ後の画面
     public function DeletePatient(Request $request) {
+        //モデルから患者データ検索メソッド呼び出し
         $pt_datas = PatientDataModel::getPtData($request->search_pt_id);
         return view('hospital_menu.patient_registration_change_deletion.patient_information.delete_patient_information',['pt_datas'=>$pt_datas]);
     }
     //患者情報削除完了のページ
     public function CompleteDeletePatient(Request $request) {
-        $deletePtId = $request->search_pt_id;
-        //$pt_deletes = PatientDataModel::getPtData($deletePtId);
-        $pt_deletes = PatientDataModel::DeletePatientData($deletePtId);
+        //モデルから患者情報削除メソッド呼び出し
+        $pt_deletes = PatientDataModel::DeletePatientData($request->search_pt_id);
         return view('hospital_menu.patient_registration_change_deletion.patient_information.complete_delete_patient_information');
     }
 

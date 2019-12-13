@@ -7,7 +7,8 @@ use Illuminate\Support\Facades\DB;
 
 class ReservationDataModel extends Model
 {
-    protected $tables = 'reservation_data';
+    protected $table = 'reservation_data';
+    protected $primaryKey ='No';
     protected $guarded = array('No');
 
     //予約情報の取得
@@ -17,8 +18,10 @@ class ReservationDataModel extends Model
     }
 
     //患者データとの外部接続
-    public function ForeignPatientData(){
-        return $this->belongsTo('app\Models\PatientDataModel','pt_id','No');//->where('pt_id',$search_pt_id)->get();
+    public static function ForeignPatientData(){
+        return $this->belongsTo('App\Models\PatientDataModel','pt_id','pt_id');
+        //$ForeignPatients = $ForeignPatient->belongsTo('App\Models\PatientDataModel','pt_id','pt_id');//->where('pt_id',$foreignPt)->first();
+        //return $ForeignPatients;
     }
   
     

@@ -11,15 +11,15 @@ class PatientDataModel extends Model
     protected $primaryKey ='No';
     protected $guarded = array('No');
 
+    //予約情報との外部接続
+    public function ForeignReservationData($request){
+        return $this->hasMany('app\Models\ReservationModel','pt_id');//->where('pt_id',$request->search_pt_id);
+    }
+
     //患者情報の取得
     public static function getPtData($search_pt_id){
         $ptData = DB::table('pt_data')->where('pt_id',$search_pt_id)->get();
         return $ptData;
-    }
-
-    //予約情報との外部接続
-    public function ForeignReservationData(){
-        return $this->hasMany('APP\Models\ReservationModel','No','pt_id');//->where('pt_id',$search_pt_id);
     }
 
     //テーブル患者情報入力

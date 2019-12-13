@@ -23,8 +23,8 @@
 @endforeach
 
 <h2>ここからリレーションで取得した値を表示</h2>
-@foreach($foreignDatas as $foreignData)
-<h3>{{var_dump($foreignDatas)}}</h3>
+@foreach($reservationAndPtdatas as $reservationAndPtdatas)
+<h3>{{var_dump($reservationAndPtdatas)}}</h3>
 
 @endforeach
 <h2>ここでリレーションした値表示終了</h2>
