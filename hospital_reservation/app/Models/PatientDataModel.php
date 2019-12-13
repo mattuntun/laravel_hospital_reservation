@@ -39,12 +39,11 @@ class PatientDataModel extends Model
     //テーブル患者情報変更
     public static function ChangePtData($request){
         $ChangePts = new PatientDataModel;
-        $ChangePts->where('pt_id',17746)->first();
-        
-        $ChangePts->pt_last_name = $request->ptLastName;
-        //$ChangePts->pt_name = $request->ptName;
-        //$ChangePts->pt_last_name_kata = $request->ptLastNameKata;
-        //$ChangePts->pt_name_kata = $request->ptNameKata;
+        $ChangePts = PatientDataModel::where('pt_id',$request->search_pt_id)->first();
+        $ChangePts->pt_last_name = $request->change_pt_last_name;
+        $ChangePts->pt_name = $request->change_pt_name;
+        $ChangePts->pt_last_name_kata = $request->change_pt_last_name_kata;
+        $ChangePts->pt_name_kata = $request->change_pt_name_kata;
         $ChangePts->save();
     }
 

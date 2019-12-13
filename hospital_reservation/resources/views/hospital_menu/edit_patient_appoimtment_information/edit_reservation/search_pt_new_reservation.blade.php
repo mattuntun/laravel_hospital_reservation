@@ -38,7 +38,7 @@
                         @include('sab_view_item.small_tagged_buttom',
                                         ['tagged_value'=>'IDの確認後、検索',
                                         'buttom_value'=>'患者ID検索',
-                                        'buttom_access'=>'/index'])
+                                        'buttom_access'=>'/edit_patient_appoimtment_information/new_reservation'])
                  @endslot
 
                  @slot('form_name')
