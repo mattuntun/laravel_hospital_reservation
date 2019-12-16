@@ -5,7 +5,6 @@
 {{-- ヘッド --}}
 @section('web_title','患者情報変更')
 
-
 {{-- ヘッダー --}}
 
 @section('header_content')
@@ -16,7 +15,8 @@
 {{-- メイン --}}
 @section('main_content')
 <h2>該当患者情報</h2>
-<h3>ID:○○○○〇○○</h3>
+<h3>患者情報を変更しました</h3>
+<h3>{{var_dump($changePtDatas)}}</h3>
 
         {{-- このコンポーネントはformとしての囲い(メソッドはpost) --}}
         @component('component_item.form')
@@ -24,36 +24,7 @@
                  /index
                  @endslot
 
-                 @slot('form_item1')
-                     {{-- 4箇所入力テキスト(タグ付き) --}}
-                     @include('sab_view_item.texts_four_tagged',
-                        ['tagged_value'=>'患者名変更',
-                        'label_value1'=>'姓(漢字)',
-                        'label_value2'=>'名(漢字)',
-                        'label_value3'=>'姓(カタカナ)',
-                        'label_value4'=>'名(カタカナ)',
-                        'input_name1'=>'kanji_last_name',
-                        'input_name2'=>'kanji_name',
-                        'input_name3'=>'kata_last_name',
-                        'input_name4'=>'kata_name'])
-                 @endslot
-                       
-                 @slot('form_item2')
-                     {{-- 2箇所入力+1箇所セレクトテキスト(タグ付き) --}}
-                     @include('sab_view_item.texts_two_select_one_tagged',
-                        ['tagged_value'=>'生年月日・性別・アドレス変更',
-                         'label_value1'=>'生年月日',
-                         'label_value2'=>'メールアドレス',
-                         'input_name1'=>'birthday',
-                         'input_name2'=>'mail_address',
-                         'select_label'=>'性別',
-                         'select_name'=>'sex',
-                         'option_lavel1'=>'男',
-                         'option_lavel2'=>'女',
-                         'option_value1'=>'man',
-                         'option_value2'=>'woman'])
-                 @endslot
-
+                 
                  @slot('form_item3')
                         {{-- タグ付ボタン(スモール) --}}
                         @include('sab_view_item.small_tagged_buttom',

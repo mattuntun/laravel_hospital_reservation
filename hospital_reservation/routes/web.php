@@ -18,6 +18,10 @@ return view('welcome');
 //indexページへ
 Route::get('index','Indexcontroller@Index');
 
+//患者マイページへ
+Route::get('index/mypage_menu','IndexController@MyPageMenu');
+Route::post('index/mypage_menu','IndexController@MyPageMenu');
+
 
 
 //病院menuページへ
@@ -50,21 +54,37 @@ Route::get('individual_setting_menu/add_new_department
 Route::get('hospital_menu/patient_registration_change_deletion','HospitalController@PatientRegistrationChangeDeletion');
 //新規患者情報登録のページへ
 Route::get('patient_registration_change_deletion/new_patient_registration','PatientRegistrationController@NewPatient');
-//患者情報変更のページへ
-Route::get('patient_registration_change_deletion/change_patient_information','PatientRegistrationController@ChangePatient');
-//患者情報変更ID検索後、詳細入力
-Route::post('change_patient_information/change_patient_information_details','PatientRegistrationController@ChangePatientDetails');
+//新規登録完了のページへ
+Route::post('patient_registration_change_deletion/complete_new_patient','PatientRegistrationController@CompleteNewPatient');
 
+//患者情報変更の検索ページへ
+Route::get('patient_registration_change_deletion/search_change_patient_information','PatientRegistrationController@SearchChangePatient');
+//患者情報変更ID検索後、詳細入力
+Route::post('change_patient_information/change_patient_information','PatientRegistrationController@ChangePatient');
+//患者情報変更完了
+Route::post('change_patient_information/complete_change_patient_information','PatientRegistrationController@CompleteChangePatient');
+
+
+//患者情報削除の検索ページへ
+Route::get('patient_registration_change_deletion/search_delete_patient_information','PatientRegistrationController@SearchDeletePatient');
 //患者情報削除のページへ
-Route::get('patient_registration_change_deletion/delete_patient_information','PatientRegistrationController@DeletePatient');
+Route::post('patient_registration_change_deletion/delete_patient_information','PatientRegistrationController@DeletePatient');
+//患者情報削除完了のページへ
+Route::post('patient_registration_change_deletion/complete_delete_patient_information','PatientRegistrationController@CompleteDeletePatient');
+
 //削除用パスワード設定のページへ
 Route::get('patient_registration_change_deletion/delete_password_patient_change','PatientRegistrationController@ChangePass');
 
 
 //患者予約情報編集のページへ
 Route::get('hospital_menu/edit_patient_appoimtment_information','HospitalController@EditPatientAppoimtmentInformation');
-//予約新規追加のページへ
-Route::get('edit_patient_appoimtment_information/newreservation','ApointmentEditController@NewReservation');
+
+//予約新規追加の患者検索のページへ
+Route::get('edit_patient_appoimtment_information/search_pt_new_reservation','ApointmentEditController@SearchPtNewReservation');
+//予約新規追加の患者情報確認画面のページへ
+Route::post('edit_patient_appoimtment_information/new_reservation','ApointmentEditController@NewReservation');
+
+
 //予約削除のページへ
 Route::get('edit_patient_appoimtment_information/deretereservation','ApointmentEditController@DeleteReservation');
 //予約状況確認のページへ

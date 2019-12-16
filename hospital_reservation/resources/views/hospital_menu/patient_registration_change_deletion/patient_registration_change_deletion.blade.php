@@ -25,12 +25,12 @@
 {{-- シンプルボタン(large) --}}
         @include('sab_view_item.large_simple_buttom',
                   ['large_buttom_value'=>'患者情報変更',
-                   'large_buttom_access'=>'/patient_registration_change_deletion/change_patient_information'])
+                   'large_buttom_access'=>'/patient_registration_change_deletion/search_change_patient_information'])
 
 {{-- シンプルボタン(large) --}}
         @include('sab_view_item.large_simple_buttom',
                   ['large_buttom_value'=>'患者削除',
-                   'large_buttom_access'=>'/patient_registration_change_deletion/delete_patient_information'])
+                   'large_buttom_access'=>'/patient_registration_change_deletion/search_delete_patient_information'])
 
 {{-- シンプルボタン(large) --}}
         @include('sab_view_item.large_simple_buttom',

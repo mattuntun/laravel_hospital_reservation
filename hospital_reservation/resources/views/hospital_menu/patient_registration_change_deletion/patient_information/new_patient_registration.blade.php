@@ -19,7 +19,7 @@
         {{-- このコンポーネントはformとしての囲い(メソッドはpost) --}}
         @component('component_item.form')
                  @slot('form_action')
-                 pt_Confirmation/pt_Confirmation_page.php
+                 /patient_registration_change_deletion/complete_new_patient
                  @endslot
 
                  @slot('form_item1')
@@ -39,12 +39,13 @@
                                         'label_value2'=>'名(漢字)',
                                         'label_value3'=>'姓(カタカナ)',
                                         'label_value4'=>'名(カタカナ)',
-                                        'input_name1'=>'kanji_last_name',
-                                        'input_name2'=>'kanji_name',
-                                        'input_name3'=>'kata_last_name',
-                                        'input_name4'=>'kata_name'])
+                                        'input_name1'=>'pt_last_name',
+                                        'input_name2'=>'pt_name',
+                                        'input_name3'=>'pt_last_name_kata',
+                                        'input_name4'=>'pt_name_kata'])
                  @endslot
 
+                 
                  @slot('form_item3')
                         {{-- 2箇所入力+1箇所セレクトテキスト(タグ付き) --}}
                         @include('sab_view_item.texts_two_select_one_tagged',
@@ -52,13 +53,13 @@
                                         'label_value1'=>'生年月日',
                                         'label_value2'=>'メールアドレス',
                                         'input_name1'=>'birthday',
-                                        'input_name2'=>'mail_address',
+                                        'input_name2'=>'email_adress',
                                         'select_label'=>'性別',
                                         'select_name'=>'sex',
                                         'option_lavel1'=>'男',
                                         'option_lavel2'=>'女',
-                                        'option_value1'=>'man',
-                                        'option_value2'=>'woman'])
+                                        'option_value1'=>'1',
+                                        'option_value2'=>'2'])
                  @endslot
 
                  @slot('form_item4')
@@ -66,11 +67,11 @@
                         @include('sab_view_item.small_tagged_buttom',
                                         ['tagged_value'=>'内容を確認して情報を登録',
                                         'buttom_value'=>'内容を登録',
-                                        'buttom_access'=>'pt_Confirmation/pt_Confirmation_page.php'])
+                                        'buttom_access'=>'/patient_registration_change_deletion/complete_new_patient'])
                  @endslot
 
                  @slot('form_name')
-                 nyuuryoku
+                 newPtDatas
                  @endslot
 
          @endcomponent
