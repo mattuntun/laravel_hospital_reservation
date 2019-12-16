@@ -18,6 +18,10 @@ return view('welcome');
 //indexページへ
 Route::get('index','Indexcontroller@Index');
 
+//患者マイページへ
+Route::get('index/mypage_menu','IndexController@MyPageMenu');
+Route::post('index/mypage_menu','IndexController@MyPageMenu');
+
 
 
 //病院menuページへ

@@ -22,6 +22,14 @@ class PatientDataModel extends Model
         return $ptData;
     }
 
+    //主キーの抽出
+    public static function Mainkey($search_pt_id){
+        $main = DB::table('pt_data')->where('pt_id',$search_pt_id)->first('No');
+        return $main; 
+    }
+
+
+
     //テーブル患者情報入力
     public static function AddNewPtData($request){
         $newPtAdd = new PatientDataModel;

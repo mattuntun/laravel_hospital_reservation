@@ -30,13 +30,13 @@
       </header>
       
       <main>
-        <form action="未指定" method="POST" name="patient-data"><!--患者のカテゴリー-->
+        <form action="/index/mypage_menu" method="POST" name="patient-data"><!--患者のカテゴリー-->
         {{csrf_field()}}
           <section class="patient">
             <div class="id">
               <ul>
                 <li>患者ID</li>
-                <li><input type="number" name="patient-code"></li>
+                <li><input type="number" name="search_pt_id"></li>
               </ul>
             </div>
 

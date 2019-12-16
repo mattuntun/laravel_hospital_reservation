@@ -18,11 +18,19 @@ class ReservationDataModel extends Model
     }
 
     //患者データとの外部接続
-    public static function ForeignPatientData(){
-        return $this->belongsTo('App\Models\PatientDataModel','pt_id','pt_id');
-        //$ForeignPatients = $ForeignPatient->belongsTo('App\Models\PatientDataModel','pt_id','pt_id');//->where('pt_id',$foreignPt)->first();
+    //public static function ForeignPatientData(){
+        //var_dump('aaaaaaaa');
+        //$ForeignPatients = new ReservationDataModel;
+        //return $ForeignPatients->belongsTo('App\Models\PatientDataModel');//->where('pt_id',$search_pt_id)->get();
+        //var_dump($ForeignPatients);
         //return $ForeignPatients;
+        
+    //}
+
+    public function ForeignPatientData(){
+        //$ForeignPatient = new ReservationDataModel;
+        //$ForeignPatient->belongsTo('App\Models\PatientDataModel');
+        //return $ForeignPatient;
+        return $this->belongsTo('App\Models\PatientDataModel','No');
     }
-  
-    
 }
