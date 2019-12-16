@@ -17,7 +17,7 @@ class ReservationDataModel extends Model
         return $reservationDatas;
     }
 
-    //患者データとの外部接続
+    //患者情報との外部接続(リレーション)
     public function ForeignPatientData(){
         return $this->belongsTo('App\Models\PatientDataModel','No');
     }

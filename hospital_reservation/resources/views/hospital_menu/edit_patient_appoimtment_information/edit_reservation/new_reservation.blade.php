@@ -18,19 +18,19 @@
 @section('main_content')
 <h2>予約を追加したい患者の情報を確認</h2>
 @foreach($reservation_datas as $reservation_data)
-<h3>{{var_dump($reservation_datas)}}</h3>
+<h3>{{var_dump($reservation_data)}}</h3>
 
 @endforeach
 
 <h2>ここからリレーションで取得した値を表示</h2>
-@foreach($foreignPtdatas as $foreignPtdata)
-<h3>{{var_dump($foreignPtdatas)}}</h3>
+@foreach($foreignPatientDatas as $foreignPatientData)
+<h3>{{var_dump($foreignPatientData)}}</h3>
 
 @endforeach
 <h2>ここでリレーションした値表示終了</h2>
 
 @foreach($pt_datas as $pt_data)
-<h3>{{var_dump($pt_datas)}}</h3>
+<h3>{{var_dump($pt_data)}}</h3>
 <h2>該当患者情報</h2>
 <h3>ID:{{$pt_data->pt_id}}</h3>
 
