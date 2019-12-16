@@ -13,7 +13,7 @@ class PatientDataModel extends Model
 
     //予約情報との外部接続
     public function ForeignReservationData($request){
-        return $this->hasMany('app\Models\ReservationModel','pt_id');//->where('pt_id',$request->search_pt_id);
+        return $this->hasMany('app\Models\ReservationModel','pt_id');
     }
     //患者情報の取得
     public static function getPtData($search_pt_id){

@@ -22,16 +22,12 @@ class ApointmentEditController extends Controller
         $reservation_datas = ReservationDataModel::SearchReservation($request->search_pt_id);
 
 
-        //患者情報テーブルと外部接続
+        //予約情報から患者情報をリレーションの為の主キー「No」取得
         $mainKey = PatientDataModel::Mainkey($request->search_pt_id);
-        var_dump($mainKey);
-        var_dump($mainKey->No);
-        $reservationAndPtdatas = ReservationDataModel::find($mainKey->No)->ForeignPatientData()->get();//->where('pt_id',$request->search_pt_id)->get();
-        print_r("aaaa" . $reservationAndPtdatas . "bbb");
-        var_dump($reservationAndPtdatas);
-        
-        //$ForeignPts = ReservationDataModel::ForeignPatientData()->where('pt_id',$request->search_pt_id);
-        return view('hospital_menu.edit_patient_appoimtment_information.edit_reservation.new_reservation',['pt_datas'=>$pt_datas,'reservation_datas'=>$reservation_datas,'reservationAndPtdatas'=>$reservationAndPtdatas]);
+
+        //予約情報から患者情報を主キーを用いてリレーション
+        $foreignPatientDatas = ReservationDataModel::find($mainKey->No)->ForeignPatientData()->get();
+        return view('hospital_menu.edit_patient_appoimtment_information.edit_reservation.new_reservation',['pt_datas'=>$pt_datas,'reservation_datas'=>$reservation_datas,'foreignPatientDatas'=>$foreignPatientDatas]);
     }
 
 
