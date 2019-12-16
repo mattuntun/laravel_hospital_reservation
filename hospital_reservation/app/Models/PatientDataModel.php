@@ -11,9 +11,15 @@ class PatientDataModel extends Model
     protected $primaryKey ='No';
     protected $guarded = array('No');
 
-    //予約情報との外部接続
+    //リレーションの為の主キーの抽出
+    public static function Mainkey($search_pt_id){
+        $main = DB::table('pt_data')->where('pt_id',$search_pt_id)->first('No');
+        return $main;
+    }
+
+    //予約情報との外部接続(主キー「No」でリレーション)
     public function ForeignReservationData($request){
-        return $this->hasMany('app\Models\ReservationModel','pt_id');//->where('pt_id',$request->search_pt_id);
+        return $this->hasMany('app\Models\ReservationModel','pt_id');
     }
 
     //患者情報の取得
@@ -21,14 +27,6 @@ class PatientDataModel extends Model
         $ptData = DB::table('pt_data')->where('pt_id',$search_pt_id)->get();
         return $ptData;
     }
-
-    //主キーの抽出
-    public static function Mainkey($search_pt_id){
-        $main = DB::table('pt_data')->where('pt_id',$search_pt_id)->first('No');
-        return $main; 
-    }
-
-
 
     //テーブル患者情報入力
     public static function AddNewPtData($request){
