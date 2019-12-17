@@ -21,7 +21,6 @@ class ApointmentEditController extends Controller
         //予約情報を取得
         $reservation_datas = ReservationDataModel::SearchReservation($request->search_pt_id);
 
-
         //予約情報から患者情報をリレーションの為の主キー「No」取得
         $mainKey = PatientDataModel::Mainkey($request->search_pt_id);
 
@@ -29,7 +28,6 @@ class ApointmentEditController extends Controller
         $foreignPatientDatas = ReservationDataModel::find($mainKey->No)->ForeignPatientData()->get();
         return view('hospital_menu.edit_patient_appoimtment_information.edit_reservation.new_reservation',['pt_datas'=>$pt_datas,'reservation_datas'=>$reservation_datas,'foreignPatientDatas'=>$foreignPatientDatas]);
     }
-
 
     //予約削除のコントローラ
     public function DeleteReservation() {

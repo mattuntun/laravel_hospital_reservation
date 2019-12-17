@@ -23,10 +23,15 @@
 <p>{{var_dump($ptDatas)}}</p>
 <h2>患者ID：{{$ptData->pt_id}}</h2>
 <h2>患者氏名：{{$ptData->pt_last_name}}　{{$ptData->pt_name}}様</h2>
+@endforeach
 
-
+{{--
+@foreach($foreignReservationDatas as $foreignReservationData)
+<p>{{var_dump($foreignReservationData)}}</p>
 
 @endforeach
+
+--}}
 <br>
 <br>
 <br>

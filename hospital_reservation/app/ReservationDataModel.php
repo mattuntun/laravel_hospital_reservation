@@ -13,7 +13,7 @@ class ReservationDataModel extends Model
 
     //予約情報の取得
     public static function SearchReservation($search_pt_id){
-        $reservationDatas = DB::table('reservation_data')->where('pt_id',$search_pt_id)->get();
+        $reservationDatas = DB::table('reservation_data')->where('pt_id' ,$search_pt_id)->get();
         return $reservationDatas;
     }
 
