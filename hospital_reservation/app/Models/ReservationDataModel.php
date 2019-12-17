@@ -19,8 +19,8 @@ class ReservationDataModel extends Model
 
     //予約情報テーブルの主キー取得
     public static function MainKey($search_pt_id){
-        $mainKey = DB::table('reservation_data')->where('pt_id',$search_pt_id)->get('No');
-        return $mainKey;
+        $mainKeys = DB::table('reservation_data')->where('pt_id',$search_pt_id)->get('No');
+        return $mainKeys;
     }
 
 
