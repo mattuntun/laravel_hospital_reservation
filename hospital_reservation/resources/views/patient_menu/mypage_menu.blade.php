@@ -40,6 +40,7 @@
 
 <h2 style="font-size:40px; padding-bottom:30px;">予約一覧</h2>
 
+
 @if($foreignReservationDatas == null)
     <h2>現在、診療予約情報はありません。</h2>
 @else
@@ -65,14 +66,14 @@
             </ul>
         </div>
     @endforeach
-@endisset
+@endif
 
 
 <form action="" method = "post">
 
         {{-- タグ付きボタン(large) --}}
         @include('sab_view_item.large_tagged_buttom',
-                  ['large_buttom_tag'=>'予約変更',
+                  ['large_buttom_tag'=>'',
                    'large_buttom_value'=>'新規予約追加',
                    'large_buttom_access'=>'/hospital_menu/patient_registration_change_deletion'])
 

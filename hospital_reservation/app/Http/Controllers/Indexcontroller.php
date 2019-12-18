@@ -46,19 +46,30 @@ class Indexcontroller extends Controller
         //モデルのjoinを利用
         $foreignReservationDatas =\App\Models\PatientDataModel::ForeignReservationData($request->search_pt_id);
 
+        
+
         //foreach($foreignReservationDatas as $foreignReservationData){
-        //    var_dump($foreignReservationData);
+        //    $resDatas[] =$foreignReservationDatas;
         //}
-        if($foreignReservationDatas != null){
-            return view('patient_menu.mypage_menu',['ptDatas'=>$ptDatas,'foreignReservationDatas'=>$foreignReservationDatas]);
-        }else{
+        //var_dump($foreignReservationDatas);
+
+        //switch($foreignReservationDatas){
+        //    case $foreignReservationDatas->No == null;
+        //        return view('patient_menu.mypage_menu',['ptDatas'=>$ptDatas,'foreignReservationDatas'=>null]);
+        //    break;
+        //    default;
+        //        return view('patient_menu.mypage_menu',['ptDatas'=>$ptDatas,'foreignReservationDatas'=>$foreignReservationDatas]);
+        //}
+        
+        if($foreignReservationDatas->isEmpty() == true){
             return view('patient_menu.mypage_menu',['ptDatas'=>$ptDatas,'foreignReservationDatas'=>null]);
+        }else{
+            return view('patient_menu.mypage_menu',['ptDatas'=>$ptDatas,'foreignReservationDatas'=>$foreignReservationDatas]);
         }
     }
 
     public function HospitalMenu(){
         return view('hospital_menu.hospital_menu');
     }
-//,'foreignReservationDatas'=>$foreignReservationDatas
 
 }
