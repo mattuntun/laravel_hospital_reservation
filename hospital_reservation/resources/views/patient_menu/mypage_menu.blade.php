@@ -3,33 +3,51 @@
 
 {{-- ヘッド --}}
 @section('web_title','マイページ')
-
+<style type="text/css">
+.PtInfo{
+        margin-bottom: 50px ;
+        padding-bottom: 50px;
+        border-bottom: 5px dotted rgb(6, 71, 250);
+               
+}
+.ResInfo{
+        margin-bottom: 50px ;
+        padding-bottom: 50px;
+        border-bottom: 5px solid rgb(6, 71, 250);
+               
+}
+</style>
 
 {{-- ヘッダー --}}
-
 @section('header_content')
         @include('sab_view_item.header',
                   ['main_theme'=>'マイページ'])
+
+        @foreach($ptDatas as $ptData)
+            <div class = "PtInfo">
+                <h2>患者ID：{{$ptData->pt_id}}</h2>
+                <h2>患者氏名：{{$ptData->pt_last_name}}　{{$ptData->pt_name}}　様</h2>
+            </div>
+        @endforeach
 @endsection
 
-
-
 {{-- メイン --}}
-
-
 @section('main_content')
-{{--
-@foreach($ptDatas as $ptData)
-<p>{{var_dump($ptDatas)}}</p>
-<h2>患者ID：{{$ptData->pt_id}}</h2>
-<h2>患者氏名：{{$ptData->pt_last_name}}　{{$ptData->pt_name}}様</h2>
-@endforeach
---}}
 
-@foreach($foreignReservationDatas as $foreignReservationData)
-<p>{{var_dump($foreignReservationData)}}</p>
+<h2 style="font-size:40px; padding-bottom:30px;">予約一覧</h2>
 
-@endforeach
+@if($foreignReservationDatas == null)
+    <h2>現在、診療予約情報はありません。</h2>
+@else
+    @foreach($foreignReservationDatas as $foreignReservationData)
+        <div class = "ResInfo">
+            <ul>
+                <li style="font-size:40px; padding-bottom:30px;"><b>予約診療科:</b>{{$foreignReservationData->reservation_department}}</li>
+                <li style="font-size:40px;"><b>予約診療時間</b>　{{$foreignReservationData->reservation_time}}　より診療開始</li>
+            </ul>
+        </div>
+    @endforeach
+@endisset
 
 
 <br>
