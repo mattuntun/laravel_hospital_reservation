@@ -31,25 +31,29 @@ class Indexcontroller extends Controller
         //var_dump($mainKey);
 
         //予約情報主ｷｰを利用して患者情報ﾃｰﾌﾞﾙから予約情報をﾘﾚｰｼｮﾝ
-        //$foreignReservationDatas = PatientDataModel::find([1,2,3])->ForeignReservationData()->get();
+        //$foreignReservationDatas = PatientDataModel::find([1],'No')->ForeignReservationData()->get();
         //foreach($foreignReservationDatas as $foreignReservationData){
-        //    var_dump($foreignReservationData);
+        //    var_dump($foreignReservationDatas);
         //}
         
         //joinでリレーション
-        $foreignReservationDatas = \DB::table('pt_data')
-                                        ->where('pt_data.pt_id',$request->search_pt_id)
-                                        ->join('reservation_data','pt_data.pt_id','=','reservation_data.pt_id')
-                                        ->get();
-
-        foreach($foreignReservationDatas as $foreignReservationData){
-            var_dump($foreignReservationDatas);
-        }
-
-        
+        //$foreignReservationDatas = \DB::table('pt_data')
+        //                                ->where('pt_data.pt_id',$request->search_pt_id)
+        //                                ->join('reservation_data','pt_data.pt_id','=','reservation_data.pt_id')
+        //                                ->get();
 
 
-        return view('patient_menu.mypage_menu',['ptDatas'=>$ptDatas]);
+        //モデルのjoinを利用
+        //$foreignReservationDatas = new ReservationDataModel;
+        //$foreignReservationDatas->ForeignPatientData($request->search_pt_id);
+
+        $foreignReservationDatas =\App\Models\ReservationDataModel::ForeignPatientData($request->search_pt_id);
+
+        //foreach($foreignReservationDatas as $foreignReservationData){
+        //    var_dump($foreignReservationData);
+        //}
+
+        return view('patient_menu.mypage_menu',['ptDatas'=>$ptDatas,'foreignReservationDatas'=>$foreignReservationDatas]);
     }
 
 
