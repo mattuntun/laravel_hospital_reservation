@@ -44,7 +44,7 @@ class Indexcontroller extends Controller
 
 
         //モデルのjoinを利用
-        $foreignReservationDatas =\App\Models\ReservationDataModel::ForeignPatientData($request->search_pt_id);
+        $foreignReservationDatas =\App\Models\PatientDataModel::ForeignReservationData($request->search_pt_id);
 
         //foreach($foreignReservationDatas as $foreignReservationData){
         //    var_dump($foreignReservationData);

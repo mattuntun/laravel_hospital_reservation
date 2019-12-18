@@ -16,6 +16,10 @@
         border-bottom: 5px solid rgb(6, 71, 250);
                
 }
+.delete_buttom{
+        text-align:right;
+        margin:20px;
+}
 </style>
 
 {{-- ヘッダー --}}
@@ -44,28 +48,41 @@
             <ul>
                 <li style="font-size:40px; padding-bottom:30px;"><b>予約診療科:</b>{{$foreignReservationData->reservation_department}}</li>
                 <li style="font-size:40px;"><b>予約診療時間</b>　{{$foreignReservationData->reservation_time}}　より診療開始</li>
+                
+                
+                {{-- タグ付ボタン(スモール) --}}
+                <form action="/mypage/delete_my_data_reservation" method = post>
+                {{csrf_field()}}
+                    <input type="hidden" name = "search_reservation_No" value = "{{$foreignReservationData->No}}">
+                    
+                    <div class = "delete_buttom">
+                    @include('sab_view_item.small_tagged_buttom',
+                            ['tagged_value'=>'',
+                            'buttom_value'=>'予約削除ページへ',
+                            'buttom_access'=>'/mypage/delete_my_data_reservation'])
+                    </div>
+                </form>
             </ul>
         </div>
     @endforeach
 @endisset
 
 
-<br>
-<br>
-<br>
-<br>
-<br>
+<form action="" method = "post">
 
         {{-- タグ付きボタン(large) --}}
         @include('sab_view_item.large_tagged_buttom',
-                  ['large_buttom_tag'=>'患者設定',
-                   'large_buttom_value'=>'新規患者登録・変更・削除',
+                  ['large_buttom_tag'=>'予約変更',
+                   'large_buttom_value'=>'新規予約追加',
                    'large_buttom_access'=>'/hospital_menu/patient_registration_change_deletion'])
 
         {{-- シンプルボタン(large) --}}
         @include('sab_view_item.large_simple_buttom',
-                  ['large_buttom_value'=>'患者予約情報編集',
+                  ['large_buttom_value'=>'予約削除',
                    'large_buttom_access'=>'/hospital_menu/edit_patient_appoimtment_information'])
+</form>
+
+
 @endsection
 
 

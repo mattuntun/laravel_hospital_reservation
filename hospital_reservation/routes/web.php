@@ -19,10 +19,10 @@ return view('welcome');
 Route::get('index','Indexcontroller@Index');
 
 //患者マイページへ
-Route::get('index/mypage_menu','IndexController@MyPageMenu');
 Route::post('index/mypage_menu','IndexController@MyPageMenu');
-
-
+//患者マイページから予約削除
+Route::post('mypage/delete_my_data_reservation','PersonMyPageController@DeleteMyReservations');
+Route::get('mypage/delete_my_data_reservation','PersonMyPageController@DeleteMyReservations');
 
 //病院menuページへ
 Route::post('index/hospital_menu','IndexController@HospitalMenu');

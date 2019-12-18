@@ -17,16 +17,6 @@ class ReservationDataModel extends Model
         return $reservationDatas;
     }
 
-    //クエリビルダjoinでリレーション
-    public static function ForeignPatientData($serach_pt_id){
-        $ForeignPtData = \DB::table('pt_data')
-                                ->where('pt_data.pt_id',$serach_pt_id)
-                                ->join('reservation_data','pt_data.pt_id','=','reservation_data.pt_id')
-                                ->get();
-        //var_dump($ForeignPtData);
-        return $ForeignPtData;
-    }
-
     //予約情報テーブルの主キー取得
     //public static function MainKey($search_pt_id){
     //    $mainKeys = DB::table('reservation_data')->where('pt_id',$search_pt_id)->get('No');
@@ -35,7 +25,7 @@ class ReservationDataModel extends Model
 
 
     //患者情報との外部接続(リレーション)
-    //public function ForeignPatientData(){
-    //    return $this->belongsTo('App\Models\PatientDataModel','No');
-    //}
+    public function ForeignPatientData(){
+        return $this->belongsTo('App\Models\PatientDataModel','No');
+    }
 }
