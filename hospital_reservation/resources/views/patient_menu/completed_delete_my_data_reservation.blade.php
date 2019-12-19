@@ -29,46 +29,28 @@
 @section('header_content')
         @include('sab_view_item.header',
                   ['main_theme'=>'予約情報削除',
-                  'sub_theme'=>'マイページで選択した予約を削除します'])
+                  'sub_theme'=>'予約を削除しました'])
 @endsection
 
-
 {{-- メイン --}}
-
 @section('main_content')
+<h2>
+    <b>予約削除が実施されました。</b></br>
+    マイページトップへ戻ってください
+</h2>
     
-        <div class = "PtInfo">
-            <h2>患者ID：{{$pt_datas->pt_id}}</h2>
-            <h2>患者氏名：{{$pt_datas->pt_last_name}}　{{$pt_datas->pt_name}}　様</h2>
-        </div>
+    <form action="/index/mypage_menu" method = post>
+    {{csrf_field()}}
+        <input type="hidden" name = "search_pt_id" value ="{{$serach_pt_id}}">
 
+            <div class = "delete_buttom">
+                @include('sab_view_item.small_tagged_buttom',
+                        ['tagged_value'=>'',
+                        'buttom_value'=>'マイページへ戻る',
+                        'buttom_access'=>'/index/mypage_menu'])
+            </div>
+    </form>
 
-@foreach($reservationDatas as $reservationData)
-@endforeach
-
-        <div class = "ResInfo">
-        <h2 style="font-size:40px; padding-bottom:30px;">削除する情報を確認してください</h2>
-            <ul>
-                <li style="font-size:40px; padding-bottom:30px;"><b>予約診療科:</b>{{$reservationData->reservation_department}}</li>
-                <li style="font-size:40px;"><b>予約診療時間</b>　{{$reservationData->reservation_time}}　より診療開始</li>
-
-                <h2 style="font-size:40px; padding-bottom:30px;">予約情報</h2>
-                
-                {{-- タグ付ボタン(スモール) --}}
-                <form action="/mypage/complete_delete_my_data_reservation" method = post>
-                {{csrf_field()}}
-                    
-                    <input type="hidden" name = "searchReservationNo" value ="{{$reservationData->No}}">
-                    <input type="hidden" name = "searchPtId" value ="{{$pt_datas->pt_id}}">
-                    <div class = "delete_buttom">
-                    @include('sab_view_item.small_tagged_buttom',
-                            ['tagged_value'=>'',
-                            'buttom_value'=>'予約削除',
-                            'buttom_access'=>'/mypage/complete_delete_my_data_reservation'])
-                </div>
-                </form>
-            </ul>
-        </div>
 
 {{-- シンプルボタン(large) --}}
         @include('sab_view_item.large_simple_buttom',

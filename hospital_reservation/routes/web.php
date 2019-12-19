@@ -22,6 +22,8 @@ Route::get('index','Indexcontroller@Index');
 Route::post('index/mypage_menu','IndexController@MyPageMenu');
 //患者マイページから予約削除
 Route::post('mypage/delete_my_data_reservation','PersonMyPageController@DeleteMyReservations');
+//患者マイページから予約削除完了
+Route::post('mypage/complete_delete_my_data_reservation','PersonMyPageController@CompleteDeleteMyReservation');
 
 
 //病院menuページへ

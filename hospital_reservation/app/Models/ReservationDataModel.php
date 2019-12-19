@@ -29,9 +29,15 @@ class ReservationDataModel extends Model
     //    return $mainKeys;
     //}
 
-
     //患者情報との外部接続(リレーション)
     public function ForeignPatientData(){
         return $this->belongsTo('App\Models\PatientDataModel','No');
+    }
+
+    //テーブルの診療予約の削除
+    public static function DeleteReservationData($reservationNo){
+        $deleteReservation = DB::table('reservation_data')->where('No',$reservationNo)->delete();
+        return $deleteReservation;
+
     }
 }

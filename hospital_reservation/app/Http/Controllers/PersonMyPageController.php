@@ -8,6 +8,7 @@ use App\Models\PatientDataModel;
 
 class PersonMyPageController extends Controller
 {   
+    
     //患者マイページから予約削除ページへのアクション
     public function DeleteMyReservations(Request $request){
         
@@ -15,13 +16,28 @@ class PersonMyPageController extends Controller
         $ptNo = PatientDataModel::Mainkey($request->search_reservation_pt_id);
         
         //予約情報から患者情報をリレーション
-        $pt_data = ReservationDataModel::find($ptNo->No)->ForeignPatientData()->first();
-        var_dump($pt_data);
+        $pt_datas = ReservationDataModel::find($ptNo->No)->ForeignPatientData()->first();
+        //var_dump($pt_datas);
                 
         //予約情報を個別で取得
-        $reservationData = ReservationDataModel::SearchReservationSeparate($request->search_reservation_No);
-        var_dump($reservationData);
+        $reservationDatas = ReservationDataModel::SearchReservationSeparate($request->search_reservation_No);
+        //var_dump($reservationDatas);
 
-        return view('patient_menu.delete_my_data_reservation',['reservationData'=>$reservationData,'pt_data'=>$pt_data]);
+        return view('patient_menu.delete_my_data_reservation',['reservationDatas'=>$reservationDatas,'pt_datas'=>$pt_datas]);
     }
+
+    //マイページから予約削除完了ページへのアクション
+    public function CompleteDeleteMyReservation(Request $request){
+        //取得する数字が文字列で返ってくるので数値へ変換
+        $resNo=(int)$request->searchReservationNo;
+        $serach_pt_id=(int)$request->searchPtId;
+
+        //予約モデルの削除メソッドを呼び出し予約テーブル削除
+        $deleteMyReservation = ReservationDataModel::DeleteReservationData($resNo);
+        return view('patient_menu.completed_delete_my_data_reservation',['serach_pt_id'=>$serach_pt_id]);
+
+
+    }
+
+
 }
