@@ -55,8 +55,9 @@
                 <form action="/mypage/delete_my_data_reservation" method = post>
                 {{csrf_field()}}
                     <input type="hidden" name = "search_reservation_No" value = "{{$foreignReservationData->No}}">
-                    
+                    <input type="hidden" name = "search_reservation_pt_id" value = "{{$foreignReservationData->pt_id}}">
                     <div class = "delete_buttom">
+
                     @include('sab_view_item.small_tagged_buttom',
                             ['tagged_value'=>'',
                             'buttom_value'=>'予約削除ページへ',

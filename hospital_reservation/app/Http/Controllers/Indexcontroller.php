@@ -43,7 +43,7 @@ class Indexcontroller extends Controller
         //                                ->get();
 
 
-        //モデルのjoinを利用
+        //モデルのjoinを利用して個人情報⇒予約情報リレーション
         $foreignReservationDatas =\App\Models\PatientDataModel::ForeignReservationData($request->search_pt_id);
 
         

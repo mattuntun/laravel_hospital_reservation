@@ -11,9 +11,15 @@ class ReservationDataModel extends Model
     protected $primaryKey ='No';
     protected $guarded = array('No');
 
-    //予約情報の取得
+    //予約情報の取得(患者IDから全てを取得)
     public static function SearchReservation($search_pt_id){
         $reservationDatas = DB::table('reservation_data')->where('pt_id',$search_pt_id)->get();
+        return $reservationDatas;
+    }
+    
+    //予約情報の取得(予約Noから個別で取得)
+    public static function SearchReservationSeparate($resNo){
+        $reservationDatas = DB::table('reservation_data')->where('No',$resNo)->get();
         return $reservationDatas;
     }
 
