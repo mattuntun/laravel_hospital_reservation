@@ -40,33 +40,16 @@
 </h2>
 
     
-    <form action="/index/mypage_menu" method = post>
+    <form action="/hospital_menu/Common_reservation_setting_screen" method = post>
     {{csrf_field()}}
-       {{-- <input type="hidden" name = "search_pt_id" value ="{{$serach_pt_id}}"> --}}
-
             <div class = "delete_buttom">
                 @include('sab_view_item.small_tagged_buttom',
                         ['tagged_value'=>'',
                         'buttom_value'=>'設定画面トップへ戻る',
-                        'buttom_access'=>'/index/mypage_menu'])
+                        'buttom_access'=>'/hospital_menu/Common_reservation_setting_screen'])
             </div>
     </form>
 
-
-{{-- シンプルボタン(large) --}}
-        @include('sab_view_item.large_simple_buttom',
-                  ['large_buttom_value'=>'新規追加',
-                   'large_buttom_access'=>'/edit_patient_appoimtment_information/search_pt_new_reservation'])
-
-{{-- シンプルボタン(large) --}}
-        @include('sab_view_item.large_simple_buttom',
-                  ['large_buttom_value'=>'予約削除',
-                   'large_buttom_access'=>'/edit_patient_appoimtment_information/deretereservation'])
-
-{{-- シンプルボタン(large) --}}
-        @include('sab_view_item.large_simple_buttom',
-                  ['large_buttom_value'=>'予約状況確認',
-                   'large_buttom_access'=>'/edit_patient_appoimtment_information/check_reservation_status'])
 @endsection
 
 

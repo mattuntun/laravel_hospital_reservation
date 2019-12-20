@@ -11,14 +11,14 @@
             <td>
                 <select name="h_open_time" class="form-control" size="1" style="height: 100px; font-size: 32px;" >
                     @for($oclock = 1; $oclock <= 24; $oclock++)                    
-                        <option value="{{$oclock}}">{{$oclock}}時</option>                        
+                        <option value="{{sprintf('%02d',$oclock)}}">{{$oclock}}時</option>                        
                     @endfor
                 </select>
             </td>
             <td>
                 <select name="m_open_time" class="form-control" size="1" style="height: 100px; font-size: 32px;">
                     @for($min = 00; $min <= 60; $min = $min+10)                    
-                        <option value="{{$min}}">{{$min}}分</option>                        
+                        <option value="{{sprintf('%02d',$min)}}">{{$min}}分</option>                        
                     @endfor
                 </select>
             </td>
@@ -40,14 +40,14 @@
             <td>
                 <select name="h_rest_start" class="form-control" size="1" style="height: 100px; font-size: 32px;" >
                     @for($oclock = 1; $oclock <= 24; $oclock++)                    
-                        <option value="{{$oclock}}">{{$oclock}}時</option>                        
+                        <option value="{{sprintf('%02d',$oclock)}}">{{$oclock}}時</option>                        
                     @endfor
                 </select>
             </td>
             <td>
                 <select name="m_rest_start" class="form-control" size="1" style="height: 100px; font-size: 32px;">
                     @for($min = 00; $min <= 60; $min = $min+10)                    
-                        <option value="{{$min}}">{{$min}}分</option>                        
+                        <option value="{{sprintf('%02d',$min)}}">{{$min}}分</option>                        
                     @endfor
                 </select>    
             </td>
@@ -59,14 +59,14 @@
             <td>
                 <select name="h_rest_stop" class="form-control" size="1" style="height: 100px; font-size: 32px;" >
                     @for($oclock = 1; $oclock <= 24; $oclock++)                    
-                        <option value="{{$oclock}}">{{$oclock}}時</option>                        
+                        <option value="{{sprintf('%02d',$oclock)}}">{{$oclock}}時</option>                        
                     @endfor
                 </select>
             </td>
             <td>
                 <select name="m_rest_stop" class="form-control" size="1" style="height: 100px; font-size: 32px;">
                     @for($min = 00; $min <= 60; $min = $min+10)                    
-                        <option value="{{$min}}">{{$min}}分</option>                        
+                        <option value="{{sprintf('%02d',$min)}}">{{$min}}分</option>                        
                     @endfor
                 </select>
             </td>
@@ -87,14 +87,14 @@
             <td>
                 <select name="h_close_time" class="form-control" size="1" style="height: 100px; font-size: 32px;" >
                     @for($oclock = 1; $oclock <= 24; $oclock++)                    
-                        <option value="{{$oclock}}">{{$oclock}}時</option>                        
+                        <option value="{{sprintf('%02d',$oclock)}}">{{$oclock}}時</option>                        
                     @endfor
                 </select>
             </td>
             <td>
                 <select name="m_close_stop" class="form-control" size="1" style="height: 100px; font-size: 32px;">
                     @for($min = 00; $min <= 60; $min = $min+10)                    
-                        <option value="{{$min}}">{{$min}}分</option>                        
+                        <option value="{{sprintf('%02d',$min)}}">{{$min}}分</option>                        
                     @endfor
                 </select>
             </td>
