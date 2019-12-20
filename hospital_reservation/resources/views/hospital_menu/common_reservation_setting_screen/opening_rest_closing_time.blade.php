@@ -16,7 +16,7 @@
     {{-- このコンポーネントはformとしての囲い(メソッドはpost) --}}
     @component('component_item.form')
                  @slot('form_action')
-                     /index
+                     /opening_rest_closing_time/complete_set_opening_rest_closing_time
                  @endslot
 
                  @slot('form_item2')
@@ -29,12 +29,12 @@
                      @include('sab_view_item.small_tagged_buttom',
                              ['tagged_value'=>'内容を確認して情報を登録',
                               'buttom_value'=>'内容を登録',
-                              'buttom_access'=>'/index'])
+                              'buttom_access'=>'/opening_rest_closing_time/complete_set_opening_rest_closing_time'])
                  @endslot
 
 
                  @slot('form_name')
-                 nyuuryoku
+                 
                  @endslot
     @endcomponent
 

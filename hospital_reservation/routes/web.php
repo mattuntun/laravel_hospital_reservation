@@ -39,6 +39,9 @@ Route::get('common_reservation_setting_screen/set_period_and_deadline','CommonSe
 Route::get('common_reservation_setting_screen/horiday_setting','CommonSettingScreenController@HoridaySetting');
 //全科共通開院・休憩・閉診設定
 Route::get('common_reservation_setting_screen/opening_rest_closing_time','CommonSettingScreenController@OpeningRestClosingTime');
+//設定完了　全科共通開院・休憩・閉診設定
+Route::post('opening_rest_closing_time/complete_set_opening_rest_closing_time','CommonSettingScreenController@CompleteOpeningRestClosingTime');
+
 //全科共通の予約数設定
 Route::get('common_reservation_setting_screen/number_of_reservation_screen
 ','CommonSettingScreenController@NumberOfReservationScreen');

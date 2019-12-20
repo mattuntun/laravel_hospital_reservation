@@ -35,9 +35,5 @@ class PersonMyPageController extends Controller
         //予約モデルの削除メソッドを呼び出し予約テーブル削除
         $deleteMyReservation = ReservationDataModel::DeleteReservationData($resNo);
         return view('patient_menu.completed_delete_my_data_reservation',['serach_pt_id'=>$serach_pt_id]);
-
-
     }
-
-
 }
