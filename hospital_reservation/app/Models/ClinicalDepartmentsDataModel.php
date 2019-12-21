@@ -50,4 +50,9 @@ class ClinicalDepartmentsDataModel extends Model
         $addNewDepartment->save();
     }
 
+    //診療科削除のメソッド
+    public static function DeleteDepartment($deleteValue){
+        $delete_department = DB::table('clinical_departments')->where('clinical_department',$deleteValue)->delete();
+    }
+
 }

@@ -59,8 +59,14 @@ Route::get('individual_setting_menu/add_new_department
 //新規診療科設定　完了画面
 Route::post('individual_setting_menu/complete_add_new_department
 ','IndividualSettingMenuController@CompleteAddNewDepartment');
-Route::get('individual_setting_menu/complete_add_new_department
-','IndividualSettingMenuController@CompleteAddNewDepartment');
+//診療科削除の検索画面へ
+Route::get('individual_setting_menu/search_delete_department
+','IndividualSettingMenuController@SearchDeleteDepartment');
+//診療科削除の完了画面へ
+Route::get('/individual_setting_menu/complete_delete_department
+','IndividualSettingMenuController@CompleteDeleteDepartment');
+Route::post('/individual_setting_menu/complete_delete_department
+','IndividualSettingMenuController@CompleteDeleteDepartment');
 
 //患者情報編集のページへ
 Route::get('hospital_menu/patient_registration_change_deletion','HospitalController@PatientRegistrationChangeDeletion');

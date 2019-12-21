@@ -19,6 +19,7 @@
         </td>
         <td>
             <select name="possible_number" class="form-control" size="1" style="height: 100px; font-size: 32px;" >
+                    <option disabled selected value>選択してください</option>
                     @for($oclock = 1; $oclock <= 35; $oclock++)                    
                         <option value="{{$oclock}}">{{$oclock}}人</option>                        
                     @endfor

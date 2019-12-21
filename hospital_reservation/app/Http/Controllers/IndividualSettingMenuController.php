@@ -39,11 +39,30 @@ class IndividualSettingMenucontroller extends Controller
                             'close_time'=>$close_time,
                             'restStart_time'=>$restStart_time,'restStop_time'=>$restStop_time);
         
-        //var_dump($changeTimes);
-
+        //診療科新規追加のメソッドの呼び出し
         $add = ClinicalDepartmentsDataModel::AddNewDepartment($changeTimes);
 
         return view('hospital_menu.common_reservation_setting_screen.individual_setting.complete_add_new_department',['changeTimes'=>$changeTimes]);
+    }
+
+    //診療科削除検索画面
+    public function SearchDeleteDepartment(){
+        $getDepartments = ClinicalDepartmentsDataModel::GetDepartmentsData();
+        foreach($getDepartments as $getDepartment){
+            //var_dump($getDepartment->clinical_department);
+            $kindDepartments[] = $getDepartment->clinical_department;
+        }
+                
+        return view('hospital_menu.common_reservation_setting_screen.individual_setting.search_delete_department',['kindDepartments'=>$kindDepartments]);
+    }
+
+    //診療科削除完了画面
+    public function CompleteDeleteDepartment(Request $request){
+        
+        $deleteValue = $request->search_delete_department;
+        $derete_department = ClinicalDepartmentsDataModel::DeleteDepartment($deleteValue);
+        
+        return view('hospital_menu.common_reservation_setting_screen.individual_setting.complete_delete_department');
     }
 
 }
