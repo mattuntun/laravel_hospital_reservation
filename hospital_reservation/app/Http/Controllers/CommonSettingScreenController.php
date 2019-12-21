@@ -45,17 +45,14 @@ class CommonSettingScreenController extends Controller
         return view('hospital_menu.common_reservation_setting_screen.complete_set_opening_rest_closing_time');
     }
 
-
-
-
-
-
     //予約数設定編集画面
     public function NumberOfReservationScreen(){
         return view('hospital_menu.common_reservation_setting_screen.number_of_reservation_screen');
     }
     //予約状況表示　設定編集画面
-    public function StatusDisplaySetting(){
-        return view('hospital_menu.common_reservation_setting_screen.status_display_setting');
+    public function StatusDisplaySetting(Request $request){
+        $possibleNumber = $request->possible_number;
+        $chagePossiblePeople = ClinicalDepartmentsDataModel::ChangePossibleNumber($possibleNumber);
+        return view('hospital_menu.common_reservation_setting_screen.status_display_setting',['possibleNumber'=>$possibleNumber]);
     }
 }

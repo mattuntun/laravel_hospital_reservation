@@ -20,7 +20,7 @@
 {{-- シンプルボタン(large) --}}
         @include('sab_view_item.large_simple_buttom',
                   ['large_buttom_value'=>'診療科　追加',
-                   'large_buttom_access'=>'/index'])
+                   'large_buttom_access'=>'/individual_setting_menu/add_new_department'])
 
 {{-- シンプルボタン(large) --}}
         @include('sab_view_item.large_simple_buttom',

@@ -53,8 +53,14 @@ Route::post('common_reservation_setting_screen/status_display_setting
 //個別診療科設定メニュー画面へ
 Route::get('common_reservation_setting_screen/individual_setting_menu
 ','IndividualSettingMenuController@IndividualSettingMenu');
+//新規診療科設定画面へ
 Route::get('individual_setting_menu/add_new_department
 ','IndividualSettingMenuController@AddNewDepartment');
+//新規診療科設定　完了画面
+Route::post('individual_setting_menu/complete_add_new_department
+','IndividualSettingMenuController@CompleteAddNewDepartment');
+Route::get('individual_setting_menu/complete_add_new_department
+','IndividualSettingMenuController@CompleteAddNewDepartment');
 
 //患者情報編集のページへ
 Route::get('hospital_menu/patient_registration_change_deletion','HospitalController@PatientRegistrationChangeDeletion');
