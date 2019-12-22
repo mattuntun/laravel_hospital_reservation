@@ -2,7 +2,7 @@
 @extends('layout.layout_hospital_base')
 
 {{-- ヘッド --}}
-@section('web_title','診療科削除')
+@section('web_title','予約情報削除')
 
 <style type="text/css">
 .PtInfo{
@@ -28,29 +28,25 @@
 
 @section('header_content')
         @include('sab_view_item.header',
-                  ['main_theme'=>'削除する診療科を選択して下さい'])
+                  ['main_theme'=>'診療科別設定変更',
+                  'sub_theme'=>'設定の変更が完了しました'])
 @endsection
 
 {{-- メイン --}}
 @section('main_content')
 <h2>
-    <b>削除する診療科を選択・確認し、削除実行ボタンを押して下さい</b>
+    <b>設定の変更が実施されました。</b></br>
+    設定画面トップへ戻ってください
 </h2>
-    
-    <form action="/individual_setting_menu/complete_delete_department" method = post>
-    {{csrf_field()}}
-            <select name="search_delete_department" id="" class="form-control" size="1" style="height: 100px; font-size: 32px;">
-                <option disabled selected value>選択してください</option>
-                @for($i=0; $i < count($kindDepartments); $i++)
-                <option value="{{$kindDepartments[$i]}}">{{$kindDepartments[$i]}}</option>
-                @endfor
-            </select>
 
+    
+    <form action="/hospital_menu/Common_reservation_setting_screen" method = post>
+    {{csrf_field()}}
             <div class = "delete_buttom">
                 @include('sab_view_item.small_tagged_buttom',
                         ['tagged_value'=>'',
-                        'buttom_value'=>'削除実行',
-                        'buttom_access'=>'/individual_setting_menu/complete_delete_department'])
+                        'buttom_value'=>'設定画面トップへ戻る',
+                        'buttom_access'=>'/hospital_menu/Common_reservation_setting_screen'])
             </div>
     </form>
 

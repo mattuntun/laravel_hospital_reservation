@@ -55,4 +55,28 @@ class ClinicalDepartmentsDataModel extends Model
         $delete_department = DB::table('clinical_departments')->where('clinical_department',$deleteValue)->delete();
     }
 
+    //診療科個別に情報を取得するメソッド
+    public static function GetIndividualDepartmentdatas($department){
+        $get_datas = ClinicalDepartmentsDataModel::where('clinical_department',$department)->first();
+        return $get_datas;
+    }
+
+    //診療科別の診療科設定変更メソッド
+    public static function IndividualChangeDepartment($changeTimes){
+        var_dump($changeTimes['search_change_deparment']);
+
+        $IndividualChanges = ClinicalDepartmentsDataModel::where('clinical_department',$changeTimes['search_change_deparment'])->get();
+        foreach($IndividualChanges as $IndividualChange){
+            $IndividualChange->start_time = $changeTimes['open_time'];
+            $IndividualChange->close_time = $changeTimes['close_time'];
+            $IndividualChange->break_time_start = $changeTimes['restStart_time'];
+            $IndividualChange->break_time_close = $changeTimes['restStop_time'];
+            $IndividualChange->save();
+        }
+
+    }
+
+    
 }
+
+
