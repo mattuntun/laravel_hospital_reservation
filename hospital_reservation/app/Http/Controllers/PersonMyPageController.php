@@ -36,4 +36,10 @@ class PersonMyPageController extends Controller
         $deleteMyReservation = ReservationDataModel::DeleteReservationData($resNo);
         return view('patient_menu.completed_delete_my_data_reservation',['serach_pt_id'=>$serach_pt_id]);
     }
+
+    //マイページから新規予約画面へ
+    public function AddNewReservationFromMyPage(){
+        return view('patient_menu.add_new_reservation_from_mypage');
+    }
+    
 }

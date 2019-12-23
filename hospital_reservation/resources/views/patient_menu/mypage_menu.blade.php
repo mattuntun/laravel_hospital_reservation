@@ -69,20 +69,30 @@
     @endforeach
 @endif
 
+<table>
+    <tr>
+        <td>
+            <form action="" method = "post">
+                {{-- タグ付きボタン(large) --}}
+                @include('sab_view_item.middle_simple_buttom',
+                          ['middle_buttom_value'=>'新規予約追加',
+                            'middle_buttom_access'=>'/mypage/add_new_my_data_reservation'])
+            </form>
+        </td><td></td><td></td><td></td><td>
+        <td>
+            <form action="" method = "post">
+                {{-- タグ付きボタン(large) --}}
+                @include('sab_view_item.middle_simple_buttom',
+                        ['middle_buttom_value'=>'未設定',
+                            'middle_buttom_access'=>'/index'])
+            </form>
 
-<form action="" method = "post">
+        </td>
+</tr>
 
-        {{-- タグ付きボタン(large) --}}
-        @include('sab_view_item.large_tagged_buttom',
-                  ['large_buttom_tag'=>'',
-                   'large_buttom_value'=>'新規予約追加',
-                   'large_buttom_access'=>'/hospital_menu/patient_registration_change_deletion'])
+</table>
 
-        {{-- シンプルボタン(large) --}}
-        @include('sab_view_item.large_simple_buttom',
-                  ['large_buttom_value'=>'予約削除',
-                   'large_buttom_access'=>'/hospital_menu/edit_patient_appoimtment_information'])
-</form>
+
 
 
 @endsection
