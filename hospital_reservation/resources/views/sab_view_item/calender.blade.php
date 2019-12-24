@@ -9,6 +9,7 @@
 // 現在の年月を取得
 $year = date('Y');
 $month = date('n');
+$next_month = date('n', mktime(0, 0, 0, date('n') + 1, 1, date('Y')));
  
 // 月末日を取得
 $last_day = date('j', mktime(0, 0, 0, $month + 1, 0, $year));
@@ -37,7 +38,7 @@ for ($i = 1; $i < $last_day + 1; $i++) {
     }
  
     // 配列に日付をセット
-    $calendar[$j]['day'] = $i;
+    $calendar[$j]['day'] = $i."<br />"."&#9678";
     $j++;
  
     // 月末日の場合
@@ -59,9 +60,7 @@ for ($i = 1; $i < $last_day + 1; $i++) {
 ?>
 
 {{-- htmlの記述--}}
-<?php echo $year; ?>年<?php echo $month; ?>月のカレンダー
-<br>
-<br>
+<h4><b><caption><?php echo $year; ?>年<?php echo $month; ?>月のカレンダー</caption></b></h4>
 <table class = "calender-table">
     <tr>
         <th class = "calender-table">日</th>
@@ -79,8 +78,42 @@ for ($i = 1; $i < $last_day + 1; $i++) {
  
         <td class = "calender-table">
         <?php $cnt++; ?>
-        <b><?php echo $value['day']; ?></b></br>
-        <b>〇</b>
+        <h5><b><?php echo $value['day']; ?></b></h5>
+        </td>
+ 
+    <?php if ($cnt == 7): ?>
+    </tr>
+    <tr>
+    <?php $cnt = 0; ?>
+    <?php endif; ?>
+ 
+    <?php endforeach; ?>
+    </tr>
+</table>
+
+<br>
+<br>
+
+
+<h4><b><caption><?php echo $year; ?>年<?php echo date('n'); ?>月のカレンダー</caption></b></h4>
+<table class = "calender-table">
+    <tr>
+        <th class = "calender-table">日</th>
+        <th class = "calender-table">月</th>
+        <th class = "calender-table">火</th>
+        <th class = "calender-table">水</th>
+        <th class = "calender-table">木</th>
+        <th class = "calender-table">金</th>
+        <th class = "calender-table">土</th>
+    </tr>
+ 
+    <tr>
+    <?php $cnt = 0; ?>
+    <?php foreach ($calendar as $key => $value): ?>
+ 
+        <td class = "calender-table">
+        <?php $cnt++; ?>
+        <h5><b><?php echo $value['day']; ?></b></h5>
         </td>
  
     <?php if ($cnt == 7): ?>

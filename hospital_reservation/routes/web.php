@@ -27,6 +27,13 @@ Route::post('mypage/complete_delete_my_data_reservation','PersonMyPageController
 //患者マイページから新規予約
 Route::get('mypage/add_new_my_data_reservation','PersonMyPageController@AddNewReservationFromMyPage');
 
+//カレンダーページ
+Route::get('/holiday','CalendarController@getHoliday');
+Route::post('/holiday','CalendarController@postHoliday');
+Route::get('/holiday/{id}','CalendarController@getHolidayId');
+Route::post('/calendar','CalendarController@ViewCalendar');
+Route::get('/calendar','CalendarController@ViewCalendar');
+Route::delete('/holiday','CalendarController@deleteHoliday');
 
 //病院menuページへ
 Route::post('index/hospital_menu','IndexController@HospitalMenu');
