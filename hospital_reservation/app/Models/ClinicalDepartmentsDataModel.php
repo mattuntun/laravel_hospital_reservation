@@ -63,7 +63,7 @@ class ClinicalDepartmentsDataModel extends Model
 
     //診療科別の診療科設定変更メソッド
     public static function IndividualChangeDepartment($changeTimes){
-        var_dump($changeTimes['search_change_deparment']);
+        //var_dump($changeTimes['search_change_deparment']);
 
         $IndividualChanges = ClinicalDepartmentsDataModel::where('clinical_department',$changeTimes['search_change_deparment'])->get();
         foreach($IndividualChanges as $IndividualChange){

@@ -24,8 +24,13 @@ Route::post('index/mypage_menu','IndexController@MyPageMenu');
 Route::post('mypage/delete_my_data_reservation','PersonMyPageController@DeleteMyReservations');
 //患者マイページから予約削除完了
 Route::post('mypage/complete_delete_my_data_reservation','PersonMyPageController@CompleteDeleteMyReservation');
-//患者マイページから新規予約
-Route::get('mypage/add_new_my_data_reservation','PersonMyPageController@AddNewReservationFromMyPage');
+//患者マイページから新規予約の為の診療科選択
+Route::post('mypage/select_add_new_my_data_reservation','PersonMyPageController@SelectAddNewReservationFromMyPage');
+//患者マイページからカレンダー画面
+Route::post('mypage/calendar_add_new_my_data_reservation','PersonMyPageController@CalendarAddNewReservationFromMyPage');
+//患者マイページからスケジュール画面
+Route::post('mypage/schedule_add_new_my_data_reservation','PersonMyPageController@ScheduleAddNewReservationFromMyPage');
+Route::get('mypage/schedule_add_new_my_data_reservation','PersonMyPageController@ScheduleAddNewReservationFromMyPage');
 
 //カレンダーページ
 Route::get('/holiday','CalendarController@getHoliday');

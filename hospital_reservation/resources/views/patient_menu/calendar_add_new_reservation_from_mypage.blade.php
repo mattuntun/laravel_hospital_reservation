@@ -2,7 +2,7 @@
 @extends('layout.layout_hospital_base')
 
 {{-- ヘッド --}}
-@section('web_title','新規予約追加')
+@section('web_title','新規予約追加カレンダー')
 
 {{-- ヘッダー --}}
 @section('header_content')
@@ -10,20 +10,32 @@
                   ['main_theme'=>'新規予約追加',
                   'sub_theme'=>'ご希望の日付を選択してください'])
 
-{{--
-        @foreach($ptDatas as $ptData)
-            <div class = "PtInfo">
-                <h2>患者ID：{{$ptData->pt_id}}</h2>
-                <h2>患者氏名：{{$ptData->pt_last_name}}　{{$ptData->pt_name}}　様</h2>
-            </div>
-        @endforeach --}}
+
 @endsection
 
 {{-- メイン --}}
 @section('main_content')
-{{-- タグ付きボタン(large) --}}
-                @include('sab_view_item.calender')
 
+<h2>診療科【{{$getDepartmentDatas->clinical_department}}】の予約状況は以下の通りです。</h2>
+<br>
+<h3>明日移行の日付をクリックし、予約時間の指定へ進んでください</h3>
+<br>
+<br>
+
+
+
+<form action="/mypage/schedule_add_new_my_data_reservation" method =post>
+{{csrf_field()}}
+{!!$cal_tag!!}
+<br>
+<br>
+
+{!!$next_cal_tag!!}
+<br>
+<br>
+
+{!!$after_next_cal_tag!!}
+</form>
 
 @endsection
 

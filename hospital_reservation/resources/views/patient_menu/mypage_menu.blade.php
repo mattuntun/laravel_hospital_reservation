@@ -72,11 +72,13 @@
 <table>
     <tr>
         <td>
-            <form action="" method = "post">
+            <form action="/mypage/select_add_new_my_data_reservation" method = post>
+            {{csrf_field()}}
+            <input type="hidden"  name = "search_pt_id" value = "{{$ptData->pt_id}}"> 
                 {{-- タグ付きボタン(large) --}}
-                @include('sab_view_item.middle_simple_buttom',
-                          ['middle_buttom_value'=>'新規予約追加',
-                            'middle_buttom_access'=>'/mypage/add_new_my_data_reservation'])
+                @include('sab_view_item.middle_submit_simple_buttom',
+                           ['middle_buttom_value'=>'新規ページ',
+                            'middle_buttom_access'=>'/mypage/select_add_new_my_data_reservation"'])
             </form>
         </td><td></td><td></td><td></td><td>
         <td>

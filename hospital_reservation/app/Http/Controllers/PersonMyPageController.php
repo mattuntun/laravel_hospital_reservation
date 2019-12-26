@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\ReservationDataModel;
 use App\Models\PatientDataModel;
+use App\Models\ClinicalDepartmentsDataModel;
+use App\Models\Holiday;
+use App\Calendar;
 
 class PersonMyPageController extends Controller
 {   
@@ -34,12 +37,40 @@ class PersonMyPageController extends Controller
 
         //予約モデルの削除メソッドを呼び出し予約テーブル削除
         $deleteMyReservation = ReservationDataModel::DeleteReservationData($resNo);
-        return view('patient_menu.completed_delete_my_data_reservation',['serach_pt_id'=>$serach_pt_id]);
+        return view('patient_menu.completed_delete_my_data_reservation',['serach_pt_id'=>$search_pt_id]);
     }
 
-    //マイページから新規予約画面へ
-    public function AddNewReservationFromMyPage(){
-        return view('patient_menu.add_new_reservation_from_mypage');
+    //マイページから新規予約の為の診療科選択画面
+    public function SelectAddNewReservationFromMyPage(Request $request){
+        //pt_idの引継ぎ⇒患者情報取得
+        $search_pt_id = (int)$request->search_pt_id;
+        $ptDatas = PatientDataModel::getPtData($search_pt_id);
+        
+        //診療科情報の取得
+        $getDepartments = ClinicalDepartmentsDataModel::GetDepartmentsData();
+
+        return view('patient_menu.select_add_new_reservation_from_mypage',['getDepartments'=>$getDepartments,'ptDatas'=>$ptDatas]);
+    }
+
+    //マイページから新規予約カレンダーへ
+    public function CalendarAddNewReservationFromMyPage(Request $request){
+        //選択した診療科情報を取得
+        $search_Department =$request->selectedDepartment;
+        $getDepartmentDatas = ClinicalDepartmentsDataModel::GetIndividualDepartmentdatas($search_Department);
+
+        //カレンダーPHPの呼び出し
+        $cal = new Calendar();
+        $tag = $cal->showCalendarTag();
+        $nextTag = $cal->showNextMonthCalendarTag();
+        $afterNextTag= $cal->showMonthAfterNextCalendarTag();
+
+        return view('patient_menu.calendar_add_new_reservation_from_mypage',['getDepartmentDatas'=>$getDepartmentDatas,'cal_tag' => $tag,'next_cal_tag'=>$nextTag,'after_next_cal_tag'=>$afterNextTag]);
+    }
+
+    //マイページ⇒カレンダー⇒スケジュール
+    public function ScheduleAddNewReservationFromMyPage(Request $request){
+       
+        return view('patient_menu.schedule_add_new_reservation_from_mypage');
     }
     
 }
