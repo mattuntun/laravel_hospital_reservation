@@ -39,7 +39,6 @@
 
 @endsection
 
-
 {{-- フッター --}}
 
 @section('footer_content')

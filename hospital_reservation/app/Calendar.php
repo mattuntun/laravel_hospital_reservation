@@ -36,11 +36,14 @@ class Calendar
 </tr>
 EOS;
         //ボタンのHTML
-        $this->button = <<< EOF
+//        $this->button = <<< EOF
 
-<td><button type="submit" class="btn btn-lg btn-block" style="background: white;" onclick="location.href=/mypage/schedule_add_new_my_data_reservation">
+//<td><button type="submit" class="btn btn-lg btn-block" style="background: white;" onclick="location.href=/mypage/schedule_add_new_my_data_reservation">
+//<input type="text" name = "target_day" value={$day}>
+//<input type="hidden" name = "target_month" value={$month}>
+//<input type="hidden" name = "target_year" value={$year}>
 
-EOF;
+//EOF;
 
         // カレンダーの日付部分を生成する
         while ($day <= $lastDay) {
@@ -52,11 +55,13 @@ EOF;
                     $this->html .= "<td>&nbsp;</td>";
                 } elseif($i ==0 || $i ==6 ){
                     $this->html .="<td style = color:#E9E9E9;>". $day . "</td>";
-                } elseif ($day < $today+1){
-                    $this->html .="<td style = color:#E9E9E9;>". $day . "</td>";
+                //} elseif ($day < $today+1){
+                //    $this->html .="<td style = color:#E9E9E9;>". $day . "</td>";
                 } else {
-                    
-                   $this->html .=$this->button . $day . "</button></td>"; 
+                   $this->html .='<td><button type="submit" class="btn btn-lg btn-block" style="background: white;" onclick="location.href=/mypage/schedule_add_new_my_data_reservation">
+                   <input type="text" name = "target_day" value=' . $day . '>
+                   <input type="text" name = "target_month" value=' . $month . '>
+                   <input type="text" name = "target_year" value=' . $year . '>' . $day . "</button></td>"; 
                 }
                $day++;
             }
@@ -120,6 +125,7 @@ EOF;
         return $this->html .= '</table>';
     }
 
+    
     
     //翌々月カレンダー
     public function showMonthAfterNextCalendarTag(){

@@ -28,9 +28,8 @@ Route::post('mypage/complete_delete_my_data_reservation','PersonMyPageController
 Route::post('mypage/select_add_new_my_data_reservation','PersonMyPageController@SelectAddNewReservationFromMyPage');
 //患者マイページからカレンダー画面
 Route::post('mypage/calendar_add_new_my_data_reservation','PersonMyPageController@CalendarAddNewReservationFromMyPage');
-//患者マイページからスケジュール画面
+//患者マイページ⇒カレンダー⇒スケジュール画面
 Route::post('mypage/schedule_add_new_my_data_reservation','PersonMyPageController@ScheduleAddNewReservationFromMyPage');
-Route::get('mypage/schedule_add_new_my_data_reservation','PersonMyPageController@ScheduleAddNewReservationFromMyPage');
 
 //カレンダーページ
 Route::get('/holiday','CalendarController@getHoliday');

@@ -18,11 +18,12 @@
 
 <h1>〇月〇日　予約空状況</h1>
 
+{{$sample}}
 
 <table class="table table-bordered" style="background: white;         table-layout: fixed; width: 100%;">
     <tr>
-        <th style="background: #AEC4E5; text-align:center; width: 70%;" scope="col">時間</th>
-        <th style="background: #AEC4E5; text-align:center; width: 30%;" scope="col">予約空き状況</th>
+        <th style="background: #AEC4E5; text-align:center; width: 70%; font-size:30px;" scope="col">時間</th>
+        <th style="background: #AEC4E5; text-align:center; width: 30%; font-size:30px" scope="col">予約空き状況</th>
     </tr>
     <tr>
         <td><button type = "submit" class="btn btn-lg btn-block" style="background: white; font-size:30px;" onclick="location.href=/mypage/schedule_add_new_my_data_reservation">9:00</button></td>
