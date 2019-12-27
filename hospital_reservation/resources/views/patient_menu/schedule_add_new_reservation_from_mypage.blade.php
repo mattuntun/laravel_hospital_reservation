@@ -16,7 +16,55 @@
 {{-- メイン --}}
 @section('main_content')
 
-<h1>あああああああああ</h1>
+<h1>〇月〇日　予約空状況</h1>
+
+
+<table class="table table-bordered" style="background: white;         table-layout: fixed; width: 100%;">
+    <tr>
+        <th style="background: #AEC4E5; text-align:center; width: 70%;" scope="col">時間</th>
+        <th style="background: #AEC4E5; text-align:center; width: 30%;" scope="col">予約空き状況</th>
+    </tr>
+    <tr>
+        <td><button type = "submit" class="btn btn-lg btn-block" style="background: white; font-size:30px;" onclick="location.href=/mypage/schedule_add_new_my_data_reservation">9:00</button></td>
+        <td style="font-size:30px; text-align:center;">◎</td>
+    </tr>
+    <tr>
+        <td><button type = "submit" class="btn btn-lg btn-block" style="background: white; font-size:30px;" onclick="location.href=/mypage/schedule_add_new_my_data_reservation">10:00</button></td>
+        <td style="font-size:30px; text-align:center;">◎</td>
+    </tr>
+    <tr>
+        <td><button type = "submit" class="btn btn-lg btn-block" style="background: white; font-size:30px;" onclick="location.href=/mypage/schedule_add_new_my_data_reservation">11:00</button></td>
+        <td style="font-size:30px; text-align:center;">◎</td>
+    </tr>
+    <tr>
+        <td><button type = "submit" class="btn btn-lg btn-block" style="background: white; font-size:30px;" onclick="location.href=/mypage/schedule_add_new_my_data_reservation">12:00</button></td>
+        <td style="font-size:30px; text-align:center;">◎</td>
+    </tr>
+    <tr>
+        <td><button type = "submit" class="btn btn-lg btn-block" style="background: white; font-size:30px;" onclick="location.href=/mypage/schedule_add_new_my_data_reservation">13:00</button></td>
+        <td style="font-size:30px; text-align:center;">◎</td>
+    </tr>
+    <tr>
+        <td><button type = "submit" class="btn btn-lg btn-block" style="background: white; font-size:30px;" onclick="location.href=/mypage/schedule_add_new_my_data_reservation">14:00</button></td>
+        <td style="font-size:30px; text-align:center;">◎</td>
+    </tr>
+    <tr>
+        <td><button type = "submit" class="btn btn-lg btn-block" style="background: white; font-size:30px;" onclick="location.href=/mypage/schedule_add_new_my_data_reservation">15:00</button></td>
+        <td style="font-size:30px; text-align:center;">◎</td>
+    </tr>
+    <tr>
+        <td><button type = "submit" class="btn btn-lg btn-block" style="background: white; font-size:30px;" onclick="location.href=/mypage/schedule_add_new_my_data_reservation">16:00</button></td>
+        <td style="font-size:30px; text-align:center;">◎</td>
+    </tr>
+    <tr>
+        <td><button type = "submit" class="btn btn-lg btn-block" style="background: white; font-size:30px;" onclick="location.href=/mypage/schedule_add_new_my_data_reservation">17:00</button></td>
+        <td style="font-size:30px; text-align:center;">◎</td>
+    </tr>
+    <tr>
+        <td><button type = "submit" class="btn btn-lg btn-block" style="background: white; font-size:30px;" onclick="location.href=/mypage/schedule_add_new_my_data_reservation">18:00</button></td>
+        <td style="font-size:30px; text-align:center;">◎</td>
+    </tr>
+</table>
 <br>
 <br>
 

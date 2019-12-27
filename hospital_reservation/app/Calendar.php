@@ -52,7 +52,7 @@ EOF;
                     $this->html .= "<td>&nbsp;</td>";
                 } elseif($i ==0 || $i ==6 ){
                     $this->html .="<td style = color:#E9E9E9;>". $day . "</td>";
-                } elseif ($day < $today){
+                } elseif ($day < $today+1){
                     $this->html .="<td style = color:#E9E9E9;>". $day . "</td>";
                 } else {
                     
@@ -86,13 +86,13 @@ $this->html = <<< EOS
 <h1>{$next_year}年{$next_month}月</h1>
 <table class="table table-bordered" style="background: white;">
 <tr>
-<th style="background: #AEC4E5; color:red; scope="col">日</th>
-<th style="background: #AEC4E5; scope="col">月</th>
-<th style="background: #AEC4E5; scope="col">火</th>
-<th style="background: #AEC4E5; scope="col">水</th>
-<th style="background: #AEC4E5; scope="col">木</th>
-<th style="background: #AEC4E5; scope="col">金</th>
-<th style="background: #AEC4E5; color:blue;scope="col">土</th>
+<th style="background: #AEC4E5; color:red;" scope="col">日</th>
+<th style="background: #AEC4E5;" scope="col">月</th>
+<th style="background: #AEC4E5;" scope="col">火</th>
+<th style="background: #AEC4E5;" scope="col">水</th>
+<th style="background: #AEC4E5;" scope="col">木</th>
+<th style="background: #AEC4E5;" scope="col">金</th>
+<th style="background: #AEC4E5; color:blue;" scope="col">土</th>
 </tr>
 EOS;
         //ボタンのHTML
