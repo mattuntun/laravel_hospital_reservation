@@ -31,6 +31,7 @@ Route::post('mypage/calendar_add_new_my_data_reservation','PersonMyPageControlle
 //患者マイページ⇒カレンダー⇒スケジュール画面
 Route::post('mypage/schedule_add_new_my_data_reservation','PersonMyPageController@ScheduleAddNewReservationFromMyPage');
 
+
 //カレンダーページ
 Route::get('/holiday','CalendarController@getHoliday');
 Route::post('/holiday','CalendarController@postHoliday');

@@ -55,13 +55,13 @@ EOS;
                     $this->html .= "<td>&nbsp;</td>";
                 } elseif($i ==0 || $i ==6 ){
                     $this->html .="<td style = color:#E9E9E9;>". $day . "</td>";
-                //} elseif ($day < $today+1){
-                //    $this->html .="<td style = color:#E9E9E9;>". $day . "</td>";
+                } elseif ($day < $today+1){
+                    $this->html .="<td style = color:#E9E9E9;>". $day . "</td>";
                 } else {
-                   $this->html .='<td><button type="submit" class="btn btn-lg btn-block" style="background: white;" onclick="location.href=/mypage/schedule_add_new_my_data_reservation">
-                   <input type="text" name = "target_day" value=' . $day . '>
-                   <input type="text" name = "target_month" value=' . $month . '>
-                   <input type="text" name = "target_year" value=' . $year . '>' . $day . "</button></td>"; 
+                   $this->html .='<td><button type="submit" class="btn btn-lg btn-block" style="background: white;" onclick="location.href=/mypage/schedule_add_new_my_data_reservation?target_day='.$day.'&target_month='.$target_month.'&target_year='.$target_year.'>
+                   <input type="text" name="target_day" value='.$day.'>
+                   <input type="text" name="target_month" value='.$month.'>
+                   <input type="text" name="target_year" value='.$year.'>'.$day.'</button></td>'; 
                 }
                $day++;
             }

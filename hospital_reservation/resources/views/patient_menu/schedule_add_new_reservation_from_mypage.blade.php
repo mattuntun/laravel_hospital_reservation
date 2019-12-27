@@ -2,12 +2,12 @@
 @extends('layout.layout_hospital_base')
 
 {{-- ヘッド --}}
-@section('web_title','新規予約追加カレンダー')
+@section('web_title','スケジュール')
 
 {{-- ヘッダー --}}
 @section('header_content')
         @include('sab_view_item.header',
-                  ['main_theme'=>'新規予約追加',
+                  ['main_theme'=>'',
                   'sub_theme'=>'ご希望の時間を選択してください'])
 
 
@@ -16,9 +16,9 @@
 {{-- メイン --}}
 @section('main_content')
 
-<h1>〇月〇日　予約空状況</h1>
+<h1>{{$target_year}}年{{$target_month}}月{{$target_day}}日　予約空状況</h1>
 
-{{$sample}}
+
 
 <table class="table table-bordered" style="background: white;         table-layout: fixed; width: 100%;">
     <tr>
