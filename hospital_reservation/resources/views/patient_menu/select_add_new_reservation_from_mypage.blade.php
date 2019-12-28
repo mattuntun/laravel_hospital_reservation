@@ -28,6 +28,7 @@
             <option value="{{$getDepartment->clinical_department}}">{{$getDepartment->clinical_department}}</option>
         @endforeach
         </select>
+        <input type="hidden" value = "{{$ptData->pt_id}}" name = "search_pt_id">
 
         @include('sab_view_item.small_tagged_buttom',
                             ['tagged_value'=>'',

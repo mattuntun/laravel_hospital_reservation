@@ -16,7 +16,13 @@
 {{-- メイン --}}
 @section('main_content')
 
-<h1>{{$target_year}}年{{$target_month}}月{{$target_day}}日　予約空状況</h1>
+
+<h1>{{$target_year}}年{{$target_month}}月{{$target_day}}日</h1>
+
+{{--<h1>{{$clinical_department}}予約状況</h1>
+<br>--}}
+<br>
+
 
 
 
