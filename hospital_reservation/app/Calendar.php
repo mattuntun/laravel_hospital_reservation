@@ -51,8 +51,10 @@ EOS;
                 //}elseif ($day < $today+1){
                 //    $this->html .="<td style = color:#E9E9E9;>". $day . "</td>";
                 } else {
-                   $this->html .='<td><button type="submit" class="btn btn-lg btn-block" style="background: white;" onclick="location.href=/mypage/schedule_add_new_my_data_reservation?target_day='.$day.'>
+                   $this->html .='<td><button type="submit" class="btn btn-lg btn-block" style="background: white;" onclick="location.href=/mypage/schedule_add_new_my_data_reservation?target_day='.$day.'&target_month='.$month.'&target_year='.$year.'>
                    <input type="hidden" name="target_day" value='.$day.'>
+                   <input type="hidden" name="target_month" value='.$month.'>
+                   <input type="hidden" name="target_year" value='.$year.'>
                    '.$day.'</button></td>'; 
                 }
                $day++;
