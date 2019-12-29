@@ -1,0 +1,68 @@
+<?php
+
+namespace App;
+
+class AfterNextCalendar
+{
+    private $html;  
+ //   private $button;
+   
+    //翌々月カレンダー
+    public function showMonthAfterNextCalendarTag(){
+        // 翌月の設定
+        $year = date("Y");
+        $month = date("m");
+        $today = date("d");
+        $after_next = strtotime('+2 month',mktime(0, 0, 0, $month, 1, $year));
+        $year_after_next = date("Y",$after_next);
+        $month_after_next = date("m",$after_next);
+        $month_after_next_firstWeekDay = date("w",$after_next);
+        $month_after_next_lastday = date("t", $after_next);
+        $month_after_next_day =  1 - $month_after_next_firstWeekDay;
+//テーブルのhtml
+$this->html = <<< EOS
+<h1>{$year_after_next}年{$month_after_next}月</h1>
+<table class="table table-bordered" style="background: white;">
+<tr>
+<th style="background: #AEC4E5; color:red;" scope="col">日</th>
+<th style="background: #AEC4E5;" scope="col">月</th>
+<th style="background: #AEC4E5;" scope="col">火</th>
+<th style="background: #AEC4E5;" scope="col">水</th>
+<th style="background: #AEC4E5;" scope="col">木</th>
+<th style="background: #AEC4E5;" scope="col">金</th>
+<th style="background: #AEC4E5; color:blue;" scope="col">土</th>
+</tr>
+EOS;
+        //ボタンのHTML
+//        $this->button = <<< EOF
+//<td><button type="submit" class="btn btn-lg btn-block" style="background: white;" onclick="location.href=/mypage/schedule_add_new_my_data_reservation">
+//EOF;
+        // カレンダーの日付部分を生成する
+        while ($month_after_next_day <= $month_after_next_lastday) {
+            $this->html .= "<tr>";
+            // 各週を描画するHTMLソースを生成する
+            for ($i = 0; $i < 7; $i++) {
+                if ($month_after_next_day <= 0 || $month_after_next_day > $month_after_next_lastday) {
+                    // 先月・来月の日付の場合
+                    $this->html .= "<td>&nbsp;</td>";
+                } elseif($i ==0 || $i ==6 ){
+                    $this->html .="<td style = color:#E9E9E9;>". $month_after_next_day . "</td>";
+                }  else {                    
+                    $this->html .="<td>
+                    <button type='submit' class='btn btn-lg btn-block' style='background: white;' onclick='location.href=/mypage/schedule_add_new_my_data_reservation>
+                    <input type='hidden' name='target_day' value='".$month_after_next_day."'>
+                    <input type='hidden' name='target_month' value='".$month_after_next."'>
+                    <input type='hidden' name='target_year' value='".$year_after_next."'>"
+                    .$month_after_next_day."</button></td>"; 
+                }
+                $month_after_next_day++;
+            }
+            $this->html .= "</tr>";
+        }
+        return $this->html .= '</table>';
+    }
+
+}
+ 
+                
+?>

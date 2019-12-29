@@ -9,6 +9,7 @@ use App\Models\ClinicalDepartmentsDataModel;
 use App\Models\Holiday;
 use App\Calendar;
 use App\NextCalendar;
+use App\AfterNextCalendar;
 
 class PersonMyPageController extends Controller
 {   
@@ -71,7 +72,14 @@ class PersonMyPageController extends Controller
         $next_cal = new NextCalendar();
         $next_tag = $next_cal->showNextMonthCalendarTag();
 
-        return view('patient_menu.calendar_add_new_reservation_from_mypage',['getDepartmentDatas'=>$getDepartmentDatas,'cal_tag' => $tag,'next_cal_tag'=>$next_tag,'ptDatas'=>$ptDatas]);
+        $after_next_cal = new AfterNextCalendar();
+        $after_next_tag = $after_next_cal->showMonthAfterNextCalendarTag();
+
+        return view('patient_menu.calendar_add_new_reservation_from_mypage',['getDepartmentDatas'=>$getDepartmentDatas,
+        'cal_tag' => $tag,
+        'next_cal_tag'=>$next_tag,
+        'after_next_cal_tag'=>$after_next_tag,
+        'ptDatas'=>$ptDatas]);
     }
 
     //マイページ⇒カレンダー⇒スケジュール

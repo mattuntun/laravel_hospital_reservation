@@ -45,7 +45,8 @@
         },
     "files": [
             "app/Calendar.php",
-            "app/NextCalendar.php"
+            "app/NextCalendar.php",
+            "app/AfterNextCalendar.php"
             ]
     },
     "minimum-stability": "dev",

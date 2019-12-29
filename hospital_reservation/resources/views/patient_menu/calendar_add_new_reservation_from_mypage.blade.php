@@ -32,6 +32,14 @@
 {!!$next_cal_tag!!}
 </form>
 
+<br>
+<br>
+
+<form action="/mypage/schedule_add_new_my_data_reservation" method =post>
+{{csrf_field()}}
+{!!$after_next_cal_tag!!}
+</form>
+
 @endsection
 
 {{-- フッター --}}
