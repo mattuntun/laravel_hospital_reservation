@@ -31,13 +31,6 @@ class Calendar
   <th style="background: #AEC4E5; color:blue;scope="col">土</th>
 </tr>
 EOS;
-        //ボタンのHTML
-//        $this->button = <<< EOF
-//<td><button type="submit" class="btn btn-lg btn-block" style="background: white;" onclick="location.href=/mypage/schedule_add_new_my_data_reservation">
-//<input type="text" name = "target_day" value={$day}>
-//<input type="hidden" name = "target_month" value={$month}>
-//<input type="hidden" name = "target_year" value={$year}>
-//EOF;
         // カレンダーの日付部分を生成する
         while ($day <= $lastDay) {
             $this->html .= "<tr>";
@@ -51,11 +44,12 @@ EOS;
                 //}elseif ($day < $today+1){
                 //    $this->html .="<td style = color:#E9E9E9;>". $day . "</td>";
                 } else {
-                   $this->html .='<td><button type="submit" class="btn btn-lg btn-block" style="background: white;" onclick="location.href=/mypage/schedule_add_new_my_data_reservation?target_day='.$day.'&target_month='.$month.'&target_year='.$year.'>
-                   <input type="hidden" name="target_day" value='.$day.'>
-                   <input type="hidden" name="target_month" value='.$month.'>
-                   <input type="hidden" name="target_year" value='.$year.'>
-                   '.$day.'</button></td>'; 
+                   $this->html .="<td>
+                   <button type='submit' class='btn btn-lg btn-block' style='background: white;' onclick='location.href=/mypage/schedule_add_new_my_data_reservation>
+                   <input type='hidden' name='target_day' value='".$day."'>
+                   <input type='hidden' name='target_month' value='".$month."'>
+                   <input type='hidden' name='target_year' value='".$year."'>"
+                   .$day."</button></td>"; 
                 }
                $day++;
             }
@@ -105,7 +99,7 @@ EOF;
                 } elseif($i ==0 || $i ==6 ){
                     $this->html .="<td style = color:#E9E9E9;>". $next_month_day . "</td>";
                 }  else {                    
-                    $this->html .=$this->button . $next_month_day . "</button></td>"; 
+                    $this->html .=$this->button.$next_month_day.'</button></td>'; 
                 }
                 $next_month_day++;
             }
@@ -156,7 +150,7 @@ EOF;
                 } elseif($i ==0 || $i ==6 ){
                     $this->html .="<td style = color:#E9E9E9;>". $month_after_next_day . "</td>";
                 }  else {                    
-                    $this->html .=$this->button . $month_after_next_day . "</button></td>"; 
+                    $this->html .=$this->button.$month_after_next_day.'</button></td>';
                 }
                 $month_after_next_day++;
             }

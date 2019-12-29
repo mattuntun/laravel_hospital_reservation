@@ -21,19 +21,15 @@
 
 <form action="/mypage/schedule_add_new_my_data_reservation" method =post>
 {{csrf_field()}}
-
-
 {!!$cal_tag!!}
+</form>
+
 <br>
 <br>
-location.href=/mypage/schedule_add_new_my_data_reservation?target_day=$day&target_month=$month&target_year=$year
 
-
+<form action="/mypage/schedule_add_new_my_data_reservation" method =post>
+{{csrf_field()}}
 {!!$next_cal_tag!!}
-<br>
-<br>
-
-{!!$after_next_cal_tag!!}
 </form>
 
 @endsection

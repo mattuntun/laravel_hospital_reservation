@@ -44,8 +44,9 @@
             "Tests\\": "tests/"
         },
     "files": [
-            "app/Calendar.php"
-        ]
+            "app/Calendar.php",
+            "app/NextCalendar.php"
+            ]
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
