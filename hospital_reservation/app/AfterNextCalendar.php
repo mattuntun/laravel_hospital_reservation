@@ -5,10 +5,9 @@ namespace App;
 class AfterNextCalendar
 {
     private $html;  
- //   private $button;
    
     //翌々月カレンダー
-    public function showMonthAfterNextCalendarTag(){
+    public function showMonthAfterNextCalendarTag($search_pt_id,$search_Department){
         // 翌月の設定
         $year = date("Y");
         $month = date("m");
@@ -19,6 +18,7 @@ class AfterNextCalendar
         $month_after_next_firstWeekDay = date("w",$after_next);
         $month_after_next_lastday = date("t", $after_next);
         $month_after_next_day =  1 - $month_after_next_firstWeekDay;
+
 //テーブルのhtml
 $this->html = <<< EOS
 <h1>{$year_after_next}年{$month_after_next}月</h1>
@@ -33,10 +33,7 @@ $this->html = <<< EOS
 <th style="background: #AEC4E5; color:blue;" scope="col">土</th>
 </tr>
 EOS;
-        //ボタンのHTML
-//        $this->button = <<< EOF
-//<td><button type="submit" class="btn btn-lg btn-block" style="background: white;" onclick="location.href=/mypage/schedule_add_new_my_data_reservation">
-//EOF;
+
         // カレンダーの日付部分を生成する
         while ($month_after_next_day <= $month_after_next_lastday) {
             $this->html .= "<tr>";
@@ -52,7 +49,9 @@ EOS;
                     <button type='submit' class='btn btn-lg btn-block' style='background: white;' onclick='location.href=/mypage/schedule_add_new_my_data_reservation>
                     <input type='hidden' name='target_day' value='".$month_after_next_day."'>
                     <input type='hidden' name='target_month' value='".$month_after_next."'>
-                    <input type='hidden' name='target_year' value='".$year_after_next."'>"
+                    <input type='hidden' name='target_year' value='".$year_after_next."'>
+                    <input type='hidden' name='search_pt_id' value = '".$search_pt_id."'>
+                    <input type='hidden' name='search_Department' value = '".$search_Department."'>"
                     .$month_after_next_day."</button></td>"; 
                 }
                 $month_after_next_day++;

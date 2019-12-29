@@ -16,9 +16,8 @@
 {{-- メイン --}}
 @section('main_content')
 
-@foreach($getDepartmentDatas as $getDepartmentData)
-@endforeach
-<h2>診療科：{{$getDepartmentDatas->clinical_department}}</h2>
+
+<h2>診療科：{{$search_Department}}</h2>
 
 <br>
 <br>

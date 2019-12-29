@@ -59,7 +59,7 @@ class PersonMyPageController extends Controller
         //選択した診療科情報を取得
         $search_Department =$request->selectedDepartment;
         $getDepartmentDatas = ClinicalDepartmentsDataModel::GetIndividualDepartmentdatas($search_Department);
-        
+
         //患者情報の呼び出し
         $pt_id = $request->search_pt_id;
         $ptDatas = PatientDataModel::getPtData($pt_id);
@@ -67,33 +67,43 @@ class PersonMyPageController extends Controller
 
         //カレンダーPHPの呼び出し
         $cal = new Calendar();
-        $tag = $cal->showCalendarTag();
+        $tag = $cal->showCalendarTag($pt_id,$search_Department);
         //翌月のカレンダー呼び出し
         $next_cal = new NextCalendar();
-        $next_tag = $next_cal->showNextMonthCalendarTag();
+        $next_tag = $next_cal->showNextMonthCalendarTag($pt_id,$search_Department);
         //翌々月のカレンダー呼び出し
         $after_next_cal = new AfterNextCalendar();
-        $after_next_tag = $after_next_cal->showMonthAfterNextCalendarTag();
+        $after_next_tag = $after_next_cal->showMonthAfterNextCalendarTag($pt_id,$search_Department);
 
         return view('patient_menu.calendar_add_new_reservation_from_mypage',['getDepartmentDatas'=>$getDepartmentDatas,
+        'ptDatas'=>$ptDatas,
         'cal_tag' => $tag,
         'next_cal_tag'=>$next_tag,
         'after_next_cal_tag'=>$after_next_tag,
-        'ptDatas'=>$ptDatas,
-        'getDepartmentDatas'=>$getDepartmentDatas]);
+        'search_Department'=>$search_Department
+        ]);
     }
 
     //マイページ⇒カレンダー⇒スケジュール
     public function ScheduleAddNewReservationFromMyPage(Request $request){
+        //日付データの取得
         $target_day = $request->target_day;
         $target_month = $request->target_month;
         $target_year = $request->target_year;
-        
-        
-        var_dump($target_day);
 
+        //患者IDと診療科名の取得
+        $search_pt_id = $request->search_pt_id;
+        $clinical_department = $request->search_Department;
+
+        //患者情報の取得
+        $ptDatas = PatientDataModel::getPtData($search_pt_id);
        
-        return view('patient_menu.schedule_add_new_reservation_from_mypage',['target_day'=>$target_day,'target_month'=>$target_month,'target_year'=>$target_year]);
+        return view('patient_menu.schedule_add_new_reservation_from_mypage',['target_day'=>$target_day,
+        'target_month'=>$target_month,
+        'target_year'=>$target_year,
+        'search_pt_id'=>$search_pt_id,
+        'ptDatas'=>$ptDatas,
+        'clinical_department'=>$clinical_department]);
     }
     
 }

@@ -15,12 +15,22 @@
 
 {{-- メイン --}}
 @section('main_content')
+@foreach($ptDatas as $ptData)
+            <div class = "PtInfo">
+                <h2>患者ID：{{$ptData->pt_id}}</h2>
+                <h2>患者氏名：{{$ptData->pt_last_name}}　{{$ptData->pt_name}}　様</h2>
+            </div>
+@endforeach
+
+<br>
 
 
-<h1>{{$target_year}}年{{$target_month}}月{{$target_day}}日</h1>
+<h1>選択日時：{{$target_year}}年{{$target_month}}月{{$target_day}}日</h1>
 
-{{--<h1>{{$clinical_department}}予約状況</h1>
-<br>--}}
+<br>
+
+<h1>{{$clinical_department}}予約状況</h1>
+<br>
 <br>
 
 
