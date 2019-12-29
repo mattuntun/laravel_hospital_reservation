@@ -59,7 +59,7 @@ class PersonMyPageController extends Controller
         //選択した診療科情報を取得
         $search_Department =$request->selectedDepartment;
         $getDepartmentDatas = ClinicalDepartmentsDataModel::GetIndividualDepartmentdatas($search_Department);
-
+        
         //患者情報の呼び出し
         $pt_id = $request->search_pt_id;
         $ptDatas = PatientDataModel::getPtData($pt_id);
@@ -68,10 +68,10 @@ class PersonMyPageController extends Controller
         //カレンダーPHPの呼び出し
         $cal = new Calendar();
         $tag = $cal->showCalendarTag();
-
+        //翌月のカレンダー呼び出し
         $next_cal = new NextCalendar();
         $next_tag = $next_cal->showNextMonthCalendarTag();
-
+        //翌々月のカレンダー呼び出し
         $after_next_cal = new AfterNextCalendar();
         $after_next_tag = $after_next_cal->showMonthAfterNextCalendarTag();
 
@@ -79,7 +79,8 @@ class PersonMyPageController extends Controller
         'cal_tag' => $tag,
         'next_cal_tag'=>$next_tag,
         'after_next_cal_tag'=>$after_next_tag,
-        'ptDatas'=>$ptDatas]);
+        'ptDatas'=>$ptDatas,
+        'getDepartmentDatas'=>$getDepartmentDatas]);
     }
 
     //マイページ⇒カレンダー⇒スケジュール

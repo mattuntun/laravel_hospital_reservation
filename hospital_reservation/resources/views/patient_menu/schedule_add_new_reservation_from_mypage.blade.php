@@ -24,8 +24,6 @@
 <br>
 
 
-
-
 <table class="table table-bordered" style="background: white;         table-layout: fixed; width: 100%;">
     <tr>
         <th style="background: #AEC4E5; text-align:center; width: 70%; font-size:30px;" scope="col">時間</th>

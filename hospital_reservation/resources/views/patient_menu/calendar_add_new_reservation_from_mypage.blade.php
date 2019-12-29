@@ -16,7 +16,21 @@
 {{-- メイン --}}
 @section('main_content')
 
+@foreach($getDepartmentDatas as $getDepartmentData)
+@endforeach
+<h2>診療科：{{$getDepartmentDatas->clinical_department}}</h2>
 
+<br>
+<br>
+
+@foreach($ptDatas as $ptData)
+            <div class = "PtInfo">
+                <h2>患者ID：{{$ptData->pt_id}}</h2>
+                <h2>患者氏名：{{$ptData->pt_last_name}}　{{$ptData->pt_name}}　様</h2>
+            </div>
+@endforeach
+<br>
+<br>
 
 
 <form action="/mypage/schedule_add_new_my_data_reservation" method =post>
