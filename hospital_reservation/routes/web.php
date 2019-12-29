@@ -18,18 +18,18 @@ return view('welcome');
 //indexページへ
 Route::get('index','Indexcontroller@Index');
 
-//患者マイページへ
+//マイページへ
 Route::post('index/mypage_menu','IndexController@MyPageMenu');
-//患者マイページから予約削除
+//マイページから予約削除
 Route::post('mypage/delete_my_data_reservation','PersonMyPageController@DeleteMyReservations');
-//患者マイページから予約削除完了
+//マイページから予約削除完了
 Route::post('mypage/complete_delete_my_data_reservation','PersonMyPageController@CompleteDeleteMyReservation');
-//患者マイページから新規予約の為の診療科選択
+//マイページから新規予約の為の診療科選択
 Route::post('mypage/select_add_new_my_data_reservation','PersonMyPageController@SelectAddNewReservationFromMyPage');
-//患者マイページからカレンダー画面
+//マイページからカレンダー画面
 Route::post('mypage/calendar_add_new_my_data_reservation','PersonMyPageController@CalendarAddNewReservationFromMyPage');
-//患者マイページ⇒カレンダー⇒スケジュール画面
-Route::get('mypage/schedule_add_new_my_data_reservation','PersonMyPageController@ScheduleAddNewReservationFromMyPage');
+//マイページ⇒カレンダー⇒スケジュール画面
+Route::post('mypage/schedule_add_new_my_data_reservation','PersonMyPageController@ScheduleAddNewReservationFromMyPage');
 
 
 //カレンダーページ

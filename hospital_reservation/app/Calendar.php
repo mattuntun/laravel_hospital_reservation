@@ -51,10 +51,9 @@ EOS;
                 //}elseif ($day < $today+1){
                 //    $this->html .="<td style = color:#E9E9E9;>". $day . "</td>";
                 } else {
-                   $this->html .='<td><button type="submit" class="btn btn-lg btn-block" style="background: white;" location.href=/mypage/schedule_add_new_my_data_reservation?target_day=$day">
-                   <input type="text" name="target_day" value='.$day.'>
-                   <input type="text" name="target_month" value='.$month.'>
-                   <input type="text" name="target_year" value='.$year.'>'.$day.'</button></td>'; 
+                   $this->html .='<td><button type="submit" class="btn btn-lg btn-block" style="background: white;" onclick="location.href=/mypage/schedule_add_new_my_data_reservation?target_day='.$day.'>
+                   <input type="hidden" name="target_day" value='.$day.'>
+                   '.$day.'</button></td>'; 
                 }
                $day++;
             }
@@ -62,6 +61,7 @@ EOS;
         }
         return $this->html .= '</table>';
     }
+    
     //翌月カレンダー
     public function showNextMonthCalendarTag(){
         // 翌月の設定

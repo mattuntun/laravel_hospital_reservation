@@ -74,7 +74,7 @@ class PersonMyPageController extends Controller
 
     //マイページ⇒カレンダー⇒スケジュール
     public function ScheduleAddNewReservationFromMyPage(Request $request){
-        $target_day = $request->input('target_day');
+        $target_day = $request->target_day;
         $target_month = $request->target_month;
         $target_year = $request->target_year;
         
