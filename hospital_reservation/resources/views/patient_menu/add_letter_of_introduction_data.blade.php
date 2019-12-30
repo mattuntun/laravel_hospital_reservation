@@ -32,7 +32,7 @@
                                 ['label_value'=>'紹介元医療機関名を入力',
                                 'label_id'=>'now_delete_pass',
                                 'input_id'=>'now_delete_pass',
-                                'input_name'=>'delete_pass_now'])
+                                'input_name'=>'introduction_hp'])
                  @endslot
 
                  @slot('form_item2')
@@ -41,23 +41,21 @@
                                 ['label_value'=>'紹介元医療機関の電話番号を入力',
                                 'label_id'=>'new_delete_pass',
                                 'input_id'=>'new_delete_pass',
-                                'input_name'=>'delete_password_new'])
+                                'input_name'=>'introduction_hp_tell'])
                  @endslot
 
                  @slot('form_item3')
                         {{-- 1箇所テキスト(ロング) --}}
-                        @include('sab_view_item.texts_one_long',
-                                ['label_value'=>'紹介元医療機関の最終受診日を入力してくださ',
-                                'label_id'=>'re_new_delete_pass',
-                                'input_id'=>'re_new_delete_pass',
-                                'input_name'=>'re_delete_password_new'])
+                        @include('sab_view_item.date_texts_one_long',
+                                ['label_value'=>'最終受信日を入力',
+                                'input_name'=>'introduct_lastDate']) 
                  @endslot
                        
                  @slot('form_item4')
                         {{-- タグ付ボタン(スモール) --}}
                         @include('sab_view_item.small_tagged_buttom',
-                                        ['tagged_value'=>'削除用パスワードを確認後、変更',
-                                        'buttom_value'=>'患者削除PASS変更',
+                                        ['tagged_value'=>'入力内容を確認後、登録',
+                                        'buttom_value'=>'登録',
                                         'buttom_access'=>'/index'])
                  @endslot
 

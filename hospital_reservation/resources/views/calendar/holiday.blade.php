@@ -3,7 +3,7 @@
 @section('content')
 <script>
   $( function() {
-    $( "#day" ).datepicker({dateFormat: 'yy-mm-dd'});
+    $( "#day" ).datepicker({dateFormat: 'yymmdd'});
   } );
 </script>
     <h1>休日設定</h1>
