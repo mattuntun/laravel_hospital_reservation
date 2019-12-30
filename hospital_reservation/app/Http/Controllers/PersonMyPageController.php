@@ -105,5 +105,10 @@ class PersonMyPageController extends Controller
         'ptDatas'=>$ptDatas,
         'clinical_department'=>$clinical_department]);
     }
+
+        //スケジュール⇒予約完了
+        public function CompleteAddNewReservation(Request $request){
+            return view('patient_menu.complete_add_new_reservation');
+        }
     
 }
