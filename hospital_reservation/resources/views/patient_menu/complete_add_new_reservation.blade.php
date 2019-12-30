@@ -14,31 +14,64 @@
 
 {{-- メイン --}}
 @section('main_content')
-<h2>該当患者情報</h2>
-<h3>予約情報を更新しました</h3>
-<h3></h3>
+<h2>予約情報更新</h2>
+<h3>予約情報を追加しました</h3>
+<br>
+
+
 
         {{-- このコンポーネントはformとしての囲い(メソッドはpost) --}}
         @component('component_item.form')
                  @slot('form_action')
-                 /index
+                 /mypage/add_letter_of_introduction_data
                  @endslot
 
-                 
+                 @slot('form_item2')
+                 <h3><b>紹介状を持参する患者様は紹介状登録ページへ進んで下さい。</b></h3>
+                 @endslot
+
                  @slot('form_item3')
                         {{-- タグ付ボタン(スモール) --}}
                         @include('sab_view_item.small_tagged_buttom',
-                                        ['tagged_value'=>'登録内容確認後、登録',
-                                        'buttom_value'=>'登録',
+                                        ['tagged_value'=>'',
+                                        'buttom_value'=>'紹介状登録',
+                                        'buttom_access'=>'/mypage/add_letter_of_introduction_data'])
+                 @endslot
+                 
+                 @slot('form_name')
+                 
+                 @endslot
+        @endcomponent
+
+        <br>
+        <br>
+        <br>
+
+        {{-- このコンポーネントはformとしての囲い(メソッドはpost) --}}
+        @component('component_item.form')
+                @slot('form_action')
+                        /index
+                        @endslot
+
+                @slot('form_item2')
+                        <h3><b>紹介状をお持ちでない方はマイページへ</b></h3>
+                 @endslot
+
+
+                 @slot('form_item3')
+                        {{-- タグ付ボタン(スモール) --}}
+                        @include('sab_view_item.small_tagged_buttom',
+                                        ['tagged_value'=>'',
+                                        'buttom_value'=>'マイページ',
                                         'buttom_access'=>'/index'])
                  @endslot
 
-                 @slot('form_name')
-                 pt_search
-                 @endslot
 
-         @endcomponent
-
+        
+                @slot('form_name')
+                 
+                @endslot
+        @endcomponent
 @endsection
 
 {{-- フッター --}}

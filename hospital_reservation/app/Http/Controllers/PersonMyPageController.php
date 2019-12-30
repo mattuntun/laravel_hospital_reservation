@@ -11,8 +11,7 @@ use App\Calendar;
 use App\NextCalendar;
 use App\AfterNextCalendar;
 
-class PersonMyPageController extends Controller
-{   
+class PersonMyPageController extends Controller{   
     
     //患者マイページから予約削除ページへのアクション
     public function DeleteMyReservations(Request $request){
@@ -108,7 +107,24 @@ class PersonMyPageController extends Controller
 
         //スケジュール⇒予約完了
         public function CompleteAddNewReservation(Request $request){
+            //患者IDと予約診療科名の取得
+            $search_pt_id =$request->search_pt_id;
+            $search_department = $request->clinical_department;
+
+            //診療日・時間の取得
+            $targetDate = $request->targetDate;
+            $targetTime = $request->targetTime;
+
+            //予約モデルの新規登録追加メソッド呼び出し
+            $addReserve = ReservationDataModel::AppReservationDatas($search_pt_id,$search_department,$targetDate,$targetTime);
+
             return view('patient_menu.complete_add_new_reservation');
         }
+
+            //スケジュール⇒予約完了⇒紹介状登録
+            public function AddLetterOfIntroductionData(Request $request){
+   
+                return view('patient_menu.add_letter_of_introduction_data');
+            }
     
 }

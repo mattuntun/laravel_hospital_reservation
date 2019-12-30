@@ -32,6 +32,8 @@ Route::post('mypage/calendar_add_new_my_data_reservation','PersonMyPageControlle
 Route::post('mypage/schedule_add_new_my_data_reservation','PersonMyPageController@ScheduleAddNewReservationFromMyPage');
 //スケジュール⇒予約完了
 Route::post('mypage/complete_add_new_reservation','PersonMyPageController@CompleteAddNewReservation');
+//予約完了⇒紹介状情報追加
+Route::post('mypage/add_letter_of_introduction_data','PersonMyPageController@AddLetterOfIntroductionData');
 
 
 //カレンダーページ

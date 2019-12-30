@@ -5,8 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class ReservationDataModel extends Model
-{
+class ReservationDataModel extends Model{
+
     protected $table = 'reservation_data';
     protected $primaryKey ='No';
     protected $guarded = array('No');
@@ -33,6 +33,27 @@ class ReservationDataModel extends Model
     public function ForeignPatientData(){
         return $this->belongsTo('App\Models\PatientDataModel','No');
     }
+
+    //予約情報の新規登録(患者マイページからの登録)
+    public static function AppReservationDatas($search_pt_id,$search_department,$reserveDate,$reserveTime){
+        $reservationDatas = new ReservationDataModel;
+        $reservationDatas->reservation_date = $reserveDate;
+        $reservationDatas->reservation_time = $reserveTime;
+        $reservationDatas->pt_id = $search_pt_id ;
+        $reservationDatas->reservation_department = $search_department;
+        $reservationDatas->letter_of_introduction = 2;
+        $reservationDatas->save();
+
+    }
+
+        //予約情報の紹介状の情報追加
+        public static function AppIntroduceDatas($search_pt_id,$search_department,$reserveDate,$reserveTime){
+            $reservationDatas = new ReservationDataModel;
+            $reservationDatas->orderBy('created_at', 'desc')->where('id',$serach_pt_id)->first();
+            $reservationDatas->letter_of_introduction = 1;
+
+            return $reservationDatas;
+            }
 
     //テーブルの診療予約の削除
     public static function DeleteReservationData($reservationNo){
