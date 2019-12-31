@@ -38,7 +38,8 @@ class PersonMyPageController extends Controller{
 
         //予約モデルの削除メソッドを呼び出し予約テーブル削除
         $deleteMyReservation = ReservationDataModel::DeleteReservationData($resNo);
-        return view('patient_menu.completed_delete_my_data_reservation',['serach_pt_id'=>$search_pt_id]);
+
+        return view('patient_menu.completed_delete_my_data_reservation',['serach_pt_id'=>$serach_pt_id]);
     }
 
     //マイページから新規予約の為の診療科選択画面
@@ -150,7 +151,7 @@ class PersonMyPageController extends Controller{
             $introduct_lastDate = $request->introduct_lastDate;
 
             //予約モデルの紹介状登録メソッド呼び出し
-            ReservationDataModel::AppIntroduceDatas($introduction_hp_name,$introduction_hp_tell,$introduct_lastDate);
+            ReservationDataModel::AppIntroduceDatas($pt_id,$introduction_hp_name,$introduction_hp_tell,$introduct_lastDate);
 
             return view('patient_menu.complete_add_letter_of_introduction',
             ['ptDatas'=>$ptDatas]);

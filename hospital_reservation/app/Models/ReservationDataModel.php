@@ -47,11 +47,11 @@ class ReservationDataModel extends Model{
     }
 
     //予約情報の紹介状の情報追加
-    public static function AppIntroduceDatas($hp_name,$hp_tell,$lastDate){
+    public static function AppIntroduceDatas($pt_id,$hp_name,$hp_tell,$lastDate){
 
         $reservationDatas = new ReservationDataModel;
-        $reservationDatas = ReservationDataModel::where('pt_id',12780)->orderBy('created_at', 'desc')->first();
-        $reservationDatas->letter_of_introduction = 1;
+        $reservationDatas = ReservationDataModel::where('pt_id',$pt_id)->orderBy('created_at', 'desc')->first();
+        $reservationDatas->letter_of_introduction = '1';
         $reservationDatas->introduction_hp  = $hp_name;
         $reservationDatas->introduction_hp_tell  = $hp_tell;
         $reservationDatas->introduction_hp_date  = $lastDate;

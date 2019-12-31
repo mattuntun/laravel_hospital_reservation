@@ -62,11 +62,12 @@
         {{-- このコンポーネントはformとしての囲い(メソッドはpost) --}}
         @component('component_item.form')
                 @slot('form_action')
-                        /index
+                        /index/mypage_menu
                         @endslot
 
                 @slot('form_item2')
                         <h3><b>紹介状をお持ちでない方はマイページへ</b></h3>
+                        <input type="hidden" name="search_pt_id" value="{{$ptData->pt_id}}">
                  @endslot
 
 
@@ -75,7 +76,7 @@
                         @include('sab_view_item.small_tagged_buttom',
                                         ['tagged_value'=>'',
                                         'buttom_value'=>'マイページ',
-                                        'buttom_access'=>'/index'])
+                                        'buttom_access'=>'/index/mypage_menu'])
                  @endslot
 
 
