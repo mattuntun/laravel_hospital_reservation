@@ -46,14 +46,19 @@ class ReservationDataModel extends Model{
 
     }
 
-        //予約情報の紹介状の情報追加
-        public static function AppIntroduceDatas($search_pt_id,$search_department,$reserveDate,$reserveTime){
-            $reservationDatas = new ReservationDataModel;
-            $reservationDatas->orderBy('created_at', 'desc')->where('id',$serach_pt_id)->first();
-            $reservationDatas->letter_of_introduction = 1;
+    //予約情報の紹介状の情報追加
+    public static function AppIntroduceDatas($hp_name,$hp_tell,$lastDate){
 
-            return $reservationDatas;
-            }
+        $reservationDatas = new ReservationDataModel;
+        $reservationDatas = ReservationDataModel::where('pt_id',12780)->orderBy('created_at', 'desc')->first();
+        $reservationDatas->letter_of_introduction = 1;
+        $reservationDatas->introduction_hp  = $hp_name;
+        $reservationDatas->introduction_hp_tell  = $hp_tell;
+        $reservationDatas->introduction_hp_date  = $lastDate;
+        $reservationDatas->save();
+
+        return $reservationDatas;
+        }
 
     //テーブルの診療予約の削除
     public static function DeleteReservationData($reservationNo){

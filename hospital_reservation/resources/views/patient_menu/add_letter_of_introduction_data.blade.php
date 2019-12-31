@@ -15,6 +15,13 @@
 
 {{-- メイン --}}
 @section('main_content')
+@foreach($ptDatas as $ptData)
+            <div class = "PtInfo">
+                <h2>患者ID：{{$ptData->pt_id}}</h2>
+                <h2>患者氏名：{{$ptData->pt_last_name}}　{{$ptData->pt_name}}　様</h2>
+            </div>
+@endforeach
+
 <h2>紹介状の情報を入力してください</h2>
 <br>
 <br>
@@ -23,7 +30,7 @@
         {{-- このコンポーネントはformとしての囲い(メソッドはpost) --}}
         @component('component_item.form')
                  @slot('form_action')
-                 /index
+                 /mypage/complete_add_letter_of_introduction_data
                  @endslot
 
                  @slot('form_item1')
@@ -52,11 +59,12 @@
                  @endslot
                        
                  @slot('form_item4')
+                 <input type="hidden" name="pt_id" value="{{$ptData->pt_id}}">
                         {{-- タグ付ボタン(スモール) --}}
                         @include('sab_view_item.small_tagged_buttom',
                                         ['tagged_value'=>'入力内容を確認後、登録',
                                         'buttom_value'=>'登録',
-                                        'buttom_access'=>'/index'])
+                                        'buttom_access'=>'/mypage/complete_add_letter_of_introduction_data'])
                  @endslot
 
                  @slot('form_name')

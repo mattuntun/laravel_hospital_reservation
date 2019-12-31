@@ -111,6 +111,9 @@ class PersonMyPageController extends Controller{
             $search_pt_id =$request->search_pt_id;
             $search_department = $request->clinical_department;
 
+            //患者情報の取得
+            $ptDatas = PatientDataModel::getPtData($search_pt_id);
+
             //診療日・時間の取得
             $targetDate = $request->targetDate;
             $targetTime = $request->targetTime;
@@ -118,13 +121,41 @@ class PersonMyPageController extends Controller{
             //予約モデルの新規登録追加メソッド呼び出し
             $addReserve = ReservationDataModel::AppReservationDatas($search_pt_id,$search_department,$targetDate,$targetTime);
 
-            return view('patient_menu.complete_add_new_reservation');
+            return view('patient_menu.complete_add_new_reservation',
+            ['ptDatas'=>$ptDatas]);
         }
 
-            //スケジュール⇒予約完了⇒紹介状登録
-            public function AddLetterOfIntroductionData(Request $request){
-   
-                return view('patient_menu.add_letter_of_introduction_data');
-            }
+        //スケジュール⇒予約完了⇒紹介状登録
+        public function AddLetterOfIntroductionData(Request $request){
+            //患者ID取得
+            $search_pt_id =$request->search_pt_id;
+            //患者情報の取得
+            $ptDatas = PatientDataModel::getPtData($search_pt_id);
+            
+            return view('patient_menu.add_letter_of_introduction_data',
+            ['ptDatas'=>$ptDatas]);
+        }
+
+        //スケジュール⇒予約完了⇒紹介状登録
+        public function CompleteAddLetterOfIntroductionData(Request $request){
+            //患者ＩＤ取得
+            $pt_id = $request->pt_id;
+            
+            //患者情報取得
+            $ptDatas = PatientDataModel::getPtData($pt_id);
+
+            //紹介状情報取得
+            $introduction_hp_name = $request->introduction_hp;
+            $introduction_hp_tell = $request->introduction_hp_tell;
+            $introduct_lastDate = $request->introduct_lastDate;
+
+            //予約モデルの紹介状登録メソッド呼び出し
+            ReservationDataModel::AppIntroduceDatas($introduction_hp_name,$introduction_hp_tell,$introduct_lastDate);
+
+            return view('patient_menu.complete_add_letter_of_introduction',
+            ['ptDatas'=>$ptDatas]);
+        
+        }
+        
     
 }
