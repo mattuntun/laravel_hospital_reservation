@@ -69,47 +69,22 @@
     @endforeach
 @endif
 
-<table>
-    <tr>
-        <td>
+
             <form action="/mypage/select_add_new_my_data_reservation" method = post>
             {{csrf_field()}}
             <input type="hidden"  name = "search_pt_id" value = "{{$ptData->pt_id}}"> 
                 {{-- タグ付きボタン(large) --}}
                 @include('sab_view_item.middle_submit_simple_buttom',
-                           ['middle_buttom_value'=>'新規ページ',
+                           ['middle_buttom_value'=>'新規予約追加',
                             'middle_buttom_access'=>'/mypage/select_add_new_my_data_reservation"'])
             </form>
-        </td><td></td><td></td><td></td><td>
-        <td>
-            <form action="" method = "post">
-                {{-- タグ付きボタン(large) --}}
-                @include('sab_view_item.middle_simple_buttom',
-                        ['middle_buttom_value'=>'未設定',
-                            'middle_buttom_access'=>'/index'])
-            </form>
-
-        </td>
-</tr>
-
-</table>
-
-
-
-
 @endsection
 
 
 {{-- フッター --}}
 
 @section('footer_content')
-        @include('sab_view_item.footer',
-                  ['footerbuttom1'=>'設定画面トップ',
-                  'footerbuttom2'=>'ログイン画面へ',
-                  'footerbuttom3'=>'医療機関HPトップ',
-                  'footerbuttom4'=>'予約情報ダウンロード',
-                  'footerbuttom_access1'=>'/index/hospital_menu',
-                  'footerbuttom_access2'=>'/index',
-                  'footerbuttom_access3'=>'/index',
-                  'footerbuttom_access4'=>'/index' ])
+
+        @include('sab_view_item.my_page_footer')
+
 @endsection
