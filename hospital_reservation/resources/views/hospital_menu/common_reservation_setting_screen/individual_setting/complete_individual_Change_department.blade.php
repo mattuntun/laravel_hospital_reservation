@@ -2,7 +2,7 @@
 @extends('layout.layout_hospital_base')
 
 {{-- ヘッド --}}
-@section('web_title','予約情報削除')
+@section('web_title','診療科設定変更')
 
 <style type="text/css">
 .PtInfo{
