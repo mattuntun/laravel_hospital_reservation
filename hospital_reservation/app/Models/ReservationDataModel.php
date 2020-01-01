@@ -31,6 +31,7 @@ class ReservationDataModel extends Model{
 
     //患者情報との外部接続(リレーション)
     public function ForeignPatientData(){
+
         return $this->belongsTo('App\Models\PatientDataModel','No');
     }
 
@@ -42,6 +43,9 @@ class ReservationDataModel extends Model{
         $reservationDatas->pt_id = $search_pt_id ;
         $reservationDatas->reservation_department = $search_department;
         $reservationDatas->letter_of_introduction = 2;
+        $reservationDatas->introduction_hp  = '紹介状の提出はありません';
+        $reservationDatas->introduction_hp_tell  = '090-9999-9999';
+        $reservationDatas->introduction_hp_date  = '19700101';
         $reservationDatas->save();
 
     }

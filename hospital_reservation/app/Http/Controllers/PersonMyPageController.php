@@ -18,14 +18,15 @@ class PersonMyPageController extends Controller{
         
         //患者IDから患者テーブル主キー獲得
         $ptNo = PatientDataModel::Mainkey($request->search_reservation_pt_id);
+
+        $test = ReservationDataModel::SearchReservation($request->search_reservation_No);
+
         
         //予約情報から患者情報をリレーション
         $pt_datas = ReservationDataModel::find($ptNo->No)->ForeignPatientData()->first();
-        //var_dump($pt_datas);
-                
+
         //予約情報を個別で取得
         $reservationDatas = ReservationDataModel::SearchReservationSeparate($request->search_reservation_No);
-        //var_dump($reservationDatas);
 
         return view('patient_menu.delete_my_data_reservation',['reservationDatas'=>$reservationDatas,'pt_datas'=>$pt_datas]);
     }
@@ -36,7 +37,7 @@ class PersonMyPageController extends Controller{
         $resNo=(int)$request->searchReservationNo;
         $serach_pt_id=(int)$request->searchPtId;
 
-        //予約モデルの削除メソッドを呼び出し予約テーブル削除
+          //予約モデルの削除メソッドを呼び出し予約テーブル削除
         $deleteMyReservation = ReservationDataModel::DeleteReservationData($resNo);
 
         return view('patient_menu.completed_delete_my_data_reservation',['serach_pt_id'=>$serach_pt_id]);
