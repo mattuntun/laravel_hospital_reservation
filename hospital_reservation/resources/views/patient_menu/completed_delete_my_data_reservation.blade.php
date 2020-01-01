@@ -34,6 +34,7 @@
 
 {{-- メイン --}}
 @section('main_content')
+
 <h2>
     <b>予約削除が実施されました。</b></br>
     マイページトップへ戻ってください
@@ -56,14 +57,10 @@
 
 {{-- フッター --}}
 
+{{-- フッター --}}
+
 @section('footer_content')
-        @include('sab_view_item.footer',
-                  ['footerbuttom1'=>'設定画面トップ',
-                  'footerbuttom2'=>'ログイン画面へ',
-                  'footerbuttom3'=>'医療機関HPトップ',
-                  'footerbuttom4'=>'予約情報ダウンロード',
-                  'footerbuttom_access1'=>'/index/hospital_menu',
-                  'footerbuttom_access2'=>'/index',
-                  'footerbuttom_access3'=>'/index',
-                  'footerbuttom_access4'=>'/index' ])
+
+        @include('sab_view_item.my_page_footer_completeDeleteMyPageOnly')
+
 @endsection

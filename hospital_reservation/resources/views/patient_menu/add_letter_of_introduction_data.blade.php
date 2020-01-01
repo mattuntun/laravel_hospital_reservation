@@ -54,7 +54,7 @@
                  @slot('form_item3')
                         {{-- 1箇所テキスト(ロング) --}}
                         @include('sab_view_item.date_texts_one_long',
-                                ['label_value'=>'最終受信日を入力',
+                                ['label_value'=>'最終受診日を入力',
                                 'input_name'=>'introduct_lastDate']) 
                  @endslot
                        
