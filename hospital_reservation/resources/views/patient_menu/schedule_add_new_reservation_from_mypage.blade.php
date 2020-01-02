@@ -72,8 +72,7 @@ $targetDate = strval($target_year).strval($target_month).strval(str_pad($target_
                 &#10005;     {{-- ✕ --}}
         @endswitch
 
-        {{$ScreenStatusParcent}}
-        {{$doubleCircleReservationValue}}
+        空き状況{{$ScreenStatusParcent}}％
         </td>
     </tr>
     <tr>

@@ -87,23 +87,27 @@ class PersonMyPageController extends Controller{
 
     //マイページ⇒カレンダー⇒スケジュール
     public function ScheduleAddNewReservationFromMyPage(Request $request){
+
+         //日付データの取得
+         $target_day = $request->target_day;
+         $target_month = $request->target_month;
+         $target_year = $request->target_year;
+ 
+         //診療年月日の文字列データ作成
+         $targetDate = strval($target_year).strval($target_month).strval(str_pad($target_day, 2, 0, STR_PAD_LEFT));
+
         //診療科モデルと予約モデルリレーション⇒予約数獲得
-        $numberOfReservation =ClinicalDepartmentsDataModel::ForeignReservation($request->search_Department);
+        $numberOfReservation =ClinicalDepartmentsDataModel::ForeignReservation($request->search_Department,$targetDate);
+
+        var_dump($numberOfReservation);
         
         //診療科モデルのパーセント計算を呼び出し
         $ScreenStatusParcent = ClinicalDepartmentsDataModel::Calculation($request->search_Department,$numberOfReservation);
-
-        var_dump($ScreenStatusParcent);
 
         //◎、〇、△の条件を呼び出し
         $doubleCircleReservationValue = 60;
         $circleReservationValue = 30;
         $triangleReservationValue = 0;
-
-        //日付データの取得
-        $target_day = $request->target_day;
-        $target_month = $request->target_month;
-        $target_year = $request->target_year;
 
         //患者IDと診療科名の取得
         $search_pt_id = $request->search_pt_id;
