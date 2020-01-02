@@ -89,11 +89,11 @@ class PersonMyPageController extends Controller{
     public function ScheduleAddNewReservationFromMyPage(Request $request){
         //診療科モデルと予約モデルリレーション⇒予約数獲得
         $numberOfReservation =ClinicalDepartmentsDataModel::ForeignReservation($request->search_Department);
-        var_dump($numberOfReservation);
-
-
+        
         //診療科モデルのパーセント計算を呼び出し
-        $ScreenStatusParcent = ClinicalDepartmentsDataModel::Calculation($request->search_Department);
+        $ScreenStatusParcent = ClinicalDepartmentsDataModel::Calculation($request->search_Department,$numberOfReservation);
+
+        var_dump($ScreenStatusParcent);
 
         //◎、〇、△の条件を呼び出し
         $doubleCircleReservationValue = 60;

@@ -83,9 +83,9 @@ class ClinicalDepartmentsDataModel extends Model
     }
 
     //空予約数　パーセントの計算
-    public static function Calculation($search_department){
+    public static function Calculation($search_department,$numberOfReservation){
         //フィールド値設定
-        $num =2;    //予約数(仮)
+        $num =$numberOfReservation;    //予約数(仮)
         
         //一コマあたりの最大数を抽出
         $maxValue = ClinicalDepartmentsDataModel::PossiblePeople($search_department);
@@ -102,11 +102,11 @@ class ClinicalDepartmentsDataModel extends Model
         
     }
 
-    //予約数を得る為のリレーション
+    //予約数を得る為のリレーション⇒予約数獲得
     public static function ForeignReservation($searchdepartment){
        // return $this->hasMany('App\Models\ReservationDataModel','reservation_department','clinical_department')->where('clinical_department',$searchdepartment)->first();
 
-       $foreignReservationDepartment = DB::table('clinical_departments')->where('clinical_departments.clinical_department',$searchdepartment)->join('reservation_data','clinical_departments.clinical_department','=','reservation_data.reservation_department')->get();
+       $foreignReservationDepartment = DB::table('clinical_departments')->where('clinical_departments.clinical_department',$searchdepartment)->join('reservation_data','clinical_departments.clinical_department','=','reservation_data.reservation_department')->get()->count();
        return $foreignReservationDepartment;
 
     }
