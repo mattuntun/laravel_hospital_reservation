@@ -87,6 +87,14 @@ class PersonMyPageController extends Controller{
 
     //マイページ⇒カレンダー⇒スケジュール
     public function ScheduleAddNewReservationFromMyPage(Request $request){
+
+        //診療科モデルのパーセント計算を呼び出し
+        $ScreenStatusParcent = ClinicalDepartmentsDataModel::Calculation();
+        //var_dump($ScreenStatusParcent);
+
+        //◎の基準値を呼び出し
+        $doubleCircleReservationValue = 50;
+
         //日付データの取得
         $target_day = $request->target_day;
         $target_month = $request->target_month;
@@ -98,13 +106,15 @@ class PersonMyPageController extends Controller{
 
         //患者情報の取得
         $ptDatas = PatientDataModel::getPtData($search_pt_id);
-       
+
         return view('patient_menu.schedule_add_new_reservation_from_mypage',['target_day'=>$target_day,
         'target_month'=>$target_month,
         'target_year'=>$target_year,
         'search_pt_id'=>$search_pt_id,
         'ptDatas'=>$ptDatas,
-        'clinical_department'=>$clinical_department]);
+        'clinical_department'=>$clinical_department,
+        'ScreenStatusParcent'=>$ScreenStatusParcent,
+        'doubleCircleReservationValue'=>$doubleCircleReservationValue]);
     }
 
         //スケジュール⇒予約完了

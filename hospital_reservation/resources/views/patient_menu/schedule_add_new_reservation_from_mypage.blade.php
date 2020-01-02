@@ -57,7 +57,13 @@ $targetDate = strval($target_year).strval($target_month).strval(str_pad($target_
                 <button type = "submit" class="btn btn-lg btn-block" style="background: white; font-size:30px;" onclick="location.href=/mypage/complete_add_new_reservation">10:00</button>
             </form>
         </td>
-        <td style="font-size:30px; text-align:center;">◎</td>
+        <td style="font-size:30px; text-align:center;">
+        @if($ScreenStatusParcent > $doubleCircleReservationValue)
+        ◎
+        @else
+        ✕
+        @endif
+        </td>
     </tr>
     <tr>
     <td>

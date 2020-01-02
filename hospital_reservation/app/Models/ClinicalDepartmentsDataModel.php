@@ -76,7 +76,21 @@ class ClinicalDepartmentsDataModel extends Model
 
     }
 
-    
+    //パーセントの計算
+    public static function Calculation(){
+        //フィールド値設定
+        $num =30;    //指定したい数値
+        $maxValue = 100;         //マックスの値
+        $ScreenPar = 50;   //指定したいパーセント
+
+        //処理
+        $par = ($num / $maxValue) * 100;  //分母の100は要変更
+        $parcent = floor($par); // 切捨て整数化
+        return $parcent;
+        
+        
+        
+    }
 }
 
 
