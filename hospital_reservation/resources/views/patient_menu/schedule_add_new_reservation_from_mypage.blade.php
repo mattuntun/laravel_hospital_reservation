@@ -58,11 +58,20 @@ $targetDate = strval($target_year).strval($target_month).strval(str_pad($target_
             </form>
         </td>
         <td style="font-size:30px; text-align:center;">
-        @if($ScreenStatusParcent > $doubleCircleReservationValue)
-        ◎
-        @else
-        ✕
-        @endif 
+        @switch($ScreenStatusParcent)
+            @case($ScreenStatusParcent >= $doubleCircleReservationValue)
+                &#9678;      {{-- ◎ --}}
+                @break
+            @case($ScreenStatusParcent >= $circleReservationValue)
+                &#9675;      {{-- 〇 --}}
+                @break
+            @case($ScreenStatusParcent >= $triangleReservationValue)
+                &#9651;      {{-- △ --}}
+                @break
+            @default
+                &#10005;     {{-- ✕ --}}
+        @endswitch
+
         {{$ScreenStatusParcent}}
         {{$doubleCircleReservationValue}}
         </td>

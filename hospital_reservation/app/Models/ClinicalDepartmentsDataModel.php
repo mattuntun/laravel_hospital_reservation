@@ -82,20 +82,24 @@ class ClinicalDepartmentsDataModel extends Model
         return $departmentReseravationMax;
     }
 
-    //パーセントの計算
+    //空予約数　パーセントの計算
     public static function Calculation($search_department){
         //フィールド値設定
-        $num =2;    //予約数
-        $ScreenPar = 50;   //指定したいパーセント
-
+        $num =2;    //予約数(仮)
+        
         //一コマあたりの最大数を抽出
         $maxValue = ClinicalDepartmentsDataModel::PossiblePeople($search_department);
         $intMaxValue = $maxValue->possible_peoples;
         
-        //処理
+        //予約状況パーセント処理
         $par = ($num / $intMaxValue) * 100;  //分母の100は要変更
         $parcent = floor($par); // 切捨て整数化
-        return $parcent;
+
+        //空き状況のパーセント処理
+        $possibleParcent = 100 - $parcent;
+        
+        return $possibleParcent;
+        
     }
 }
 

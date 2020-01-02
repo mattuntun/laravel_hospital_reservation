@@ -90,10 +90,11 @@ class PersonMyPageController extends Controller{
 
         //診療科モデルのパーセント計算を呼び出し
         $ScreenStatusParcent = ClinicalDepartmentsDataModel::Calculation($request->search_Department);
-        //var_dump($ScreenStatusParcent);
 
-        //◎の基準値を呼び出し
-        $doubleCircleReservationValue = 50;
+        //◎、〇、△の条件を呼び出し
+        $doubleCircleReservationValue = 60;
+        $circleReservationValue = 30;
+        $triangleReservationValue = 0;
 
         //日付データの取得
         $target_day = $request->target_day;
@@ -114,7 +115,9 @@ class PersonMyPageController extends Controller{
         'ptDatas'=>$ptDatas,
         'clinical_department'=>$clinical_department,
         'ScreenStatusParcent'=>$ScreenStatusParcent,
-        'doubleCircleReservationValue'=>$doubleCircleReservationValue]);
+        'doubleCircleReservationValue'=>$doubleCircleReservationValue,
+        'circleReservationValue'=>$circleReservationValue,
+        'triangleReservationValue'=>$triangleReservationValue]);
     }
 
         //スケジュール⇒予約完了
