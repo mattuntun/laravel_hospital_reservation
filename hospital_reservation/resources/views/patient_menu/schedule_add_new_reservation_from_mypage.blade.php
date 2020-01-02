@@ -62,7 +62,9 @@ $targetDate = strval($target_year).strval($target_month).strval(str_pad($target_
         ◎
         @else
         ✕
-        @endif
+        @endif 
+        {{$ScreenStatusParcent}}
+        {{$doubleCircleReservationValue}}
         </td>
     </tr>
     <tr>

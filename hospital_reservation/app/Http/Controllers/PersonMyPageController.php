@@ -89,7 +89,7 @@ class PersonMyPageController extends Controller{
     public function ScheduleAddNewReservationFromMyPage(Request $request){
 
         //診療科モデルのパーセント計算を呼び出し
-        $ScreenStatusParcent = ClinicalDepartmentsDataModel::Calculation();
+        $ScreenStatusParcent = ClinicalDepartmentsDataModel::Calculation($request->search_Department);
         //var_dump($ScreenStatusParcent);
 
         //◎の基準値を呼び出し

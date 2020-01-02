@@ -76,20 +76,26 @@ class ClinicalDepartmentsDataModel extends Model
 
     }
 
+    //予約可能数の抽出
+    public static function PossiblePeople($search_department){
+        $departmentReseravationMax = DB::table('clinical_departments')->where('clinical_department',$search_department)->first('possible_peoples');
+        return $departmentReseravationMax;
+    }
+
     //パーセントの計算
-    public static function Calculation(){
+    public static function Calculation($search_department){
         //フィールド値設定
-        $num =30;    //指定したい数値
-        $maxValue = 100;         //マックスの値
+        $num =2;    //予約数
         $ScreenPar = 50;   //指定したいパーセント
 
+        //一コマあたりの最大数を抽出
+        $maxValue = ClinicalDepartmentsDataModel::PossiblePeople($search_department);
+        $intMaxValue = $maxValue->possible_peoples;
+        
         //処理
-        $par = ($num / $maxValue) * 100;  //分母の100は要変更
+        $par = ($num / $intMaxValue) * 100;  //分母の100は要変更
         $parcent = floor($par); // 切捨て整数化
         return $parcent;
-        
-        
-        
     }
 }
 
