@@ -101,6 +101,15 @@ class ClinicalDepartmentsDataModel extends Model
         return $possibleParcent;
         
     }
+
+    //予約数を得る為のリレーション
+    public static function ForeignReservation($searchdepartment){
+       // return $this->hasMany('App\Models\ReservationDataModel','reservation_department','clinical_department')->where('clinical_department',$searchdepartment)->first();
+
+       $foreignReservationDepartment = DB::table('clinical_departments')->where('clinical_departments.clinical_department',$searchdepartment)->join('reservation_data','clinical_departments.clinical_department','=','reservation_data.reservation_department')->get();
+       return $foreignReservationDepartment;
+
+    }
 }
 
 

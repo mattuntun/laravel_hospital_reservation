@@ -87,6 +87,10 @@ class PersonMyPageController extends Controller{
 
     //マイページ⇒カレンダー⇒スケジュール
     public function ScheduleAddNewReservationFromMyPage(Request $request){
+        //診療科モデルと予約モデルリレーション⇒予約数獲得
+        $numberOfReservation =ClinicalDepartmentsDataModel::ForeignReservation($request->search_Department);
+        var_dump($numberOfReservation);
+
 
         //診療科モデルのパーセント計算を呼び出し
         $ScreenStatusParcent = ClinicalDepartmentsDataModel::Calculation($request->search_Department);
