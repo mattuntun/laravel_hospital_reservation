@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
@@ -12,9 +12,16 @@ class PatientDataModel extends Model
     protected $guarded = array('No');
 
     //予約情報との外部接続
+    //public function ForeignReservationData(){
+    //    return $this->hasMany('App\Models\ReservationDataModel','No');
+    //}
+
+    //予約情報との外部接続
     public function ForeignReservationData(){
-        return $this->hasMany('App\Models\ReservationDataModel','No');
-    }
+        return $this->hasMany('App\Models\ReservationDataModel');
+}
+
+
 
     //患者情報の取得
     public static function getPtData($search_pt_id){
