@@ -9,10 +9,25 @@ $factory->define(App\Reservation_data::class, function (Faker $faker) {
     $ptIds = App\pt_data::pluck('pt_id')->all();
     $reservationDepartments = App\clinical_departments::pluck('clinical_department')->all();
     
+    $sample_days = [
+        '20190120',
+        '20190121',
+        '20190122',
+    ];
+    $sample_times = [
+        '09:00:00',
+        '10:00:00',
+        '11:00:00',
+        '12:00:00',
+    ];
+
+
     return [
             //'data_maked_day'=>$faker->date($format = 'Y-m-d', $max = 'now'),
-            'reservation_date'=>$faker->date($format = 'Y-m-d', $max = 'now'),
-            'reservation_time'=>$faker->time($format = 'H:i:s', $max = 'now'),
+            //'reservation_date'=>$faker->date($format = 'Y-m-d', $max = 'now'),
+            'reservation_date'=>$faker->randomElement($sample_days) ,
+            //'reservation_time'=>$faker->time($format = 'H:i:s', $max = 'now'),
+            'reservation_time'=>$faker->randomElement($sample_times),
             'reservation_department'=>$faker->randomElement($reservationDepartments),
             'pt_id'=>$faker->randomElement($ptIds),
             'letter_of_introduction'=>$faker->numberBetween(1,2),
