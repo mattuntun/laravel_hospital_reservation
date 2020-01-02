@@ -53,30 +53,59 @@ $targetDate = strval($target_year).strval($target_month).strval(str_pad($target_
             <input type="hidden" name = "search_pt_id" value = "{{$ptData->pt_id}}">
             <input type="hidden" name = "clinical_department" value = "{{$clinical_department}}">
             <input type="hidden" name = "targetDate" value= "{{$targetDate}}">
-            <input type="hidden" name = "targetTime" value= "100000">            
-                <button type = "submit" class="btn btn-lg btn-block" style="background: white; font-size:30px;" onclick="location.href=/mypage/complete_add_new_reservation">10:00</button>
+            <input type="hidden" name = "targetTime" value= "090000">            
+                <button type = "submit" class="btn btn-lg btn-block" style="background: white; font-size:30px;" onclick="location.href=/mypage/complete_add_new_reservation">09:00</button>
             </form>
         </td>
         <td style="font-size:30px; text-align:center;">
-        @switch($ScreenStatusParcent)
-            @case($ScreenStatusParcent >= $doubleCircleReservationValue)
+        @switch($ScreenStatusParcent09)
+            @case($ScreenStatusParcent09 >= $doubleCircleReservationValue)
                 &#9678;      {{-- ◎ --}}
                 @break
-            @case($ScreenStatusParcent >= $circleReservationValue)
+            @case($ScreenStatusParcent09 >= $circleReservationValue)
                 &#9675;      {{-- 〇 --}}
                 @break
-            @case($ScreenStatusParcent >= $triangleReservationValue)
+            @case($ScreenStatusParcent09 >= $triangleReservationValue)
                 &#9651;      {{-- △ --}}
                 @break
             @default
                 &#10005;     {{-- ✕ --}}
         @endswitch
 
-        空き状況{{$ScreenStatusParcent}}％
+        {{$ScreenStatusParcent09}}％完成時は％表示消す
         </td>
     </tr>
     <tr>
-    <td>
+        <td>
+            <form action="/mypage/complete_add_new_reservation" method="post">
+            {{csrf_field()}}
+            <input type="hidden" name = "search_pt_id" value = "{{$ptData->pt_id}}">
+            <input type="hidden" name = "clinical_department" value = "{{$clinical_department}}">
+            <input type="hidden" name = "targetDate" value= "{{$targetDate}}">
+            <input type="hidden" name = "targetTime" value= "100000">            
+                <button type = "submit" class="btn btn-lg btn-block" style="background: white; font-size:30px;" onclick="location.href=/mypage/complete_add_new_reservation">10:00</button>
+            </form>
+        </td>
+        <td style="font-size:30px; text-align:center;">
+        @switch($ScreenStatusParcent10)
+            @case($ScreenStatusParcent10 >= $doubleCircleReservationValue)
+                &#9678;      {{-- ◎ --}}
+                @break
+            @case($ScreenStatusParcent10 >= $circleReservationValue)
+                &#9675;      {{-- 〇 --}}
+                @break
+            @case($ScreenStatusParcent10 >= $triangleReservationValue)
+                &#9651;      {{-- △ --}}
+                @break
+            @default
+                &#10005;     {{-- ✕ --}}
+        @endswitch
+
+        {{$ScreenStatusParcent10}}％
+        </td>
+    </tr>
+    <tr>
+        <td>
             <form action="/mypage/complete_add_new_reservation" method="post">
             {{csrf_field()}}
             <input type="hidden" name = "search_pt_id" value = "{{$ptData->pt_id}}">
@@ -86,10 +115,26 @@ $targetDate = strval($target_year).strval($target_month).strval(str_pad($target_
                 <button type = "submit" class="btn btn-lg btn-block" style="background: white; font-size:30px;" onclick="location.href=/mypage/complete_add_new_reservation">11:00</button>
             </form>
         </td>
-        <td style="font-size:30px; text-align:center;">◎</td>
+        <td style="font-size:30px; text-align:center;">
+        @switch($ScreenStatusParcent11)
+            @case($ScreenStatusParcent11 >= $doubleCircleReservationValue)
+                &#9678;      {{-- ◎ --}}
+                @break
+            @case($ScreenStatusParcent11 >= $circleReservationValue)
+                &#9675;      {{-- 〇 --}}
+                @break
+            @case($ScreenStatusParcent11 >= $triangleReservationValue)
+                &#9651;      {{-- △ --}}
+                @break
+            @default
+                &#10005;     {{-- ✕ --}}
+        @endswitch
+
+        {{$ScreenStatusParcent11}}％
+        </td>
     </tr>
     <tr>
-    <td>
+        <td>
             <form action="/mypage/complete_add_new_reservation" method="post">
             {{csrf_field()}}
             <input type="hidden" name = "search_pt_id" value = "{{$ptData->pt_id}}">
@@ -99,10 +144,26 @@ $targetDate = strval($target_year).strval($target_month).strval(str_pad($target_
                 <button type = "submit" class="btn btn-lg btn-block" style="background: white; font-size:30px;" onclick="location.href=/mypage/complete_add_new_reservation">12:00</button>
             </form>
         </td>
-        <td style="font-size:30px; text-align:center;">◎</td>
+        <td style="font-size:30px; text-align:center;">
+        @switch($ScreenStatusParcent12)
+            @case($ScreenStatusParcent12 >= $doubleCircleReservationValue)
+                &#9678;      {{-- ◎ --}}
+                @break
+            @case($ScreenStatusParcent12 >= $circleReservationValue)
+                &#9675;      {{-- 〇 --}}
+                @break
+            @case($ScreenStatusParcent12 >= $triangleReservationValue)
+                &#9651;      {{-- △ --}}
+                @break
+            @default
+                &#10005;     {{-- ✕ --}}
+        @endswitch
+
+        {{$ScreenStatusParcent12}}％
+        </td>
     </tr>
     <tr>
-    <td>
+        <td>
             <form action="/mypage/complete_add_new_reservation" method="post">
             {{csrf_field()}}
             <input type="hidden" name = "search_pt_id" value = "{{$ptData->pt_id}}">
@@ -112,10 +173,26 @@ $targetDate = strval($target_year).strval($target_month).strval(str_pad($target_
                 <button type = "submit" class="btn btn-lg btn-block" style="background: white; font-size:30px;" onclick="location.href=/mypage/complete_add_new_reservation">13:00</button>
             </form>
         </td>
-        <td style="font-size:30px; text-align:center;">◎</td>
+        <td style="font-size:30px; text-align:center;">
+        @switch($ScreenStatusParcent13)
+            @case($ScreenStatusParcent13 >= $doubleCircleReservationValue)
+                &#9678;      {{-- ◎ --}}
+                @break
+            @case($ScreenStatusParcent13 >= $circleReservationValue)
+                &#9675;      {{-- 〇 --}}
+                @break
+            @case($ScreenStatusParcent13 >= $triangleReservationValue)
+                &#9651;      {{-- △ --}}
+                @break
+            @default
+                &#10005;     {{-- ✕ --}}
+        @endswitch
+
+        {{$ScreenStatusParcent13}}％
+        </td>
     </tr>
     <tr>
-    <td>
+        <td>
             <form action="/mypage/complete_add_new_reservation" method="post">
             {{csrf_field()}}
             <input type="hidden" name = "search_pt_id" value = "{{$ptData->pt_id}}">
@@ -125,10 +202,26 @@ $targetDate = strval($target_year).strval($target_month).strval(str_pad($target_
                 <button type = "submit" class="btn btn-lg btn-block" style="background: white; font-size:30px;" onclick="location.href=/mypage/complete_add_new_reservation">14:00</button>
             </form>
         </td>
-        <td style="font-size:30px; text-align:center;">◎</td>
+        <td style="font-size:30px; text-align:center;">
+        @switch($ScreenStatusParcent14)
+            @case($ScreenStatusParcent14 >= $doubleCircleReservationValue)
+                &#9678;      {{-- ◎ --}}
+                @break
+            @case($ScreenStatusParcent14 >= $circleReservationValue)
+                &#9675;      {{-- 〇 --}}
+                @break
+            @case($ScreenStatusParcent14 >= $triangleReservationValue)
+                &#9651;      {{-- △ --}}
+                @break
+            @default
+                &#10005;     {{-- ✕ --}}
+        @endswitch
+
+        {{$ScreenStatusParcent14}}％
+        </td>
     </tr>
     <tr>
-    <td>
+        <td>
             <form action="/mypage/complete_add_new_reservation" method="post">
             {{csrf_field()}}
             <input type="hidden" name = "search_pt_id" value = "{{$ptData->pt_id}}">
@@ -138,10 +231,26 @@ $targetDate = strval($target_year).strval($target_month).strval(str_pad($target_
                 <button type = "submit" class="btn btn-lg btn-block" style="background: white; font-size:30px;" onclick="location.href=/mypage/complete_add_new_reservation">15:00</button>
             </form>
         </td>
-        <td style="font-size:30px; text-align:center;">◎</td>
+        <td style="font-size:30px; text-align:center;">
+        @switch($ScreenStatusParcent15)
+            @case($ScreenStatusParcent15 >= $doubleCircleReservationValue)
+                &#9678;      {{-- ◎ --}}
+                @break
+            @case($ScreenStatusParcent15 >= $circleReservationValue)
+                &#9675;      {{-- 〇 --}}
+                @break
+            @case($ScreenStatusParcent15 >= $triangleReservationValue)
+                &#9651;      {{-- △ --}}
+                @break
+            @default
+                &#10005;     {{-- ✕ --}}
+        @endswitch
+
+        {{$ScreenStatusParcent15}}％
+        </td>
     </tr>
     <tr>
-    <td>
+        <td>
             <form action="/mypage/complete_add_new_reservation" method="post">
             {{csrf_field()}}
             <input type="hidden" name = "search_pt_id" value = "{{$ptData->pt_id}}">
@@ -151,10 +260,26 @@ $targetDate = strval($target_year).strval($target_month).strval(str_pad($target_
                 <button type = "submit" class="btn btn-lg btn-block" style="background: white; font-size:30px;" onclick="location.href=/mypage/complete_add_new_reservation">16:00</button>
             </form>
         </td>
-        <td style="font-size:30px; text-align:center;">◎</td>
+        <td style="font-size:30px; text-align:center;">
+        @switch($ScreenStatusParcent16)
+            @case($ScreenStatusParcent16 >= $doubleCircleReservationValue)
+                &#9678;      {{-- ◎ --}}
+                @break
+            @case($ScreenStatusParcent16 >= $circleReservationValue)
+                &#9675;      {{-- 〇 --}}
+                @break
+            @case($ScreenStatusParcent16 >= $triangleReservationValue)
+                &#9651;      {{-- △ --}}
+                @break
+            @default
+                &#10005;     {{-- ✕ --}}
+        @endswitch
+
+        {{$ScreenStatusParcent16}}％
+        </td>
     </tr>
     <tr>
-    <td>
+        <td>
             <form action="/mypage/complete_add_new_reservation" method="post">
             {{csrf_field()}}
             <input type="hidden" name = "search_pt_id" value = "{{$ptData->pt_id}}">
@@ -164,10 +289,26 @@ $targetDate = strval($target_year).strval($target_month).strval(str_pad($target_
                 <button type = "submit" class="btn btn-lg btn-block" style="background: white; font-size:30px;" onclick="location.href=/mypage/complete_add_new_reservation">17:00</button>
             </form>
         </td>
-        <td style="font-size:30px; text-align:center;">◎</td>
+        <td style="font-size:30px; text-align:center;">
+        @switch($ScreenStatusParcent17)
+            @case($ScreenStatusParcent17 >= $doubleCircleReservationValue)
+                &#9678;      {{-- ◎ --}}
+                @break
+            @case($ScreenStatusParcent17 >= $circleReservationValue)
+                &#9675;      {{-- 〇 --}}
+                @break
+            @case($ScreenStatusParcent17 >= $triangleReservationValue)
+                &#9651;      {{-- △ --}}
+                @break
+            @default
+                &#10005;     {{-- ✕ --}}
+        @endswitch
+
+        {{$ScreenStatusParcent17}}％
+        </td>
     </tr>
     <tr>
-    <td>
+        <td>
             <form action="/mypage/complete_add_new_reservation" method="post">
             {{csrf_field()}}
             <input type="hidden" name = "search_pt_id" value = "{{$ptData->pt_id}}">
@@ -177,21 +318,25 @@ $targetDate = strval($target_year).strval($target_month).strval(str_pad($target_
                 <button type = "submit" class="btn btn-lg btn-block" style="background: white; font-size:30px;" onclick="location.href=/mypage/complete_add_new_reservation">18:00</button>
             </form>
         </td>
-        <td style="font-size:30px; text-align:center;">◎</td>
-    </tr>
-    <tr>
-    <td>
-            <form action="/mypage/complete_add_new_reservation" method="post">
-            {{csrf_field()}}
-            <input type="hidden" name = "search_pt_id" value = "{{$ptData->pt_id}}">
-            <input type="hidden" name = "clinical_department" value = "{{$clinical_department}}">
-            <input type="hidden" name = "targetDate" value= "{{$targetDate}}">
-            <input type="hidden" name = "targetTime" value= "190000">            
-                <button type = "submit" class="btn btn-lg btn-block" style="background: white; font-size:30px;" onclick="location.href=/mypage/complete_add_new_reservation">19:00</button>
-            </form>
+        <td style="font-size:30px; text-align:center;">
+        @switch($ScreenStatusParcent18)
+            @case($ScreenStatusParcent18 >= $doubleCircleReservationValue)
+                &#9678;      {{-- ◎ --}}
+                @break
+            @case($ScreenStatusParcent18 >= $circleReservationValue)
+                &#9675;      {{-- 〇 --}}
+                @break
+            @case($ScreenStatusParcent18 >= $triangleReservationValue)
+                &#9651;      {{-- △ --}}
+                @break
+            @default
+                &#10005;     {{-- ✕ --}}
+        @endswitch
+
+        {{$ScreenStatusParcent18}}％
         </td>
-        <td style="font-size:30px; text-align:center;">◎</td>
     </tr>
+    
 </table>
 
 </form>

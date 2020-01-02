@@ -115,6 +115,149 @@ class ClinicalDepartmentsDataModel extends Model
        return $foreignReservationDepartment;
 
     }
+
+    public static function OclockForeignReservation09($searchdepartment,$targetDate){
+        $foreignReservationDepartment = DB::table('clinical_departments')
+                                            ->where('clinical_departments.clinical_department',$searchdepartment)
+                                            ->join('reservation_data','clinical_departments.clinical_department',
+                                                    '=',
+                                                    'reservation_data.reservation_department')
+                                            ->where('reservation_data.reservation_date',$targetDate)
+                                            ->where('reservation_data.reservation_time','09:00:00')
+                                            ->get()
+                                            ->count();
+       return $foreignReservationDepartment;
+
+    }
+
+    public static function OclockForeignReservation10($searchdepartment,$targetDate){
+        $foreignReservationDepartment = DB::table('clinical_departments')
+                                            ->where('clinical_departments.clinical_department',$searchdepartment)
+                                            ->join('reservation_data','clinical_departments.clinical_department',
+                                                    '=',
+                                                    'reservation_data.reservation_department')
+                                            ->where('reservation_data.reservation_date',$targetDate)
+                                            ->where('reservation_data.reservation_time','10:00:00')
+                                            ->get()
+                                            ->count();
+       return $foreignReservationDepartment;
+
+    }
+
+    public static function OclockForeignReservation11($searchdepartment,$targetDate){
+        $foreignReservationDepartment = DB::table('clinical_departments')
+                                            ->where('clinical_departments.clinical_department',$searchdepartment)
+                                            ->join('reservation_data','clinical_departments.clinical_department',
+                                                    '=',
+                                                    'reservation_data.reservation_department')
+                                            ->where('reservation_data.reservation_date',$targetDate)
+                                            ->where('reservation_data.reservation_time','11:00:00')
+                                            ->get()
+                                            ->count();
+       return $foreignReservationDepartment;
+
+    }
+
+    public static function OclockForeignReservation12($searchdepartment,$targetDate){
+        $foreignReservationDepartment = DB::table('clinical_departments')
+                                            ->where('clinical_departments.clinical_department',$searchdepartment)
+                                            ->join('reservation_data','clinical_departments.clinical_department',
+                                                    '=',
+                                                    'reservation_data.reservation_department')
+                                            ->where('reservation_data.reservation_date',$targetDate)
+                                            ->where('reservation_data.reservation_time','12:00:00')
+                                            ->get()
+                                            ->count();
+       return $foreignReservationDepartment;
+
+    }
+
+    public static function OclockForeignReservation13($searchdepartment,$targetDate){
+        $foreignReservationDepartment = DB::table('clinical_departments')
+                                            ->where('clinical_departments.clinical_department',$searchdepartment)
+                                            ->join('reservation_data','clinical_departments.clinical_department',
+                                                    '=',
+                                                    'reservation_data.reservation_department')
+                                            ->where('reservation_data.reservation_date',$targetDate)
+                                            ->where('reservation_data.reservation_time','13:00:00')
+                                            ->get()
+                                            ->count();
+       return $foreignReservationDepartment;
+
+    }
+
+    public static function OclockForeignReservation14($searchdepartment,$targetDate){
+        $foreignReservationDepartment = DB::table('clinical_departments')
+                                            ->where('clinical_departments.clinical_department',$searchdepartment)
+                                            ->join('reservation_data','clinical_departments.clinical_department',
+                                                    '=',
+                                                    'reservation_data.reservation_department')
+                                            ->where('reservation_data.reservation_date',$targetDate)
+                                            ->where('reservation_data.reservation_time','14:00:00')
+                                            ->get()
+                                            ->count();
+       return $foreignReservationDepartment;
+
+    }
+
+    public static function OclockForeignReservation15($searchdepartment,$targetDate){
+        $foreignReservationDepartment = DB::table('clinical_departments')
+                                            ->where('clinical_departments.clinical_department',$searchdepartment)
+                                            ->join('reservation_data','clinical_departments.clinical_department',
+                                                    '=',
+                                                    'reservation_data.reservation_department')
+                                            ->where('reservation_data.reservation_date',$targetDate)
+                                            ->where('reservation_data.reservation_time','15:00:00')
+                                            ->get()
+                                            ->count();
+       return $foreignReservationDepartment;
+
+    }
+
+    public static function OclockForeignReservation16($searchdepartment,$targetDate){
+        $foreignReservationDepartment = DB::table('clinical_departments')
+                                            ->where('clinical_departments.clinical_department',$searchdepartment)
+                                            ->join('reservation_data','clinical_departments.clinical_department',
+                                                    '=',
+                                                    'reservation_data.reservation_department')
+                                            ->where('reservation_data.reservation_date',$targetDate)
+                                            ->where('reservation_data.reservation_time','16:00:00')
+                                            ->get()
+                                            ->count();
+       return $foreignReservationDepartment;
+
+    }
+
+    public static function OclockForeignReservation17($searchdepartment,$targetDate){
+        $foreignReservationDepartment = DB::table('clinical_departments')
+                                            ->where('clinical_departments.clinical_department',$searchdepartment)
+                                            ->join('reservation_data','clinical_departments.clinical_department',
+                                                    '=',
+                                                    'reservation_data.reservation_department')
+                                            ->where('reservation_data.reservation_date',$targetDate)
+                                            ->where('reservation_data.reservation_time','17:00:00')
+                                            ->get()
+                                            ->count();
+       return $foreignReservationDepartment;
+
+    }
+
+    public static function OclockForeignReservation18($searchdepartment,$targetDate){
+        $foreignReservationDepartment = DB::table('clinical_departments')
+                                            ->where('clinical_departments.clinical_department',$searchdepartment)
+                                            ->join('reservation_data','clinical_departments.clinical_department',
+                                                    '=',
+                                                    'reservation_data.reservation_department')
+                                            ->where('reservation_data.reservation_date',$targetDate)
+                                            ->where('reservation_data.reservation_time','18:00:00')
+                                            ->get()
+                                            ->count();
+       return $foreignReservationDepartment;
+
+    }
+
+  
+    
 }
 
 

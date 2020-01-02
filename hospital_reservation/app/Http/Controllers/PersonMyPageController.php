@@ -99,10 +99,69 @@ class PersonMyPageController extends Controller{
         //診療科モデルと予約モデルリレーション⇒予約数獲得
         $numberOfReservation =ClinicalDepartmentsDataModel::ForeignReservation($request->search_Department,$targetDate);
 
-        var_dump($numberOfReservation);
-        
+        //診療科モデルと予約モデルリレーション⇒予約数獲得(09:00) 
+        $OclocNumberOfReservation09 =ClinicalDepartmentsDataModel::OclockForeignReservation09($request->search_Department,$targetDate);
+
+        //診療科モデルと予約モデルリレーション⇒予約数獲得(10:00) 
+        $OclocNumberOfReservation10 =ClinicalDepartmentsDataModel::OclockForeignReservation10($request->search_Department,$targetDate);
+
+        //診療科モデルと予約モデルリレーション⇒予約数獲得(11:00) 
+        $OclocNumberOfReservation11 =ClinicalDepartmentsDataModel::OclockForeignReservation11($request->search_Department,$targetDate);
+
+        //診療科モデルと予約モデルリレーション⇒予約数獲得(12:00) 
+        $OclocNumberOfReservation12 =ClinicalDepartmentsDataModel::OclockForeignReservation12($request->search_Department,$targetDate);
+
+        //診療科モデルと予約モデルリレーション⇒予約数獲得(13:00) 
+        $OclocNumberOfReservation13 =ClinicalDepartmentsDataModel::OclockForeignReservation13($request->search_Department,$targetDate);
+
+        //診療科モデルと予約モデルリレーション⇒予約数獲得(14:00) 
+        $OclocNumberOfReservation14 =ClinicalDepartmentsDataModel::OclockForeignReservation14($request->search_Department,$targetDate);
+
+        //診療科モデルと予約モデルリレーション⇒予約数獲得(15:00) 
+        $OclocNumberOfReservation15 =ClinicalDepartmentsDataModel::OclockForeignReservation15($request->search_Department,$targetDate);
+
+        //診療科モデルと予約モデルリレーション⇒予約数獲得(16:00) 
+        $OclocNumberOfReservation16 =ClinicalDepartmentsDataModel::OclockForeignReservation16($request->search_Department,$targetDate);
+
+        //診療科モデルと予約モデルリレーション⇒予約数獲得(17:00) 
+        $OclocNumberOfReservation17 =ClinicalDepartmentsDataModel::OclockForeignReservation17($request->search_Department,$targetDate);
+
+        //診療科モデルと予約モデルリレーション⇒予約数獲得(18:00) 
+        $OclocNumberOfReservation18 =ClinicalDepartmentsDataModel::OclockForeignReservation18($request->search_Department,$targetDate);
+
+                
         //診療科モデルのパーセント計算を呼び出し
         $ScreenStatusParcent = ClinicalDepartmentsDataModel::Calculation($request->search_Department,$numberOfReservation);
+
+        //診療科モデルのパーセント計算を呼び出し(09:00)
+        $ScreenStatusParcent09 = ClinicalDepartmentsDataModel::Calculation($request->search_Department,$OclocNumberOfReservation09);
+        
+        //診療科モデルのパーセント計算を呼び出し(10:00)
+        $ScreenStatusParcent10 = ClinicalDepartmentsDataModel::Calculation($request->search_Department,$OclocNumberOfReservation10);
+        
+        //診療科モデルのパーセント計算を呼び出し(11:00)
+        $ScreenStatusParcent11 = ClinicalDepartmentsDataModel::Calculation($request->search_Department,$OclocNumberOfReservation11);
+        
+        //診療科モデルのパーセント計算を呼び出し(12:00)
+        $ScreenStatusParcent12 = ClinicalDepartmentsDataModel::Calculation($request->search_Department,$OclocNumberOfReservation12);
+
+        //診療科モデルのパーセント計算を呼び出し(13:00)
+        $ScreenStatusParcent13 = ClinicalDepartmentsDataModel::Calculation($request->search_Department,$OclocNumberOfReservation13);
+
+        //診療科モデルのパーセント計算を呼び出し(14:00)
+        $ScreenStatusParcent14 = ClinicalDepartmentsDataModel::Calculation($request->search_Department,$OclocNumberOfReservation14);
+
+        //診療科モデルのパーセント計算を呼び出し(15:00)
+        $ScreenStatusParcent15 = ClinicalDepartmentsDataModel::Calculation($request->search_Department,$OclocNumberOfReservation15);
+
+        //診療科モデルのパーセント計算を呼び出し(16:00)
+        $ScreenStatusParcent16 = ClinicalDepartmentsDataModel::Calculation($request->search_Department,$OclocNumberOfReservation16);
+
+        //診療科モデルのパーセント計算を呼び出し(17:00)
+        $ScreenStatusParcent17 = ClinicalDepartmentsDataModel::Calculation($request->search_Department,$OclocNumberOfReservation17);
+
+        //診療科モデルのパーセント計算を呼び出し(18:00)
+        $ScreenStatusParcent18 = ClinicalDepartmentsDataModel::Calculation($request->search_Department,$OclocNumberOfReservation18);
 
         //◎、〇、△の条件を呼び出し
         $doubleCircleReservationValue = 60;
@@ -122,10 +181,19 @@ class PersonMyPageController extends Controller{
         'search_pt_id'=>$search_pt_id,
         'ptDatas'=>$ptDatas,
         'clinical_department'=>$clinical_department,
-        'ScreenStatusParcent'=>$ScreenStatusParcent,
         'doubleCircleReservationValue'=>$doubleCircleReservationValue,
         'circleReservationValue'=>$circleReservationValue,
-        'triangleReservationValue'=>$triangleReservationValue]);
+        'triangleReservationValue'=>$triangleReservationValue,
+        'ScreenStatusParcent09'=>$ScreenStatusParcent09,
+        'ScreenStatusParcent10'=>$ScreenStatusParcent10,
+        'ScreenStatusParcent11'=>$ScreenStatusParcent11,
+        'ScreenStatusParcent12'=>$ScreenStatusParcent12,
+        'ScreenStatusParcent13'=>$ScreenStatusParcent13,
+        'ScreenStatusParcent14'=>$ScreenStatusParcent14,
+        'ScreenStatusParcent15'=>$ScreenStatusParcent15,
+        'ScreenStatusParcent16'=>$ScreenStatusParcent16,
+        'ScreenStatusParcent17'=>$ScreenStatusParcent17,
+        'ScreenStatusParcent18'=>$ScreenStatusParcent18,]);
     }
 
         //スケジュール⇒予約完了
