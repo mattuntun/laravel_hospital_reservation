@@ -66,9 +66,14 @@ class PersonMyPageController extends Controller{
         $ptDatas = PatientDataModel::getPtData($pt_id);
         //var_dump($ptData);
 
+        //◎、〇、△の条件を呼び出し
+        $doubleCircleReservationValue = 60;
+        $circleReservationValue = 30;
+        $triangleReservationValue = 0;
+
         //カレンダーPHPの呼び出し
         $cal = new Calendar();
-        $tag = $cal->showCalendarTag($pt_id,$search_Department);
+        $tag = $cal->showCalendarTag($pt_id,$search_Department,$doubleCircleReservationValue,$circleReservationValue,$triangleReservationValue);
         //翌月のカレンダー呼び出し
         $next_cal = new NextCalendar();
         $next_tag = $next_cal->showNextMonthCalendarTag($pt_id,$search_Department);

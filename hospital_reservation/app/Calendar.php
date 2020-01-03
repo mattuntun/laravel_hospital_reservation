@@ -8,12 +8,11 @@ class Calendar
     private $html;  
     
     //当月のカレンダー
-    public function showCalendarTag($search_pt_id,$search_Department)
+    public function showCalendarTag($search_pt_id,$search_Department,$doubleCircleReservationValue,$circleReservationValue,$triangleReservationValue)
     {
 
-
         //1日の予約数のパーセンテージを計算
-        function DayPossible($search_Department,$year,$month,$day){
+        function DayPossible($search_Department,$year,$month,$day,$doubleCircleReservationValue,$circleReservationValue,$triangleReservationValue){
             
             //年月日のデータを作成
             $targetDate = strval($year).strval($month).strval(str_pad($day, 2, 0, STR_PAD_LEFT));
@@ -23,9 +22,25 @@ class Calendar
             //1日の予約空き状況を計算
             $emptyParcent = ClinicalDepartmentsDataModel::OneDayCalculation($search_Department,$reservedNumber);
 
-            return $emptyParcent;
+            switch($emptyParcent){
+                case($emptyParcent >= $doubleCircleReservationValue):
+                    return '&#9678';      // ◎ 
+                break;
+                
+                case($emptyParcent >= $circleReservationValue):
+                    return  '&#9675';     // 〇
+                break;
+
+                case($emptyParcent >= $triangleReservationValue):
+                    return  '&#9651';     // △
+                break;
+
+                default:
+                    return  '&#10005';    // ✕
+            }
+            
      }
-     
+
 
      //当月の設定
         $year = date("Y");
@@ -71,7 +86,7 @@ EOS;
                    <input type='hidden' name='search_pt_id' value = '".$search_pt_id."'>
                    <input type='hidden' name='search_Department' value = '".$search_Department."'>"
                    .$day."
-                   <br>".DayPossible($search_Department,$year,$month,$day)."
+                   <br>".DayPossible($search_Department,$year,$month,$day,$doubleCircleReservationValue,$circleReservationValue,$triangleReservationValue)."
                    </button></td>"; 
                 }
                $day++;
