@@ -10,7 +10,24 @@ class Calendar
     //当月のカレンダー
     public function showCalendarTag($search_pt_id,$search_Department)
     {
-        //当月の設定
+
+
+        //1日の予約数のパーセンテージを計算
+        function DayPossible($search_Department,$year,$month,$day){
+            
+            //年月日のデータを作成
+            $targetDate = strval($year).strval($month).strval(str_pad($day, 2, 0, STR_PAD_LEFT));
+
+            //現在の予約済数を獲得
+            $reservedNumber = ClinicalDepartmentsDataModel::ForeignReservation($search_Department,$targetDate);
+            //1日の予約空き状況を計算
+            $emptyParcent = ClinicalDepartmentsDataModel::OneDayCalculation($search_Department,$reservedNumber);
+
+            return $emptyParcent;
+     }
+     
+
+     //当月の設定
         $year = date("Y");
         $month = date("m");
         $today = date("d");
@@ -53,7 +70,9 @@ EOS;
                    <input type='hidden' name='target_year' value='".$year."'>
                    <input type='hidden' name='search_pt_id' value = '".$search_pt_id."'>
                    <input type='hidden' name='search_Department' value = '".$search_Department."'>"
-                   .$day."</button></td>"; 
+                   .$day."
+                   <br>".DayPossible($search_Department,$year,$month,$day)."
+                   </button></td>"; 
                 }
                $day++;
             }

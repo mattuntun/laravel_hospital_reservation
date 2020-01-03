@@ -82,11 +82,11 @@ class ClinicalDepartmentsDataModel extends Model
         return $departmentReseravationMax;
     }
 
-    //空予約数　パーセントの計算
+    //空予約数　パーセントの計算(1コマの計算)
     public static function Calculation($search_department,$numberOfReservation){
         //フィールド値設定
-        $num =$numberOfReservation;    //予約数(仮)
-        
+        $num =$numberOfReservation;//予約数
+                
         //一コマあたりの最大数を抽出
         $maxValue = ClinicalDepartmentsDataModel::PossiblePeople($search_department);
         $intMaxValue = $maxValue->possible_peoples;
@@ -99,7 +99,25 @@ class ClinicalDepartmentsDataModel extends Model
         $possibleParcent = 100 - $parcent;
         
         return $possibleParcent;
+    }
+
+    //空予約数　パーセントの計算(1日の計算)
+    public static function OneDayCalculation($search_department,$numberOfReservation){
+        //フィールド値設定
+        $num =$numberOfReservation;//予約数
+                
+        //一コマあたりの最大数を抽出
+        $maxValue = ClinicalDepartmentsDataModel::PossiblePeople($search_department);
+        $intMaxValue = $maxValue->possible_peoples * 10;   //9:00~18:00を1時間ずつで10
         
+        //予約状況パーセント処理
+        $par = ($num / $intMaxValue) * 100;  //分母の100は要変更
+        $parcent = floor($par); // 切捨て整数化
+
+        //空き状況のパーセント処理
+        $possibleParcent = 100 - $parcent;
+        
+        return $possibleParcent;
     }
 
     //予約数を得る為のリレーション⇒予約数獲得
@@ -115,7 +133,7 @@ class ClinicalDepartmentsDataModel extends Model
        return $foreignReservationDepartment;
 
     }
-
+    //予約数を得る為のリレーション⇒予約数獲得(9：00)
     public static function OclockForeignReservation09($searchdepartment,$targetDate){
         $foreignReservationDepartment = DB::table('clinical_departments')
                                             ->where('clinical_departments.clinical_department',$searchdepartment)
@@ -130,6 +148,7 @@ class ClinicalDepartmentsDataModel extends Model
 
     }
 
+    //予約数を得る為のリレーション⇒予約数獲得(10：00)
     public static function OclockForeignReservation10($searchdepartment,$targetDate){
         $foreignReservationDepartment = DB::table('clinical_departments')
                                             ->where('clinical_departments.clinical_department',$searchdepartment)
@@ -144,6 +163,7 @@ class ClinicalDepartmentsDataModel extends Model
 
     }
 
+    //予約数を得る為のリレーション⇒予約数獲得(11：00)
     public static function OclockForeignReservation11($searchdepartment,$targetDate){
         $foreignReservationDepartment = DB::table('clinical_departments')
                                             ->where('clinical_departments.clinical_department',$searchdepartment)
@@ -158,6 +178,7 @@ class ClinicalDepartmentsDataModel extends Model
 
     }
 
+    //予約数を得る為のリレーション⇒予約数獲得(12：00)
     public static function OclockForeignReservation12($searchdepartment,$targetDate){
         $foreignReservationDepartment = DB::table('clinical_departments')
                                             ->where('clinical_departments.clinical_department',$searchdepartment)
@@ -172,6 +193,7 @@ class ClinicalDepartmentsDataModel extends Model
 
     }
 
+    //予約数を得る為のリレーション⇒予約数獲得(13：00)
     public static function OclockForeignReservation13($searchdepartment,$targetDate){
         $foreignReservationDepartment = DB::table('clinical_departments')
                                             ->where('clinical_departments.clinical_department',$searchdepartment)
@@ -186,6 +208,7 @@ class ClinicalDepartmentsDataModel extends Model
 
     }
 
+    //予約数を得る為のリレーション⇒予約数獲得(14：00)
     public static function OclockForeignReservation14($searchdepartment,$targetDate){
         $foreignReservationDepartment = DB::table('clinical_departments')
                                             ->where('clinical_departments.clinical_department',$searchdepartment)
@@ -200,6 +223,7 @@ class ClinicalDepartmentsDataModel extends Model
 
     }
 
+    //予約数を得る為のリレーション⇒予約数獲得(15：00)
     public static function OclockForeignReservation15($searchdepartment,$targetDate){
         $foreignReservationDepartment = DB::table('clinical_departments')
                                             ->where('clinical_departments.clinical_department',$searchdepartment)
@@ -214,6 +238,7 @@ class ClinicalDepartmentsDataModel extends Model
 
     }
 
+    //予約数を得る為のリレーション⇒予約数獲得(16：00)
     public static function OclockForeignReservation16($searchdepartment,$targetDate){
         $foreignReservationDepartment = DB::table('clinical_departments')
                                             ->where('clinical_departments.clinical_department',$searchdepartment)
@@ -228,6 +253,7 @@ class ClinicalDepartmentsDataModel extends Model
 
     }
 
+    //予約数を得る為のリレーション⇒予約数獲得(17：00)
     public static function OclockForeignReservation17($searchdepartment,$targetDate){
         $foreignReservationDepartment = DB::table('clinical_departments')
                                             ->where('clinical_departments.clinical_department',$searchdepartment)
@@ -242,6 +268,7 @@ class ClinicalDepartmentsDataModel extends Model
 
     }
 
+    //予約数を得る為のリレーション⇒予約数獲得(18：00)
     public static function OclockForeignReservation18($searchdepartment,$targetDate){
         $foreignReservationDepartment = DB::table('clinical_departments')
                                             ->where('clinical_departments.clinical_department',$searchdepartment)
