@@ -76,7 +76,7 @@ class PersonMyPageController extends Controller{
         $tag = $cal->showCalendarTag($pt_id,$search_Department,$doubleCircleReservationValue,$circleReservationValue,$triangleReservationValue);
         //翌月のカレンダー呼び出し
         $next_cal = new NextCalendar();
-        $next_tag = $next_cal->showNextMonthCalendarTag($pt_id,$search_Department);
+        $next_tag = $next_cal->showNextMonthCalendarTag($pt_id,$search_Department,$doubleCircleReservationValue,$circleReservationValue,$triangleReservationValue);
         //翌々月のカレンダー呼び出し
         $after_next_cal = new AfterNextCalendar();
         $after_next_tag = $after_next_cal->showMonthAfterNextCalendarTag($pt_id,$search_Department);

@@ -11,7 +11,7 @@ class Calendar
     public function showCalendarTag($search_pt_id,$search_Department,$doubleCircleReservationValue,$circleReservationValue,$triangleReservationValue)
     {
 
-        //1日の予約数のパーセンテージを計算
+        //1日の予約数のパーセンテージを計算・表示形式指定
         function DayPossible($search_Department,$year,$month,$day,$doubleCircleReservationValue,$circleReservationValue,$triangleReservationValue){
             
             //年月日のデータを作成
@@ -37,9 +37,9 @@ class Calendar
 
                 default:
                     return  '&#10005';    // ✕
-            }
+                }
             
-     }
+        }  
 
 
      //当月の設定
