@@ -75,9 +75,15 @@ EOS;
                 if ($next_month_day <= 0 || $next_month_day > $next_month_lastDay) {
                     // 先月・来月の日付の場合
                     $this->html .= "<td>&nbsp;</td>";
+
                 } elseif($i ==0 || $i ==6 ){
                     $this->html .="<td style = color:#E9E9E9;>". $next_month_day . "</td>";
-                }  else {                    
+
+                } elseif (NextMouthDayPossible($search_Department,$next_year,$next_month,$next_month_day,$doubleCircleReservationValue,$circleReservationValue,$triangleReservationValue) == '&#10005'){
+                    $this->html .="<td style = color:#E9E9E9;>". $next_month_day ."
+                    <br>".NextMouthDayPossible($search_Department,$next_year,$next_month,$next_month_day,$doubleCircleReservationValue,$circleReservationValue,$triangleReservationValue)."</td>";  
+
+                } else {                    
                     $this->html .="<td>
                     <button type='submit' class='btn btn-lg btn-block' style='background: white;' onclick='location.href=/mypage/schedule_add_new_my_data_reservation>
                     <input type='hidden' name='target_day' value='".$next_month_day."'>

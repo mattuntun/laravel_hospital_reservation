@@ -73,13 +73,17 @@ EOS;
                 if ($day <= 0 || $day > $lastDay) {
                     // 先月・来月の日付の場合
                     $this->html .= "<td>&nbsp;</td>";
+                
                 } elseif ($i ==0 || $i ==6 ){
                     $this->html .="<td style = color:#E9E9E9;>". $day . "</td>";
+                
                 } elseif ($day < $today+1){
                     $this->html .="<td style = color:#E9E9E9;>". $day . "</td>";
+                
                 } elseif (DayPossible($search_Department,$year,$month,$day,$doubleCircleReservationValue,$circleReservationValue,$triangleReservationValue) == '&#10005'){
                     $this->html .="<td style = color:#E9E9E9;>". $day ."
                     <br>".DayPossible($search_Department,$year,$month,$day,$doubleCircleReservationValue,$circleReservationValue,$triangleReservationValue)."</td>";
+                
                 } else {
                    $this->html .="<td>
                    <button type='submit' class='btn btn-lg btn-block' style='background: white;' onclick='location.href=/mypage/schedule_add_new_my_data_reservation>
