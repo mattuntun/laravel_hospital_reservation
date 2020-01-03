@@ -37,11 +37,11 @@ class NextCalendar
 
                 default:
                     return  '&#10005';    // ✕
-                }
-            
+                }            
         }  
 
-        // 翌月の設定
+
+        //カレンダー本体　翌月の設定
         $year = date("Y");
         $month = date("m");
         $today = date("d");

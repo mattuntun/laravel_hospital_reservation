@@ -79,7 +79,7 @@ class PersonMyPageController extends Controller{
         $next_tag = $next_cal->showNextMonthCalendarTag($pt_id,$search_Department,$doubleCircleReservationValue,$circleReservationValue,$triangleReservationValue);
         //翌々月のカレンダー呼び出し
         $after_next_cal = new AfterNextCalendar();
-        $after_next_tag = $after_next_cal->showMonthAfterNextCalendarTag($pt_id,$search_Department);
+        $after_next_tag = $after_next_cal->showMonthAfterNextCalendarTag($pt_id,$search_Department,$doubleCircleReservationValue,$circleReservationValue,$triangleReservationValue);
 
         return view('patient_menu.calendar_add_new_reservation_from_mypage',['getDepartmentDatas'=>$getDepartmentDatas,
         'ptDatas'=>$ptDatas,

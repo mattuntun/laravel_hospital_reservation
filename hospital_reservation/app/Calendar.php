@@ -42,7 +42,7 @@ class Calendar
         }  
 
 
-     //当月の設定
+        //カレンダー本体　当月の設定
         $year = date("Y");
         $month = date("m");
         $today = date("d");
