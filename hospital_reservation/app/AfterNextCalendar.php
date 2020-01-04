@@ -23,15 +23,15 @@ class AfterNextCalendar
             $emptyParcent = ClinicalDepartmentsDataModel::OneDayCalculation($search_Department,$reservedNumber);
 
             switch($emptyParcent){
-                case($emptyParcent >= $doubleCircleReservationValue):
+                case($emptyParcent > $doubleCircleReservationValue):
                     return '&#9678';      // ◎ 
                 break;
                 
-                case($emptyParcent >= $circleReservationValue):
+                case($emptyParcent > $circleReservationValue):
                     return  '&#9675';     // 〇
                 break;
 
-                case($emptyParcent >= $triangleReservationValue):
+                case($emptyParcent > $triangleReservationValue):
                     return  '&#9651';     // △
                 break;
 
@@ -78,7 +78,12 @@ EOS;
                     $this->html .= "<td>&nbsp;</td>";
                 } elseif($i ==0 || $i ==6 ){
                     $this->html .="<td style = color:#E9E9E9;>". $month_after_next_day . "</td>";
-                }  else {                    
+
+                } elseif (AfterNextMouthDayPossible($search_Department,$year_after_next,$month_after_next,$month_after_next_day,$doubleCircleReservationValue,$circleReservationValue,$triangleReservationValue) == '&#10005'){
+                    $this->html .="<td style = color:#E9E9E9;>". $month_after_next_day."
+                    <br>".AfterNextMouthDayPossible($search_Department,$year_after_next,$month_after_next,$month_after_next_day,$doubleCircleReservationValue,$circleReservationValue,$triangleReservationValue)."</td>";
+                
+                } else {                    
                     $this->html .="<td>
                     <button type='submit' class='btn btn-lg btn-block' style='background: white;' onclick='location.href=/mypage/schedule_add_new_my_data_reservation>
                     <input type='hidden' name='target_day' value='".$month_after_next_day."'>

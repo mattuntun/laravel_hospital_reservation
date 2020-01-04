@@ -23,15 +23,15 @@ class NextCalendar
             $emptyParcent = ClinicalDepartmentsDataModel::OneDayCalculation($search_Department,$reservedNumber);
 
             switch($emptyParcent){
-                case($emptyParcent >= $doubleCircleReservationValue):
+                case($emptyParcent > $doubleCircleReservationValue):
                     return '&#9678';      // ◎ 
                 break;
                 
-                case($emptyParcent >= $circleReservationValue):
+                case($emptyParcent > $circleReservationValue):
                     return  '&#9675';     // 〇
                 break;
 
-                case($emptyParcent >= $triangleReservationValue):
+                case($emptyParcent > $triangleReservationValue):
                     return  '&#9651';     // △
                 break;
 

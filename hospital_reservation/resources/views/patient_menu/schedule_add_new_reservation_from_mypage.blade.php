@@ -53,19 +53,24 @@ $targetDate = strval($target_year).strval($target_month).strval(str_pad($target_
             <input type="hidden" name = "search_pt_id" value = "{{$ptData->pt_id}}">
             <input type="hidden" name = "clinical_department" value = "{{$clinical_department}}">
             <input type="hidden" name = "targetDate" value= "{{$targetDate}}">
-            <input type="hidden" name = "targetTime" value= "090000">            
-                <button type = "submit" class="btn btn-lg btn-block" style="background: white; font-size:30px;" onclick="location.href=/mypage/complete_add_new_reservation">09:00</button>
-            </form>
+            <input type="hidden" name = "targetTime" value= "090000">
+                @if($ScreenStatusParcent09 <= $triangleReservationValue )
+                    <button type = "button" class="btn btn-lg btn-block" style="background: white; font-size:30px; color:#E9E9E9;">09:00</button>
+                </form>
+                @else
+                    <button type = "submit" class="btn btn-lg btn-block" style="background: white; font-size:30px;" onclick="location.href=/mypage/complete_add_new_reservation">09:00</button>
+                </form>
+                @endif            
         </td>
         <td style="font-size:30px; text-align:center;">
         @switch($ScreenStatusParcent09)
-            @case($ScreenStatusParcent09 >= $doubleCircleReservationValue)
+            @case($ScreenStatusParcent09 > $doubleCircleReservationValue)
                 &#9678;      {{-- ◎ --}}
                 @break
-            @case($ScreenStatusParcent09 >= $circleReservationValue)
+            @case($ScreenStatusParcent09 > $circleReservationValue)
                 &#9675;      {{-- 〇 --}}
                 @break
-            @case($ScreenStatusParcent09 >= $triangleReservationValue)
+            @case($ScreenStatusParcent09 > $triangleReservationValue)
                 &#9651;      {{-- △ --}}
                 @break
             @default
@@ -83,22 +88,27 @@ $targetDate = strval($target_year).strval($target_month).strval(str_pad($target_
             <input type="hidden" name = "clinical_department" value = "{{$clinical_department}}">
             <input type="hidden" name = "targetDate" value= "{{$targetDate}}">
             <input type="hidden" name = "targetTime" value= "100000">            
-                <button type = "submit" class="btn btn-lg btn-block" style="background: white; font-size:30px;" onclick="location.href=/mypage/complete_add_new_reservation">10:00</button>
-            </form>
-        </td>
+                @if($ScreenStatusParcent10 <= $triangleReservationValue )
+                    <button type = "button" class="btn btn-lg btn-block" style="background: white; font-size:30px; color:#E9E9E9;">10:00</button>
+                </form>
+                @else
+                    <button type = "submit" class="btn btn-lg btn-block" style="background: white; font-size:30px;" onclick="location.href=/mypage/complete_add_new_reservation">10:00</button>
+                </form>
+                @endif     
         <td style="font-size:30px; text-align:center;">
         @switch($ScreenStatusParcent10)
-            @case($ScreenStatusParcent10 >= $doubleCircleReservationValue)
+            @case($ScreenStatusParcent10 > $doubleCircleReservationValue)
                 &#9678;      {{-- ◎ --}}
                 @break
-            @case($ScreenStatusParcent10 >= $circleReservationValue)
+            @case($ScreenStatusParcent10 > $circleReservationValue)
                 &#9675;      {{-- 〇 --}}
                 @break
-            @case($ScreenStatusParcent10 >= $triangleReservationValue)
+            @case($ScreenStatusParcent10 > $triangleReservationValue)
                 &#9651;      {{-- △ --}}
                 @break
             @default
                 &#10005;     {{-- ✕ --}}
+                @break
         @endswitch
 
         {{$ScreenStatusParcent10}}％
@@ -111,23 +121,29 @@ $targetDate = strval($target_year).strval($target_month).strval(str_pad($target_
             <input type="hidden" name = "search_pt_id" value = "{{$ptData->pt_id}}">
             <input type="hidden" name = "clinical_department" value = "{{$clinical_department}}">
             <input type="hidden" name = "targetDate" value= "{{$targetDate}}">
-            <input type="hidden" name = "targetTime" value= "110000">            
-                <button type = "submit" class="btn btn-lg btn-block" style="background: white; font-size:30px;" onclick="location.href=/mypage/complete_add_new_reservation">11:00</button>
-            </form>
+            <input type="hidden" name = "targetTime" value= "110000">
+                @if($ScreenStatusParcent11 <= $triangleReservationValue )
+                    <button type = "button" class="btn btn-lg btn-block" style="background: white; font-size:30px; color:#E9E9E9;">11:00</button>
+                </form>
+                @else
+                    <button type = "submit" class="btn btn-lg btn-block" style="background: white; font-size:30px;" onclick="location.href=/mypage/complete_add_new_reservation">11:00</button>
+                </form>
+                @endif    
         </td>
         <td style="font-size:30px; text-align:center;">
         @switch($ScreenStatusParcent11)
-            @case($ScreenStatusParcent11 >= $doubleCircleReservationValue)
+            @case($ScreenStatusParcent11 > $doubleCircleReservationValue)
                 &#9678;      {{-- ◎ --}}
                 @break
-            @case($ScreenStatusParcent11 >= $circleReservationValue)
+            @case($ScreenStatusParcent11 > $circleReservationValue)
                 &#9675;      {{-- 〇 --}}
                 @break
-            @case($ScreenStatusParcent11 >= $triangleReservationValue)
+            @case($ScreenStatusParcent11 > $triangleReservationValue)
                 &#9651;      {{-- △ --}}
                 @break
             @default
                 &#10005;     {{-- ✕ --}}
+                @break
         @endswitch
 
         {{$ScreenStatusParcent11}}％
@@ -141,22 +157,28 @@ $targetDate = strval($target_year).strval($target_month).strval(str_pad($target_
             <input type="hidden" name = "clinical_department" value = "{{$clinical_department}}">
             <input type="hidden" name = "targetDate" value= "{{$targetDate}}">
             <input type="hidden" name = "targetTime" value= "120000">            
-                <button type = "submit" class="btn btn-lg btn-block" style="background: white; font-size:30px;" onclick="location.href=/mypage/complete_add_new_reservation">12:00</button>
-            </form>
+                @if($ScreenStatusParcent12 <= $triangleReservationValue )
+                    <button type = "button" class="btn btn-lg btn-block" style="background: white; font-size:30px; color:#E9E9E9;">12:00</button>
+                </form>
+                @else
+                    <button type = "submit" class="btn btn-lg btn-block" style="background: white; font-size:30px;" onclick="location.href=/mypage/complete_add_new_reservation">12:00</button>
+                </form>
+                @endif  
         </td>
         <td style="font-size:30px; text-align:center;">
         @switch($ScreenStatusParcent12)
-            @case($ScreenStatusParcent12 >= $doubleCircleReservationValue)
+            @case($ScreenStatusParcent12 > $doubleCircleReservationValue)
                 &#9678;      {{-- ◎ --}}
                 @break
-            @case($ScreenStatusParcent12 >= $circleReservationValue)
+            @case($ScreenStatusParcent12 > $circleReservationValue)
                 &#9675;      {{-- 〇 --}}
                 @break
-            @case($ScreenStatusParcent12 >= $triangleReservationValue)
+            @case($ScreenStatusParcent12 > $triangleReservationValue)
                 &#9651;      {{-- △ --}}
                 @break
             @default
                 &#10005;     {{-- ✕ --}}
+                @break
         @endswitch
 
         {{$ScreenStatusParcent12}}％
@@ -170,22 +192,28 @@ $targetDate = strval($target_year).strval($target_month).strval(str_pad($target_
             <input type="hidden" name = "clinical_department" value = "{{$clinical_department}}">
             <input type="hidden" name = "targetDate" value= "{{$targetDate}}">
             <input type="hidden" name = "targetTime" value= "130000">            
-                <button type = "submit" class="btn btn-lg btn-block" style="background: white; font-size:30px;" onclick="location.href=/mypage/complete_add_new_reservation">13:00</button>
-            </form>
+                @if($ScreenStatusParcent13 <= $triangleReservationValue )
+                    <button type = "button" class="btn btn-lg btn-block" style="background: white; font-size:30px; color:#E9E9E9;">13:00</button>
+                </form>
+                @else
+                    <button type = "submit" class="btn btn-lg btn-block" style="background: white; font-size:30px;" onclick="location.href=/mypage/complete_add_new_reservation">13:00</button>
+                </form>
+                @endif
         </td>
         <td style="font-size:30px; text-align:center;">
         @switch($ScreenStatusParcent13)
-            @case($ScreenStatusParcent13 >= $doubleCircleReservationValue)
+            @case($ScreenStatusParcent13 > $doubleCircleReservationValue)
                 &#9678;      {{-- ◎ --}}
                 @break
-            @case($ScreenStatusParcent13 >= $circleReservationValue)
+            @case($ScreenStatusParcent13 > $circleReservationValue)
                 &#9675;      {{-- 〇 --}}
                 @break
-            @case($ScreenStatusParcent13 >= $triangleReservationValue)
+            @case($ScreenStatusParcent13 > $triangleReservationValue)
                 &#9651;      {{-- △ --}}
                 @break
             @default
                 &#10005;     {{-- ✕ --}}
+                @break
         @endswitch
 
         {{$ScreenStatusParcent13}}％
@@ -199,22 +227,28 @@ $targetDate = strval($target_year).strval($target_month).strval(str_pad($target_
             <input type="hidden" name = "clinical_department" value = "{{$clinical_department}}">
             <input type="hidden" name = "targetDate" value= "{{$targetDate}}">
             <input type="hidden" name = "targetTime" value= "140000">            
-                <button type = "submit" class="btn btn-lg btn-block" style="background: white; font-size:30px;" onclick="location.href=/mypage/complete_add_new_reservation">14:00</button>
-            </form>
+                @if($ScreenStatusParcent14 <= $triangleReservationValue )
+                    <button type = "button" class="btn btn-lg btn-block" style="background: white; font-size:30px; color:#E9E9E9;">14:00</button>
+                </form>
+                @else
+                    <button type = "submit" class="btn btn-lg btn-block" style="background: white; font-size:30px;" onclick="location.href=/mypage/complete_add_new_reservation">14:00</button>
+                </form>
+                @endif
         </td>
         <td style="font-size:30px; text-align:center;">
         @switch($ScreenStatusParcent14)
-            @case($ScreenStatusParcent14 >= $doubleCircleReservationValue)
+            @case($ScreenStatusParcent14 > $doubleCircleReservationValue)
                 &#9678;      {{-- ◎ --}}
                 @break
-            @case($ScreenStatusParcent14 >= $circleReservationValue)
+            @case($ScreenStatusParcent14 > $circleReservationValue)
                 &#9675;      {{-- 〇 --}}
                 @break
-            @case($ScreenStatusParcent14 >= $triangleReservationValue)
+            @case($ScreenStatusParcent14 > $triangleReservationValue)
                 &#9651;      {{-- △ --}}
                 @break
             @default
                 &#10005;     {{-- ✕ --}}
+                @break
         @endswitch
 
         {{$ScreenStatusParcent14}}％
@@ -228,22 +262,28 @@ $targetDate = strval($target_year).strval($target_month).strval(str_pad($target_
             <input type="hidden" name = "clinical_department" value = "{{$clinical_department}}">
             <input type="hidden" name = "targetDate" value= "{{$targetDate}}">
             <input type="hidden" name = "targetTime" value= "150000">            
-                <button type = "submit" class="btn btn-lg btn-block" style="background: white; font-size:30px;" onclick="location.href=/mypage/complete_add_new_reservation">15:00</button>
-            </form>
+                @if($ScreenStatusParcent15 <= $triangleReservationValue )
+                    <button type = "button" class="btn btn-lg btn-block" style="background: white; font-size:30px; color:#E9E9E9;">15:00</button>
+                </form>
+                @else
+                    <button type = "submit" class="btn btn-lg btn-block" style="background: white; font-size:30px;" onclick="location.href=/mypage/complete_add_new_reservation">15:00</button>
+                </form>
+                @endif
         </td>
         <td style="font-size:30px; text-align:center;">
         @switch($ScreenStatusParcent15)
-            @case($ScreenStatusParcent15 >= $doubleCircleReservationValue)
+            @case($ScreenStatusParcent15 > $doubleCircleReservationValue)
                 &#9678;      {{-- ◎ --}}
                 @break
-            @case($ScreenStatusParcent15 >= $circleReservationValue)
+            @case($ScreenStatusParcent15 > $circleReservationValue)
                 &#9675;      {{-- 〇 --}}
                 @break
-            @case($ScreenStatusParcent15 >= $triangleReservationValue)
+            @case($ScreenStatusParcent15 > $triangleReservationValue)
                 &#9651;      {{-- △ --}}
                 @break
             @default
                 &#10005;     {{-- ✕ --}}
+                @break
         @endswitch
 
         {{$ScreenStatusParcent15}}％
@@ -257,22 +297,28 @@ $targetDate = strval($target_year).strval($target_month).strval(str_pad($target_
             <input type="hidden" name = "clinical_department" value = "{{$clinical_department}}">
             <input type="hidden" name = "targetDate" value= "{{$targetDate}}">
             <input type="hidden" name = "targetTime" value= "160000">            
-                <button type = "submit" class="btn btn-lg btn-block" style="background: white; font-size:30px;" onclick="location.href=/mypage/complete_add_new_reservation">16:00</button>
-            </form>
+                @if($ScreenStatusParcent16 <= $triangleReservationValue )
+                    <button type = "button" class="btn btn-lg btn-block" style="background: white; font-size:30px; color:#E9E9E9;">16:00</button>
+                </form>
+                @else
+                    <button type = "submit" class="btn btn-lg btn-block" style="background: white; font-size:30px;" onclick="location.href=/mypage/complete_add_new_reservation">16:00</button>
+                </form>
+                @endif
         </td>
         <td style="font-size:30px; text-align:center;">
         @switch($ScreenStatusParcent16)
-            @case($ScreenStatusParcent16 >= $doubleCircleReservationValue)
+            @case($ScreenStatusParcent16 > $doubleCircleReservationValue)
                 &#9678;      {{-- ◎ --}}
                 @break
-            @case($ScreenStatusParcent16 >= $circleReservationValue)
+            @case($ScreenStatusParcent16 > $circleReservationValue)
                 &#9675;      {{-- 〇 --}}
                 @break
-            @case($ScreenStatusParcent16 >= $triangleReservationValue)
+            @case($ScreenStatusParcent16 > $triangleReservationValue)
                 &#9651;      {{-- △ --}}
                 @break
             @default
                 &#10005;     {{-- ✕ --}}
+                @break
         @endswitch
 
         {{$ScreenStatusParcent16}}％
@@ -286,22 +332,28 @@ $targetDate = strval($target_year).strval($target_month).strval(str_pad($target_
             <input type="hidden" name = "clinical_department" value = "{{$clinical_department}}">
             <input type="hidden" name = "targetDate" value= "{{$targetDate}}">
             <input type="hidden" name = "targetTime" value= "170000">            
-                <button type = "submit" class="btn btn-lg btn-block" style="background: white; font-size:30px;" onclick="location.href=/mypage/complete_add_new_reservation">17:00</button>
-            </form>
+                @if($ScreenStatusParcent17 <= $triangleReservationValue )
+                    <button type = "button" class="btn btn-lg btn-block" style="background: white; font-size:30px; color:#E9E9E9;">17:00</button>
+                </form>
+                @else
+                    <button type = "submit" class="btn btn-lg btn-block" style="background: white; font-size:30px;" onclick="location.href=/mypage/complete_add_new_reservation">17:00</button>
+                </form>
+                @endif
         </td>
         <td style="font-size:30px; text-align:center;">
         @switch($ScreenStatusParcent17)
-            @case($ScreenStatusParcent17 >= $doubleCircleReservationValue)
+            @case($ScreenStatusParcent17 > $doubleCircleReservationValue)
                 &#9678;      {{-- ◎ --}}
                 @break
-            @case($ScreenStatusParcent17 >= $circleReservationValue)
+            @case($ScreenStatusParcent17 > $circleReservationValue)
                 &#9675;      {{-- 〇 --}}
                 @break
-            @case($ScreenStatusParcent17 >= $triangleReservationValue)
+            @case($ScreenStatusParcent17 > $triangleReservationValue)
                 &#9651;      {{-- △ --}}
                 @break
             @default
                 &#10005;     {{-- ✕ --}}
+                @break
         @endswitch
 
         {{$ScreenStatusParcent17}}％
@@ -315,22 +367,28 @@ $targetDate = strval($target_year).strval($target_month).strval(str_pad($target_
             <input type="hidden" name = "clinical_department" value = "{{$clinical_department}}">
             <input type="hidden" name = "targetDate" value= "{{$targetDate}}">
             <input type="hidden" name = "targetTime" value= "180000">            
-                <button type = "submit" class="btn btn-lg btn-block" style="background: white; font-size:30px;" onclick="location.href=/mypage/complete_add_new_reservation">18:00</button>
-            </form>
+                @if($ScreenStatusParcent18 <= $triangleReservationValue )
+                    <button type = "button" class="btn btn-lg btn-block" style="background: white; font-size:30px; color:#E9E9E9;">18:00</button>
+                </form>
+                @else
+                    <button type = "submit" class="btn btn-lg btn-block" style="background: white; font-size:30px;" onclick="location.href=/mypage/complete_add_new_reservation">18:00</button>
+                </form>
+                @endif
         </td>
         <td style="font-size:30px; text-align:center;">
         @switch($ScreenStatusParcent18)
-            @case($ScreenStatusParcent18 >= $doubleCircleReservationValue)
+            @case($ScreenStatusParcent18 > $doubleCircleReservationValue)
                 &#9678;      {{-- ◎ --}}
                 @break
-            @case($ScreenStatusParcent18 >= $circleReservationValue)
+            @case($ScreenStatusParcent18 > $circleReservationValue)
                 &#9675;      {{-- 〇 --}}
                 @break
-            @case($ScreenStatusParcent18 >= $triangleReservationValue)
+            @case($ScreenStatusParcent18 > $triangleReservationValue)
                 &#9651;      {{-- △ --}}
                 @break
             @default
                 &#10005;     {{-- ✕ --}}
+                @break
         @endswitch
 
         {{$ScreenStatusParcent18}}％
