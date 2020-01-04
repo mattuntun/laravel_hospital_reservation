@@ -11,12 +11,12 @@
 @section('header_content')
         @include('sab_view_item.header',
                   ['main_theme'=>'患者予約情報変更',
-                   'sub_theme'=>'新規追加'])
+                   'sub_theme'=>''])
 @endsection
 
 {{-- メイン --}}
 @section('main_content')
-<h2>予約を追加したい患者のIDを入力</h2>
+<h2>予約を確認・変更したい患者のIDを入力</h2>
 
         {{-- このコンポーネントはformとしての囲い(メソッドはpost) --}}
         @component('component_item.form')

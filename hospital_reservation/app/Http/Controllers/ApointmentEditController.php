@@ -29,20 +29,24 @@ class ApointmentEditController extends Controller
         return view('hospital_menu.edit_patient_appoimtment_information.edit_reservation.new_reservation',['pt_datas'=>$pt_datas,'reservation_datas'=>$reservation_datas,'foreignPatientDatas'=>$foreignPatientDatas]);
     }
 
-    //予約削除のコントローラ
-    public function DeleteReservation() {
-        return view('hospital_menu.edit_patient_appoimtment_information.edit_reservation.delete_reservation');
+    //予約削除　情報確認のコントローラ
+    public function DeleteReservationStatus(Request $request) {
+
+        $reservationDatas = ReservationDataModel::SearchReservationSeparate($request->search_reservation_No);
+
+        $pt_datas = PatientDataModel::getPtData($request->search_reservation_pt_id);
+
+        return view('hospital_menu.edit_patient_appoimtment_information.edit_reservation.delete_reservation',['reservationDatas'=>$reservationDatas,
+        'pt_datas'=>$pt_datas,
+        ]);
     }
 
-    //予約状況確認のコントローラ
+    //予約状況確認のコントローラ　日付別
     public function CheckReservationStatus() {
+
         return view('hospital_menu.edit_patient_appoimtment_information.edit_reservation.check_reservation_status');
     }
 
-    //予約状況確認(患者別)のコントローラ
-    public function CheckReservationPatient() {
-        return view('hospital_menu.edit_patient_appoimtment_information.edit_reservation.check_reservation.check_reservation_patient');
-    }
 
 
 }

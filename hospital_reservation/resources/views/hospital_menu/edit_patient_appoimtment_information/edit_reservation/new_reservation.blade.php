@@ -4,6 +4,16 @@
 
 {{-- ヘッド --}}
 @section('web_title','予約追加')
+<style type="text/css">
+
+.ResInfo{
+        margin-bottom: 50px ;
+        padding-bottom: 50px;
+        border-bottom: 5px solid rgb(6, 71, 250);
+               
+}
+
+</style>
 
 
 {{-- ヘッダー --}}
@@ -17,57 +27,45 @@
 {{-- メイン --}}
 @section('main_content')
 <h2>予約を追加したい患者の情報を確認</h2>
-@foreach($reservation_datas as $reservation_data)
-<h3>{{var_dump($reservation_data)}}</h3>
-
-@endforeach
-
-<h2>ここからリレーションで取得した値を表示</h2>
 @foreach($foreignPatientDatas as $foreignPatientData)
-<h3>{{var_dump($foreignPatientData)}}</h3>
+            <div class = "PtInfo">
+                <h2>患者ID：{{$foreignPatientData->pt_id}}</h2>
+                <h2>カナ氏名：{{$foreignPatientData->pt_last_name_kata}}　{{$foreignPatientData->pt_name_kata}}</h2>
+
+                <h2>患者氏名：{{$foreignPatientData->pt_last_name}}　{{$foreignPatientData->pt_name}}　様</h2>
+            </div>
+@endforeach
+<br>
+<br>
+
+
+
+@foreach($reservation_datas as $reservation_data)
+<div class = "ResInfo">
+            <ul>
+                <li style="font-size:40px; padding-bottom:30px;"><b>予約診療科:</b>{{$reservation_data->reservation_department}}</li>
+                <li style="font-size:40px;"><b>予約日:</b>　{{$reservation_data->reservation_date}}</li>
+                <li style="font-size:40px;"><b>診療開始予定時間:</b>　{{$reservation_data->reservation_time}}　より診療開始</li>
+                
+                
+                {{-- タグ付ボタン(スモール) --}}
+                <form action="/edit_patient_appoimtment_information/delete_reservation" method = post>
+                {{csrf_field()}}
+                    <input type="hidden" name = "search_reservation_No" value = "{{$reservation_data->No}}">
+                    <input type="hidden" name = "search_reservation_pt_id" value = "{{$reservation_data->pt_id}}">
+                    <div class = "delete_buttom">
+
+                    @include('sab_view_item.small_tagged_buttom',
+                            ['tagged_value'=>'',
+                            'buttom_value'=>'予約削除ページへ',
+                            'buttom_access'=>'/edit_patient_appoimtment_information/delete_reservation'])
+                    </div>
+                </form>
+            </ul>
+        </div>
 
 @endforeach
-<h2>ここでリレーションした値表示終了</h2>
 
-@foreach($pt_datas as $pt_data)
-<h3>{{var_dump($pt_data)}}</h3>
-<h2>該当患者情報</h2>
-<h3>ID:{{$pt_data->pt_id}}</h3>
-
-<table>
-    <tr>
-        <th>
-            <h4>患者姓(漢字)</h4>
-        </th>
-        <th>
-            <h4>患者名前(漢字)</h4>
-        </th>
-    <tr>
-        <td>
-            <h3>{{$pt_data->pt_last_name}}</h3>
-        </td>
-        <td>
-            <h3>{{$pt_data->pt_name}}</h3>
-        </td>
-    </tr>
-</table>
-<table>
-    <tr>
-        <th>
-            <h4>患者姓(カナ)</h4>
-        </th>
-        <th>
-            <h4>患者名前(カナ)</h4>
-        </th>
-    <tr>
-        <td>
-            <h3>{{$pt_data->pt_last_name_kata}}</h3>
-        </td>
-        <td>
-            <h3>{{$pt_data->pt_name_kata}}</h3>
-        </td>
-    </tr>
-</table>
 
         {{-- このコンポーネントはformとしての囲い(メソッドはpost) --}}
         @component('component_item.form')
@@ -88,7 +86,7 @@
                  @endslot
 
          @endcomponent
-@endforeach
+
 @endsection
 
 {{-- フッター --}}

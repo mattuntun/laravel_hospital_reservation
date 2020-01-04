@@ -126,14 +126,14 @@ Route::get('hospital_menu/edit_patient_appoimtment_information','HospitalControl
 Route::get('edit_patient_appoimtment_information/search_pt_new_reservation','ApointmentEditController@SearchPtNewReservation');
 //予約新規追加の患者情報確認画面のページへ
 Route::post('edit_patient_appoimtment_information/new_reservation','ApointmentEditController@NewReservation');
+//予約削除　情報確認画面のページへ
+Route::post('edit_patient_appoimtment_information/delete_reservation','ApointmentEditController@DeleteReservationStatus');
 
 
-//予約削除のページへ
-Route::get('edit_patient_appoimtment_information/deretereservation','ApointmentEditController@DeleteReservation');
 //予約状況確認のページへ
 Route::get('edit_patient_appoimtment_information/check_reservation_status','ApointmentEditController@CheckReservationStatus');
-//予約状況確認(患者別)のページへ
-Route::get('check_reservation_status/patient','ApointmentEditController@CheckReservationPatient');
+
+
 
 
 
