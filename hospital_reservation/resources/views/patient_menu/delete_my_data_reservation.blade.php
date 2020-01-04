@@ -76,6 +76,6 @@
 
 @section('footer_content')
 
-        @include('sab_view_item.my_page_footer')
+        @include('sab_view_item.my_page_footerDelete')
 
 @endsection
