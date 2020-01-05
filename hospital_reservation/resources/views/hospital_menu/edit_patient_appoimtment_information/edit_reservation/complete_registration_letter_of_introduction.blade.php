@@ -14,6 +14,7 @@
 
 {{-- メイン --}}
 @section('main_content')
+
 @foreach($ptDatas as $ptData)
             <div class = "PtInfo">
                 <h2>患者ID：{{$ptData->pt_id}}</h2>
@@ -21,43 +22,15 @@
             </div>
 @endforeach
 
+
 <br>
 <br>
 
-<h2>予約情報更新</h2>
-<h3>予約情報を追加しました</h3>
+<h2>紹介状情報登録</h2>
+<h3>紹介状情報を追加しました</h3>
 <br>
 
 
-
-        {{-- このコンポーネントはformとしての囲い(メソッドはpost) --}}
-        @component('component_item.form')
-                 @slot('form_action')
-                 /edit_patient_appoimtment_information/registration_letter_of_introduction
-                 @endslot
-
-                 @slot('form_item2')
-                 <h3><b>紹介状持参予定患者は紹介状登録ページ</b></h3>
-
-                 @endslot
-
-                 @slot('form_item3')
-                 <input type="hidden" name="search_pt_id" value="{{$ptData->pt_id}}">
-                        {{-- タグ付ボタン(スモール) --}}
-                        @include('sab_view_item.small_tagged_buttom',
-                                        ['tagged_value'=>'',
-                                        'buttom_value'=>'紹介状登録',
-                                        'buttom_access'=>'/edit_patient_appoimtment_information/registration_letter_of_introduction'])
-                 @endslot
-                 
-                 @slot('form_name')
-                 
-                 @endslot
-        @endcomponent
-
-        <br>
-        <br>
-        <br>
 
         {{-- このコンポーネントはformとしての囲い(メソッドはpost) --}}
         @component('component_item.form')
@@ -85,6 +58,11 @@
                  
                 @endslot
         @endcomponent
+
+        <br>
+        <br>
+        <br>
+
 @endsection
 
 {{-- フッター --}}

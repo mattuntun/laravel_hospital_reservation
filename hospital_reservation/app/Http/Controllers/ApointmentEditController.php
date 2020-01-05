@@ -237,6 +237,34 @@ class ApointmentEditController extends Controller
         ['ptDatas'=>$ptDatas]);
     }
 
+    //紹介状登録
+    public function RegistrationLetterOfIntroduction(Request $request){
+        
+        $ptDatas = PatientDataModel::getPtData($request->search_pt_id);
+
+        return view('hospital_menu.edit_patient_appoimtment_information.edit_reservation.hos_add_letter_of_introduction_data',['ptDatas'=>$ptDatas]);
+    }
+
+    //紹介状登録完了
+    public function CompleteLetterOfIntroduction(Request $request){
+        //患者ＩＤ取得
+        $pt_id = $request->pt_id;
+            
+        //患者情報取得
+        $ptDatas = PatientDataModel::getPtData($pt_id);
+
+        //紹介状情報取得
+        $introduction_hp_name = $request->introduction_hp;
+        $introduction_hp_tell = $request->introduction_hp_tell;
+        $introduct_lastDate = $request->introduct_lastDate;
+
+        //予約モデルの紹介状登録メソッド呼び出し
+        ReservationDataModel::AppIntroduceDatas($pt_id,$introduction_hp_name,$introduction_hp_tell,$introduct_lastDate);
+
+        return view('hospital_menu.edit_patient_appoimtment_information.edit_reservation.complete_registration_letter_of_introduction',
+        ['ptDatas'=>$ptDatas]);
+    }
+
     //予約状況確認のコントローラ　日付別
     public function CheckReservationStatus() {
 

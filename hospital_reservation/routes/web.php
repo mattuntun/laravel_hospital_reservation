@@ -138,6 +138,10 @@ Route::post('edit_patient_appoimtment_information/select_date_reservation','Apoi
 Route::post('edit_patient_appoimtment_information/select_time_reservation','ApointmentEditController@SelectTimeReservation');
 //時間選択(スケジュール)⇒予約完了画面
 Route::post('edit_patient_appoimtment_information/complete_add_reservation','ApointmentEditController@CompleteAddReservation');
+//予約完了画面⇒紹介状入力画面
+Route::post('edit_patient_appoimtment_information/registration_letter_of_introduction','ApointmentEditController@RegistrationLetterOfIntroduction');
+//紹介状登録完了
+Route::post('edit_patient_appoimtment_information/complete_letter_of_introduction','ApointmentEditController@CompleteLetterOfIntroduction');
 
 
 //予約状況確認のページへ
