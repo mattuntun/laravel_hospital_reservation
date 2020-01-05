@@ -46,7 +46,10 @@
     "files": [
             "app/Calendar.php",
             "app/NextCalendar.php",
-            "app/AfterNextCalendar.php"
+            "app/AfterNextCalendar.php",
+            "app/HospitalCalendar.php",
+            "app/HospitalNextCalendar.php",
+            "app/HospitalAfterNextCalendar.php"
             ]
     },
     "minimum-stability": "dev",

@@ -21,7 +21,7 @@
 
 {{-- メイン --}}
 @section('main_content')
-    <form action="/mypage/calendar_add_new_my_data_reservation" method =post>
+    <form action="/edit_patient_appoimtment_information/select_date_reservation" method =post>
         {{csrf_field()}}
         <select name="selectedDepartment" class="form-control" size="1" style="height: 100px; font-size: 32px;">
         @foreach($getDepartments as $getDepartment)
@@ -32,8 +32,8 @@
 
         @include('sab_view_item.small_tagged_buttom',
                             ['tagged_value'=>'',
-                            'buttom_value'=>'新規予約ページへ',
-                            'buttom_access'=>'/mypage/calendar_add_new_my_data_reservation'])
+                            'buttom_value'=>'日付選択画面へ',
+                            'buttom_access'=>'/edit_patient_appoimtment_information/select_date_reservation'])
         
     </form>
 @endsection
@@ -43,6 +43,14 @@
 
 @section('footer_content')
 
-        @include('sab_view_item.my_page_footer')
+@include('sab_view_item.footer',
+                  ['footerbuttom1'=>'設定画面トップ',
+                  'footerbuttom2'=>'ログイン画面へ',
+                  'footerbuttom3'=>'医療機関HPトップ',
+                  'footerbuttom4'=>'予約情報ダウンロード',
+                  'footerbuttom_access1'=>'/index/hospital_menu',
+                  'footerbuttom_access2'=>'/index',
+                  'footerbuttom_access3'=>'/index',
+                  'footerbuttom_access4'=>'/index' ])
 
 @endsection

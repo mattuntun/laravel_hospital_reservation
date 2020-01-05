@@ -130,6 +130,14 @@ Route::post('edit_patient_appoimtment_information/new_reservation','ApointmentEd
 Route::post('edit_patient_appoimtment_information/delete_reservation','ApointmentEditController@DeleteReservationStatus');
 //予約削除完了ページ
 Route::post('edit_patient_appoimtment_information/complete_delete_reservation','ApointmentEditController@CompleteDeleteReservation');
+//予約診療科選択画面
+Route::post('edit_patient_appoimtment_information/select_department_reservation','ApointmentEditController@SelectDepartmentReservation');
+//予約診療科日付選択(カレンダー選択)
+Route::post('edit_patient_appoimtment_information/select_date_reservation','ApointmentEditController@SelectDateReservation');
+//カレンダー選択⇒時間選択(スケジュール)
+Route::post('edit_patient_appoimtment_information/select_time_reservation','ApointmentEditController@SelectTimeReservation');
+//時間選択(スケジュール)⇒予約完了画面
+Route::post('edit_patient_appoimtment_information/complete_add_reservation','ApointmentEditController@CompleteAddReservation');
 
 
 //予約状況確認のページへ

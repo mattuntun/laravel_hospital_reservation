@@ -66,13 +66,13 @@
 
 @endforeach
 
-        <form action="/mypage/select_add_new_my_data_reservation" method = post>
+        <form action="/edit_patient_appoimtment_information/select_department_reservation" method = post>
         {{csrf_field()}}
         <input type="hidden"  name = "search_pt_id" value = "{{$reservation_data->pt_id}}"> 
             {{-- タグ付きボタン(large) --}}
             @include('sab_view_item.middle_submit_simple_buttom',
                     ['middle_buttom_value'=>'新規予約追加',
-                    'middle_buttom_access'=>'/mypage/select_add_new_my_data_reservation"'])
+                    'middle_buttom_access'=>'/edit_patient_appoimtment_information/select_department_reservation"'])
         </form>
                  
 
