@@ -266,11 +266,33 @@ class ApointmentEditController extends Controller
     }
 
     //予約状況確認のコントローラ　日付別
-    public function CheckReservationStatus() {
+    public function CheckReservationStatus(Request $request) {
+        $getDepartments = ClinicalDepartmentsDataModel::GetDepartmentsData();
 
-        return view('hospital_menu.edit_patient_appoimtment_information.edit_reservation.check_reservation_status');
+        return view('hospital_menu.edit_patient_appoimtment_information.edit_reservation.check_reservation_status',
+        ['getDepartments'=>$getDepartments]);
     }
 
+    //直接日付入力による確認画面
+    public function TargetDateAllReservationCheck(Request $request) {
+        //前画面より指定した予約確認日と診療科名を取得
+        $target_date = $request->check_Date;
+        $selectedDepartment = $request->selectedDepartment;
 
+        //診療科名よりターゲットの日全ての予約取得
+        $all_reservations = ClinicalDepartmentsDataModel::ForeignReservationData($selectedDepartment,$target_date);
+
+
+        if($all_reservations->isEmpty() == true){
+            return view('hospital_menu.edit_patient_appoimtment_information.edit_reservation.target_date_all_reservation_check',['target_date'=>$target_date,
+            'selectedDepartment'=>$selectedDepartment,
+            'all_reservations'=>null]);
+        }else{
+            return view('hospital_menu.edit_patient_appoimtment_information.edit_reservation.target_date_all_reservation_check',['target_date'=>$target_date,
+            'selectedDepartment'=>$selectedDepartment,
+            'all_reservations'=>$all_reservations]);
+        }
+    
+    }
 
 }

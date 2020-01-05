@@ -120,6 +120,19 @@ class ClinicalDepartmentsDataModel extends Model
         return $possibleParcent;
     }
 
+    //診療科モデル⇒予約モデルのリレーション(日付指定でリレーション)
+    public static function ForeignReservationData($searchdepartment,$targetDate){
+        $foreignReservationDepartment = DB::table('clinical_departments')
+                                            ->where('clinical_departments.clinical_department',$searchdepartment)
+                                            ->join('reservation_data','clinical_departments.clinical_department',
+                                                    '=',
+                                                    'reservation_data.reservation_department')
+                                            ->where('reservation_data.reservation_date',$targetDate)
+                                            ->get();
+        return $foreignReservationDepartment;
+
+    }
+
     //予約数を得る為のリレーション⇒予約数獲得
     public static function ForeignReservation($searchdepartment,$targetDate){
         $foreignReservationDepartment = DB::table('clinical_departments')

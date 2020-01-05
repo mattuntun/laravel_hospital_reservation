@@ -146,6 +146,8 @@ Route::post('edit_patient_appoimtment_information/complete_letter_of_introductio
 
 //予約状況確認のページへ
 Route::get('edit_patient_appoimtment_information/check_reservation_status','ApointmentEditController@CheckReservationStatus');
+//直接日付入力による確認画面
+Route::post('edit_patient_appoimtment_information/target_date_all_reservation_check','ApointmentEditController@TargetDateAllReservationCheck');
 
 
 
