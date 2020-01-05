@@ -60,16 +60,16 @@
                 <h2 style="font-size:40px; padding-bottom:30px;">予約情報</h2>
                 
                 {{-- タグ付ボタン(スモール) --}}
-                <form action="/mypage/complete_delete_my_data_reservation" method = post>
+                <form action="/edit_patient_appoimtment_information/complete_delete_reservation" method = post>
                 {{csrf_field()}}
                     
-                    <input type="text" name = "searchReservationNo" value ="{{$reservationData->No}}">
-                    
+                    <input type="hidden" name = "searchReservationNo" value ="{{$reservationData->No}}">
+                    <input type="hidden" name = "search_pt_id" value ="{{$pt_data->pt_id}}">
                     <div class = "delete_buttom">
                     @include('sab_view_item.small_tagged_buttom',
                             ['tagged_value'=>'',
                             'buttom_value'=>'予約削除',
-                            'buttom_access'=>'/mypage/complete_delete_my_data_reservation'])
+                            'buttom_access'=>'/edit_patient_appoimtment_information/complete_delete_reservation'])
                 </div>
                 </form>
             </ul>

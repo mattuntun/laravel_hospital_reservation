@@ -41,6 +41,16 @@ class ApointmentEditController extends Controller
         ]);
     }
 
+    //予約削除完了のコントローラ
+    public function CompleteDeleteReservation(Request $request) {
+
+        $search_pt_id = $request->search_pt_id;
+        ReservationDataModel::DeleteReservationData($request->searchReservationNo);
+
+        
+        return view('hospital_menu.edit_patient_appoimtment_information.edit_reservation.complete_delete_reservation',['search_pt_id'=>$search_pt_id]);
+    }
+
     //予約状況確認のコントローラ　日付別
     public function CheckReservationStatus() {
 

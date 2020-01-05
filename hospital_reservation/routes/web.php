@@ -128,6 +128,8 @@ Route::get('edit_patient_appoimtment_information/search_pt_new_reservation','Apo
 Route::post('edit_patient_appoimtment_information/new_reservation','ApointmentEditController@NewReservation');
 //予約削除　情報確認画面のページへ
 Route::post('edit_patient_appoimtment_information/delete_reservation','ApointmentEditController@DeleteReservationStatus');
+//予約削除完了ページ
+Route::post('edit_patient_appoimtment_information/complete_delete_reservation','ApointmentEditController@CompleteDeleteReservation');
 
 
 //予約状況確認のページへ

@@ -66,26 +66,15 @@
 
 @endforeach
 
-
-        {{-- このコンポーネントはformとしての囲い(メソッドはpost) --}}
-        @component('component_item.form')
-                 @slot('form_action')
-                 /index
-                 @endslot
-                       
-                 @slot('form_item2')
-                        {{-- タグ付ボタン(スモール) --}}
-                        @include('sab_view_item.small_tagged_buttom',
-                                        ['tagged_value'=>'IDの確認後、検索',
-                                        'buttom_value'=>'患者ID検索',
-                                        'buttom_access'=>'/index'])
-                 @endslot
-
-                 @slot('form_name')
-                 pt_search
-                 @endslot
-
-         @endcomponent
+        <form action="/mypage/select_add_new_my_data_reservation" method = post>
+        {{csrf_field()}}
+        <input type="hidden"  name = "search_pt_id" value = "{{$reservation_data->pt_id}}"> 
+            {{-- タグ付きボタン(large) --}}
+            @include('sab_view_item.middle_submit_simple_buttom',
+                    ['middle_buttom_value'=>'新規予約追加',
+                    'middle_buttom_access'=>'/mypage/select_add_new_my_data_reservation"'])
+        </form>
+                 
 
 @endsection
 
