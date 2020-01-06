@@ -279,18 +279,20 @@ class ApointmentEditController extends Controller
         $target_date = $request->check_Date;
         $selectedDepartment = $request->selectedDepartment;
 
-        //診療科名よりターゲットの日全ての予約取得
-        $all_reservations = ClinicalDepartmentsDataModel::ForeignReservationData($selectedDepartment,$target_date);
+        //診療科モデルから予約モデルを経由して患者モデルへリレーション・全ての予約情報及び患者情報取得
+        $all_reservations_and_pt_datas = ClinicalDepartmentsDataModel::ForeignPatientData($selectedDepartment,$target_date);
 
+        var_dump($all_reservations_and_pt_datas);
 
-        if($all_reservations->isEmpty() == true){
+        
+        if($all_reservations_and_pt_datas->isEmpty() == true){
             return view('hospital_menu.edit_patient_appoimtment_information.edit_reservation.target_date_all_reservation_check',['target_date'=>$target_date,
             'selectedDepartment'=>$selectedDepartment,
-            'all_reservations'=>null]);
+            'all_reservations_and_pt_datas'=>null]);
         }else{
             return view('hospital_menu.edit_patient_appoimtment_information.edit_reservation.target_date_all_reservation_check',['target_date'=>$target_date,
             'selectedDepartment'=>$selectedDepartment,
-            'all_reservations'=>$all_reservations]);
+            'all_reservations_and_pt_datas'=>$all_reservations_and_pt_datas]);
         }
     
     }

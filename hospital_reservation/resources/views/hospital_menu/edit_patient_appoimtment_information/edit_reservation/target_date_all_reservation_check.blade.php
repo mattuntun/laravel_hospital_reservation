@@ -40,23 +40,29 @@
 <h2 style="font-size:40px; padding-bottom:30px;">予約一覧</h2>
 
 
-@if($all_reservations == null)
+@if($all_reservations_and_pt_datas == null)
     <h2>現在、診療予約情報はありません。</h2>
 @else
-    @foreach($all_reservations as $all_reservation)
+    @foreach($all_reservations_and_pt_datas as $all_reservations_and_pt_data)
         <div class = "ResInfo">
             <ul>
-                <li style="font-size:40px;"><b>予約日:</b>　{{$all_reservation->reservation_date}}</li>
-                <li style="font-size:40px;"><b>診療開始予定時間:</b>　{{$all_reservation->reservation_time}}　より診療開始</li>
-                <li style="font-size:40px;">患者ID：<b>{{$all_reservation->pt_id}}</b></li>
-                <li style="font-size:40px;">患者名：<b>{{}}</b></li>
+                <li style="font-size:40px;"><b>診療開始予定時間:</b>　{{$all_reservations_and_pt_data->reservation_time}}　より診療開始</li>
+                <li style="font-size:40px;">患者ID：<b>{{$all_reservations_and_pt_data->pt_id}}</b></li>
+                <li style="font-size:40px;">患者名：<b>{{$all_reservations_and_pt_data->pt_last_name}}　{{$all_reservations_and_pt_data->pt_name}}</b></li>
+                    @if($all_reservations_and_pt_data->letter_of_introduction == 2)
+                        <li style="font-size:20px;">紹介状情報：なし</li>
+                    @else
+                        <li style="font-size:20px;">紹介元：{{$all_reservations_and_pt_data->introduction_hp}}</li>
+                        <li style="font-size:20px;">紹介元TEL：{{$all_reservations_and_pt_data->introduction_hp_tell}}</li>
+                        <li style="font-size:20px;">紹介元最終受診日：{{$all_reservations_and_pt_data->introduction_hp_date}}</li>
+                    @endif
                 
                 
                 {{-- タグ付ボタン(スモール) --}}
                 <form action="/mypage/delete_my_data_reservation" method = post>
                 {{csrf_field()}}
-                    <input type="hidden" name = "search_reservation_No" value = "{{$all_reservation->No}}">
-                    <input type="hidden" name = "search_reservation_pt_id" value = "{{$all_reservation->pt_id}}">
+                    <input type="hidden" name = "search_reservation_No" value = "{{$all_reservations_and_pt_data->No}}">
+                    <input type="hidden" name = "search_reservation_pt_id" value = "{{$all_reservations_and_pt_data->pt_id}}">
                     <div class = "delete_buttom">
 
                     @include('sab_view_item.small_tagged_buttom',
