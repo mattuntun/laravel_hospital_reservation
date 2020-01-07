@@ -12,6 +12,12 @@
         border-bottom: 5px solid rgb(6, 71, 250);
                
 }
+.PtInfo{
+        margin-bottom: 50px ;
+        padding-bottom: 50px;
+        border-bottom: 5px dotted rgb(6, 71, 250);
+               
+}
 
 </style>
 
@@ -26,15 +32,17 @@
 
 {{-- メイン --}}
 @section('main_content')
-<h2>予約を追加したい患者の情報を確認</h2>
+<h2>予約追加患者の情報を確認してください</h2>
 @foreach($foreignPatientDatas as $foreignPatientData)
+@endforeach
+            <br>
             <div class = "PtInfo">
                 <h2>患者ID：{{$foreignPatientData->pt_id}}</h2>
                 <h2>カナ氏名：{{$foreignPatientData->pt_last_name_kata}}　{{$foreignPatientData->pt_name_kata}}</h2>
 
                 <h2>患者氏名：{{$foreignPatientData->pt_last_name}}　{{$foreignPatientData->pt_name}}　様</h2>
             </div>
-@endforeach
+
 <br>
 <br>
 
@@ -43,6 +51,7 @@
 @foreach($reservation_datas as $reservation_data)
 <div class = "ResInfo">
             <ul>
+                <li style="font-size:20px;"><b>予約No.{{$reservation_data->No}}</b></li>
                 <li style="font-size:40px; padding-bottom:30px;"><b>予約診療科:</b>{{$reservation_data->reservation_department}}</li>
                 <li style="font-size:40px;"><b>予約日:</b>　{{$reservation_data->reservation_date}}</li>
                 <li style="font-size:40px;"><b>診療開始予定時間:</b>　{{$reservation_data->reservation_time}}　より診療開始</li>

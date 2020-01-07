@@ -22,7 +22,7 @@
         <td>
             <form action="/index/mypage_menu" method =post>
             {{csrf_field()}}
-            <input type="hidden" name ="search_pt_id" value="{{$pt_datas->pt_id}}">
+            <input type="hidden" name ="search_pt_id" value="{{$pt_data->pt_id}}">
             <button type="submit" class="btn btn-outline-info" onclick="location.href='/index/mypage_menu'">マイページトップへ</button>
             </form>
           </td>

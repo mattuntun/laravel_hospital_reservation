@@ -23,6 +23,21 @@ class ReservationDataModel extends Model{
         return $reservationDatas;
     }
 
+    //予約情報の取得(日付から全取得)
+    public static function SearchReservationFromDate($target_date){
+        $reservationDatas = DB::table('reservation_data')->where('reservation_date',$target_date)->get();
+        return $reservationDatas;
+    }
+
+    //クエリビルダで患者モデルとリレーション
+    public static function ForeignPatientsDatas($search_pt_id){
+        $foreignPatientsDatas = DB::table('reservation_data')
+                                        ->where('reservation_data.pt_id',$search_pt_id)
+                                        ->join('pt_data','reservation_data.pt_id','=','pt_data.pt_id') 
+                                        ->get();
+        return $foreignPatientsDatas;
+    }
+
     //予約情報テーブルの主キー取得
     //public static function MainKey($search_pt_id){
     //    $mainKeys = DB::table('reservation_data')->where('pt_id',$search_pt_id)->get('No');

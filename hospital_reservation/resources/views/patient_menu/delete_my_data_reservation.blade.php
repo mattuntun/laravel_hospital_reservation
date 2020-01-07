@@ -36,10 +36,12 @@
 {{-- メイン --}}
 
 @section('main_content')
+@foreach($pt_datas as $pt_data)
+@endforeach
     
         <div class = "PtInfo">
-            <h2>患者ID：{{$pt_datas->pt_id}}</h2>
-            <h2>患者氏名：{{$pt_datas->pt_last_name}}　{{$pt_datas->pt_name}}　様</h2>
+            <h2>患者ID：{{$pt_data->pt_id}}</h2>
+            <h2>患者氏名：{{$pt_data->pt_last_name}}　{{$pt_data->pt_name}}　様</h2>
         </div>
 
 
@@ -59,7 +61,7 @@
                 {{csrf_field()}}
                     
                     <input type="hidden" name = "searchReservationNo" value ="{{$reservationData->No}}">
-                    <input type="hidden" name = "searchPtId" value ="{{$pt_datas->pt_id}}">
+                    <input type="hidden" name = "searchPtId" value ="{{$pt_data->pt_id}}">
                     <div class = "delete_buttom">
                     @include('sab_view_item.small_tagged_buttom',
                             ['tagged_value'=>'',

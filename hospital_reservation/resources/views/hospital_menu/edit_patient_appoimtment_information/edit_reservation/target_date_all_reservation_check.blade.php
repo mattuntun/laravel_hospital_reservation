@@ -59,16 +59,16 @@
                 
                 
                 {{-- タグ付ボタン(スモール) --}}
-                <form action="/mypage/delete_my_data_reservation" method = post>
+                <form action="/edit_patient_appoimtment_information/new_reservation" method = post>
                 {{csrf_field()}}
                     <input type="hidden" name = "search_reservation_No" value = "{{$all_reservations_and_pt_data->No}}">
-                    <input type="hidden" name = "search_reservation_pt_id" value = "{{$all_reservations_and_pt_data->pt_id}}">
+                    <input type="hidden" name = "search_pt_id" value = "{{$all_reservations_and_pt_data->pt_id}}">
                     <div class = "delete_buttom">
 
                     @include('sab_view_item.small_tagged_buttom',
                             ['tagged_value'=>'',
-                            'buttom_value'=>'予約削除ページへ',
-                            'buttom_access'=>'/mypage/delete_my_data_reservation'])
+                            'buttom_value'=>'該当患者の予約編集画面へ',
+                            'buttom_access'=>'/edit_patient_appoimtment_information/new_reservation'])
                     </div>
                 </form>
             </ul>

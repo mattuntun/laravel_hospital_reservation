@@ -18,18 +18,18 @@ class ApointmentEditController extends Controller
     public function SearchPtNewReservation() {
         return view('hospital_menu.edit_patient_appoimtment_information.edit_reservation.search_pt_new_reservation');
     }
+    
     //予約新規追加の患者情報確認画面コントローラ
     public function NewReservation(Request $request) {
         //患者情報を取得
         $pt_datas = PatientDataModel::getPtData($request->search_pt_id);
+
         //予約情報を取得
         $reservation_datas = ReservationDataModel::SearchReservation($request->search_pt_id);
 
-        //予約情報から患者情報をリレーションの為の主キー「No」取得
-        $mainKey = PatientDataModel::Mainkey($request->search_pt_id);
+        //クエリビルダで患者モデル⇒予約モデルリレーション
+        $foreignPatientDatas = PatientDataModel::ForeignReservationData($request->search_pt_id);
 
-        //予約情報から患者情報を主キーを用いてリレーション
-        $foreignPatientDatas = ReservationDataModel::find($mainKey->No)->ForeignPatientData()->get();
         return view('hospital_menu.edit_patient_appoimtment_information.edit_reservation.new_reservation',['pt_datas'=>$pt_datas,'reservation_datas'=>$reservation_datas,'foreignPatientDatas'=>$foreignPatientDatas]);
     }
 
@@ -282,9 +282,7 @@ class ApointmentEditController extends Controller
         //診療科モデルから予約モデルを経由して患者モデルへリレーション・全ての予約情報及び患者情報取得
         $all_reservations_and_pt_datas = ClinicalDepartmentsDataModel::ForeignPatientData($selectedDepartment,$target_date);
 
-        var_dump($all_reservations_and_pt_datas);
 
-        
         if($all_reservations_and_pt_datas->isEmpty() == true){
             return view('hospital_menu.edit_patient_appoimtment_information.edit_reservation.target_date_all_reservation_check',['target_date'=>$target_date,
             'selectedDepartment'=>$selectedDepartment,

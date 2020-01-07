@@ -47,6 +47,7 @@
     @foreach($foreignReservationDatas as $foreignReservationData)
         <div class = "ResInfo">
             <ul>
+                <li style="font-size:20px;"><b>予約No.{{$foreignReservationData->No}}</b></li>
                 <li style="font-size:40px; padding-bottom:30px;"><b>予約診療科:</b>{{$foreignReservationData->reservation_department}}</li>
                 <li style="font-size:40px;"><b>予約日:</b>　{{$foreignReservationData->reservation_date}}</li>
                 <li style="font-size:40px;"><b>診療開始予定時間:</b>　{{$foreignReservationData->reservation_time}}　より診療開始</li>

@@ -16,14 +16,8 @@ class PersonMyPageController extends Controller{
     //患者マイページから予約削除ページへのアクション
     public function DeleteMyReservations(Request $request){
         
-        //患者IDから患者テーブル主キー獲得
-        $ptNo = PatientDataModel::Mainkey($request->search_reservation_pt_id);
-
-        $test = ReservationDataModel::SearchReservation($request->search_reservation_No);
-
-        
         //予約情報から患者情報をリレーション
-        $pt_datas = ReservationDataModel::find($ptNo->No)->ForeignPatientData()->first();
+        $pt_datas = ReservationDataModel::ForeignPatientsDatas($request->search_reservation_pt_id);
 
         //予約情報を個別で取得
         $reservationDatas = ReservationDataModel::SearchReservationSeparate($request->search_reservation_No);
