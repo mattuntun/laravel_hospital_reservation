@@ -49,12 +49,19 @@
 @endforeach
 
         <div class = "ResInfo">
-        <h2 style="font-size:40px; padding-bottom:30px;">削除する情報を確認してください</h2>
+        <h2 style="font-size:30px; padding-bottom:30px;">削除する情報を確認してください</h2>
             <ul>
-                <li style="font-size:40px; padding-bottom:30px;"><b>予約診療科:</b>{{$reservationData->reservation_department}}</li>
-                <li style="font-size:40px;"><b>予約診療時間</b>　{{$reservationData->reservation_time}}　より診療開始</li>
+                <li style="font-size:30px; padding-bottom:30px;"><b>予約診療科:</b>{{$reservationData->reservation_department}}</li>
+                <li style="font-size:30px;"><b>予約日</b>：{{$reservationData->reservation_date}}　</li>
+                <li style="font-size:30px;"><b>予約診療時間</b>　{{$reservationData->reservation_time}}</li>
+                    @if($reservationData->letter_of_introduction == 2)
+                        <li style="font-size:25px;"><b>紹介状情報：なし</b></li>
+                    @else
+                        <li style="font-size:25px;"><b>紹介元：{{$reservationData->introduction_hp}}</b></li>
+                        <li style="font-size:25px;"><b>紹介元TEL：{{$reservationData->introduction_hp_tell}}</b></li>
+                        <li style="font-size:25px;"><b>紹介元最終受診日：{{$reservationData->introduction_hp_date}}</b></li>
+                    @endif
 
-                <h2 style="font-size:40px; padding-bottom:30px;">予約情報</h2>
                 
                 {{-- タグ付ボタン(スモール) --}}
                 <form action="/mypage/complete_delete_my_data_reservation" method = post>
