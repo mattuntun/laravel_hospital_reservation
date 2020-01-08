@@ -2,21 +2,21 @@
 @extends('layout.layout_hospital_base')
 
 {{-- ヘッド --}}
-@section('web_title','全科共通 開院・閉診設定')
+@section('web_title','診療科別設定')
 
 {{-- ヘッダー --}}
 @section('header_content')
     @include('sab_view_item.header',
-              ['main_theme'=>'全科共通 開院・休憩・閉診設定',
-              'sub_theme'=>'※個別設定を優先反映します。'])
+              ['main_theme'=>'診療科別設定変更'])
 @endsection
 
 {{-- メイン --}}
 @section('main_content')
+<h2>診療科【{{$department}}】の設定を変更します</h2>
     {{-- このコンポーネントはformとしての囲い(メソッドはpost) --}}
     @component('component_item.form')
                  @slot('form_action')
-                     /opening_rest_closing_time/complete_set_opening_rest_closing_time
+                     /individual_setting_menu/complete_individual_change_department
                  @endslot
 
                  @slot('form_item2')
@@ -25,11 +25,15 @@
                  @endslot
 
                  @slot('form_item3')
+                 <input type="hidden" value = "{{$department}}" name = "search_deparment">
+                 @endslot
+
+                 @slot('form_item4')
                  {{-- タグ付ボタン(スモール) --}}
                      @include('sab_view_item.small_tagged_buttom',
                              ['tagged_value'=>'内容を確認して情報を登録',
                               'buttom_value'=>'内容を登録',
-                              'buttom_access'=>'/opening_rest_closing_time/complete_set_opening_rest_closing_time'])
+                              'buttom_access'=>'/individual_setting_menu/complete_individual_change_department'])
                  @endslot
 
 

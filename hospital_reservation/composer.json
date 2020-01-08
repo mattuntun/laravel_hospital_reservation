@@ -42,7 +42,12 @@
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/"
-        }
+        },
+    "files": [
+            "app/Calendar.php",
+            "app/NextCalendar.php",
+            "app/AfterNextCalendar.php"
+            ]
     },
     "minimum-stability": "dev",
     "prefer-stable": true,

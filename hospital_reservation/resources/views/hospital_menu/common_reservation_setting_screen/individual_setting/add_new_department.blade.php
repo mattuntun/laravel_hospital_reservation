@@ -17,26 +17,47 @@
 
 
 @section('main_content')
-{{-- シンプルボタン(large) --}}
-        @include('sab_view_item.large_simple_buttom',
-                  ['large_buttom_value'=>'診療科　追加',
-                   'large_buttom_access'=>'/index'])
 
-{{-- シンプルボタン(large) --}}
-        @include('sab_view_item.large_simple_buttom',
-                  ['large_buttom_value'=>'診療科　削除',
-                   'large_buttom_access'=>'/index'])
+{{-- このコンポーネントはformとしての囲い(メソッドはpost) --}}
+        @component('component_item.form')
+                 @slot('form_action')
+                 /individual_setting_menu/complete_add_new_department
+                 @endslot
 
-{{-- シンプルボタン(large) --}}
-        @include('sab_view_item.large_simple_buttom',
-                  ['large_buttom_value'=>'診療科別設定',
-                   'large_buttom_access'=>'/index'])
+                 @slot('form_item1')
+                        {{-- 1箇所テキスト(ロング) --}}
+                        @include('sab_view_item.texts_one_long',
+                                ['label_value'=>'新規診療科名登録',
+                                'label_id'=>'new-department-registration',
+                                'input_id'=>'new-department-registration',
+                                'input_name'=>'new_department'])
+                 @endslot
+                       
+                 @slot('form_item2')
+                 {{-- このビューページ専用のサブビューを参照します --}}
+                     @include('sab_view_item.only_opening_rest_closing_time')
+                 @endslot
 
-{{-- シンプルボタン(large) --}}
-        @include('sab_view_item.large_simple_buttom',
-                  ['large_buttom_value'=>'診療科　追加・削除用パスワード設定',
-                   'large_buttom_access'=>'/index'])
-                   
+                 
+                 @slot('form_item3')
+                 {{-- このビューページ専用のサブビューを参照します --}}
+                     @include('sab_view_item.only_number_of_reservation_screen')
+                 @endslot
+
+                 @slot('form_item4')
+                        {{-- タグ付ボタン(スモール) --}}
+                        @include('sab_view_item.small_tagged_buttom',
+                                        ['tagged_value'=>'内容を確認して情報を登録',
+                                        'buttom_value'=>'内容を登録',
+                                        'buttom_access'=>'/individual_setting_menu/complete_add_new_department'])
+                 @endslot
+
+                @slot('form_name')
+                newPtDatas
+                @endslot
+
+        @endcomponent
+
 @endsection
 
 

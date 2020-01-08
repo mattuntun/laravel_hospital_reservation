@@ -15,7 +15,7 @@ footer{
 }
 
 
-table{
+table.footer-table{
 	display: inline-block;/*tableをインラインブロックにする*/
 	border-collapse:separate;/*tdの要素を分割(セパレートする)*/
 	border-spacing:40px;/*tableの間隔を空ける*/

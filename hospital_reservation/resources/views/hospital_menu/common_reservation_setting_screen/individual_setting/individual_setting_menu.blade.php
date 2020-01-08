@@ -20,21 +20,21 @@
 {{-- シンプルボタン(large) --}}
         @include('sab_view_item.large_simple_buttom',
                   ['large_buttom_value'=>'診療科　追加',
-                   'large_buttom_access'=>'/index'])
+                   'large_buttom_access'=>'/individual_setting_menu/add_new_department'])
 
 {{-- シンプルボタン(large) --}}
         @include('sab_view_item.large_simple_buttom',
                   ['large_buttom_value'=>'診療科　削除',
-                   'large_buttom_access'=>'/index'])
+                   'large_buttom_access'=>'/individual_setting_menu/search_delete_department'])
 
 {{-- シンプルボタン(large) --}}
         @include('sab_view_item.large_simple_buttom',
                   ['large_buttom_value'=>'診療科別設定',
-                   'large_buttom_access'=>'/index'])
+                   'large_buttom_access'=>'/individual_setting_menu/search_individual_change_department'])
 
 {{-- シンプルボタン(large) --}}
         @include('sab_view_item.large_simple_buttom',
-                  ['large_buttom_value'=>'診療科　追加・削除用パスワード設定',
+                  ['large_buttom_value'=>'未搭載　診療科　追加・削除用パスワード設定',
                    'large_buttom_access'=>'/index'])
                    
 @endsection

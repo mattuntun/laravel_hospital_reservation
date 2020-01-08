@@ -6,7 +6,7 @@
 
 <footer>
   <section class="anything-top"><!--各ボタン-->
-    <table>
+    <table class="footer-table">
       <tr>
         <td>
           <button type="button" class="btn btn-outline-info" onclick="location.href='{{$footerbuttom_access1}}'">{{$footerbuttom1}}</button>

@@ -1,0 +1,18 @@
+@charset"UTF-8";
+
+table.calender-table{
+    width: 100%;
+}
+table th.calender-table{
+    background: #EEEEEE;
+}
+table th.calender-table,
+table td.calender-table {
+    border: 1px solid #CCCCCC;
+    text-align: center;
+    padding: 5px;
+}
+
+table td.calender-table{
+  background: white;
+}
