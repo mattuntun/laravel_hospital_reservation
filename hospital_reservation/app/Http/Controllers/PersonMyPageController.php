@@ -109,21 +109,19 @@ class PersonMyPageController extends Controller{
                               '16:00:00',
                               '17:00:00',
                               '18:00:00');
-        
+
 
         //時間ごとの予約獲得数をスケジュール表の配列から取得⇒取得した値を配列へ
-        $OclocNumberOfReservation = [];
-        for($i = 0; $i <= 9; $i++){            
-            $OclocNumberOfReservations[$schedulTimes[$i]]=ClinicalDepartmentsDataModel::OclockForeignReservation($request->search_Department,$targetDate,$schedulTimes[$i]); 
+        $OclocNumberOfReservations = [];
+        foreach($schedulTimes as $key=>$Time){            
+            $OclocNumberOfReservations[$Time]=ClinicalDepartmentsDataModel::OclockForeignReservation($request->search_Department,$targetDate,$Time); 
             }
 
         //9:00~18:00までを配列のキーに、空き容量パーセントをバリューにした配列$parcentsを作成
-
         $parcents = [];
         foreach($OclocNumberOfReservations as $key=>$OclocNumberOfReservation){
             $parcents[$key] =  ClinicalDepartmentsDataModel::Calculation($request->search_Department,$OclocNumberOfReservation);
         }
-
 
         //◎、〇、△の条件を呼び出し
         $doubleCircleReservationValue = 60;
