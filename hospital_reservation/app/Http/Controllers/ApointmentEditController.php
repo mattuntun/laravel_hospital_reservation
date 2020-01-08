@@ -107,80 +107,41 @@ class ApointmentEditController extends Controller
     //予約追加の為の診療科選択画面
     public function SelectTimeReservation(Request $request) {
 
-        //指定日の情報を取得
-        $target_year = $request->target_year;
-        $target_month = $request->target_month;
+        //日付データの取得
         $target_day = $request->target_day;
+        $target_month = $request->target_month;
+        $target_year = $request->target_year;
 
         //診療年月日の文字列データ作成
         $targetDate = strval($target_year).strval($target_month).strval(str_pad($target_day, 2, 0, STR_PAD_LEFT));
 
-        //診療科モデルと予約モデルリレーション⇒予約数獲得
-        $numberOfReservation =ClinicalDepartmentsDataModel::ForeignReservation($request->search_Department,$targetDate);
+       //診療科モデルと予約モデルリレーション⇒その日に予約している数を獲得
+       $numberOfReservation =ClinicalDepartmentsDataModel::ForeignReservation($request->search_Department,$targetDate);
 
-        //診療科モデルと予約モデルリレーション⇒予約数獲得(09:00) 
-        $OclocNumberOfReservation09 =ClinicalDepartmentsDataModel::OclockForeignReservation09($request->search_Department,$targetDate);
+       //スケジュールの時間を配列へ収納
+       $schedulTimes =array('9:00:00',
+                             '10:00:00',
+                             '11:00:00',
+                             '12:00:00',
+                             '13:00:00',
+                             '14:00:00',
+                             '15:00:00',
+                             '16:00:00',
+                             '17:00:00',
+                             '18:00:00');
 
-        //診療科モデルと予約モデルリレーション⇒予約数獲得(10:00) 
-        $OclocNumberOfReservation10 =ClinicalDepartmentsDataModel::OclockForeignReservation10($request->search_Department,$targetDate);
 
-        //診療科モデルと予約モデルリレーション⇒予約数獲得(11:00) 
-        $OclocNumberOfReservation11 =ClinicalDepartmentsDataModel::OclockForeignReservation11($request->search_Department,$targetDate);
+       //時間ごとの予約獲得数をスケジュール表の配列から取得⇒取得した値を配列へ
+       $OclocNumberOfReservations = [];
+       foreach($schedulTimes as $key=>$Time){            
+           $OclocNumberOfReservations[$Time]=ClinicalDepartmentsDataModel::OclockForeignReservation($request->search_Department,$targetDate,$Time); 
+           }
 
-        //診療科モデルと予約モデルリレーション⇒予約数獲得(12:00) 
-        $OclocNumberOfReservation12 =ClinicalDepartmentsDataModel::OclockForeignReservation12($request->search_Department,$targetDate);
-
-        //診療科モデルと予約モデルリレーション⇒予約数獲得(13:00) 
-        $OclocNumberOfReservation13 =ClinicalDepartmentsDataModel::OclockForeignReservation13($request->search_Department,$targetDate);
-
-        //診療科モデルと予約モデルリレーション⇒予約数獲得(14:00) 
-        $OclocNumberOfReservation14 =ClinicalDepartmentsDataModel::OclockForeignReservation14($request->search_Department,$targetDate);
-
-        //診療科モデルと予約モデルリレーション⇒予約数獲得(15:00) 
-        $OclocNumberOfReservation15 =ClinicalDepartmentsDataModel::OclockForeignReservation15($request->search_Department,$targetDate);
-
-        //診療科モデルと予約モデルリレーション⇒予約数獲得(16:00) 
-        $OclocNumberOfReservation16 =ClinicalDepartmentsDataModel::OclockForeignReservation16($request->search_Department,$targetDate);
-
-        //診療科モデルと予約モデルリレーション⇒予約数獲得(17:00) 
-        $OclocNumberOfReservation17 =ClinicalDepartmentsDataModel::OclockForeignReservation17($request->search_Department,$targetDate);
-
-        //診療科モデルと予約モデルリレーション⇒予約数獲得(18:00) 
-        $OclocNumberOfReservation18 =ClinicalDepartmentsDataModel::OclockForeignReservation18($request->search_Department,$targetDate);
-
-                
-        //診療科モデルのパーセント計算を呼び出し
-        $ScreenStatusParcent = ClinicalDepartmentsDataModel::Calculation($request->search_Department,$numberOfReservation);
-
-        //診療科モデルのパーセント計算を呼び出し(09:00)
-        $ScreenStatusParcent09 = ClinicalDepartmentsDataModel::Calculation($request->search_Department,$OclocNumberOfReservation09);
-        
-        //診療科モデルのパーセント計算を呼び出し(10:00)
-        $ScreenStatusParcent10 = ClinicalDepartmentsDataModel::Calculation($request->search_Department,$OclocNumberOfReservation10);
-        
-        //診療科モデルのパーセント計算を呼び出し(11:00)
-        $ScreenStatusParcent11 = ClinicalDepartmentsDataModel::Calculation($request->search_Department,$OclocNumberOfReservation11);
-        
-        //診療科モデルのパーセント計算を呼び出し(12:00)
-        $ScreenStatusParcent12 = ClinicalDepartmentsDataModel::Calculation($request->search_Department,$OclocNumberOfReservation12);
-
-        //診療科モデルのパーセント計算を呼び出し(13:00)
-        $ScreenStatusParcent13 = ClinicalDepartmentsDataModel::Calculation($request->search_Department,$OclocNumberOfReservation13);
-
-        //診療科モデルのパーセント計算を呼び出し(14:00)
-        $ScreenStatusParcent14 = ClinicalDepartmentsDataModel::Calculation($request->search_Department,$OclocNumberOfReservation14);
-
-        //診療科モデルのパーセント計算を呼び出し(15:00)
-        $ScreenStatusParcent15 = ClinicalDepartmentsDataModel::Calculation($request->search_Department,$OclocNumberOfReservation15);
-
-        //診療科モデルのパーセント計算を呼び出し(16:00)
-        $ScreenStatusParcent16 = ClinicalDepartmentsDataModel::Calculation($request->search_Department,$OclocNumberOfReservation16);
-
-        //診療科モデルのパーセント計算を呼び出し(17:00)
-        $ScreenStatusParcent17 = ClinicalDepartmentsDataModel::Calculation($request->search_Department,$OclocNumberOfReservation17);
-
-        //診療科モデルのパーセント計算を呼び出し(18:00)
-        $ScreenStatusParcent18 = ClinicalDepartmentsDataModel::Calculation($request->search_Department,$OclocNumberOfReservation18);
+       //9:00~18:00までを配列のキーに、空き容量パーセントをバリューにした配列$parcentsを作成
+       $parcents = [];
+       foreach($OclocNumberOfReservations as $key=>$OclocNumberOfReservation){
+           $parcents[$key] =  ClinicalDepartmentsDataModel::Calculation($request->search_Department,$OclocNumberOfReservation);
+       }
 
         //◎、〇、△の条件を呼び出し
         $doubleCircleReservationValue = 60;
@@ -204,16 +165,7 @@ class ApointmentEditController extends Controller
         'doubleCircleReservationValue'=>$doubleCircleReservationValue,
         'circleReservationValue'=>$circleReservationValue,
         'triangleReservationValue'=>$triangleReservationValue,
-        'ScreenStatusParcent09'=>$ScreenStatusParcent09,
-        'ScreenStatusParcent10'=>$ScreenStatusParcent10,
-        'ScreenStatusParcent11'=>$ScreenStatusParcent11,
-        'ScreenStatusParcent12'=>$ScreenStatusParcent12,
-        'ScreenStatusParcent13'=>$ScreenStatusParcent13,
-        'ScreenStatusParcent14'=>$ScreenStatusParcent14,
-        'ScreenStatusParcent15'=>$ScreenStatusParcent15,
-        'ScreenStatusParcent16'=>$ScreenStatusParcent16,
-        'ScreenStatusParcent17'=>$ScreenStatusParcent17,
-        'ScreenStatusParcent18'=>$ScreenStatusParcent18,]);
+        'parcents'=>$parcents]);
     }
     
     //予約完了
