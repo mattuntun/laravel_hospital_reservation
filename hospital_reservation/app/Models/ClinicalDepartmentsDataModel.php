@@ -133,6 +133,7 @@ class ClinicalDepartmentsDataModel extends Model
 
     }
 
+    //診療科モデル⇒予約モデル⇒患者モデル　にて患者情報を取得(予約モデルを経由して患者モデル取得)
     public static function ForeignPatientData($searchdepartment,$targetDate){
         $foreignPatientData = DB::table('clinical_departments')
                                             ->where('clinical_departments.clinical_department',$searchdepartment)
@@ -149,7 +150,7 @@ class ClinicalDepartmentsDataModel extends Model
     }
 
 
-    //予約数を得る為のリレーション⇒予約数獲得
+    //1日の予約数を得る為のリレーション⇒予約数獲得
     public static function ForeignReservation($searchdepartment,$targetDate){
         $foreignReservationDepartment = DB::table('clinical_departments')
                                             ->where('clinical_departments.clinical_department',$searchdepartment)
@@ -162,8 +163,8 @@ class ClinicalDepartmentsDataModel extends Model
        return $foreignReservationDepartment;
 
     }
-    //予約数を得る為のリレーション⇒予約数獲得(9：00)
-    public static function OclockForeignReservation09($searchdepartment,$targetDate,$schedulTime){
+    //一コマ単位の予約数を得る為のリレーション⇒予約数獲得
+    public static function OclockForeignReservation($searchdepartment,$targetDate,$schedulTime){
         $foreignReservationDepartment = DB::table('clinical_departments')
                                             ->where('clinical_departments.clinical_department',$searchdepartment)
                                             ->join('reservation_data','clinical_departments.clinical_department',
@@ -177,140 +178,6 @@ class ClinicalDepartmentsDataModel extends Model
 
     }
 
-    //予約数を得る為のリレーション⇒予約数獲得(10：00)
-    public static function OclockForeignReservation10($searchdepartment,$targetDate){
-        $foreignReservationDepartment = DB::table('clinical_departments')
-                                            ->where('clinical_departments.clinical_department',$searchdepartment)
-                                            ->join('reservation_data','clinical_departments.clinical_department',
-                                                    '=',
-                                                    'reservation_data.reservation_department')
-                                            ->where('reservation_data.reservation_date',$targetDate)
-                                            ->where('reservation_data.reservation_time','10:00:00')
-                                            ->get()
-                                            ->count();
-       return $foreignReservationDepartment;
-
-    }
-
-    //予約数を得る為のリレーション⇒予約数獲得(11：00)
-    public static function OclockForeignReservation11($searchdepartment,$targetDate){
-        $foreignReservationDepartment = DB::table('clinical_departments')
-                                            ->where('clinical_departments.clinical_department',$searchdepartment)
-                                            ->join('reservation_data','clinical_departments.clinical_department',
-                                                    '=',
-                                                    'reservation_data.reservation_department')
-                                            ->where('reservation_data.reservation_date',$targetDate)
-                                            ->where('reservation_data.reservation_time','11:00:00')
-                                            ->get()
-                                            ->count();
-       return $foreignReservationDepartment;
-
-    }
-
-    //予約数を得る為のリレーション⇒予約数獲得(12：00)
-    public static function OclockForeignReservation12($searchdepartment,$targetDate){
-        $foreignReservationDepartment = DB::table('clinical_departments')
-                                            ->where('clinical_departments.clinical_department',$searchdepartment)
-                                            ->join('reservation_data','clinical_departments.clinical_department',
-                                                    '=',
-                                                    'reservation_data.reservation_department')
-                                            ->where('reservation_data.reservation_date',$targetDate)
-                                            ->where('reservation_data.reservation_time','12:00:00')
-                                            ->get()
-                                            ->count();
-       return $foreignReservationDepartment;
-
-    }
-
-    //予約数を得る為のリレーション⇒予約数獲得(13：00)
-    public static function OclockForeignReservation13($searchdepartment,$targetDate){
-        $foreignReservationDepartment = DB::table('clinical_departments')
-                                            ->where('clinical_departments.clinical_department',$searchdepartment)
-                                            ->join('reservation_data','clinical_departments.clinical_department',
-                                                    '=',
-                                                    'reservation_data.reservation_department')
-                                            ->where('reservation_data.reservation_date',$targetDate)
-                                            ->where('reservation_data.reservation_time','13:00:00')
-                                            ->get()
-                                            ->count();
-       return $foreignReservationDepartment;
-
-    }
-
-    //予約数を得る為のリレーション⇒予約数獲得(14：00)
-    public static function OclockForeignReservation14($searchdepartment,$targetDate){
-        $foreignReservationDepartment = DB::table('clinical_departments')
-                                            ->where('clinical_departments.clinical_department',$searchdepartment)
-                                            ->join('reservation_data','clinical_departments.clinical_department',
-                                                    '=',
-                                                    'reservation_data.reservation_department')
-                                            ->where('reservation_data.reservation_date',$targetDate)
-                                            ->where('reservation_data.reservation_time','14:00:00')
-                                            ->get()
-                                            ->count();
-       return $foreignReservationDepartment;
-
-    }
-
-    //予約数を得る為のリレーション⇒予約数獲得(15：00)
-    public static function OclockForeignReservation15($searchdepartment,$targetDate){
-        $foreignReservationDepartment = DB::table('clinical_departments')
-                                            ->where('clinical_departments.clinical_department',$searchdepartment)
-                                            ->join('reservation_data','clinical_departments.clinical_department',
-                                                    '=',
-                                                    'reservation_data.reservation_department')
-                                            ->where('reservation_data.reservation_date',$targetDate)
-                                            ->where('reservation_data.reservation_time','15:00:00')
-                                            ->get()
-                                            ->count();
-       return $foreignReservationDepartment;
-
-    }
-
-    //予約数を得る為のリレーション⇒予約数獲得(16：00)
-    public static function OclockForeignReservation16($searchdepartment,$targetDate){
-        $foreignReservationDepartment = DB::table('clinical_departments')
-                                            ->where('clinical_departments.clinical_department',$searchdepartment)
-                                            ->join('reservation_data','clinical_departments.clinical_department',
-                                                    '=',
-                                                    'reservation_data.reservation_department')
-                                            ->where('reservation_data.reservation_date',$targetDate)
-                                            ->where('reservation_data.reservation_time','16:00:00')
-                                            ->get()
-                                            ->count();
-       return $foreignReservationDepartment;
-
-    }
-
-    //予約数を得る為のリレーション⇒予約数獲得(17：00)
-    public static function OclockForeignReservation17($searchdepartment,$targetDate){
-        $foreignReservationDepartment = DB::table('clinical_departments')
-                                            ->where('clinical_departments.clinical_department',$searchdepartment)
-                                            ->join('reservation_data','clinical_departments.clinical_department',
-                                                    '=',
-                                                    'reservation_data.reservation_department')
-                                            ->where('reservation_data.reservation_date',$targetDate)
-                                            ->where('reservation_data.reservation_time','17:00:00')
-                                            ->get()
-                                            ->count();
-       return $foreignReservationDepartment;
-
-    }
-
-    //予約数を得る為のリレーション⇒予約数獲得(18：00)
-    public static function OclockForeignReservation18($searchdepartment,$targetDate){
-        $foreignReservationDepartment = DB::table('clinical_departments')
-                                            ->where('clinical_departments.clinical_department',$searchdepartment)
-                                            ->join('reservation_data','clinical_departments.clinical_department',
-                                                    '=',
-                                                    'reservation_data.reservation_department')
-                                            ->where('reservation_data.reservation_date',$targetDate)
-                                            ->where('reservation_data.reservation_time','18:00:00')
-                                            ->get()
-                                            ->count();
-       return $foreignReservationDepartment;
-
-    }
 
   
     
