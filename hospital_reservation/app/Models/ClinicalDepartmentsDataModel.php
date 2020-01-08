@@ -133,11 +133,6 @@ class ClinicalDepartmentsDataModel extends Model
 
     }
 
-    //予約モデルを経由して患者モデルへリレーション
-    //public function ForeignPatientData($searchdepartment){
-    //    return $this->hasManyThrough('App\Models\PatientDataModel','App\Models\ReservationDataModel','pt_id','pt_id','No','No')->get();//->where('reservation_data.reservation_department',$searchdepartment)->get();
-    //}
-
     public static function ForeignPatientData($searchdepartment,$targetDate){
         $foreignPatientData = DB::table('clinical_departments')
                                             ->where('clinical_departments.clinical_department',$searchdepartment)
@@ -168,14 +163,14 @@ class ClinicalDepartmentsDataModel extends Model
 
     }
     //予約数を得る為のリレーション⇒予約数獲得(9：00)
-    public static function OclockForeignReservation09($searchdepartment,$targetDate){
+    public static function OclockForeignReservation09($searchdepartment,$targetDate,$schedulTime){
         $foreignReservationDepartment = DB::table('clinical_departments')
                                             ->where('clinical_departments.clinical_department',$searchdepartment)
                                             ->join('reservation_data','clinical_departments.clinical_department',
                                                     '=',
                                                     'reservation_data.reservation_department')
                                             ->where('reservation_data.reservation_date',$targetDate)
-                                            ->where('reservation_data.reservation_time','09:00:00')
+                                            ->where('reservation_data.reservation_time',$schedulTime)
                                             ->get()
                                             ->count();
        return $foreignReservationDepartment;

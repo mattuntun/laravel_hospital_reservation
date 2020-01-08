@@ -95,11 +95,60 @@ class PersonMyPageController extends Controller{
          //診療年月日の文字列データ作成
          $targetDate = strval($target_year).strval($target_month).strval(str_pad($target_day, 2, 0, STR_PAD_LEFT));
 
-        //診療科モデルと予約モデルリレーション⇒予約数獲得
+        //診療科モデルと予約モデルリレーション⇒その日に予約している数を獲得
         $numberOfReservation =ClinicalDepartmentsDataModel::ForeignReservation($request->search_Department,$targetDate);
 
-        //診療科モデルと予約モデルリレーション⇒予約数獲得(09:00) 
-        $OclocNumberOfReservation09 =ClinicalDepartmentsDataModel::OclockForeignReservation09($request->search_Department,$targetDate);
+        //スケジュールの時間を配列へ収納
+        $schedulTimes =array('9:00:00',
+                              '10:00:00',
+                              '11:00:00',
+                              '12:00:00',
+                              '13:00:00',
+                              '14:00:00',
+                              '15:00:00',
+                              '16:00:00',
+                              '17:00:00',
+                              '18:00:00');
+        
+        var_dump($schedulTimes);
+
+        //時間ごとの予約獲得数をスケジュール表の配列から取得⇒取得した値を配列へ
+        $OclocNumberOfReservation = [];
+        for($i = 0; $i <= 9; $i++){            
+            $OclocNumberOfReservations[$schedulTimes[$i]]=ClinicalDepartmentsDataModel::OclockForeignReservation09($request->search_Department,$targetDate,$schedulTimes[$i]); 
+            }
+
+        var_dump($OclocNumberOfReservations);
+
+//        $number = array(1,2,3,4,5,6,7,8,9,10);
+//        var_dump($number);
+        
+//        function a($b){
+//            $c = $b + 5;
+//            return $c;
+//        }
+
+//        $test = [];
+//        for($i = 0; $i <= 9; $i++ ){
+//            $test[$number[$i]] =a($number[$i]); 
+            
+//            var_dump($test);
+//        }
+//        var_dump($test);
+
+
+        //診療科モデルと予約モデルリレーション⇒予約数獲得　(09:00)に予約している数を獲得 
+        $OclocNumberOfReservation09 =ClinicalDepartmentsDataModel::OclockForeignReservation09($request->search_Department,$targetDate,'9:00:00');
+
+                //テストテストテストテストテストテスト％
+
+                $parcents = [];
+                foreach($OclocNumberOfReservations as $key=>$OclocNumberOfReservation){
+                    $parcents[$key] =  ClinicalDepartmentsDataModel::Calculation($request->search_Department,$OclocNumberOfReservation);
+                }
+
+                var_dump($parcents);
+                
 
         //診療科モデルと予約モデルリレーション⇒予約数獲得(10:00) 
         $OclocNumberOfReservation10 =ClinicalDepartmentsDataModel::OclockForeignReservation10($request->search_Department,$targetDate);
@@ -129,7 +178,7 @@ class PersonMyPageController extends Controller{
         $OclocNumberOfReservation18 =ClinicalDepartmentsDataModel::OclockForeignReservation18($request->search_Department,$targetDate);
 
                 
-        //診療科モデルのパーセント計算を呼び出し
+        //診療科モデルのパーセント計算を呼び出し　その日に獲得している予約数を元に計算
         $ScreenStatusParcent = ClinicalDepartmentsDataModel::Calculation($request->search_Department,$numberOfReservation);
 
         //診療科モデルのパーセント計算を呼び出し(09:00)
@@ -192,7 +241,8 @@ class PersonMyPageController extends Controller{
         'ScreenStatusParcent15'=>$ScreenStatusParcent15,
         'ScreenStatusParcent16'=>$ScreenStatusParcent16,
         'ScreenStatusParcent17'=>$ScreenStatusParcent17,
-        'ScreenStatusParcent18'=>$ScreenStatusParcent18,]);
+        'ScreenStatusParcent18'=>$ScreenStatusParcent18,
+        'parcents'=>$parcents]);
     }
 
         //スケジュール⇒予約完了
