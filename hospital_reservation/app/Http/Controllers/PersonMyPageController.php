@@ -10,6 +10,7 @@ use App\Models\Holiday;
 use App\Calendar;
 use App\NextCalendar;
 use App\AfterNextCalendar;
+use App\Schedule;
 
 class PersonMyPageController extends Controller{   
     
@@ -87,18 +88,24 @@ class PersonMyPageController extends Controller{
     //マイページ⇒カレンダー⇒スケジュール
     public function ScheduleAddNewReservationFromMyPage(Request $request){
 
-         //日付データの取得
-         $target_day = $request->target_day;
-         $target_month = $request->target_month;
-         $target_year = $request->target_year;
- 
-         //診療年月日の文字列データ作成
-         $targetDate = strval($target_year).strval($target_month).strval(str_pad($target_day, 2, 0, STR_PAD_LEFT));
+        //日付データの取得
+        $target_day = $request->target_day;
+        $target_month = $request->target_month;
+        $target_year = $request->target_year;
 
-        //診療科モデルと予約モデルリレーション⇒その日に予約している数を獲得
-        $numberOfReservation =ClinicalDepartmentsDataModel::ForeignReservation($request->search_Department,$targetDate);
+        //診療年月日の文字列データ作成
+        $targetDate = strval($target_year).strval($target_month).strval(str_pad($target_day, 2, 0, STR_PAD_LEFT));
 
-        //スケジュールの時間を配列へ収納
+        //患者IDと診療科名の取得
+        $search_pt_id = $request->search_pt_id;
+        $clinical_department = $request->search_Department;
+
+        //スケジュールphpから画面取得(患者ID･診療科名･日付受け渡し)
+        $make_schedule = new Schedule;
+        $show_schedule = $make_schedule->MakeSchedule($clinical_department,$targetDate,$search_pt_id);
+       
+
+         //スケジュールの時間を配列へ収納
         $schedulTimes =array('9:00:00',
                               '10:00:00',
                               '11:00:00',
@@ -128,9 +135,7 @@ class PersonMyPageController extends Controller{
         $circleReservationValue = 30;
         $triangleReservationValue = 0;
 
-        //患者IDと診療科名の取得
-        $search_pt_id = $request->search_pt_id;
-        $clinical_department = $request->search_Department;
+
 
         //患者情報の取得
         $ptDatas = PatientDataModel::getPtData($search_pt_id);
@@ -144,7 +149,8 @@ class PersonMyPageController extends Controller{
         'doubleCircleReservationValue'=>$doubleCircleReservationValue,
         'circleReservationValue'=>$circleReservationValue,
         'triangleReservationValue'=>$triangleReservationValue,
-        'parcents'=>$parcents]);
+        'parcents'=>$parcents,
+        'show_schedule'=>$show_schedule]);
     }
 
         //スケジュール⇒予約完了

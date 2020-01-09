@@ -40,6 +40,10 @@ $targetDate = strval($target_year).strval($target_month).strval(str_pad($target_
 
 @endphp
 
+<form action="/mypage/complete_add_new_reservation" method =post>
+{{csrf_field()}}
+{!!$show_schedule!!}
+</form>
 
 {{-- スケジュール表を作成  $parcentsのキーは時間(09:00:00等)--}}
 <table class="table table-bordered" style="background: white;         table-layout: fixed; width: 100%;">
