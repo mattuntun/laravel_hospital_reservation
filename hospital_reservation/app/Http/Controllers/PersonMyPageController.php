@@ -146,10 +146,6 @@ class PersonMyPageController extends Controller{
         'search_pt_id'=>$search_pt_id,
         'ptDatas'=>$ptDatas,
         'clinical_department'=>$clinical_department,
-        'doubleCircleReservationValue'=>$doubleCircleReservationValue,
-        'circleReservationValue'=>$circleReservationValue,
-        'triangleReservationValue'=>$triangleReservationValue,
-        'parcents'=>$parcents,
         'show_schedule'=>$show_schedule]);
     }
 
