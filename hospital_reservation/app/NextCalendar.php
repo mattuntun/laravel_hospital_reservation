@@ -55,8 +55,8 @@ class NextCalendar
 //テーブルのhtml
 $this->html = <<< EOS
 <h1>{$next_year}年{$next_month}月</h1>
-<table class="table table-bordered" style="background: white;">
-<tr>
+<table align="center" valign="middle" class="table table-bordered" style="background: white;">
+<tr align="center" valign="middle">
 <th style="background: #AEC4E5; color:red;" scope="col">日</th>
 <th style="background: #AEC4E5;" scope="col">月</th>
 <th style="background: #AEC4E5;" scope="col">火</th>
@@ -69,7 +69,7 @@ EOS;
 
         // カレンダーの日付部分を生成する
         while ($next_month_day <= $next_month_lastDay) {
-            $this->html .= "<tr>";
+            $this->html .= "<tr td align='center' valign='middle'>";
             // 各週を描画するHTMLソースを生成する
             for ($i = 0; $i < 7; $i++) {
                 if ($next_month_day <= 0 || $next_month_day > $next_month_lastDay) {

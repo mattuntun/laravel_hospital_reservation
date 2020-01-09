@@ -54,20 +54,20 @@ class Calendar
         //テーブルのhtml
         $this->html = <<< EOS
 <h1>{$year}年{$month}月</h1>
-<table class="table table-bordered" style="background: white;">
-<tr>
-  <th style="background: #AEC4E5; color:red; scope="col">日</th>
-  <th style="background: #AEC4E5; scope="col">月</th>
-  <th style="background: #AEC4E5; scope="col">火</th>
-  <th style="background: #AEC4E5; scope="col">水</th>
-  <th style="background: #AEC4E5; scope="col">木</th>
-  <th style="background: #AEC4E5; scope="col">金</th>
-  <th style="background: #AEC4E5; color:blue;scope="col">土</th>
+<table align="center" valign="middle" class="table table-bordered"  style="background: white;">
+<tr align="center" valign="middle" >
+  <th align="center" valign="middle" style="background: #AEC4E5; color:red; scope="col">日</th>
+  <th align="center" valign="middle" style="background: #AEC4E5; scope="col">月</th>
+  <th align="center" valign="middle" style="background: #AEC4E5; scope="col">火</th>
+  <th align="center" valign="middle" style="background: #AEC4E5; scope="col">水</th>
+  <th align="center" valign="middle" style="background: #AEC4E5; scope="col">木</th>
+  <th align="center" valign="middle" style="background: #AEC4E5; scope="col">金</th>
+  <th align="center" valign="middle" style="background: #AEC4E5; color:blue;scope="col">土</th>
 </tr>
 EOS;
         // カレンダーの日付部分を生成する
         while ($day <= $lastDay) {
-            $this->html .= "<tr>";
+            $this->html .= "<tr align='center' valign='middle' >";
             // 各週を描画するHTMLソースを生成する
             for ($i = 0; $i < 7; $i++) {
                 if ($day <= 0 || $day > $lastDay) {
@@ -75,17 +75,17 @@ EOS;
                     $this->html .= "<td>&nbsp;</td>";
                 
                 } elseif ($i ==0 || $i ==6 ){
-                    $this->html .="<td style = color:#E9E9E9;>". $day . "</td>";
+                    $this->html .="<td align='center' valign='middle' style = color:#E9E9E9;>". $day . "</td>";
                 
                 } elseif ($day < $today+1){
-                    $this->html .="<td style = color:#E9E9E9;>". $day . "</td>";
+                    $this->html .="<td align='center' valign='middle' style = color:#E9E9E9;>". $day . "</td>";
                 
                 } elseif (DayPossible($search_Department,$year,$month,$day,$doubleCircleReservationValue,$circleReservationValue,$triangleReservationValue) == '&#10005'){
-                    $this->html .="<td style = color:#E9E9E9;>". $day ."
+                    $this->html .="<td align='center' valign='middle' style = color:#E9E9E9;>". $day ."
                     <br>".DayPossible($search_Department,$year,$month,$day,$doubleCircleReservationValue,$circleReservationValue,$triangleReservationValue)."</td>";
                 
                 } else {
-                   $this->html .="<td>
+                   $this->html .="<td align='center' valign='middle'>
                    <button type='submit' class='btn btn-lg btn-block' style='background: white;' onclick='location.href=/mypage/schedule_add_new_my_data_reservation>
                    <input type='hidden' name='target_day' value='".$day."'>
                    <input type='hidden' name='target_month' value='".$month."'>

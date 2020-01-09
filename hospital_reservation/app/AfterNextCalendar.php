@@ -56,8 +56,8 @@ class AfterNextCalendar
 //テーブルのhtml
 $this->html = <<< EOS
 <h1>{$year_after_next}年{$month_after_next}月</h1>
-<table class="table table-bordered" style="background: white;">
-<tr>
+<table align="center" valign="middle" class="table table-bordered" style="background: white;">
+<tr align="center" valign="middle">
 <th style="background: #AEC4E5; color:red;" scope="col">日</th>
 <th style="background: #AEC4E5;" scope="col">月</th>
 <th style="background: #AEC4E5;" scope="col">火</th>
@@ -70,7 +70,7 @@ EOS;
 
         // カレンダーの日付部分を生成する
         while ($month_after_next_day <= $month_after_next_lastday) {
-            $this->html .= "<tr>";
+            $this->html .= "<tr align='center' valign='middle'>";
             // 各週を描画するHTMLソースを生成する
             for ($i = 0; $i < 7; $i++) {
                 if ($month_after_next_day <= 0 || $month_after_next_day > $month_after_next_lastday) {
