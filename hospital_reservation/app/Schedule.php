@@ -22,6 +22,14 @@ $this->table = <<<EOF
         <th style="background: #AEC4E5; text-align:center; width: 30%; font-size:30px; scope="col">予約状況</th>
     </tr>
 EOF;
+
+$this->table2 = <<<EOD
+<table class="table table-bordered" align="center" style="background: white;" >
+    <tr>
+        <th style="background: #AEC4E5; text-align:center; width: 70%; font-size:30px;" scope="col">タイムテーブル</th>
+        <th style="background: #AEC4E5; text-align:center; width: 30%; font-size:30px; scope="col">予約状況</th>
+    </tr>
+EOD;
     //開院時と閉院時の設定(分は考えない)
     $open_hour = substr($departmentDatas->start_time, 0, -6); //開院時間を整数へ
     $close_hour = substr($departmentDatas->close_time, 0, -6); //閉院時間を整数へ
@@ -32,25 +40,6 @@ EOF;
     $break_finish = substr($departmentDatas->break_time_close, 0, -3); //休憩開始を時間表示
 
     //◎、〇、△の条件を呼び出し
-    $doubleCircleReservationValue = 60;
-    $circleReservationValue = 30;
-    $triangleReservationValue = 0;
-
-
-
-    $sampleDay = "20200103";
-    $sampleTime = "09:00:00";
-
-    $unixtime = strtotime($sampleDay.$sampleTime);
-
-    //echo date('Y年m月d日 H時i分', $unixtime);
-    //echo $unixtime;
-        
-    $i=90;
-    
-    $tmp = strtotime(+$i.'minute' , $unixtime);
-    $time2 = date('Y-m-d H:i:s',$tmp);
-    //echo $time2."\n";
 
     $open = $departmentDatas->start_time; //開院
     $break_s = $departmentDatas->break_time_start; //休憩初め
@@ -58,44 +47,39 @@ EOF;
     $close = $departmentDatas->close_time; //閉院
     $day = $targetDate;
 
-    //echo $open."\n";
-    //echo $break_s."\n";
-    //echo $break_c."\n";
-    //echo $close."\n";
-    //echo $day."\n";
+    $startTime = strtotime($day.$open); //開院時間をユニックスタイムで
+    $finishTime = strtotime($day.$close); //閉院時間をユニックスタイムで
+    $breakbreak_S = strtotime($day.$break_s); //休憩開始時間をユニックスタイムで
+    $breakbreak_C = strtotime($day.$break_c); //休憩終了時間をユニックスタイムで
 
-    $startTime = strtotime($day.$open);
-    $finishTime = strtotime($day.$close);
-    $breakbreak_S = strtotime($day.$break_s);
-    $breakbreak_C = strtotime($day.$break_c);
 
-    //ユニックスタイムで30分は1800
+    //ユニックスタイムで30分は1800　forで30分ずつ足す　休憩時間範囲は休憩表示
     for($schdule = $startTime; $schdule <=$finishTime; $schdule =$schdule+1800){
-        
         $timetime = 'H:i';//dateの表示形式設定
+
+        //$this->table.="<tr>";
+
+            //休憩開始時間の時の休憩表示
             if( $schdule == $breakbreak_S){
-                echo date($timetime,$breakbreak_S)."&#126;".date($timetime,$breakbreak_C)."は、きゅうけい<br />";
+                $this->table.="<tr><td>". date($timetime,$breakbreak_S)."&#126;".date($timetime,$breakbreak_C)."は、きゅうけい
+                                </td>
+                                <td align='center'>予約不可</td></tr>";
+            //continue;
+            }
+            //休憩時間範囲をコンテニュー
+            if( ($schdule >= $breakbreak_S) && ($schdule < $breakbreak_C) ){
+                //$this->table.="<td></td></tr>";
+                continue;
             }
 
-            //休憩時間を超えたら
-            if( ($schdule >= $breakbreak_S) && ($schdule < $breakbreak_C) ){
-                continue;
-                
-                //for($bre = $breakbreak_S; $bre <=$breakbreak_C; $bre =$bre+3600){
-                //    echo date($timetime,$bre)."きゅうけいだよ<br />";
-                //    //continue 2;
-                //}
-                //echo "きゅうけいだよ"."<br />";
-                
-                //continue ;
-
-        }
-
-        echo date($timetime,$schdule)."<br />";
+        $this->table.="<tr><td>". date($timetime,$schdule)."</td>
+        <td align='center'>まる</td>";
     }
+    echo $this->table .= '</tr></table>';
 
-
-
+    $doubleCircleReservationValue = 60;
+    $circleReservationValue = 30;
+    $triangleReservationValue = 0;
 
 
             //テーブル本体/◎表示に関しては診療科モデルを利用
@@ -104,7 +88,7 @@ EOF;
                     $openTime = $hour.":".sprintf('%02d', $min);
                     $belongMin =  $min+29;
                     $belongTime = $hour.":".$belongMin;
-                    $this->table.="<tr>
+                    $this->table2.="<tr>
                                         <td align='center'>";
                                         //休憩時間の表示設定
                                     if( ($hour >= $break_start_hour) && ($hour < $break_finish_hour)){     
@@ -115,7 +99,7 @@ EOF;
                                        
                                         }else{
  
-                                $this->table.="<button type='submit'
+                                $this->table2.="<button type='submit'
                                                 class='btn btn-lg btn-block'
                                                 style='background: white;
                                                 font-size:30px;
@@ -131,29 +115,29 @@ EOF;
                                         <td style='background: white; font-size:30px; text-align:center;'>";
                                             $OclocNumberOfReservations=ClinicalDepartmentsDataModel::OclockForeignReservation($search_Department,$targetDate,$openTime);
                                             $parcents =  ClinicalDepartmentsDataModel::Calculation($search_Department,$OclocNumberOfReservations);
-                            $this->table.= $parcents;
+                            $this->table2.= $parcents;
                             
                                     switch($parcents){
                                         case($parcents > $doubleCircleReservationValue):
-                                            $this->table.="&#9678;";   // ◎
+                                            $this->table2.="&#9678;";   // ◎
                                             break;
                                         case($parcents > $circleReservationValue):
-                                            $this->table.="&#9675;";   // 〇
+                                            $this->table2.="&#9675;";   // 〇
                                             break;
                                         case($parcents > $triangleReservationValue):
-                                            $this->table.="&#9651;";   // △ 
+                                            $this->table2.="&#9651;";   // △ 
                                             break;
                                         default:
-                                            $this->table.="&#10005;";    // ✕
+                                            $this->table2.="&#10005;";    // ✕
                                         }
-                            $this->table.="</td>
+                            $this->table2.="</td>
                                     </tr>";
                                          } //ifのカッコ
                 }//for　$minのカッコ    
             }//for　$hourのカッコ
 
-        return $this->table .= '</table>';
-    }
+        return $this->table2 .= '</table>';
+    }//このMakeScheduleメソッド全体のカッコ
 }
 
 
