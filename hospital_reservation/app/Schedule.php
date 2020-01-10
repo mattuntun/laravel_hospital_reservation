@@ -64,10 +64,25 @@ EOF;
                 continue;
             }
 
+            //診療科モデルから空き容量と％を呼び出し
+            $OclocNumberOfReservations=ClinicalDepartmentsDataModel::OclockForeignReservation($search_Department,$targetDate,$schedule_time);
+            $parcents =  ClinicalDepartmentsDataModel::Calculation($search_Department,$OclocNumberOfReservations);
+
         //開院時間をforで繰り返し
-        $this->table.="<tr align='center'>
-                            <td>
-                                <button type='submit'
+        $this->table.="<tr align='center'>";
+                            
+                            if($parcents <= $triangleReservationValue){
+
+            $this->table.= "<td style = 'color:#E9E9E9;'>
+                                {$schedule_time}&#126;{$belongTime}
+                            </td>
+                            <td style = 'color:#E9E9E9;'>
+                                {$parcents}%完成時に消す</br>&#10005;
+                            </td>";
+
+                            }else{
+
+            $this->table.="<td><button type='submit'
                                 class='btn btn-lg btn-block'
                                 style='background: white;
                                 font-size:30px;
@@ -82,29 +97,26 @@ EOF;
                                     {$schedule_time}&#126;{$belongTime}
 
                                 </button>
-                                
                             </td>";
-                            //診療科モデルから空き容量と％を呼び出し
-                            $OclocNumberOfReservations=ClinicalDepartmentsDataModel::OclockForeignReservation($search_Department,$targetDate,$schedule_time);
-                            $parcents =  ClinicalDepartmentsDataModel::Calculation($search_Department,$OclocNumberOfReservations);
-
                             
                             switch($parcents){
                                 case($parcents > $doubleCircleReservationValue):
                                     $this->table.="<td style = 'font-size:20px;'>{$parcents}%完成時に消す</br>&#9678;</td>";   // ◎
                                     break;
+
                                 case($parcents > $circleReservationValue):
                                     $this->table.="<td style = 'font-size:20px;'>{$parcents}%完成時に消す</br>&#9675;</td>";   // 〇
                                     break;
+                                    
                                 case($parcents > $triangleReservationValue):
                                     $this->table.="<td style = 'font-size:20px;'>{$parcents}%完成時に消す</br>&#9651;</td>";   // △ 
                                     break;
+
                                 default:
-                                    $this->table.="<td>&#10005;</td>";    // ✕
+                                    $this->table.="<td style = 'font-size:20px;'>{$parcents}%完成時に消す</br>&#10005;</td>";    // ✕
                                 }
-                            //<td>
-                            //    まるまるまるまるまるまるまる
-                            //</td>";
+                            }
+
     }
     return $this->table .= '</tr></table>';
 
