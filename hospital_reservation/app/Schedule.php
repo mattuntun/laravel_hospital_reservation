@@ -25,6 +25,12 @@ class Schedule
     $breakTime_Start = strtotime($day.$break_s); //休憩開始時間をユニックスタイムへ変換
     $break_Finish = strtotime($day.$break_f); //休憩終了時間をユニックスタイムへ変換
 
+    //◎、〇、△の条件を呼び出し
+    $doubleCircleReservationValue = 60;
+    $circleReservationValue = 30;
+    $triangleReservationValue = 0;
+
+
     //テーブルのhtmlを作成
 $this->table = <<<EOF
 <table class="table table-bordered" align="center" style="background: white;" >
@@ -47,7 +53,7 @@ EOF;
             //休憩開始時間の時の休憩表示設定
             if( $schdule == $breakTime_Start){
                 $this->table.="<tr align='center'>
-                                <td colspan='2'>
+                                <td colspan='2' style = 'font-size:20px;'>
                                 {$schedule_start}&#126;{$schedule_finish}は、休診です
                                 </td>
                             </tr>";
@@ -77,10 +83,28 @@ EOF;
 
                                 </button>
                                 
-                            </td>
-                            <td>
-                                まるまるまるまるまるまるまる
                             </td>";
+                            //診療科モデルから空き容量と％を呼び出し
+                            $OclocNumberOfReservations=ClinicalDepartmentsDataModel::OclockForeignReservation($search_Department,$targetDate,$schedule_time);
+                            $parcents =  ClinicalDepartmentsDataModel::Calculation($search_Department,$OclocNumberOfReservations);
+
+                            
+                            switch($parcents){
+                                case($parcents > $doubleCircleReservationValue):
+                                    $this->table.="<td style = 'font-size:20px;'>{$parcents}%完成時に消す</br>&#9678;</td>";   // ◎
+                                    break;
+                                case($parcents > $circleReservationValue):
+                                    $this->table.="<td style = 'font-size:20px;'>{$parcents}%完成時に消す</br>&#9675;</td>";   // 〇
+                                    break;
+                                case($parcents > $triangleReservationValue):
+                                    $this->table.="<td style = 'font-size:20px;'>{$parcents}%完成時に消す</br>&#9651;</td>";   // △ 
+                                    break;
+                                default:
+                                    $this->table.="<td>&#10005;</td>";    // ✕
+                                }
+                            //<td>
+                            //    まるまるまるまるまるまるまる
+                            //</td>";
     }
     return $this->table .= '</tr></table>';
 
