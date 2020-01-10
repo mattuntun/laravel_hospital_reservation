@@ -14,7 +14,18 @@ class Schedule
     //診療科モデルから指定した診療科情報を取得
     $departmentDatas = ClinicalDepartmentsDataModel::GetIndividualDepartmentdatas($search_Department);
 
-//テーブルのhtmlを作成
+    $open = $departmentDatas->start_time; //開院時間取得
+    $break_s = $departmentDatas->break_time_start; //休憩開始時間取得
+    $break_f = $departmentDatas->break_time_close; //休憩終了時間取得
+    $close = $departmentDatas->close_time; //閉院時間取得
+    $day = $targetDate;
+
+    $startTime = strtotime($day.$open); //開院時間をユニックスタイムへ変換
+    $finishTime = strtotime($day.$close); //閉院時間をユニックスタイムへ変換
+    $breakTime_Start = strtotime($day.$break_s); //休憩開始時間をユニックスタイムへ変換
+    $break_Finish = strtotime($day.$break_f); //休憩終了時間をユニックスタイムへ変換
+
+    //テーブルのhtmlを作成
 $this->table = <<<EOF
 <table class="table table-bordered" align="center" style="background: white;" >
     <tr>
@@ -22,6 +33,60 @@ $this->table = <<<EOF
         <th style="background: #AEC4E5; text-align:center; width: 30%; font-size:30px; scope="col">予約状況</th>
     </tr>
 EOF;
+
+
+    //テーブル本体　ユニックスタイムで30分は1800
+    for($schdule = $startTime; $schdule < $finishTime; $schdule =$schdule+1800){
+        $time_value = 'H:i';//dateの表示形式設定
+        $schedule_start = date($time_value,$breakTime_Start);//開院時間をユニックス⇒時間表示
+        $schedule_finish = date($time_value,$break_Finish);//閉院時間をユニックス⇒時間表示
+        $schedule_time = date($time_value,$schdule);//一コマあたりの時間をユニックス⇒時間表示
+        $belongTime = date($time_value,$schdule+1760);//一コマあたりの時間範囲をユニックス⇒時間表示
+
+
+            //休憩開始時間の時の休憩表示設定
+            if( $schdule == $breakTime_Start){
+                $this->table.="<tr align='center'>
+                                <td colspan='2'>
+                                {$schedule_start}&#126;{$schedule_finish}は、休診です
+                                </td>
+                            </tr>";
+            
+            }
+            //休憩時間範囲をコンテニュー
+            if( ($schdule >= $breakTime_Start) && ($schdule < $break_Finish) ){
+                continue;
+            }
+
+        //開院時間をforで繰り返し
+        $this->table.="<tr align='center'>
+                            <td>
+                                <button type='submit'
+                                class='btn btn-lg btn-block'
+                                style='background: white;
+                                font-size:30px;
+                                text-align:center;'
+                                onclick='location.href=/mypage/complete_add_new_reservation>
+
+                                    <input type='hidden' value = '{$schedule_time}' name = 'targetTime'>
+                                    <input type='hidden' value = {$search_Department} name = 'clinical_department'>
+                                    <input type='hidden' value = {$targetDate} name = 'targetDate'>
+                                    <input type='hidden' value = {$search_pt_id} name = 'search_pt_id'>
+
+                                    {$schedule_time}&#126;{$belongTime}
+
+                                </button>
+                                
+                            </td>
+                            <td>
+                                まるまるまるまるまるまるまる
+                            </td>";
+    }
+    return $this->table .= '</tr></table>';
+
+
+/*
+
 
 $this->table2 = <<<EOD
 <table class="table table-bordered" align="center" style="background: white;" >
@@ -40,43 +105,6 @@ EOD;
     $break_finish = substr($departmentDatas->break_time_close, 0, -3); //休憩開始を時間表示
 
     //◎、〇、△の条件を呼び出し
-
-    $open = $departmentDatas->start_time; //開院
-    $break_s = $departmentDatas->break_time_start; //休憩初め
-    $break_c = $departmentDatas->break_time_close; //休憩終わり
-    $close = $departmentDatas->close_time; //閉院
-    $day = $targetDate;
-
-    $startTime = strtotime($day.$open); //開院時間をユニックスタイムで
-    $finishTime = strtotime($day.$close); //閉院時間をユニックスタイムで
-    $breakbreak_S = strtotime($day.$break_s); //休憩開始時間をユニックスタイムで
-    $breakbreak_C = strtotime($day.$break_c); //休憩終了時間をユニックスタイムで
-
-
-    //ユニックスタイムで30分は1800　forで30分ずつ足す　休憩時間範囲は休憩表示
-    for($schdule = $startTime; $schdule <=$finishTime; $schdule =$schdule+1800){
-        $timetime = 'H:i';//dateの表示形式設定
-
-        //$this->table.="<tr>";
-
-            //休憩開始時間の時の休憩表示
-            if( $schdule == $breakbreak_S){
-                $this->table.="<tr><td>". date($timetime,$breakbreak_S)."&#126;".date($timetime,$breakbreak_C)."は、きゅうけい
-                                </td>
-                                <td align='center'>予約不可</td></tr>";
-            //continue;
-            }
-            //休憩時間範囲をコンテニュー
-            if( ($schdule >= $breakbreak_S) && ($schdule < $breakbreak_C) ){
-                //$this->table.="<td></td></tr>";
-                continue;
-            }
-
-        $this->table.="<tr><td>". date($timetime,$schdule)."</td>
-        <td align='center'>まる</td>";
-    }
-    echo $this->table .= '</tr></table>';
-
     $doubleCircleReservationValue = 60;
     $circleReservationValue = 30;
     $triangleReservationValue = 0;
@@ -136,7 +164,8 @@ EOD;
                 }//for　$minのカッコ    
             }//for　$hourのカッコ
 
-        return $this->table2 .= '</table>';
+        return $this->table2 .= '</table>'; */
+
     }//このMakeScheduleメソッド全体のカッコ
 }
 
