@@ -10,6 +10,8 @@
                   ['main_theme'=>'',
                   'sub_theme'=>'ご希望の時間を選択してください'])
 
+                  <h2 align="center">時刻を選択すると予約が確定されます</h2>
+
 
 @endsection
 
