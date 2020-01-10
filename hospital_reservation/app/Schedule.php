@@ -36,6 +36,68 @@ EOF;
     $circleReservationValue = 30;
     $triangleReservationValue = 0;
 
+
+
+    $sampleDay = "20200103";
+    $sampleTime = "09:00:00";
+
+    $unixtime = strtotime($sampleDay.$sampleTime);
+
+    //echo date('Y年m月d日 H時i分', $unixtime);
+    //echo $unixtime;
+        
+    $i=90;
+    
+    $tmp = strtotime(+$i.'minute' , $unixtime);
+    $time2 = date('Y-m-d H:i:s',$tmp);
+    //echo $time2."\n";
+
+    $open = $departmentDatas->start_time; //開院
+    $break_s = $departmentDatas->break_time_start; //休憩初め
+    $break_c = $departmentDatas->break_time_close; //休憩終わり
+    $close = $departmentDatas->close_time; //閉院
+    $day = $targetDate;
+
+    //echo $open."\n";
+    //echo $break_s."\n";
+    //echo $break_c."\n";
+    //echo $close."\n";
+    //echo $day."\n";
+
+    $startTime = strtotime($day.$open);
+    $finishTime = strtotime($day.$close);
+    $breakbreak_S = strtotime($day.$break_s);
+    $breakbreak_C = strtotime($day.$break_c);
+
+    //ユニックスタイムで30分は1800
+    for($schdule = $startTime; $schdule <=$finishTime; $schdule =$schdule+1800){
+        
+        $timetime = 'H:i';//dateの表示形式設定
+            if( $schdule == $breakbreak_S){
+                echo date($timetime,$breakbreak_S)."&#126;".date($timetime,$breakbreak_C)."は、きゅうけい<br />";
+            }
+
+            //休憩時間を超えたら
+            if( ($schdule >= $breakbreak_S) && ($schdule < $breakbreak_C) ){
+                continue;
+                
+                //for($bre = $breakbreak_S; $bre <=$breakbreak_C; $bre =$bre+3600){
+                //    echo date($timetime,$bre)."きゅうけいだよ<br />";
+                //    //continue 2;
+                //}
+                //echo "きゅうけいだよ"."<br />";
+                
+                //continue ;
+
+        }
+
+        echo date($timetime,$schdule)."<br />";
+    }
+
+
+
+
+
             //テーブル本体/◎表示に関しては診療科モデルを利用
             for($hour = $open_hour; $hour < $close_hour; $hour++){
                 for($min = 0; $min < 60; $min=$min+30){
