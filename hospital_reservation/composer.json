@@ -50,7 +50,8 @@
             "app/HospitalCalendar.php",
             "app/HospitalNextCalendar.php",
             "app/HospitalAfterNextCalendar.php",
-            "app/Schedule.php"
+            "app/Schedule.php",
+            "app/HospitalSchedule.php"
             ]
     },
     "minimum-stability": "dev",

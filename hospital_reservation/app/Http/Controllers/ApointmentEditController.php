@@ -11,6 +11,7 @@ use App\Models\ClinicalDepartmentsDataModel;
 use App\HospitalCalendar;
 use App\HospitalNextCalendar;
 use App\HospitalAfterNextCalendar;
+use App\HospitalSchedule;
 
 class ApointmentEditController extends Controller
 {
@@ -104,7 +105,7 @@ class ApointmentEditController extends Controller
         'after_next_cal_tag'=>$after_next_cal_tag]);
     }
 
-    //予約追加の為の診療科選択画面
+    //予約追加の為の診療科選択画面(スケジュール)
     public function SelectTimeReservation(Request $request) {
 
         //日付データの取得
@@ -112,45 +113,19 @@ class ApointmentEditController extends Controller
         $target_month = $request->target_month;
         $target_year = $request->target_year;
 
-        //診療年月日の文字列データ作成
-        $targetDate = strval($target_year).strval($target_month).strval(str_pad($target_day, 2, 0, STR_PAD_LEFT));
-
-       //診療科モデルと予約モデルリレーション⇒その日に予約している数を獲得
-       $numberOfReservation =ClinicalDepartmentsDataModel::ForeignReservation($request->search_Department,$targetDate);
-
-       //スケジュールの時間を配列へ収納
-       $schedulTimes =array('9:00:00',
-                             '10:00:00',
-                             '11:00:00',
-                             '12:00:00',
-                             '13:00:00',
-                             '14:00:00',
-                             '15:00:00',
-                             '16:00:00',
-                             '17:00:00',
-                             '18:00:00');
-
-
-       //時間ごとの予約獲得数をスケジュール表の配列から取得⇒取得した値を配列へ
-       $OclocNumberOfReservations = [];
-       foreach($schedulTimes as $key=>$Time){            
-           $OclocNumberOfReservations[$Time]=ClinicalDepartmentsDataModel::OclockForeignReservation($request->search_Department,$targetDate,$Time); 
-           }
-
-       //9:00~18:00までを配列のキーに、空き容量パーセントをバリューにした配列$parcentsを作成
-       $parcents = [];
-       foreach($OclocNumberOfReservations as $key=>$OclocNumberOfReservation){
-           $parcents[$key] =  ClinicalDepartmentsDataModel::Calculation($request->search_Department,$OclocNumberOfReservation);
-       }
-
-        //◎、〇、△の条件を呼び出し
-        $doubleCircleReservationValue = 60;
-        $circleReservationValue = 30;
-        $triangleReservationValue = 0;
-
         //選択した患者IDと診療科名を取得
         $search_pt_id = $request->search_pt_id;
         $clinical_department = $request->search_Department;
+
+        //診療年月日の文字列データ作成
+        $targetDate = strval($target_year).strval($target_month).strval(str_pad($target_day, 2, 0, STR_PAD_LEFT));
+
+        //スケジュールphpを呼び出し・取得
+        $make_Schedule = new HospitalSchedule;
+        $show_Schedule = $make_Schedule->MakeSchedule($clinical_department
+                                                        ,$targetDate
+                                                        ,$search_pt_id);
+
 
         //患者情報取得
         $ptDatas = PatientDataModel::getPtData($search_pt_id);
@@ -162,10 +137,7 @@ class ApointmentEditController extends Controller
         'search_pt_id'=>$search_pt_id,
         'ptDatas'=>$ptDatas,
         'clinical_department'=>$clinical_department,
-        'doubleCircleReservationValue'=>$doubleCircleReservationValue,
-        'circleReservationValue'=>$circleReservationValue,
-        'triangleReservationValue'=>$triangleReservationValue,
-        'parcents'=>$parcents]);
+        'show_Schedule'=>$show_Schedule]);
     }
     
     //予約完了
