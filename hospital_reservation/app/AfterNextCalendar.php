@@ -17,10 +17,14 @@ class AfterNextCalendar
             //年月日のデータを作成
             $targetDate = strval($year_after_next).strval($month_after_next).strval(str_pad($month_after_next_day, 2, 0, STR_PAD_LEFT));
 
+            //1日の最大予約枠数を計算
+            $oneDayMaxFrame = ClinicalDepartmentsDataModel::OneDayPossibleFrame($search_Department,$targetDate);
+
             //現在の予約済数を獲得
             $reservedNumber = ClinicalDepartmentsDataModel::ForeignReservation($search_Department,$targetDate);
+
             //1日の予約空き状況を計算
-            $emptyParcent = ClinicalDepartmentsDataModel::OneDayCalculation($search_Department,$reservedNumber);
+            $emptyParcent = ClinicalDepartmentsDataModel::OneDayCalculation($search_Department,$reservedNumber,$oneDayMaxFrame);
 
             switch($emptyParcent){
                 case($emptyParcent > $doubleCircleReservationValue):

@@ -101,17 +101,45 @@ class ClinicalDepartmentsDataModel extends Model
         return $possibleParcent;
     }
 
+    //1日の予約可能枠を抽出　1コマの予約可能数を抽出し、ユニックスタイムを利用してコマ数を取得
+    public static function OneDayPossibleFrame($department,$targetDate){
+        //診療科情報を取得
+        $departmentData = ClinicalDepartmentsDataModel::GetIndividualDepartmentdatas($department);
+        $open = $departmentData->start_time; //開院時間取得
+        $break_s = $departmentData->break_time_start; //休憩開始時間取得
+        $break_f = $departmentData->break_time_close; //休憩終了時間取得
+        $close = $departmentData->close_time; //閉院時間取得
+        $day = $targetDate;
+
+        $startTime = strtotime($day.$open); //開院時間をユニックスタイムへ変換
+        $finishTime = strtotime($day.$close); //閉院時間をユニックスタイムへ変換
+        $breakTime_Start = strtotime($day.$break_s); //休憩開始時間をユニックスタイムへ変換
+        $break_Finish = strtotime($day.$break_f); //休憩終了時間をユニックスタイムへ変換
+        
+        //開院時間と休憩開始時間をユニックスで引き算
+        if($breakTime_Start == null){
+            $AmPm_frame_Value = ($finishTime - $startTime)/1800;
+            return $AmPm_frame_Value;
+        }else{
+            $AM_value = ($breakTime_Start - $startTime)/1800;
+            $PM_value = ($finishTime - $break_Finish)/1800;
+            $AmPm_frame_Value = $AM_value + $PM_value;
+            return $AmPm_frame_Value;
+        }
+    }
+
     //空予約数　パーセントの計算(1日の計算)
-    public static function OneDayCalculation($search_department,$numberOfReservation){
+    public static function OneDayCalculation($search_department,$numberOfReservation,$oneDayMaxFrame){
         //フィールド値設定
         $num =$numberOfReservation;//予約数
                 
         //一コマあたりの最大数を抽出
         $maxValue = ClinicalDepartmentsDataModel::PossiblePeople($search_department);
-        $intMaxValue = $maxValue->possible_peoples * 10;   //9:00~18:00を1時間ずつで10
+        $intMaxValue = $maxValue->possible_peoples ;   //1コマあたりの可能予約数抽出
+        $oneDayMax = $intMaxValue * $oneDayMaxFrame;   //1日あたりの可能予約数抽出
         
         //予約状況パーセント処理
-        $par = ($num / $intMaxValue) * 100;  //分母の100は要変更
+        $par = ($num / $oneDayMax) * 100;  
         $parcent = floor($par); // 切捨て整数化
 
         //空き状況のパーセント処理

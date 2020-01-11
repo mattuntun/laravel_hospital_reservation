@@ -68,7 +68,12 @@ class PersonMyPageController extends Controller{
 
         //カレンダーPHPの呼び出し
         $cal = new Calendar();
-        $tag = $cal->showCalendarTag($pt_id,$search_Department,$doubleCircleReservationValue,$circleReservationValue,$triangleReservationValue);
+        $tag = $cal->showCalendarTag($pt_id,
+                                    $search_Department,
+                                    $doubleCircleReservationValue,
+                                    $circleReservationValue,
+                                    $triangleReservationValue);
+                                    
         //翌月のカレンダー呼び出し
         $next_cal = new NextCalendar();
         $next_tag = $next_cal->showNextMonthCalendarTag($pt_id,$search_Department,$doubleCircleReservationValue,$circleReservationValue,$triangleReservationValue);
