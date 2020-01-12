@@ -57,12 +57,11 @@
         
                 @endslot
 
-
                 @slot('form_item4')
                         {{-- タグ付ボタン(スモール) --}}
                         @include('sab_view_item.small_tagged_buttom',
                                         ['tagged_value'=>'',
-                                        'buttom_value'=>'詳細を確認',
+                                        'buttom_value'=>'内容を登録',
                                         'buttom_access'=>'/index'])
                 @endslot
                  
@@ -70,6 +69,41 @@
                  
                 @endslot
         @endcomponent
+
+    <br />
+    <!-- 休日一覧表示 -->
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">日付</th>
+                <th scope="col">休日理由</th>
+                <th scope="col">作成日</th>
+                <th scope="col">更新日</th>
+            </tr>
+        </thead>
+        <tbody>
+
+   {{-- @foreach($list as $val)  --}}
+            <tr>
+                <!-- 日付のリンクをつける -->
+                <th scope="row">{{-- <a href="{{ url('/holiday/'.$val->id) }}"> --}} {{-- {{$val->day}} --}}</a></th>
+                <td>{{--  {{$val->description}}</td>  --}}
+                <td>{{--  {{$val->created_at}}</td>  --}}
+                <td>{{--  {{$val->updated_at}}</td>  --}}
+                <td><form action="/holiday" method="post">
+                <input type="hidden" name="id" value="">
+                {{--     {{ method_field('delete') }}  --}}
+                {{csrf_field()}} 
+                <button class="btn btn-default" type="submit">Delete</button>
+                </form></td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <a href="{{ url('/') }}">カレンダーに戻る</a>
+
+    {{--  @endforeach   --}}
+         
 
 @endsection
 
