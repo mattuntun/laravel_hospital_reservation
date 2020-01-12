@@ -10,9 +10,7 @@
         margin-bottom: 50px ;
         padding-bottom: 50px;
         border-bottom: 5px dotted rgb(6, 71, 250);
-               
 }
-
 </style>
 
 {{-- ヘッダー --}}
