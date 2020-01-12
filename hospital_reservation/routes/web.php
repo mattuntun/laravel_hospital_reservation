@@ -93,6 +93,8 @@ Route::get('/individual_setting_menu/search_departmen_horiday_setting','Individu
 Route::post('/individual_setting_menu/choice_horiday_setting','IndividualSettingMenuController@HolidaySetIndividualChoice');
 //個別の休診日設定(隔週で休日を追加)
 Route::post('/individual_setting_menu/choice_horiday_setting/week_horiday_setting','IndividualSettingMenuController@WeekHolidaySetIndividualChoice');
+//個別の休診日設定(日付指定で休日を追加)
+Route::post('/individual_setting_menu/choice_horiday_setting/date_specification_horiday_setting','IndividualSettingMenuController@DateSpecificationHolidaySetIndividualChoice');
 
 
 //患者情報編集のページへ

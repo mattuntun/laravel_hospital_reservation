@@ -42,10 +42,14 @@
                    'middle_buttom_access'=>'/individual_setting_menu/choice_horiday_setting/week_horiday_setting'])
         </form>
 
+        <form action="/individual_setting_menu/choice_horiday_setting/date_specification_horiday_setting" method = "post">
+        {{csrf_field()}}       
+        <input type="hidden" value = "{{$search_individual_department}}" name = "search_individual_department"> 
         {{-- シンプルボタン(middle) --}}      
-        @include('sab_view_item.middle_simple_buttom',
+        @include('sab_view_item.middle_submit_simple_buttom',
                   ['middle_buttom_value'=>'日付を指定して休日を変更　この先未機能',
-                   'middle_buttom_access'=>'/index'])
+                   'middle_buttom_access'=>'/individual_setting_menu/choice_horiday_setting/date_specification_horiday_setting'])
+        </form>
 
 @endsection
 

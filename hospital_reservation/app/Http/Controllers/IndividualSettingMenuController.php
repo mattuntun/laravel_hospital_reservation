@@ -141,6 +141,15 @@ class IndividualSettingMenucontroller extends Controller
 
         return view('hospital_menu.common_reservation_setting_screen.individual_setting.department_weekly_horiday_setting',['search_individual_department'=>$search_individual_department]);
     }
+
+    //休診日設定に対し、日付指定で休日追加の画面
+    public function DateSpecificationHolidaySetIndividualChoice(Request $request){
+
+        //前画面から選択された診療科名を取得
+        $search_individual_department = $request->search_individual_department;
+
+        return view('hospital_menu.common_reservation_setting_screen.individual_setting.date_specification_holiday_set_individual',['search_individual_department'=>$search_individual_department]);
+    }
     
 
 }

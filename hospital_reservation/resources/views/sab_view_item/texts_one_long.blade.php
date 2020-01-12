@@ -17,4 +17,4 @@
                   ['label_value'=>'患者ID登録',
                    'label_id'=>'new-patient-registration',
                    'input_id'=>'new-patient-registration',
-                   'input_value'=>'input']) --}}
+                   'input_name'=>'input']) --}}
