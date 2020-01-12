@@ -49,7 +49,10 @@ Route::get('hospital_menu/Common_reservation_setting_screen','HospitalController
 Route::post('hospital_menu/Common_reservation_setting_screen','HospitalController@CommonReservationSettingScreen');
 //予約期限・期間のページへ
 Route::get('common_reservation_setting_screen/set_period_and_deadline','CommonSettingScreenController@SetPeriodAndDeadline');
-//全科共通の休診日設定
+
+//全科共通の休診日設定(日付指定か隔週か選択)
+Route::get('common_reservation_setting_screen/choice_horiday_setting','CommonSettingScreenController@HoridaySetChoice');
+//全科共通の休診日設定(隔週で休日を追加)
 Route::get('common_reservation_setting_screen/horiday_setting','CommonSettingScreenController@HoridaySetting');
 //全科共通開院・休憩・閉診設定
 Route::get('common_reservation_setting_screen/opening_rest_closing_time','CommonSettingScreenController@OpeningRestClosingTime');
@@ -84,6 +87,13 @@ Route::get('/individual_setting_menu/search_individual_change_department','Indiv
 Route::post('/individual_setting_menu/set_individual_change_department','IndividualSettingMenuController@SetIndividualChangeDepartment');
 //個別診療科設定完了の設定画面へ
 Route::post('/individual_setting_menu/complete_individual_change_department','IndividualSettingMenuController@CompleteIndividualChangeDepartment');
+//個別の休診日設定診療科を選択)
+Route::get('/individual_setting_menu/search_departmen_horiday_setting','IndividualSettingMenuController@SelectDepartmentHolidaySet');
+//個別の休診日設定(日付指定か隔週か選択)
+Route::post('/individual_setting_menu/choice_horiday_setting','IndividualSettingMenuController@HolidaySetIndividualChoice');
+//個別の休診日設定(隔週で休日を追加)
+Route::post('/individual_setting_menu/choice_horiday_setting/week_horiday_setting','IndividualSettingMenuController@WeekHolidaySetIndividualChoice');
+
 
 //患者情報編集のページへ
 Route::get('hospital_menu/patient_registration_change_deletion','HospitalController@PatientRegistrationChangeDeletion');

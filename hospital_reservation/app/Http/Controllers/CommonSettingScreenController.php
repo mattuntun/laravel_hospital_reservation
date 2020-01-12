@@ -12,10 +12,19 @@ class CommonSettingScreenController extends Controller
         return view('hospital_menu.common_reservation_setting_screen.set_period_and_deadline');
     }
 
+
+    //休診日設定に対し、日付指定で追加・隔週で追加の選択画面
+    public function HoridaySetChoice(){
+        return view('hospital_menu.common_reservation_setting_screen.horiday_set_choice');
+    }
+
     //全科共通の、休診日設定
     public function HoridaySetting(){
         return view('hospital_menu.common_reservation_setting_screen.horiday_setting');
     }
+
+
+
     //開院・休憩・閉診設定
     public function OpeningRestClosingTime(){
         return view('hospital_menu.common_reservation_setting_screen.opening_rest_closing_time');

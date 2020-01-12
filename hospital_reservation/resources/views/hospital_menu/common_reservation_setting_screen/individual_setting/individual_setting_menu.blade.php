@@ -34,6 +34,11 @@
 
 {{-- シンプルボタン(large) --}}
         @include('sab_view_item.large_simple_buttom',
+                  ['large_buttom_value'=>'休診日設定',
+                   'large_buttom_access'=>'/individual_setting_menu/search_departmen_horiday_setting'])
+
+{{-- シンプルボタン(large) --}}
+        @include('sab_view_item.large_simple_buttom',
                   ['large_buttom_value'=>'未搭載　診療科　追加・削除用パスワード設定',
                    'large_buttom_access'=>'/index'])
                    

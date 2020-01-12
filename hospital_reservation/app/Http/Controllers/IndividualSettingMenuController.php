@@ -113,4 +113,34 @@ class IndividualSettingMenucontroller extends Controller
         return view('hospital_menu.common_reservation_setting_screen.individual_setting.complete_individual_Change_department',['changeTimes'=>$changeTimes]);
     }
 
+    //休診日設定を変更する診療科を選択
+    public function SelectDepartmentHolidaySet(){
+        
+        //診療科名を取得⇒配列にして渡す
+        $getDepartments = ClinicalDepartmentsDataModel::GetDepartmentsData();
+        foreach($getDepartments as $getDepartment){
+            $kindDepartments[] = $getDepartment->clinical_department;
+        }
+        return view('hospital_menu.common_reservation_setting_screen.individual_setting.search_set_holidays',['kindDepartments'=>$kindDepartments]);
+    }
+
+    //休診日設定に対し、日付指定で追加・隔週で追加の選択画面
+    public function HolidaySetIndividualChoice(Request $request){
+
+        //前画面から選択された診療科名を取得
+        $search_individual_department = $request->search_individual_department;
+
+        return view('hospital_menu.common_reservation_setting_screen.individual_setting.department_horiday_set_choice',['search_individual_department'=>$search_individual_department]);
+    }
+
+    //休診日設定に対し、隔週で追加の画面
+    public function WeekHolidaySetIndividualChoice(Request $request){
+
+        //前画面から選択された診療科名を取得
+        $search_individual_department = $request->search_individual_department;
+
+        return view('hospital_menu.common_reservation_setting_screen.individual_setting.department_weekly_horiday_setting',['search_individual_department'=>$search_individual_department]);
+    }
+    
+
 }

@@ -27,7 +27,7 @@
         {{-- シンプルボタン(middle) --}}      
         @include('sab_view_item.middle_simple_buttom',
                   ['middle_buttom_value'=>'休診日設定',
-                   'middle_buttom_access'=>'/common_reservation_setting_screen/horiday_setting'])
+                   'middle_buttom_access'=>'/common_reservation_setting_screen/choice_horiday_setting'])
 
         {{-- シンプルボタン(middle) --}}
         @include('sab_view_item.middle_simple_buttom',
