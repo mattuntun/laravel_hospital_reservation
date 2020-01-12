@@ -16,8 +16,8 @@ class CreateHolidaysTable extends Migration
         Schema::create('holidays', function (Blueprint $table) {
             $table->bigIncrements('id')->comment('主キー');
             $table->string('clinical_department',50)->comment('診療科');
-            $table->date('holiday＿date')->comment('休日');; 
-            $table->string('description'); 
+            $table->date('holiday_date')->comment('休日'); 
+            $table->string('description')->comment('休日概要');; 
             $table->timestamps();
 
             $table->index('clinical_department');
