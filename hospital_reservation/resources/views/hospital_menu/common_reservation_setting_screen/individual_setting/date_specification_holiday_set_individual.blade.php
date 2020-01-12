@@ -35,7 +35,7 @@
 {{-- このコンポーネントはformとしての囲い(メソッドはpost) --}}
         @component('component_item.form')
                  @slot('form_action')
-                 /edit_patient_appoimtment_information/target_date_all_reservation_check
+                 /individual_setting_menu/choice_horiday_setting/date_specification_horiday_setting
                  @endslot
 
                 @slot('form_item1')
@@ -51,18 +51,20 @@
                         @include('sab_view_item.texts_one_long',
                                 ['label_value'=>'休日の理由を入力',
                                 'label_id'=>'holiday_reason',
-                                'input_id'=>'new-holiday_reason',
+                                'input_id'=>'holiday_reason',
                                 'input_name'=>'holiday_reason'])
                         
         
                 @endslot
 
                 @slot('form_item4')
+                <input type="hidden" value = {{$search_individual_department}} name = "search_individual_department">
+                
                         {{-- タグ付ボタン(スモール) --}}
                         @include('sab_view_item.small_tagged_buttom',
                                         ['tagged_value'=>'',
                                         'buttom_value'=>'内容を登録',
-                                        'buttom_access'=>'/index'])
+                                        'buttom_access'=>'/individual_setting_menu/choice_horiday_setting/date_specification_horiday_setting'])
                 @endslot
                  
                 @slot('form_name')
@@ -72,39 +74,54 @@
 
     <br />
     <!-- 休日一覧表示 -->
-    <table class="table">
+    <h2>休日一覧</h2><h4>削除ボタンにて休日を削除します</h4>
+    <table class="table" style="background: white;">
         <thead>
             <tr>
                 <th scope="col">日付</th>
+                <th scope="col">休日No</th>
                 <th scope="col">休日理由</th>
                 <th scope="col">作成日</th>
                 <th scope="col">更新日</th>
             </tr>
         </thead>
-        <tbody>
-
-   {{-- @foreach($list as $val)  --}}
+        <tbody>   
+        @foreach($get_holiday_datas as $get_holiday_data)
+        @endforeach
+    @isset($get_holiday_data->holiday_date)
+        @foreach($get_holiday_datas as $get_holiday_data)
             <tr>
-                <!-- 日付のリンクをつける -->
-                <th scope="row">{{-- <a href="{{ url('/holiday/'.$val->id) }}"> --}} {{-- {{$val->day}} --}}</a></th>
-                <td>{{--  {{$val->description}}</td>  --}}
-                <td>{{--  {{$val->created_at}}</td>  --}}
-                <td>{{--  {{$val->updated_at}}</td>  --}}
-                <td><form action="/holiday" method="post">
-                <input type="hidden" name="id" value="">
-                {{--     {{ method_field('delete') }}  --}}
-                {{csrf_field()}} 
-                <button class="btn btn-default" type="submit">Delete</button>
-                </form></td>
-            </tr>
+
+                <th scope="row">
+                    {{$get_holiday_data->holiday_date}}
+                </th>
+                <td>{{$get_holiday_data->id}}</td>  
+                <td>{{$get_holiday_data->description}}</td>  
+                <td>{{$get_holiday_data->created_at}}</td>
+                <td>{{$get_holiday_data->updated_at}}</td>
+                <td>
+                    <form action="/individual_setting_menu/choice_horiday_setting/date_specification_horiday_setting" method="post">
+                    <input type="hidden" name="id" value="{{$get_holiday_data->id}}">
+                    <input type="hidden" name = "delete" value = "delete_on">
+                    <input type="hidden" name="search_individual_department" value="{{$search_individual_department}}">
+                        {{ method_field('delete') }}
+                        {{csrf_field()}} 
+                        <button class="btn btn-default" type="submit">
+                            Delete
+                        </button>
+                    </form>
+                </td>
+        @endforeach
+    @else
+        <tr>
+            <th scope="row">
+                現在日付登録されている休診日は個の診療科にはありません
+            </th>  
+    @endisset   
+        </tr>
         </tbody>
     </table>
     
-    <a href="{{ url('/') }}">カレンダーに戻る</a>
-
-    {{--  @endforeach   --}}
-         
-
 @endsection
 
 

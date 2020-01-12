@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ClinicalDepartmentsDataModel;
+use App\Models\holiday;
 
 class IndividualSettingMenucontroller extends Controller
 {
@@ -148,7 +149,51 @@ class IndividualSettingMenucontroller extends Controller
         //前画面から選択された診療科名を取得
         $search_individual_department = $request->search_individual_department;
 
-        return view('hospital_menu.common_reservation_setting_screen.individual_setting.date_specification_holiday_set_individual',['search_individual_department'=>$search_individual_department]);
+        //休日モデルからデータ全データ取得
+        $get_holiday_datas = holiday::GetHolidaysDatas($search_individual_department);
+
+        //同ビュー画面において休日情報が入力されたら追加メソッド呼び出しする
+        if(isset($request->check_Date)){
+            $add_holiday_datas = array('search_individual_department'=>$search_individual_department,
+                                        'check_Date'=>$request->check_Date,
+                                        'holiday_reason'=>$request->holiday_reason);
+
+            $add_new_holiday = holiday::AddHoliday($add_holiday_datas);            
+        return view('hospital_menu.common_reservation_setting_screen.individual_setting.date_specification_holiday_set_individual',['search_individual_department'=>$search_individual_department,'get_holiday_datas'=>$get_holiday_datas,'add_new_holiday'=>$add_new_holiday]);
+        }else{
+        return view('hospital_menu.common_reservation_setting_screen.individual_setting.date_specification_holiday_set_individual',['search_individual_department'=>$search_individual_department,'get_holiday_datas'=>$get_holiday_datas]);}
+    }
+                
+    //休診日設定画面で削除ボタンが押された場合
+    public function DeleteHolidaySetIndividualChoice(Request $request){
+
+        //同ビュー画面にて削除ボタン押されたら
+        if(isset($request->delete)){
+            $delete_holiday = holiday::DeleteHoliday($request->id);
+            //$holiday = Holiday::where('id','=',$request->id)->first();
+            //$holiday->delete();
+        }
+
+        //前画面から選択された診療科名を取得
+        $search_individual_department = $request->search_individual_department;
+
+        //休日モデルからデータ全データ取得
+        $get_holiday_datas = holiday::GetHolidaysDatas($search_individual_department);
+
+        //同ビュー画面において休日情報が入力されたら追加メソッド呼び出しする
+        if(isset($request->check_Date)){
+            $add_holiday_datas = array('search_individual_department'=>$search_individual_department,
+                                        'check_Date'=>$request->check_Date,
+                                        'holiday_reason'=>$request->holiday_reason);
+
+            $add_new_holiday = holiday::AddHoliday($add_holiday_datas);            
+        return view('hospital_menu.common_reservation_setting_screen.individual_setting.date_specification_holiday_set_individual',['search_individual_department'=>$search_individual_department,'get_holiday_datas'=>$get_holiday_datas,'add_new_holiday'=>$add_new_holiday]);
+        }else{
+        return view('hospital_menu.common_reservation_setting_screen.individual_setting.date_specification_holiday_set_individual',['search_individual_department'=>$search_individual_department,'get_holiday_datas'=>$get_holiday_datas]);
+
+        }
+
+
     }
     
 
