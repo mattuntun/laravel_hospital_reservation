@@ -39,14 +39,6 @@ Route::post('mypage/complete_add_letter_of_introduction_data','PersonMyPageContr
 Route::get('mypage/complete_add_letter_of_introduction','PersonMyPageController@CompleteAddLetterOfIntroductionData');
 
 
-//カレンダーページ
-Route::get('/holiday','CalendarController@getHoliday');
-Route::post('/holiday','CalendarController@postHoliday');
-Route::get('/holiday/{id}','CalendarController@getHolidayId');
-Route::post('/calendar','CalendarController@ViewCalendar');
-Route::get('/calendar','CalendarController@ViewCalendar');
-Route::delete('/holiday','CalendarController@deleteHoliday');
-
 //病院menuページへ
 Route::post('index/hospital_menu','IndexController@HospitalMenu');
 //病院menuページへ
