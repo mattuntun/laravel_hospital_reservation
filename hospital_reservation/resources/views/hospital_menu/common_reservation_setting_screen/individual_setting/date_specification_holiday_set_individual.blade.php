@@ -20,7 +20,7 @@
 
 @section('header_content')
         @include('sab_view_item.header',
-                  ['main_theme'=>'日付を指定での休診日設定'])
+                  ['main_theme'=>'日付指定での休診日設定'])
 @endsection
 
 
@@ -115,7 +115,7 @@
     @else
         <tr>
             <th scope="row">
-                現在日付登録されている休診日は個の診療科にはありません
+                現在日付登録されている休診日はこの診療科にはありません
             </th>  
     @endisset   
         </tr>

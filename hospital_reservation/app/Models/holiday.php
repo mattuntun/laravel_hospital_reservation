@@ -18,6 +18,16 @@ class holiday extends Model
         return $get_datas;
     }
 
+    //日にちを限定して休日データを取得
+    public static function GetTargetDateHolidaysDatas($search_individual_department,$targetDate){
+
+    $get_datas = DB::table('holidays')
+                            ->where('clinical_department',$search_individual_department)
+                            ->where('holiday_date',$targetDate)
+                            ->first();
+    return $get_datas;
+}
+
     //休日データを追加
     public static function AddHoliday($add_datas){
         $add_holiday = new holiday;
