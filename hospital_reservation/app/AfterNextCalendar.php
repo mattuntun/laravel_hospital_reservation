@@ -156,16 +156,21 @@ EOS;
             $this->html .= "<tr align='center' valign='middle'>";
             // 各週を描画するHTMLソースを生成する$iは曜日 0:日曜日 6土曜日
             for ($i = 0; $i < 7; $i++) {
+
                 if ($month_after_next_day <= 0 || $month_after_next_day > $month_after_next_lastday) {
                     // 先月・来月の日付の場合
                     $this->html .= "<td>&nbsp;</td>";
+
+                //日曜日(0)か土曜日(6)の時はクリック不可の日にちのみ表示
                 } elseif($i == 0 || $i == 6 ){
                     $this->html .="<td style = color:#E9E9E9;>". $month_after_next_day . "</td>";
 
+                //表示が✕の時は、クリック不可で✕表示と％表示
                 } elseif (AfterNextCalendar::AfterNextMonthDayPossible($search_Department,$year_after_next,$month_after_next,$month_after_next_day,$doubleCircleReservationValue,$circleReservationValue,$triangleReservationValue) == '&#10005'){
                     $this->html .="<td style = color:#E9E9E9;>". $month_after_next_day."
                     <br>".AfterNextCalendar::AfterNextMonthDayPossible($search_Department,$year_after_next,$month_after_next,$month_after_next_day,$doubleCircleReservationValue,$circleReservationValue,$triangleReservationValue)."</td>";
                 
+                //その他の条件の時はクリック可のボタンと◎等の表示
                 } else {                    
                     $this->html .="<td>
                     <button type='submit' class='btn btn-lg btn-block' style='background: white;' onclick='location.href=/mypage/schedule_add_new_my_data_reservation>
