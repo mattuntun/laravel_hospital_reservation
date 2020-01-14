@@ -87,6 +87,7 @@ EOF;
                                     </button>
                                 </td>";
                                 
+                                /*
                                 switch($parcents){
                                     case($parcents > $doubleCircleReservationValue):
                                         $this->table.="<td style = 'font-size:20px;'>{$parcents}%完成時に消す</br>&#9678;</td>";   // ◎
@@ -102,6 +103,20 @@ EOF;
 
                                     default:
                                         $this->table.="<td style = 'font-size:20px;'>{$parcents}%完成時に消す</br>&#10005;</td>";    // ✕
+                                    }
+                                    */
+                                    if ( $parcents > $doubleCircleReservationValue ) {
+                                        $this->table.="<td style = 'font-size:20px;'>{$parcents}%完成時に消す</br>&#9678;</td>";   // ◎
+    
+                                    } elseif ( $parcents > $circleReservationValue ) {
+                                        $this->table.="<td style = 'font-size:20px;'>{$parcents}%完成時に消す</br>&#9675;</td>";   // 〇
+    
+                                    } elseif ($parcents > $triangleReservationValue) {
+                                        $this->table.="<td style = 'font-size:20px;'>{$parcents}%完成時に消す</br>&#9651;</td>";   // △ 
+    
+                                    } else {
+                                        $this->table.="<td style = 'font-size:20px;'>{$parcents}%完成時に消す</br>&#10005;</td>";    // ✕
+    
                                     }
                                 
 

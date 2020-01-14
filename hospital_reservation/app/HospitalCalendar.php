@@ -26,6 +26,7 @@ class HospitalCalendar
             //1日の予約空き状況を計算
             $emptyParcent = ClinicalDepartmentsDataModel::OneDayCalculation($search_Department,$reservedNumber,$oneDayMaxFrame);
 
+            /*
             switch($emptyParcent){
                 case($emptyParcent > $doubleCircleReservationValue):
                     return '&#9678';      // ◎ 
@@ -42,6 +43,25 @@ class HospitalCalendar
                 default:
                     return  '&#10005';    // ✕
                 }
+                */
+
+            if ( $emptyParcent > $doubleCircleReservationValue ) {
+            
+                return '&#9678';      // ◎
+
+            } elseif ( $emptyParcent > $circleReservationValue ) {
+
+                return  '&#9675';     // 〇
+
+            } elseif ( $emptyParcent > $triangleReservationValue ) {
+
+                return  '&#9651';     // △
+
+            } else {
+
+                return  '&#10005';    // ✕
+
+            }
             
         }  
 

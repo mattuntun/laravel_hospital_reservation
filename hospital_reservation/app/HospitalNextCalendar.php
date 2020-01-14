@@ -26,6 +26,7 @@ class HospitalNextCalendar
 
             $emptyParcent = ClinicalDepartmentsDataModel::OneDayCalculation($search_Department,$reservedNumber,$oneDayMaxFrame);
 
+            /*
             switch($emptyParcent){
                 case($emptyParcent > $doubleCircleReservationValue):
                     return '&#9678';      // ◎ 
@@ -41,7 +42,26 @@ class HospitalNextCalendar
 
                 default:
                     return  '&#10005';    // ✕
-                }            
+                }  
+                */
+            
+            if ( $emptyParcent > $doubleCircleReservationValue ) {
+            
+                return '&#9678';      // ◎
+
+            } elseif ( $emptyParcent > $circleReservationValue ) {
+
+                return  '&#9675';     // 〇
+
+            } elseif ( $emptyParcent > $triangleReservationValue ) {
+
+                return  '&#9651';     // △
+
+            } else {
+
+                return  '&#10005';    // ✕
+
+            }
         }  
 
 
