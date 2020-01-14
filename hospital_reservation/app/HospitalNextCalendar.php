@@ -7,9 +7,65 @@ use App\Models\ClinicalDepartmentsDataModel;
 class HospitalNextCalendar
 {
     private $html;  
+
+    //1日の予約数のパーセンテージを計算・表示形式指定
+    public static function NextMouthDayPossible($search_Department,$next_year,$next_month,$next_month_day,$doubleCircleReservationValue,$circleReservationValue,$triangleReservationValue){
+
+        //年月日のデータを作成
+        $targetDate = strval($next_year).strval($next_month).strval(str_pad($next_month_day, 2, 0, STR_PAD_LEFT));
+
+        //1日の最大予約枠数を計算
+        $oneDayMaxFrame = ClinicalDepartmentsDataModel::OneDayPossibleFrame($search_Department,$targetDate);
+
+        //現在の予約済数を獲得
+        $reservedNumber = ClinicalDepartmentsDataModel::ForeignReservation($search_Department,$targetDate);
+        //1日の予約空き状況を計算
+
+        $emptyParcent = ClinicalDepartmentsDataModel::OneDayCalculation($search_Department,$reservedNumber,$oneDayMaxFrame);
+
+        /*
+        switch($emptyParcent){
+            case($emptyParcent > $doubleCircleReservationValue):
+                return '&#9678';      // ◎ 
+                break;
+            
+            case($emptyParcent > $circleReservationValue):
+                return  '&#9675';     // 〇
+                break;
+
+            case($emptyParcent > $triangleReservationValue):
+                return  '&#9651';     // △
+                break;
+
+            default:
+                return  '&#10005';    // ✕
+            }  
+            */
+        
+        
+        if ( $emptyParcent > $doubleCircleReservationValue ) {
+        
+            return '&#9678';      // ◎
+
+        } elseif ( $emptyParcent > $circleReservationValue ) {
+
+            return  '&#9675';     // 〇
+
+        } elseif ( $emptyParcent > $triangleReservationValue ) {
+
+            return  '&#9651';     // △
+
+        } else {
+
+            return  '&#10005';    // ✕
+
+        }
+    }  
    
     //翌月カレンダー
     public function showNextMonthCalendarTag($search_pt_id,$search_Department,$doubleCircleReservationValue,$circleReservationValue,$triangleReservationValue){
+
+        /*
 
         //1日の予約数のパーセンテージを計算・表示形式指定
         function NextMouthDayPossible($search_Department,$next_year,$next_month,$next_month_day,$doubleCircleReservationValue,$circleReservationValue,$triangleReservationValue){
@@ -45,6 +101,7 @@ class HospitalNextCalendar
                 }  
                 */
             
+            /*
             if ( $emptyParcent > $doubleCircleReservationValue ) {
             
                 return '&#9678';      // ◎
@@ -63,6 +120,7 @@ class HospitalNextCalendar
 
             }
         }  
+        */
 
 
         //カレンダー本体　翌月の設定
@@ -112,7 +170,7 @@ EOS;
                     <input type='hidden' name='search_pt_id' value = '".$search_pt_id."'>
                    <input type='hidden' name='search_Department' value = '".$search_Department."'>"
                     .$next_month_day."
-                   <br>".NextMouthDayPossible($search_Department,$next_year,$next_month,$next_month_day,$doubleCircleReservationValue,$circleReservationValue,$triangleReservationValue)."</button></td>"; 
+                   <br>".HospitalNextCalendar::NextMouthDayPossible($search_Department,$next_year,$next_month,$next_month_day,$doubleCircleReservationValue,$circleReservationValue,$triangleReservationValue)."</button></td>"; 
                 }
                 $next_month_day++;
             }
