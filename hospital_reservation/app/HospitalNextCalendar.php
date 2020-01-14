@@ -29,15 +29,15 @@ class HospitalNextCalendar
             switch($emptyParcent){
                 case($emptyParcent > $doubleCircleReservationValue):
                     return '&#9678';      // ◎ 
-                break;
+                    break;
                 
                 case($emptyParcent > $circleReservationValue):
                     return  '&#9675';     // 〇
-                break;
+                    break;
 
                 case($emptyParcent > $triangleReservationValue):
                     return  '&#9651';     // △
-                break;
+                    break;
 
                 default:
                     return  '&#10005';    // ✕
@@ -74,13 +74,13 @@ EOS;
         // カレンダーの日付部分を生成する
         while ($next_month_day <= $next_month_lastDay) {
             $this->html .= "<tr align='center' valign='middle'>";
-            // 各週を描画するHTMLソースを生成する
+            // 各週を描画するHTMLソースを生成する $iは曜日 0:日曜日 6土曜日
             for ($i = 0; $i < 7; $i++) {
                 if ($next_month_day <= 0 || $next_month_day > $next_month_lastDay) {
                     // 先月・来月の日付の場合
                     $this->html .= "<td>&nbsp;</td>";
 
-                } elseif($i ==0 || $i ==6 ){
+                } elseif($i == 0 || $i == 6 ){
                     $this->html .="<td style = color:#E9E9E9;>". $next_month_day . "</td>";
 
                 } else {                    

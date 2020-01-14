@@ -121,8 +121,8 @@ class ApointmentEditController extends Controller
         $targetDate = strval($target_year).strval($target_month).strval(str_pad($target_day, 2, 0, STR_PAD_LEFT));
 
         //スケジュールphpを呼び出し・取得
-        $make_Schedule = new HospitalSchedule;
-        $show_Schedule = $make_Schedule->MakeSchedule($clinical_department
+        $make_schedule = new HospitalSchedule;
+        $show_schedule = $make_schedule->MakeSchedule($clinical_department
                                                         ,$targetDate
                                                         ,$search_pt_id);
 
@@ -137,7 +137,7 @@ class ApointmentEditController extends Controller
         'search_pt_id'=>$search_pt_id,
         'ptDatas'=>$ptDatas,
         'clinical_department'=>$clinical_department,
-        'show_Schedule'=>$show_Schedule]);
+        'show_schedule'=>$show_schedule]);
     }
     
     //予約完了
