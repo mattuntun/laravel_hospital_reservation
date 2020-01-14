@@ -2,7 +2,8 @@
 
 namespace App;
 use App\Models\ClinicalDepartmentsDataModel;
-
+use App\Models\holiday;
+use App\Models\AllDepartmentHoliday;
 
 class AfterNextCalendar
 {
@@ -45,6 +46,29 @@ class AfterNextCalendar
             
         }
 
+            //診療科別の休診日を獲得
+            function getDepartmentAfterNextMonthHolidayData($search_Department, $year_after_next, $month_after_next, $month_after_next_day){
+
+                //年月日のデータを作成
+                $after_next_targetDate = strval($year_after_next).strval($month_after_next).strval(str_pad($month_after_next_day, 2, 0, STR_PAD_LEFT));
+                
+                //日付指定で休日データを取得
+                $after_next_horlidayDatas = holiday::GetTargetDateHolidaysDatas($search_Department, $after_next_targetDate);
+                
+                return $after_next_horlidayDatas;                
+            }
+
+            //全診療科の休診日を獲得
+            function getAllDepartmentAfterNextMonthHolidayData( $year_after_next, $month_after_next, $month_after_next_day){
+
+                //年月日のデータを作成
+                $after_next_targetDate = strval($year_after_next).strval($month_after_next).strval(str_pad($month_after_next_day, 2, 0, STR_PAD_LEFT));
+                
+                //日付指定で休日データを取得
+                $AfterNextAllDepartmentHorlidayDatas = AllDepartmentHoliday::GetAllDepartmentTargetHolidays($after_next_targetDate);
+                
+                return $AfterNextAllDepartmentHorlidayDatas;                
+            }
 
         //カレンダー本体　翌々月の設定
         $year = date("Y");
@@ -83,10 +107,16 @@ EOS;
                 } elseif($i ==0 || $i ==6 ){
                     $this->html .="<td style = color:#E9E9E9;>". $month_after_next_day . "</td>";
 
+                //予約表示が✕の時クリック不可
                 } elseif (AfterNextMouthDayPossible($search_Department,$year_after_next,$month_after_next,$month_after_next_day,$doubleCircleReservationValue,$circleReservationValue,$triangleReservationValue) == '&#10005'){
                     $this->html .="<td style = color:#E9E9E9;>". $month_after_next_day."
                     <br>".AfterNextMouthDayPossible($search_Department,$year_after_next,$month_after_next,$month_after_next_day,$doubleCircleReservationValue,$circleReservationValue,$triangleReservationValue)."</td>";
+
+                //診療科別・全診療科休日DBに値があれば休診日表示
+                } elseif (($get_after_next_Holiday = getDepartmentAfterNextMonthHolidayData($search_Department, $year_after_next, $month_after_next, $month_after_next_day) != null) || ($getAfterNextAllDepartmentHoliday = getAllDepartmentAfterNextMonthHolidayData($year_after_next, $month_after_next, $month_after_next_day) != null)){
+                    $this->html .="<td align='center' valign='middle' style = color:#E9E9E9;>". $month_after_next_day . "<br>休診日</td>";
                 
+                //通常表記(ボタンクリック可)
                 } else {                    
                     $this->html .="<td>
                     <button type='submit' class='btn btn-lg btn-block' style='background: white;' onclick='location.href=/mypage/schedule_add_new_my_data_reservation>

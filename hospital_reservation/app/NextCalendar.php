@@ -2,6 +2,8 @@
 
 namespace App;
 use App\Models\ClinicalDepartmentsDataModel;
+use App\Models\holiday;
+use App\Models\AllDepartmentHoliday;
 
 
 class NextCalendar
@@ -43,6 +45,29 @@ class NextCalendar
                     return  '&#10005';    // ✕
                 }            
         }  
+            //診療科別の休診日を獲得
+            function getNextMonthDepartmentHolidayData($search_Department, $next_year, $next_month, $next_month_day){
+
+                //年月日のデータを作成
+                $next_month_targetDate = strval($next_year).strval($next_month).strval(str_pad($next_month_day, 2, 0, STR_PAD_LEFT));
+                
+                //日付指定で休日データを取得
+                $next_month_horlidayDatas = holiday::GetTargetDateHolidaysDatas($search_Department, $next_month_targetDate);
+                
+                return $next_month_horlidayDatas;                
+            }
+
+            //全診療科の休診日を獲得
+            function getNextMonthAllDepartmentHolidayData($next_year, $next_month, $next_month_day){
+
+                //年月日のデータを作成
+                $next_month_targetDate = strval($next_year).strval($next_month).strval(str_pad($next_month_day, 2, 0, STR_PAD_LEFT));
+                
+                //日付指定で休日データを取得
+                $NextMonthAllDepartmentHorlidayDatas = AllDepartmentHoliday::GetAllDepartmentTargetHolidays($next_month_targetDate);
+                
+                return $NextMonthAllDepartmentHorlidayDatas;                
+            }
 
 
         //カレンダー本体　翌月の設定
@@ -82,11 +107,17 @@ EOS;
 
                 } elseif($i ==0 || $i ==6 ){
                     $this->html .="<td style = color:#E9E9E9;>". $next_month_day . "</td>";
-
+                
+                //予約表示が✕の時クリック不可
                 } elseif (NextMouthDayPossible($search_Department,$next_year,$next_month,$next_month_day,$doubleCircleReservationValue,$circleReservationValue,$triangleReservationValue) == '&#10005'){
                     $this->html .="<td style = color:#E9E9E9;>". $next_month_day ."
                     <br>".NextMouthDayPossible($search_Department,$next_year,$next_month,$next_month_day,$doubleCircleReservationValue,$circleReservationValue,$triangleReservationValue)."</td>";  
 
+                //診療科別・全診療科休日DBに値があれば休診日表示
+                } elseif (($getNextMonthHoliday = getNextMonthDepartmentHolidayData($search_Department, $next_year,$next_month,$next_month_day) != null) || ($getNextMonthAllDepartmentHoliday = getNextMonthAllDepartmentHolidayData($next_year,$next_month,$next_month_day) != null)){
+                    $this->html .="<td align='center' valign='middle' style = color:#E9E9E9;>". $next_month_day . "<br>休診日</td>";
+
+                //通常表記(ボタンクリック可)
                 } else {                    
                     $this->html .="<td>
                     <button type='submit' class='btn btn-lg btn-block' style='background: white;' onclick='location.href=/mypage/schedule_add_new_my_data_reservation>
