@@ -3,6 +3,7 @@
 namespace App;
 use App\Models\ClinicalDepartmentsDataModel;
 use App\Models\holiday;
+use App\Models\AllDepartmentHoliday;
 
 class Calendar
 {
@@ -55,7 +56,7 @@ class Calendar
                 }
             
         }
-            //診療科別の予約日を獲得
+            //診療科別の休診日を獲得
             function getDepartmentHolidayData($search_Department, $year, $month, $day){
 
                 //年月日のデータを作成
@@ -64,8 +65,19 @@ class Calendar
                 //日付指定で休日データを取得
                 $horlidayDatas = holiday::GetTargetDateHolidaysDatas($search_Department, $targetDate);
                 
-                return $horlidayDatas;
+                return $horlidayDatas;                
+            }
+
+            //全診療科の休診日を獲得
+            function getAllDepartmentHolidayData($search_Department, $year, $month, $day){
+
+                //年月日のデータを作成
+                $targetDate = strval($year).strval($month).strval(str_pad($day, 2, 0, STR_PAD_LEFT));
                 
+                //日付指定で休日データを取得
+                $AllDepartmentHorlidayDatas = AllDepartmentHoliday::GetAllDepartmentTargetHolidays($targetDate);
+                
+                return $AllDepartmentHorlidayDatas;                
             }
 
 
@@ -117,8 +129,8 @@ EOS;
                     $this->html .="<td align='center' valign='middle' style = color:#E9E9E9;>". $day ."
                     <br>".DayPossible($search_Department,$year,$month,$day,$doubleCircleReservationValue,$circleReservationValue,$triangleReservationValue)."</td>";
 
-                //診療科別休日DBに値があれば休診日表示
-                } elseif ($sample = getDepartmentHolidayData($search_Department, $year, $month, $day) != null){
+                //診療科別・全診療科休日DBに値があれば休診日表示
+                } elseif (($getHoliday = getDepartmentHolidayData($search_Department, $year, $month, $day) != null) || ($getAllDepartmentHoliday = getAllDepartmentHolidayData($search_Department, $year, $month, $day) != null)){
                     $this->html .="<td align='center' valign='middle' style = color:#E9E9E9;>". $day . "<br>休診日</td>";
                 
                 //通常表記(ボタンクリック可)

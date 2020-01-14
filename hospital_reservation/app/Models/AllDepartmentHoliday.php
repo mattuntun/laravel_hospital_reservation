@@ -16,10 +16,10 @@ class AllDepartmentHoliday extends Model
     }
 
     //日付指定で休診日データを取得
-    public function GetAllDepartmentTargetHolidays($target_date){
+    public static function GetAllDepartmentTargetHolidays($target_date){
         $AllDepartmentHolidayDates = DB::table('all_department_holidays')
                                     ->where('holiday_date',$target_date)
-                                    ->get();
+                                    ->first();
         return $AllDepartmentHolidayDates;
     }
 
