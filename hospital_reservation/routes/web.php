@@ -163,3 +163,7 @@ Route::post('edit_patient_appoimtment_information/target_date_all_reservation_ch
 
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
