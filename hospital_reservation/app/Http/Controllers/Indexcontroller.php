@@ -3,15 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\PatientDataModel;
-use App\Models\ReservationDataModel;
+//use App\Models\PatientDataModel;
+//use App\Models\ReservationDataModel;
 
 class Indexcontroller extends Controller
 {
     public function Index(){
         return view('index');
     }
-
+/*
     public function MyPageMenu(Request $request){
         
         //患者情報モデルから患者情報取得
@@ -26,9 +26,10 @@ class Indexcontroller extends Controller
             return view('patient_menu.mypage_menu',['ptDatas'=>$ptDatas,'foreignReservationDatas'=>$foreignReservationDatas]);
         }
     }
+    
 
     public function HospitalMenu(){
         return view('hospital_menu.hospital_menu');
     }
-
+*/
 }

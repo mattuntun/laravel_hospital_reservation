@@ -6,6 +6,16 @@ use Illuminate\Http\Request;
 
 class HospitalController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
+    public function HospitalMenu(){
+        return view('hospital_menu.hospital_menu');
+    }
+
     //全科共通予約画面設定へのアクション
     public function CommonReservationSettingScreen() {
         return view('hospital_menu.common_reservation_setting_screen.common_reservation_setting_screen');

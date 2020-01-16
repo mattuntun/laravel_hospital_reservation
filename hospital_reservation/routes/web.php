@@ -19,7 +19,7 @@ return view('welcome');
 Route::get('index','Indexcontroller@Index');
 
 //マイページへ
-Route::post('index/mypage_menu','IndexController@MyPageMenu');
+Route::post('index/mypage_menu','PersonMyPageController@MyPageMenu');
 //マイページから予約削除
 Route::post('mypage/delete_my_data_reservation','PersonMyPageController@DeleteMyReservations');
 //マイページから予約削除完了
@@ -40,9 +40,9 @@ Route::get('mypage/complete_add_letter_of_introduction','PersonMyPageController@
 
 
 //病院menuページへ
-Route::post('index/hospital_menu','IndexController@HospitalMenu');
+Route::post('index/hospital_menu','HospitalController@HospitalMenu');
 //病院menuページへ
-Route::get('index/hospital_menu','IndexController@HospitalMenu');
+Route::get('index/hospital_menu','HospitalController@HospitalMenu');
 
 //全科共通予約画面設定のページへ
 Route::get('hospital_menu/Common_reservation_setting_screen','HospitalController@CommonReservationSettingScreen');
@@ -166,4 +166,41 @@ Route::post('edit_patient_appoimtment_information/target_date_all_reservation_ch
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
+
+/*
+|--------------------------------------------------------------------------
+| 1) User 認証不要
+|--------------------------------------------------------------------------
+*/
+Route::get('/', function () { return redirect('/home'); });
+ 
+/*
+|--------------------------------------------------------------------------
+| 2) User ログイン後
+|--------------------------------------------------------------------------
+*/
+Route::group(['middleware' => 'auth:user'], function() {
+    Route::get('/home', 'HomeController@index')->name('home');
+});
+ 
+/*
+|--------------------------------------------------------------------------
+| 3) Admin 認証不要
+|--------------------------------------------------------------------------
+*/
+Route::group(['prefix' => 'admin'], function() {
+    Route::get('/',         function () { return redirect('/admin/home'); });
+    Route::get('login',     'Admin\LoginController@showLoginForm')->name('admin.login');
+    Route::post('login',    'Admin\LoginController@login');
+});
+ 
+/*
+|--------------------------------------------------------------------------
+| 4) Admin ログイン後
+|--------------------------------------------------------------------------
+*/
+Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function() {
+    Route::post('logout',   'Admin\LoginController@logout')->name('admin.logout');
+    Route::get('home',      'Admin\HomeController@index')->name('admin.home');
+});
