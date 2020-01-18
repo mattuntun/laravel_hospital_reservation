@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-return view('welcome');
-});
+//Route::get('/', function () {
+//return view('welcome');
+//});
 
 //indexページへ
 Route::get('index','Indexcontroller@Index');
@@ -172,7 +172,7 @@ Route::post('edit_patient_appoimtment_information/target_date_all_reservation_ch
 Auth::routes();
  
 
-//Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 /*
 |--------------------------------------------------------------------------
 | 1) User 認証不要
@@ -186,8 +186,9 @@ Route::get('/', function () { return redirect('/login'); });
 |--------------------------------------------------------------------------
 */
 Route::group(['middleware' => 'auth:user'], function() {
-    //Route::get('/home', 'HomeController@index')->name('home');
-    Route::get('/user_index', 'PersonMyPageController@UesrIndex')->name('user_index');
+
+    Route::get('user_index', 'PersonMyPageController@UesrIndex')->name('user_index');
+
 });
  
 /*
@@ -197,7 +198,6 @@ Route::group(['middleware' => 'auth:user'], function() {
 */
 Route::group(['prefix' => 'admin'], function() {
     Route::get('/',         function () { return redirect('/admin/index'); });
-    //Route::get('/',         function () { return redirect('/admin/home'); });
     Route::get('login',     'Admin\LoginController@showLoginForm')->name('admin.login');
     Route::post('login',    'Admin\LoginController@login');
     
@@ -210,12 +210,5 @@ Route::group(['prefix' => 'admin'], function() {
 */
 Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function() {
     Route::post('logout',   'Admin\LoginController@logout')->name('admin.logout');
-    //Route::get('admin/index',      'Admin\HomeController@index')->name('admin.index');
-    //Route::get('home',      'Admin\HomeController@index')->name('admin.home');
-   // Route::post('home',      'Admin\HomeController@index')->name('admin.home');
-
-    //Route::get('index','HospitalController@AdminIndex')->name('admin_index');
-    //Route::post('index','HospitalController@AdminIndex')->name('admin_index');
-
 
 });

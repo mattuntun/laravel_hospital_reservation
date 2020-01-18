@@ -28,7 +28,6 @@ class LoginController extends Controller
      *
      * @var string
      */
-    //protected $redirectTo = '/admin/home'; // ログイン後のリダイレクト先
     protected $redirectTo = '/admin/index'; // ログイン後のリダイレクト先
     /**
      * Create a new controller instance.
@@ -60,7 +59,5 @@ class LoginController extends Controller
         //$request->session()->invalidate();
 
         return redirect('/admin/login'); //ログアウト後のリダイレクト先
- 
-        //return redirect('/admin/login');  //変更
-    }
+     }
 }
