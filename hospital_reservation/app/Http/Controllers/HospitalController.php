@@ -4,14 +4,25 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Auth;
+
 class HospitalController extends Controller
 {
+
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth:admin');  //変更
+    }
+    
+    //管理者用インデックスページへ
+    public function AdminIndex(){
+        $auths = Auth::user();
+
+        return view('admin_index' ,[ 'auths' => $auths ]);
+        //return view('admin_index');
     }
 
-
+    //管理画面メニュー・トップ
     public function HospitalMenu(){
         return view('hospital_menu.hospital_menu');
     }

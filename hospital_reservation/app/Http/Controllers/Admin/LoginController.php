@@ -28,35 +28,39 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin/home'; // 変更
-
+    //protected $redirectTo = '/admin/home'; // ログイン後のリダイレクト先
+    protected $redirectTo = '/admin/index'; // ログイン後のリダイレクト先
     /**
      * Create a new controller instance.
      *
      * @return void
      */
+
     public function __construct()
     {
         $this->middleware('guest:admin')->except('logout'); //変更
     }
  
-    //
+    //ログイン画面
     public function showLoginForm()
     {
-        return view('admin.login');  //変更
+        return view('admin.login');  //管理者ﾛｸﾞｲﾝﾍﾟｰｼﾞのﾃﾝﾌﾟﾚｰﾄ
     }
  
     protected function guard()
     {
-        return Auth::guard('admin');  //変更
+        return Auth::guard('admin');  //管理者認証のguardを指定
     }
     
     public function logout(Request $request)
     {
-        Auth::guard('admin')->logout();  //変更
+        Auth::guard('admin')->logout();  
         $request->session()->flush();
         $request->session()->regenerate();
+        //$request->session()->invalidate();
+
+        return redirect('/admin/login'); //ログアウト後のリダイレクト先
  
-        return redirect('/admin/login');  //変更
+        //return redirect('/admin/login');  //変更
     }
 }

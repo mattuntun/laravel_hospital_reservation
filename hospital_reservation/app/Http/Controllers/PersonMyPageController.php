@@ -12,7 +12,53 @@ use App\NextCalendar;
 use App\AfterNextCalendar;
 use App\Schedule;
 
+use Auth;
+
 class PersonMyPageController extends Controller{   
+
+    //ログインの為のAuthデータ取得画面呼び出し
+    public function __construct()
+    {
+        if($this->middleware('auth:admin') == null){    //adminデータ取得不可の場合
+        $this->middleware('auth');                      //ユーザーデータ取得
+        }else{                                          //adminデータ取得可能の場合
+            $this->middleware('auth:admin');            //adminデータ取得
+        }
+        
+    }
+
+    //患者用インデックスページへ
+    public function UesrIndex(){
+        if($this->middleware('auth:admin') == null){                 //adminデータ取得不可の場合
+            
+            $auths = Auth::user();
+            return view('user_index' ,[ 'auths' => $auths ]);        //ユーザーデータ取得
+
+            }else{                                                   //adminデータ取得可能の場合
+            
+            $auths = Auth::user();
+            return view('user_index' ,[ 'auths' => $auths ]);       //adminデータ取得
+            }
+
+        //$auths = Auth::user();
+        //return view('user_index' ,[ 'auths' => $auths ]);
+    }
+
+    //患者マイページへ
+    public function MyPageMenu(Request $request){
+        
+        //患者情報モデルから患者情報取得
+        $ptDatas = PatientDataModel::getPtData($request->search_pt_id);
+
+        //モデルのjoinを利用して個人情報⇒予約情報リレーション
+        $foreignReservationDatas =\App\Models\PatientDataModel::ForeignReservationData($request->search_pt_id);
+        
+        if($foreignReservationDatas->isEmpty() == true){
+            return view('patient_menu.mypage_menu',['ptDatas'=>$ptDatas,'foreignReservationDatas'=>null]);
+        }else{
+            return view('patient_menu.mypage_menu',['ptDatas'=>$ptDatas,'foreignReservationDatas'=>$foreignReservationDatas]);
+        }
+    }
     
     //患者マイページから予約削除ページへのアクション
     public function DeleteMyReservations(Request $request){

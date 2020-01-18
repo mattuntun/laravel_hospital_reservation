@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class Indexcontroller extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function Index(){
         return view('index');
     }
