@@ -33,12 +33,23 @@ class IndividualSettingMenucontroller extends Controller
         $close_time ="$close_time_hour"."$close_time_min"."00";
         $restStart_time ="$restStart_time_hour"."$restStart_time_min"."00";
         $restStop_time ="$restStop_time_hour"."$restStop_time_min"."00";
+        $more_than_enough_capacity =$request->doubleCircleReservationValue;
+        $enough_capacity = $request->circleReservationValue;
+        $not_enough_capacity = $request->triangleReservationValue;
+
+        echo $more_than_enough_capacity;
+        echo $enough_capacity;
+        echo $not_enough_capacity;
         
         $changeTimes = array('new_department'=>$new_department,
                             'possible_people'=>$possible_people,
                             'open_time'=>$open_time,
                             'close_time'=>$close_time,
-                            'restStart_time'=>$restStart_time,'restStop_time'=>$restStop_time);
+                            'restStart_time'=>$restStart_time,
+                            'restStop_time'=>$restStop_time,
+                            'more_than_enough_capacity'=>$more_than_enough_capacity,
+                            'enough_capacity'=>$enough_capacity,
+                            'not_enough_capacity'=>$not_enough_capacity,);
         
         //診療科新規追加のメソッドの呼び出し
         $add = ClinicalDepartmentsDataModel::AddNewDepartment($changeTimes);

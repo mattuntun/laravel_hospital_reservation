@@ -58,6 +58,9 @@ class ClinicalDepartmentsDataModel extends Model
         $addNewDepartment->close_time = $addData['close_time'];
         $addNewDepartment->break_time_start = $addData['restStart_time'];
         $addNewDepartment->break_time_close = $addData['restStop_time'];
+        $addNewDepartment->more_than_enough_capacity = $addData['more_than_enough_capacity'];
+        $addNewDepartment->enough_capacity = $addData['enough_capacity'];
+        $addNewDepartment->not_enough_capacity = $addData['not_enough_capacity'];
         $addNewDepartment->save();
     }
 

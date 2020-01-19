@@ -1,0 +1,56 @@
+@charset"UTF-8";
+
+
+		/*区切りのボーダー*/
+.setting{
+	border-top: #06f 1px solid;
+	border-bottom: #06f 1px solid;
+
+}
+
+/*　を開院時間、等の文字の大きさ*/
+.term{
+	font-size:30px;
+	width: 150px;
+	}
+
+
+	/*チェックボックス要素の大きさ*/
+/* ラベルのスタイル　*/
+.chkbox label {
+	padding-left:		38px;			/* ラベルの位置 */
+	font-size:		32px;
+	line-height:		32px;
+	display:		inline-block;
+	cursor:			pointer;
+	position:		relative;
+}
+
+/*チェックボックス要素の大きさ*/
+/* ボックスのスタイル */
+.chkbox label:before {
+content:		'';
+	width:			32px;			/* ボックスの横幅 */
+	height:			32px;			/* ボックスの縦幅 */
+	display:		inline-block;
+	position:		absolute;
+	left:			0;
+	background-color:	#fff;
+	box-shadow:		inset 1px 2px 3px 0px #000;
+	border-radius:		6px 6px 6px 6px;
+}
+
+/*チェックボックス要素の大きさ*/
+/* 元のチェックボックスを表示しない */
+.chkbox input[type=checkbox] {
+	display:		none;
+}
+
+/*チェックボックス要素の大きさ*/
+/* チェックした時のスタイル */
+.chkbox input[type=checkbox]:checked + label:before {
+	content:		'\2713';		/* チェックの文字 */ 
+	font-size:		34px;			/* チェックのサイズ */
+	color:			#fff;			/* チェックの色 */
+	background-color:	#06f;			/* チェックした時の色 */
+}
