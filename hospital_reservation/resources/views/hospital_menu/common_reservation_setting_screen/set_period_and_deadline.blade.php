@@ -96,9 +96,9 @@
                   'footerbuttom3'=>'医療機関HPトップ',
                   'footerbuttom4'=>'患者情報ダウンロード',
                   'footerbuttom_access1'=>'/index/hospital_menu',
-                  'footerbuttom_access2'=>'/index',
-                  'footerbuttom_access3'=>'/index',
-                  'footerbuttom_access4'=>'/index' ])
+                  'footerbuttom_access2'=>'/admin/index',
+                  'footerbuttom_access3'=>'/admin/index',
+                  'footerbuttom_access4'=>'/admin/index' ])
 @endsection
 
 
