@@ -163,9 +163,10 @@ class IndividualSettingMenucontroller extends Controller
         }else{
         return view('hospital_menu.common_reservation_setting_screen.individual_setting.date_specification_holiday_set_individual',['search_individual_department'=>$search_individual_department,'get_holiday_datas'=>$get_holiday_datas]);}
     }
+
                 
     //休診日設定画面で削除ボタンが押された場合
-    public function DeleteHolidaySetIndividualChoice(Request $request){
+    public function DeleteHolidaySet(Request $request){
 
         //同ビュー画面にて削除ボタン押されたら
         if(isset($request->delete)){

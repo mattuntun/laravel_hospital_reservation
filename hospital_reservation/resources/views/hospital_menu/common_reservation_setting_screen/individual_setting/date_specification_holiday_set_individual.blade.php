@@ -73,8 +73,26 @@
         @endcomponent
 
     <br />
+    <br />
+    <br />
     <!-- 休日一覧表示 -->
-    <h2>休日一覧</h2><h4>削除ボタンにて休日を削除します</h4>
+
+        <h2>休日一覧</h2>
+        <h4>
+            <form action="/individual_setting_menu/choice_horiday_setting/date_specification_horiday_setting" method="post">
+            {{csrf_field()}}
+            <input type="hidden" value = {{$search_individual_department}} name = "search_individual_department">
+            @include('sab_view_item.small_tagged_buttom',
+                            ['tagged_value'=>'',
+                            'buttom_value'=>'登録した休日を反映',
+                            'buttom_access'=>'/individual_setting_menu/choice_horiday_setting/date_specification_horiday_setting'])
+            </form>
+        </h4>
+    
+    <br>
+    <br>
+        
+    <h4>削除ボタンにて休日を削除します</h4>
     <table class="table" style="background: white;">
         <thead>
             <tr>
