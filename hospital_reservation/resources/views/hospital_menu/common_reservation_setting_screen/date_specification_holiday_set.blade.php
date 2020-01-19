@@ -72,12 +72,38 @@
         @endcomponent
 
     <br />
+    <br />
+    <br />
     <!-- 休日一覧表示 -->
-    <h2>休日一覧</h2><h4>削除ボタンにて休日を削除します</h4>
+    <!-- <table>
+        <tr>
+            <th> -->
+                <h2>休日一覧</h2>
+     <!--        </th>
+            <th>
+            　　　　
+            </th>
+            <th> -->
+                <h4>
+                    <form action="/common_reservation_setting_screen/date_specification_horiday_setting_all_department" method="get">
+                    @include('sab_view_item.small_tagged_buttom',
+                                            ['tagged_value'=>'',
+                                            'buttom_value'=>'登録した休日を反映',
+                                            'buttom_access'=>'/common_reservation_setting_screen/date_specification_horiday_setting_all_department'])
+                    </form>
+                </h4>
+     <!--       </th>
+        </tr>
+    </table>   -->
+    <br>
+    <br>
+
+    <h4>削除ボタンにて休日を削除します</h4>
+    
     <table class="table" style="background: white;">
         <thead>
             <tr>
-                <th scope="col">日付</th>
+                <th scope="col">休診日</th>
                 <th scope="col">休日No</th>
                 <th scope="col">休日理由</th>
                 <th scope="col">作成日</th>

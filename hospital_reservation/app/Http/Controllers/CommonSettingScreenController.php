@@ -31,6 +31,7 @@ class CommonSettingScreenController extends Controller
 
         return view('hospital_menu.common_reservation_setting_screen.date_specification_holiday_set',['get_holiday_datas'=>$get_holiday_datas]);
     }
+
     //休診日設定に対し全診療科共通へ日付指定で追加(休日追加時)
     public function PostDateSpecificationHolidaySetAllDepartment(Request $request){
         //全休診日データを取得
@@ -46,6 +47,7 @@ class CommonSettingScreenController extends Controller
 
         return view('hospital_menu.common_reservation_setting_screen.date_specification_holiday_set',['get_holiday_datas'=>$get_holiday_datas]);
     }
+    
     //休診日設定画面で削除ボタンが押された場合
     public function DeleteHolidaySet(Request $request){
 

@@ -27,11 +27,23 @@ class AllDepartmentHoliday extends Model
 
     //休診日データをDBへ追加
     public static function AddAllDepartmentTargetHolidays($add_holiday_data){
-
+        
         $all_department_holidays = new AllDepartmentHoliday;
-        $all_department_holidays->holiday_date = $add_holiday_data['check_Date'];
-        $all_department_holidays->description = $add_holiday_data['holiday_reason'];
-        $all_department_holidays->save();
+        
+        //全ての休日から特定の日付を探す(target_date) 
+        $target_date = $all_department_holidays->where('holiday_date',$add_holiday_data)->first();
+
+        //target_dateがDB上に存在しなかったら
+        if($target_date == null){
+            $all_department_holidays->holiday_date = $add_holiday_data['check_Date'];
+            $all_department_holidays->description = $add_holiday_data['holiday_reason'];
+            $all_department_holidays->save();  //新規作成
+
+        //target_dateがDB上に存在したら
+        }else{
+            $target_date->description = $add_holiday_data['holiday_reason'];
+            $target_date->save();  //休診理由を更新変更
+        }
     }
 
     //診療科削除のメソッド
