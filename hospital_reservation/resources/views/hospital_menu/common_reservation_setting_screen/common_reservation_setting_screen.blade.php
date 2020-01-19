@@ -20,9 +20,10 @@
 
 @section('main_content')
         {{-- シンプルボタン(middle) --}}
-        @include('sab_view_item.middle_simple_buttom',
+     {{--   @include('sab_view_item.middle_simple_buttom',
                   ['middle_buttom_value'=>'予約表示設定　機能未搭載',
                    'middle_buttom_access'=>'/common_reservation_setting_screen/set_period_and_deadline'])
+                   --}}
 
         {{-- シンプルボタン(middle) --}}      
         @include('sab_view_item.middle_simple_buttom',
@@ -36,13 +37,14 @@
 
         {{-- シンプルボタン(middle) --}}
         @include('sab_view_item.middle_simple_buttom',
-                  ['middle_buttom_value'=>'予約数・状況表示設定　機能未搭載',
+                  ['middle_buttom_value'=>'予約数・状況表示設定',
                    'middle_buttom_access'=>'/common_reservation_setting_screen/number_of_reservation_screen'])
 
         {{-- シンプルボタン(middle) --}}
-        @include('sab_view_item.middle_simple_buttom',
+        {{--   @include('sab_view_item.middle_simple_buttom',
                   ['middle_buttom_value'=>'診療不可設定(訪問診療・往診等)　機能未搭載',
                    'middle_buttom_access'=>'/index'])
+                   --}}
 
         {{-- シンプルボタン(middle) --}}
         @include('sab_view_item.middle_simple_buttom',

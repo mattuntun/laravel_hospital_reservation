@@ -72,7 +72,7 @@ class ClinicalDepartmentsDataModel extends Model
         return $get_datas;
     }
 
-    //診療科別の診療科設定変更メソッド
+    //診療科別の開院時間等、診療科設定変更メソッド
     public static function IndividualChangeDepartment($changeTimes){
         //var_dump($changeTimes['search_change_deparment']);
 
@@ -84,9 +84,26 @@ class ClinicalDepartmentsDataModel extends Model
             $IndividualChange->break_time_close = $changeTimes['restStop_time'];
             $IndividualChange->save();
         }
-
     }
 
+    //診療科別の予約可能人数の変更を行うメソッド
+    public static function ChangeIndividualPossibleNumber($search_individual_department,$possible_number){
+
+        $getDepartmentDatas = ClinicalDepartmentsDataModel::where('clinical_department',$search_individual_department)->first();
+        $getDepartmentDatas->possible_peoples = $possible_number;
+        $getDepartmentDatas->save();
+    }
+    
+    //診療科別の空き容量％の変更を行うメソッド
+    public static function ChangeCapacitySet($search_individual_department,$capacity_parcent){
+        $getDepartmentDatas = ClinicalDepartmentsDataModel::where('clinical_department',$search_individual_department)->first();
+        $getDepartmentDatas->more_than_enough_capacity = $capacity_parcent['doubleCircle'];
+        $getDepartmentDatas->enough_capacity = $capacity_parcent['circle'];
+        $getDepartmentDatas->not_enough_capacity = $capacity_parcent['triangle'];
+        $getDepartmentDatas->save();
+    }
+
+    
     //予約可能数の抽出
     public static function PossiblePeople($search_department){
         $departmentReseravationMax = DB::table('clinical_departments')->where('clinical_department',$search_department)->first('possible_peoples');

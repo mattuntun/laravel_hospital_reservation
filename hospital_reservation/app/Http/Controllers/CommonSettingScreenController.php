@@ -127,7 +127,7 @@ class CommonSettingScreenController extends Controller
         $capacity_parcent['circle'] = $circle;
         $capacity_parcent['triangle'] = $triangle;
 
-        ////◎、〇、△の値をDBへ登録
+        //◎、〇、△の値をDBへ登録
         ClinicalDepartmentsDataModel::AllCapacitySet($capacity_parcent);
 
 
