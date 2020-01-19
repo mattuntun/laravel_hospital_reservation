@@ -80,10 +80,15 @@ class ApointmentEditController extends Controller
         //診療科選択画面にて取得した診療科情報取得
         $search_Department = $request->selectedDepartment;
 
+        //診療科モデルから空き表示条件を取得
+        $getDepartmentDatas = ClinicalDepartmentsDataModel::GetCapacityDatas($search_Department);
+
         //◎、〇、△の条件を呼び出し
-        $doubleCircleReservationValue = 60;
-        $circleReservationValue = 30;
-        $triangleReservationValue = 0;
+        $doubleCircleReservationValue = $getDepartmentDatas['doubleCircleReservationValue'];  //◎
+
+        $circleReservationValue = $getDepartmentDatas['circleReservationValue'];  //〇
+
+        $triangleReservationValue = $getDepartmentDatas['triangleReservationValue'];  //△
 
         //病院用カレンダー取得
         $hos_calendar = new HospitalCalendar;

@@ -19,12 +19,12 @@
 @section('main_content')
 {{-- シンプルボタン(large) --}}
         @include('sab_view_item.large_simple_buttom',
-                  ['large_buttom_value'=>'予約確認・新規追加・削除',
+                  ['large_buttom_value'=>'患者別予約確認・編集',
                    'large_buttom_access'=>'/edit_patient_appoimtment_information/search_pt_new_reservation'])
 
 {{-- シンプルボタン(large) --}}
         @include('sab_view_item.large_simple_buttom',
-                  ['large_buttom_value'=>'日付別予約状況確認',
+                  ['large_buttom_value'=>'未対応　日付別予約状況確認',
                    'large_buttom_access'=>'/edit_patient_appoimtment_information/check_reservation_status'])
 @endsection
 
