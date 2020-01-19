@@ -26,9 +26,15 @@ class Schedule
     $break_Finish = strtotime($day.$break_f); //休憩終了時間をユニックスタイムへ変換
 
     //◎、〇、△の条件を呼び出し
-    $doubleCircleReservationValue = 60;
-    $circleReservationValue = 30;
-    $triangleReservationValue = 0;
+    //診療科モデルから空き表示条件を取得
+    $getDepartmentDatas = ClinicalDepartmentsDataModel::GetCapacityDatas($search_Department);
+
+    //◎、〇、△の条件を呼び出し
+    $doubleCircleReservationValue = $getDepartmentDatas['doubleCircleReservationValue'];  //◎
+
+    $circleReservationValue = $getDepartmentDatas['circleReservationValue'];  //〇
+
+    $triangleReservationValue = $getDepartmentDatas['triangleReservationValue'];  //△
 
 
     //テーブルのhtmlを作成

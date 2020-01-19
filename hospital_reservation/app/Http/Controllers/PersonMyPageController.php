@@ -105,12 +105,17 @@ class PersonMyPageController extends Controller{
         //患者情報の呼び出し
         $pt_id = $request->search_pt_id;
         $ptDatas = PatientDataModel::getPtData($pt_id);
-        //var_dump($ptData);
+        
+
+        //診療科モデルから空き表示条件を取得
+        $getDepartmentDatas = ClinicalDepartmentsDataModel::GetCapacityDatas($search_Department);
 
         //◎、〇、△の条件を呼び出し
-        $doubleCircleReservationValue = 60;
-        $circleReservationValue = 30;
-        $triangleReservationValue = 0;
+        $doubleCircleReservationValue = $getDepartmentDatas['doubleCircleReservationValue'];  //◎
+
+        $circleReservationValue = $getDepartmentDatas['circleReservationValue'];  //〇
+
+        $triangleReservationValue = $getDepartmentDatas['triangleReservationValue'];  //△
 
         //カレンダーPHPの呼び出し
         $cal = new Calendar();

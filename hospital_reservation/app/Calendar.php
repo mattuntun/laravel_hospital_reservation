@@ -10,20 +10,10 @@ class Calendar
     private $html;  
     
     //当月のカレンダー
-    public function showCalendarTag($search_pt_id,
-                                    $search_Department,
-                                    $doubleCircleReservationValue,
-                                    $circleReservationValue,
-                                    $triangleReservationValue){
+    public function showCalendarTag($search_pt_id, $search_Department, $doubleCircleReservationValue, $circleReservationValue, $triangleReservationValue){
 
         //1日の予約数のパーセンテージを計算・表示形式指定
-        function DayPossible($search_Department,
-                            $year,
-                            $month,
-                            $day,
-                            $doubleCircleReservationValue,
-                            $circleReservationValue,
-                            $triangleReservationValue){
+        function DayPossible($search_Department, $year, $month, $day, $doubleCircleReservationValue, $circleReservationValue, $triangleReservationValue){
 
             
             //年月日のデータを作成

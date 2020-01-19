@@ -103,11 +103,34 @@ class ClinicalDepartmentsDataModel extends Model
         $getDepartmentDatas->save();
     }
 
-    
+
     //予約可能数の抽出
     public static function PossiblePeople($search_department){
         $departmentReseravationMax = DB::table('clinical_departments')->where('clinical_department',$search_department)->first('possible_peoples');
         return $departmentReseravationMax;
+    }
+
+    //予約表示条件を呼び出し(◎、〇、△のパーセント条件呼び出し)
+    public static function GetCapacityDatas($search_Department){
+        $getCapacityDatas = ClinicalDepartmentsDataModel::where('clinical_department',$search_Department)->first();
+        
+        //◎を取り出し
+        $doubleCircleReservationValue = $getCapacityDatas->more_than_enough_capacity;
+
+        //〇を取り出し
+        $circleReservationValue = $getCapacityDatas->enough_capacity;
+
+        //△を取り出し
+        $triangleReservationValue = $getCapacityDatas->not_enough_capacity;
+
+        //◎等の情報を配列へ変換
+        $capacityDatas = [];
+        $capacityDatas ['doubleCircleReservationValue'] = $doubleCircleReservationValue;
+        $capacityDatas ['circleReservationValue'] = $circleReservationValue;
+        $capacityDatas ['triangleReservationValue'] = $triangleReservationValue;
+        
+        return $capacityDatas;
+   
     }
 
     //空予約数　パーセントの計算(1コマの計算)
@@ -144,7 +167,7 @@ class ClinicalDepartmentsDataModel extends Model
         $breakTime_Start = strtotime($day.$break_s); //休憩開始時間をユニックスタイムへ変換
         $break_Finish = strtotime($day.$break_f); //休憩終了時間をユニックスタイムへ変換
         
-        //開院時間と休憩開始時間をユニックスで引き算
+        //開院時間と休憩開始時間をユニックスで引き算(ユニックスタイムで30分は1800)
         if($breakTime_Start == null){
             $AmPm_frame_Value = ($finishTime - $startTime)/1800;
             return $AmPm_frame_Value;
