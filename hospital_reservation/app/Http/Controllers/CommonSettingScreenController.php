@@ -114,4 +114,24 @@ class CommonSettingScreenController extends Controller
         $chagePossiblePeople = ClinicalDepartmentsDataModel::ChangePossibleNumber($possibleNumber);
         return view('hospital_menu.common_reservation_setting_screen.status_display_setting',['possibleNumber'=>$possibleNumber]);
     }
+    //予約数・予約状況表示　設定編集画面
+    public function CompleteNumberAndStatusSetting(Request $request){
+        //前画面より◎、〇、△の値を取得
+        $doubleCircle = $request->doubleCircleReservationValue;
+        $circle = $request->circleReservationValue;
+        $triangle = $request->triangleReservationValue;
+        
+        //◎、〇、△の値を配列へ
+        $capacity_parcent = [];
+        $capacity_parcent['doubleCircle'] = $doubleCircle;
+        $capacity_parcent['circle'] = $circle;
+        $capacity_parcent['triangle'] = $triangle;
+
+        ////◎、〇、△の値をDBへ登録
+        ClinicalDepartmentsDataModel::AllCapacitySet($capacity_parcent);
+
+
+
+        return view('hospital_menu.common_reservation_setting_screen.complete_status_display_setting');
+    }
 }

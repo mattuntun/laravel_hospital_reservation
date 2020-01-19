@@ -27,7 +27,7 @@
                  @slot('form_item3')
                  {{-- タグ付ボタン(スモール) --}}
                      @include('sab_view_item.small_tagged_buttom',
-                             ['tagged_value'=>'内容を確認して予約空き情報表示設定へ進む',
+                             ['tagged_value'=>'空き情報表示設定へ進むと上記が登録されます',
                               'buttom_value'=>'空き情報表示へ進む',
                               'buttom_access'=>'/common_reservation_setting_screen/status_display_setting'])
                  @endslot

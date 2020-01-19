@@ -22,6 +22,9 @@ class CreateClinicalDepartmentsTable extends Migration
             $table->time('break_time_start')->comment('診療休診開始時間');  
             $table->time('break_time_close')->comment('診療休診終了時間'); 
             $table->time('close_time')->comment('診療終了時間');
+            $table->unsignedInteger('more_than_enough_capacity')->comment('予約可能容量二重丸');
+            $table->unsignedInteger('enough_capacity')->comment('予約可能容量丸');
+            $table->unsignedInteger('not_enough_capacity')->comment('予約可能容量三角');
             $table->timestamps();
         });
     }

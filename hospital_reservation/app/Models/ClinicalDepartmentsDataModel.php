@@ -38,6 +38,17 @@ class ClinicalDepartmentsDataModel extends Model
         }
     }
 
+    //全ての診療科の空き容量％の変更を行うメソッド
+    public static function AllCapacitySet($capacity_parcent){
+        $newAllCapacitys = ClinicalDepartmentsDataModel::all();
+        foreach($newAllCapacitys as $newAllCapacity){
+            $newAllCapacity->more_than_enough_capacity  = $capacity_parcent['doubleCircle'];
+            $newAllCapacity->enough_capacity = $capacity_parcent['circle'];
+            $newAllCapacity->not_enough_capacity = $capacity_parcent['triangle'];
+            $newAllCapacity->save();    
+        }
+    }
+
     //個別診療科新規追加を行うメソッド
     public static function AddNewDepartment($addData){
         $addNewDepartment = new ClinicalDepartmentsDataModel;

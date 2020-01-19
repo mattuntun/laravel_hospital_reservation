@@ -4,49 +4,53 @@
 
 <h2>現在1コマ当たり{{$possibleNumber}}人のネット予約が可能です</h2>
 
-<h2>1コマの予約空席状況表示の条件を設定してください</h2>       
+<h2>1コマの予約空席状況表示の条件を設定してください</h2> 
+
+<br>
+<br>
+
 <table>
     <tr>
-        <td>
+        <td style="white-space: nowrap;">
             <p class="term">予約可能数が</p>
         </td>
         <td>
         </td>
     <tr>
-        <td>
-            <select name="double_maru" class="form-control" size="1" style="height: 100px; font-size: 32px;">
+        <td style="white-space: nowrap;">
+            <select name="doubleCircleReservationValue" class="form-control" size="1" style="height: 100px; font-size: 32px;">
                 <option disabled selected value>選択してください</option>
-                @for($i = 1; $i <= 35; $i++)
-                <option value="{{$i}}">{{$i}}人</option>
+                @for($i = 60; $i <= 90; $i = $i + 10)
+                <option value="{{$i}}">{{$i}}%</option>
                 @endfor
                             </select>
         </td>
-        <td>
+        <td style="white-space: nowrap;">
             <p class="term">以上の時◎</p>
         </td>
     </tr>
     <tr>
-        <td>
-            <select name="maru" class="form-control" size="1" style="height: 100px; font-size: 32px;">
+        <td style="white-space: nowrap;">
+            <select name="circleReservationValue" class="form-control" size="1" style="height: 100px; font-size: 32px;">
                 <option disabled selected value>選択してください</option>
-                @for($i = 1; $i <= 35; $i++)
-                <option value="{{$i}}">{{$i}}人</option>
+                @for($i = 30; $i < 60; $i = $i + 10)
+                <option value="{{$i}}">{{$i}}%</option>
                 @endfor
                             </select>
         </td>
-        <td>
+        <td style="white-space: nowrap;">
             <p class="term">以上◎未満の時〇</p>
         </td>
     </tr>
     <tr>
-        <td>
-            <select name="triangle" class="form-control" size="1" style="height: 100px; font-size: 32px;">
+        <td style="white-space: nowrap;">
+            <select name="triangleReservationValue" class="form-control" size="1" style="height: 100px; font-size: 32px;">
                 <option disabled selected value>選択してください</option>
-                @for($i = 1; $i <= 35; $i++)
-                <option value="{{$i}}">{{$i}}人</option>
+                @for($i = 0; $i < 30; $i = $i + 10)
+                <option value="{{$i}}">{{$i}}%</option>
                 @endfor            </select>
         </td>
-        <td>
+        <td style="white-space: nowrap;">
             <p class="term">以上〇未満の時△</p>
         </td>
     </tr>             

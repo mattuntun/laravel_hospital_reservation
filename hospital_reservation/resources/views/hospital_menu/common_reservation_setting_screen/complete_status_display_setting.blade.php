@@ -2,7 +2,7 @@
 @extends('layout.layout_hospital_base')
 
 {{-- ヘッド --}}
-@section('web_title','全科共通時間設定')
+@section('web_title','予約数・予約状況表示設定')
 
 <style type="text/css">
 .PtInfo{
@@ -28,14 +28,14 @@
 
 @section('header_content')
         @include('sab_view_item.header',
-                  ['main_theme'=>'全科共通・開院・閉院時間',
+                  ['main_theme'=>'予約数・予約状況表示設定',
                   'sub_theme'=>'全科設定が完了しました'])
 @endsection
 
 {{-- メイン --}}
 @section('main_content')
 <h2>
-    <b>全科共通　開院・休憩・閉診設定の変更が実施されました。</b></br>
+    <b>全科共通　予約数・予約状況表示設定の変更が実施されました。</b></br>
     設定画面トップへ戻ってください
 </h2>
 

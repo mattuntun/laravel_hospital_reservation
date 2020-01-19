@@ -42,5 +42,8 @@ $factory->define(App\clinical_departments::class, function (Faker $faker) {
         'break_time_start'=> $faker->randomElement($break_start),
         'break_time_close'=> $faker->randomElement($break_close),
         'close_time'=> $faker->randomElement($closes),
+        'more_than_enough_capacity'=> '60',
+        'enough_capacity'=> '30',
+        'not_enough_capacity'=> '0',
     ];
 });

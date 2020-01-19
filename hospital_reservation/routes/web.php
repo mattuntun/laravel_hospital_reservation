@@ -74,6 +74,10 @@ Route::get('common_reservation_setting_screen/number_of_reservation_screen
 //全科共通の予約状況表示数設定
 Route::post('common_reservation_setting_screen/status_display_setting
 ','CommonSettingScreenController@StatusDisplaySetting');
+//全科共通の予約数・状況表示設定完了画面
+Route::post('common_reservation_setting_screen/number_of_reservation/status_display/complete
+','CommonSettingScreenController@CompleteNumberAndStatusSetting');
+
 //診療不可設定
 //個別診療科設定メニュー画面へ
 Route::get('common_reservation_setting_screen/individual_setting_menu

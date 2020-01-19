@@ -16,7 +16,7 @@
     {{-- このコンポーネントはformとしての囲い(メソッドはpost) --}}
     @component('component_item.form')
                  @slot('form_action')
-                     /index
+                     /common_reservation_setting_screen/number_of_reservation/status_display/complete
                  @endslot
 
                  @slot('form_item2')
@@ -29,7 +29,7 @@
                      @include('sab_view_item.small_tagged_buttom',
                              ['tagged_value'=>'内容を確認して登録',
                               'buttom_value'=>'登録',
-                              'buttom_access'=>'/index'])
+                              'buttom_access'=>'/common_reservation_setting_screen/number_of_reservation/status_display/complete'])
                  @endslot
 
 
