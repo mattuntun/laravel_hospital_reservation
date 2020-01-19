@@ -30,14 +30,14 @@ $factory->define(App\clinical_departments::class, function (Faker $faker) {
     ];
     $random_department = [
         'サンプル内科',
-        'サンプル外科',
+
     ];
 
     return [
         //'data_maked_day'=> $faker->date($format = 'Y-m-d', $max = 'now'),
         //'clinical_department'=> $faker->realText($maxNbChars = 20,$indexsize = 1),
         'clinical_department'=> $faker->randomElement($random_department),
-        'possible_peoples'=> $faker->numberBetween(1,100),
+        'possible_peoples'=> $faker->numberBetween(1,5),
         'start_time'=> $faker->randomElement($opens),
         'break_time_start'=> $faker->randomElement($break_start),
         'break_time_close'=> $faker->randomElement($break_close),
