@@ -105,16 +105,16 @@ class PersonMyPageController extends Controller{
         //患者情報の呼び出し
         $pt_id = $request->search_pt_id;
         $ptDatas = PatientDataModel::getPtData($pt_id);
+
+        //半日診療日のデータを取り出し
+        //$half_week_day = ClinicalDepartmentsDataModel::GetHalfWeekData($search_Department);
         
 
         //診療科モデルから空き表示条件を取得
         $getDepartmentDatas = ClinicalDepartmentsDataModel::GetCapacityDatas($search_Department);
-
         //◎、〇、△の条件を呼び出し
         $doubleCircleReservationValue = $getDepartmentDatas['doubleCircleReservationValue'];  //◎
-
         $circleReservationValue = $getDepartmentDatas['circleReservationValue'];  //〇
-
         $triangleReservationValue = $getDepartmentDatas['triangleReservationValue'];  //△
 
         //カレンダーPHPの呼び出し
@@ -149,16 +149,19 @@ class PersonMyPageController extends Controller{
         $target_month = $request->target_month;
         $target_year = $request->target_year;
 
-        //診療年月日の文字列データ作成
-        $targetDate = strval($target_year).strval($target_month).strval(str_pad($target_day, 2, 0, STR_PAD_LEFT));
-
         //患者IDと診療科名の取得
         $search_pt_id = $request->search_pt_id;
         $clinical_department = $request->search_Department;
 
+        //診療科から半日条件を取得(0:日曜日～6:土曜日　7:半日なし)
+        $half_week_day_point = ClinicalDepartmentsDataModel::GetHalfWeekData($clinical_department);
+                
+        //診療年月日の文字列データ作成
+        $targetDate = strval($target_year).strval($target_month).strval(str_pad($target_day, 2, 0, STR_PAD_LEFT));
+
         //スケジュールphpから画面取得(患者ID･診療科名･日付受け渡し)
         $make_schedule = new Schedule;
-        $show_schedule = $make_schedule->MakeSchedule($clinical_department,$targetDate,$search_pt_id);
+        $show_schedule = $make_schedule->MakeSchedule($clinical_department, $targetDate, $half_week_day_point, $search_pt_id);
        
         //患者情報の取得
         $ptDatas = PatientDataModel::getPtData($search_pt_id);

@@ -23,6 +23,7 @@ Route::get('admin/index','HospitalController@AdminIndex');
 //ユーザーindexページへ
 Route::get('user_index','PersonMyPageController@UesrIndex');
 
+
 //マイページへ
 Route::post('index/mypage_menu','PersonMyPageController@MyPageMenu');
 //マイページから予約削除
@@ -204,7 +205,8 @@ Route::get('/', function () { return redirect('/login'); });
 */
 Route::group(['middleware' => 'auth:user'], function() {
 
-    Route::get('user_index', 'PersonMyPageController@UesrIndex')->name('user_index');
+    Route::get('/user_index', 'PersonMyPageController@UesrIndex')->name('user_index');
+    Route::post('/user_index', 'PersonMyPageController@UesrIndex')->name('user_index');
 
 });
  

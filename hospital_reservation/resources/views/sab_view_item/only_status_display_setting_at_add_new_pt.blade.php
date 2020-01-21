@@ -2,7 +2,7 @@
     <link rel="stylesheet" href="{{asset('sab_view_item_css/only_status_display_setting_at_add_new_pt.css')}}">
 </head>
 
-<div class = "setting">
+<div class = "set">
 
 <h2>1コマの予約空席状況表示の条件を設定してください</h2> 
 
@@ -23,7 +23,7 @@
                 @for($i = 60; $i <= 90; $i = $i + 10)
                 <option value="{{$i}}">{{$i}}%</option>
                 @endfor
-                            </select>
+            </select>
         </td>
         <td style="white-space: nowrap;">
             <p class="term">以上の時◎</p>

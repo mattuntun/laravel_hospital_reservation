@@ -18,28 +18,32 @@ class IndividualSettingMenucontroller extends Controller
     }
     //新規診療科設定完了画面
     public function CompleteAddNewDepartment(Request $request){
-        $open_time_hour = $request->h_open_time;
-        $open_time_min = $request->m_open_time;
-        $close_time_hour = $request->h_close_time;
-        $close_time_min = $request->m_close_stop;
-        $restStart_time_hour = $request->h_rest_start;
-        $restStart_time_min = $request->m_rest_start;
-        $restStop_time_hour = $request->h_rest_stop;
-        $restStop_time_min = $request->m_rest_stop;
+        $open_time_hour = $request->h_open_time;                //開院時間(時)
+        $open_time_min = $request->m_open_time;                 //開院時間(分)
+        $close_time_hour = $request->h_close_time;              //閉院時間(時)
+        $close_time_min = $request->m_close_stop;               //閉院時間(分)
+        $restStart_time_hour = $request->h_rest_start;          //休憩開始時間(時)
+        $restStart_time_min = $request->m_rest_start;           //休憩開始時間(分)
+        $restStop_time_hour = $request->h_rest_stop;            //休憩終了時間(時)
+        $restStop_time_min = $request->m_rest_stop;             //休憩終了時間(分)
+        $half_open_time_hour = $request->half_h_open_time;      //半日診療開院時間(時)
+        $half_open_time_min = $request->half_m_open_time;       //半日診療開院時間(分)
+        $half_close_time_hour = $request->half_h_close_time;    //半日診療閉院時間(時)
+        $half_close_time_min = $request->half_m_close_stop;     //半日診療閉院時間(時)
 
-        $new_department = $request->new_department;
-        $possible_people = $request->possible_number;
-        $open_time = "$open_time_hour"."$open_time_min"."00";
-        $close_time ="$close_time_hour"."$close_time_min"."00";
-        $restStart_time ="$restStart_time_hour"."$restStart_time_min"."00";
-        $restStop_time ="$restStop_time_hour"."$restStop_time_min"."00";
-        $more_than_enough_capacity =$request->doubleCircleReservationValue;
-        $enough_capacity = $request->circleReservationValue;
-        $not_enough_capacity = $request->triangleReservationValue;
+        $new_department = $request->new_department;                             //追加診療科名
+        $possible_people = $request->possible_number;                           //1コマ当たりの予約可能人数
+        $open_time = "$open_time_hour"."$open_time_min"."00";                   //開院時間
+        $close_time ="$close_time_hour"."$close_time_min"."00";                 //閉院時間(時)
+        $restStart_time ="$restStart_time_hour"."$restStart_time_min"."00";     //休憩開始時間
+        $restStop_time ="$restStop_time_hour"."$restStop_time_min"."00";        //休憩終了時間
+        $more_than_enough_capacity =$request->doubleCircleReservationValue;     //◎になる値
+        $enough_capacity = $request->circleReservationValue;                    //〇になる値
+        $not_enough_capacity = $request->triangleReservationValue;              //△になる値
+        $half_week_day = $request->half_week_day;                               //半日診療曜日
+        $half_open_time = "$half_open_time_hour"."$half_open_time_min"."00";    //半日診療開院時間
+        $half_close_time = "$half_close_time_hour"."$half_close_time_min"."00"; //半日診療閉院時間
 
-        echo $more_than_enough_capacity;
-        echo $enough_capacity;
-        echo $not_enough_capacity;
         
         $changeTimes = array('new_department'=>$new_department,
                             'possible_people'=>$possible_people,
@@ -49,7 +53,10 @@ class IndividualSettingMenucontroller extends Controller
                             'restStop_time'=>$restStop_time,
                             'more_than_enough_capacity'=>$more_than_enough_capacity,
                             'enough_capacity'=>$enough_capacity,
-                            'not_enough_capacity'=>$not_enough_capacity,);
+                            'not_enough_capacity'=>$not_enough_capacity,
+                            'half_week_day'=>$half_week_day,
+                            'half_open_time'=>$half_open_time,
+                            'half_close_time'=>$half_close_time,);
         
         //診療科新規追加のメソッドの呼び出し
         $add = ClinicalDepartmentsDataModel::AddNewDepartment($changeTimes);

@@ -27,11 +27,11 @@
 <br>
 
 
-<h1>選択日時：{{$target_year}}年{{$target_month}}月{{$target_day}}日</h1>
+<h2>選択日時：{{$target_year}}年{{$target_month}}月{{$target_day}}日</h2>
 
 <br>
 
-<h1>{{$clinical_department}}予約状況</h1>
+<h2>診療科：{{$clinical_department}}</h2>
 <br>
 <br>
 

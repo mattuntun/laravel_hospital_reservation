@@ -25,6 +25,9 @@ class CreateClinicalDepartmentsTable extends Migration
             $table->unsignedInteger('more_than_enough_capacity')->comment('予約可能容量二重丸');
             $table->unsignedInteger('enough_capacity')->comment('予約可能容量丸');
             $table->unsignedInteger('not_enough_capacity')->comment('予約可能容量三角');
+            $table->unsignedInteger('half_open_week')->comment('半日診療曜日設定');  
+            $table->time('half_open_start')->nullable()->comment('半日開始時間');  
+            $table->time('half_open_close')->nullable()->comment('半日終了時間');
             $table->timestamps();
         });
     }

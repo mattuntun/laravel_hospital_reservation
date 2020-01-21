@@ -61,7 +61,17 @@ class ClinicalDepartmentsDataModel extends Model
         $addNewDepartment->more_than_enough_capacity = $addData['more_than_enough_capacity'];
         $addNewDepartment->enough_capacity = $addData['enough_capacity'];
         $addNewDepartment->not_enough_capacity = $addData['not_enough_capacity'];
+        $addNewDepartment->half_open_week = $addData['half_week_day'];
+        $addNewDepartment->half_open_start = $addData['half_open_time'];
+        $addNewDepartment->half_open_close = $addData['half_close_time'];
         $addNewDepartment->save();
+    }
+
+    //個別半日診療データの抜出を行うメソッド
+    public static function GetHalfWeekData($search_Department){
+        $get_half_week_data = ClinicalDepartmentsDataModel::where('clinical_department',$search_Department)->first();
+        $half_week_day_point = $get_half_week_data->half_open_week;
+        return $half_week_day_point;
     }
 
     //診療科削除のメソッド

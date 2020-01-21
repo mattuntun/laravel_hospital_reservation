@@ -3,11 +3,16 @@
 
 		/*区切りのボーダー*/
 .setting{
-	border-top: #06f 1px solid;
+
 	border-bottom: #06f 1px solid;
 
 }
 
+.set{
+	border-top: #06f 1px solid;
+	border-bottom: #06f 1px solid;
+
+}
 /*　を開院時間、等の文字の大きさ*/
 .term{
 	font-size:30px;
