@@ -141,11 +141,6 @@ class HospitalSchedule
         </tr>
     EOF;
 
-
-//    $half_startTime = strtotime($day.$half_open_start); //半日開院時間をユニックスタイムへ変換
-//    $half_finishTime = strtotime($day.$half_open_close); //半日開院時間をユニックスタイムへ変換
-    
-    
         //テーブル本体　ユニックスタイムで30分は1800
             for($schdule = $half_startTime; $schdule < $half_finishTime; $schdule =$schdule+1800){
                 $time_value = 'H:i';//dateの表示形式設定

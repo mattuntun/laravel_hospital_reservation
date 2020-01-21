@@ -80,7 +80,7 @@ EOS;
                 if ($month_after_next_day <= 0 || $month_after_next_day > $month_after_next_lastday) {
                     // 先月・来月の日付の場合
                     $this->html .= "<td>&nbsp;</td>";
-                } elseif($i ==0 || $i ==6 ){
+                } elseif($i ==0 ){   //隔週の休診日を追加する場合は "|| $i ==6"等を足す
                     $this->html .="<td style = color:#E9E9E9;>". $month_after_next_day . "</td>";
 
                 } else {                    
