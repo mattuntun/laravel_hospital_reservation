@@ -7,7 +7,7 @@ class HospitalSchedule
 {
     private $table;
 
-    public function MakeSchedule($search_Department, $targetDate, $half_week_day_point, $search_pt_id){
+    public function MakeSchedule($search_Department, $targetDate, $half_week_day_point, $search_pt_id) {
 
     //診療科モデルから指定した診療科情報を取得
     $departmentDatas = ClinicalDepartmentsDataModel::GetIndividualDepartmentdatas($search_Department);
@@ -45,7 +45,7 @@ class HospitalSchedule
 
     /*半日条件の曜日とカレンダーで指定した日付の曜日が同じではなかった場合
       通常の表示*/
-    if( $half_week_day_point != $target_week ){
+    if( $half_week_day_point != $target_week ) {
 
     //テーブルのhtmlを作成
     $this->table = <<<EOF
@@ -58,7 +58,7 @@ class HospitalSchedule
     
     
         //テーブル本体　ユニックスタイムで30分は1800
-            for($schdule = $startTime; $schdule < $finishTime; $schdule =$schdule+1800){
+            for($schdule = $startTime; $schdule < $finishTime; $schdule =$schdule+1800) {
                 $time_value = 'H:i';//dateの表示形式設定
                 $schedule_start = date($time_value,$breakTime_Start);//休憩開始時間をユニックス⇒時間表示
                 $schedule_finish = date($time_value,$break_Finish);//休憩終了時間をユニックス⇒時間表示
@@ -67,7 +67,7 @@ class HospitalSchedule
     
     
                     //休憩開始時間の時の休憩表示設定
-                    if( $schdule == $breakTime_Start){
+                    if( $schdule == $breakTime_Start) {
                         $this->table.="<tr align='center'>
                                         <td colspan='2' style = 'font-size:20px; color:#E9E9E9;'>
                                         {$schedule_start}&#126;{$schedule_finish}は休診です
@@ -76,7 +76,7 @@ class HospitalSchedule
                     
                     }
                     //休憩時間範囲をコンテニュー
-                    if( ($schdule >= $breakTime_Start) && ($schdule < $break_Finish) ){
+                    if( ($schdule >= $breakTime_Start) && ($schdule < $break_Finish) ) {
                         continue;
                     }
     
@@ -103,7 +103,7 @@ class HospitalSchedule
                                         </button>
                                     </td>";
                                     
-                                    switch($parcents){
+                                    switch($parcents) {
                                         case($parcents > $doubleCircleReservationValue):
                                             $this->table.="<td style = 'font-size:20px;'>{$parcents}%完成時に消す</br>&#9678;</td>";   // ◎
                                             break;
@@ -130,7 +130,7 @@ class HospitalSchedule
     }
     /*半日条件の曜日とカレンダーで指定した日付の曜日が同だった場合
     半日表示*/
-    else{
+    else {
     //テーブルのhtmlを作成
     $this->table = <<<EOF
     <h2>ご指定の診療日は半日診療となっています</h2>
@@ -142,7 +142,7 @@ class HospitalSchedule
     EOF;
 
         //テーブル本体　ユニックスタイムで30分は1800
-            for($schdule = $half_startTime; $schdule < $half_finishTime; $schdule =$schdule+1800){
+            for($schdule = $half_startTime; $schdule < $half_finishTime; $schdule =$schdule+1800) {
                 $time_value = 'H:i';//dateの表示形式設定
                 $schedule_time = date($time_value,$schdule);//一コマあたりの時間をユニックス⇒時間表示
                 $belongTime = date($time_value,$schdule+1760);//一コマあたりの時間範囲をユニックス⇒時間表示
@@ -170,7 +170,7 @@ class HospitalSchedule
                                         </button>
                                     </td>";
                                     
-                                    switch($parcents){
+                                    switch($parcents) {
                                         case($parcents > $doubleCircleReservationValue):
                                             $this->table.="<td style = 'font-size:20px;'>{$parcents}%完成時に消す</br>&#9678;</td>";   // ◎
                                             break;

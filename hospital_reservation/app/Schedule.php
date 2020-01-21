@@ -7,7 +7,7 @@ class Schedule
 {
     private $table;
 
-    public function MakeSchedule($search_Department, $targetDate, $half_week_day_point, $search_pt_id){
+    public function MakeSchedule($search_Department, $targetDate, $half_week_day_point, $search_pt_id) {
 
     //診療科モデルから指定した診療科情報を取得
     $departmentDatas = ClinicalDepartmentsDataModel::GetIndividualDepartmentdatas($search_Department);
@@ -45,7 +45,7 @@ class Schedule
     
     /*半日条件の曜日とカレンダーで指定した日付の曜日が同じではなかった場合
       通常の表示*/
-    if( $half_week_day_point != $target_week ){
+    if( $half_week_day_point != $target_week ) {
 
     //テーブルのhtmlを作成
     $this->table = <<<EOF
@@ -67,7 +67,7 @@ class Schedule
     
     
                     //休憩開始時間の時の休憩表示設定
-                    if( $schdule == $breakTime_Start){
+                    if( $schdule == $breakTime_Start) {
                         $this->table.="<tr align='center'>
                                         <td colspan='2' style = 'font-size:20px; color:#E9E9E9;'>
                                         {$schedule_break_start}&#126;{$schedule_break_finish}は休診です
@@ -96,7 +96,7 @@ class Schedule
                                         {$parcents}%完成時に消す</br>&#10005;
                                     </td>";
     
-                                    }else{
+                                    } else {
     
                     $this->table.="<td><button type='submit'
                                         class='btn btn-lg btn-block'
@@ -115,7 +115,7 @@ class Schedule
                                         </button>
                                     </td>";
                                     
-                                    switch($parcents){
+                                    switch($parcents) {
                                         case($parcents > $doubleCircleReservationValue):
                                             $this->table.="<td style = 'font-size:20px;'>{$parcents}%完成時に消す</br>&#9678;</td>";   // ◎
                                             break;
@@ -140,7 +140,7 @@ class Schedule
 
     /*半日条件の曜日とカレンダーで指定した日付の曜日が同だった場合
       半日表示*/
-    else{
+    else {
 
     //テーブルのhtmlを作成
     $this->table = <<<EOF
@@ -153,7 +153,7 @@ class Schedule
     EOF;
     
         //テーブル本体　ユニックスタイムで30分は1800
-            for($schdule = $half_startTime; $schdule < $half_finishTime; $schdule =$schdule+1800){
+            for($schdule = $half_startTime; $schdule < $half_finishTime; $schdule =$schdule+1800) {
                 $time_value = 'H:i';//dateの表示形式設定
                 $schedule_time = date($time_value,$schdule);//一コマあたりの時間をユニックス⇒時間表示
                 $belongTime = date($time_value,$schdule+1760);//一コマあたりの時間範囲をユニックス⇒時間表示
@@ -165,7 +165,7 @@ class Schedule
                 //開院時間をforで繰り返し
                 $this->table.="<tr align='center'>";
                                     
-                                    if($parcents <= $triangleReservationValue){
+                                    if ($parcents <= $triangleReservationValue){
     
                     $this->table.= "<td style = 'color:#E9E9E9;'>
                                         {$schedule_time}&#126;{$belongTime}
@@ -174,7 +174,7 @@ class Schedule
                                         {$parcents}%完成時に消す</br>&#10005;
                                     </td>";
     
-                                    }else{
+                                    } else {
     
                     $this->table.="<td><button type='submit'
                                         class='btn btn-lg btn-block'
@@ -193,7 +193,7 @@ class Schedule
                                         </button>
                                     </td>";
                                     
-                                    switch($parcents){
+                                    switch($parcents) {
                                         case($parcents > $doubleCircleReservationValue):
                                             $this->table.="<td style = 'font-size:20px;'>{$parcents}%完成時に消す</br>&#9678;</td>";   // ◎
                                             break;

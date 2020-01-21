@@ -12,13 +12,13 @@ class ClinicalDepartmentsDataModel extends Model
     protected $guarded = array('No');
 
     //このテーブル全ての情報を取得するメソッド
-    public static function GetDepartmentsData(){
+    public static function GetDepartmentsData() {
          $getDepartments = DB::table('clinical_departments')->get();
         return $getDepartments;
     }
 
     //全ての診療科の診療時間等の変更を行うメソッド
-    public static function AllTimeChenge($changeTimes){
+    public static function AllTimeChenge($changeTimes) {
         $newTimes = ClinicalDepartmentsDataModel::all();
         foreach($newTimes as $newTime){
             $newTime->start_time = $changeTimes['open_time'];
@@ -36,7 +36,7 @@ class ClinicalDepartmentsDataModel extends Model
     }
 
     //全ての診療科の予約可能人数の変更を行うメソッド
-    public static function ChangePossibleNumber($possible){
+    public static function ChangePossibleNumber($possible) {
         $changePossibleNumbers = ClinicalDepartmentsDataModel::all();
         foreach($changePossibleNumbers as $changePossibleNumber){
             $changePossibleNumber->possible_peoples  = $possible;
@@ -45,7 +45,7 @@ class ClinicalDepartmentsDataModel extends Model
     }
 
     //全ての診療科の空き容量％の変更を行うメソッド
-    public static function AllCapacitySet($capacity_parcent){
+    public static function AllCapacitySet($capacity_parcent) {
         $newAllCapacitys = ClinicalDepartmentsDataModel::all();
         foreach($newAllCapacitys as $newAllCapacity){
             $newAllCapacity->more_than_enough_capacity  = $capacity_parcent['doubleCircle'];
@@ -56,7 +56,7 @@ class ClinicalDepartmentsDataModel extends Model
     }
 
     //個別診療科新規追加を行うメソッド
-    public static function AddNewDepartment($addData){
+    public static function AddNewDepartment($addData) {
         $addNewDepartment = new ClinicalDepartmentsDataModel;
         $addNewDepartment->clinical_department = $addData['new_department'];
         $addNewDepartment->possible_peoples = $addData['possible_people'];
@@ -74,25 +74,25 @@ class ClinicalDepartmentsDataModel extends Model
     }
 
     //個別半日診療データの抜出を行うメソッド
-    public static function GetHalfWeekData($search_Department){
+    public static function GetHalfWeekData($search_Department) {
         $get_half_week_data = ClinicalDepartmentsDataModel::where('clinical_department',$search_Department)->first();
         $half_week_day_point = $get_half_week_data->half_open_week;
         return $half_week_day_point;
     }
 
     //診療科削除のメソッド
-    public static function DeleteDepartment($deleteValue){
+    public static function DeleteDepartment($deleteValue) {
         $delete_department = DB::table('clinical_departments')->where('clinical_department',$deleteValue)->delete();
     }
 
     //診療科個別に情報を取得するメソッド
-    public static function GetIndividualDepartmentdatas($department){
+    public static function GetIndividualDepartmentdatas($department) {
         $get_datas = ClinicalDepartmentsDataModel::where('clinical_department',$department)->first();
         return $get_datas;
     }
 
     //診療科別の開院時間等、診療科設定変更メソッド
-    public static function IndividualChangeDepartment($changeTimes){
+    public static function IndividualChangeDepartment($changeTimes) {
         //var_dump($changeTimes['search_change_deparment']);
 
         $IndividualChanges = ClinicalDepartmentsDataModel::where('clinical_department',$changeTimes['search_change_deparment'])->get();
@@ -109,7 +109,7 @@ class ClinicalDepartmentsDataModel extends Model
     }
 
     //診療科別の予約可能人数の変更を行うメソッド
-    public static function ChangeIndividualPossibleNumber($search_individual_department,$possible_number){
+    public static function ChangeIndividualPossibleNumber($search_individual_department, $possible_number) {
 
         $getDepartmentDatas = ClinicalDepartmentsDataModel::where('clinical_department',$search_individual_department)->first();
         $getDepartmentDatas->possible_peoples = $possible_number;
@@ -117,7 +117,7 @@ class ClinicalDepartmentsDataModel extends Model
     }
     
     //診療科別の空き容量％の変更を行うメソッド
-    public static function ChangeCapacitySet($search_individual_department,$capacity_parcent){
+    public static function ChangeCapacitySet($search_individual_department, $capacity_parcent) {
         $getDepartmentDatas = ClinicalDepartmentsDataModel::where('clinical_department',$search_individual_department)->first();
         $getDepartmentDatas->more_than_enough_capacity = $capacity_parcent['doubleCircle'];
         $getDepartmentDatas->enough_capacity = $capacity_parcent['circle'];
@@ -133,7 +133,7 @@ class ClinicalDepartmentsDataModel extends Model
     }
 
     //予約表示条件を呼び出し(◎、〇、△のパーセント条件呼び出し)
-    public static function GetCapacityDatas($search_Department){
+    public static function GetCapacityDatas($search_Department) {
         $getCapacityDatas = ClinicalDepartmentsDataModel::where('clinical_department',$search_Department)->first();
         
         //◎を取り出し
@@ -156,7 +156,7 @@ class ClinicalDepartmentsDataModel extends Model
     }
 
     //空予約数　パーセントの計算(1コマの計算)
-    public static function Calculation($search_department,$numberOfReservation){
+    public static function Calculation($search_department, $numberOfReservation) {
         //フィールド値設定
         $num =$numberOfReservation;//予約数
                 
@@ -175,7 +175,7 @@ class ClinicalDepartmentsDataModel extends Model
     }
 
     //1日の予約可能枠を抽出　1コマの予約可能数を抽出し、ユニックスタイムを利用してコマ数を取得
-    public static function OneDayPossibleFrame($department,$targetDate){
+    public static function OneDayPossibleFrame($department, $targetDate) {
         //診療科情報を取得
         $departmentData = ClinicalDepartmentsDataModel::GetIndividualDepartmentdatas($department);
         $open = $departmentData->start_time; //開院時間取得
@@ -202,7 +202,7 @@ class ClinicalDepartmentsDataModel extends Model
     }
 
     //空予約数　パーセントの計算(1日の計算)
-    public static function OneDayCalculation($search_department,$numberOfReservation,$oneDayMaxFrame){
+    public static function OneDayCalculation($search_department, $numberOfReservation, $oneDayMaxFrame) {
         //フィールド値設定
         $num =$numberOfReservation;//予約数
                 
@@ -222,7 +222,7 @@ class ClinicalDepartmentsDataModel extends Model
     }
 
     //診療科モデル⇒予約モデルのリレーション(日付指定でリレーション)
-    public static function ForeignReservationData($searchdepartment,$targetDate){
+    public static function ForeignReservationData($searchdepartment, $targetDate) { 
         $foreignReservationDepartment = DB::table('clinical_departments')
                                             ->where('clinical_departments.clinical_department',$searchdepartment)
                                             ->join('reservation_data','clinical_departments.clinical_department',
@@ -235,7 +235,7 @@ class ClinicalDepartmentsDataModel extends Model
     }
 
     //診療科モデル⇒予約モデル⇒患者モデル　にて患者情報を取得(予約モデルを経由して患者モデル取得)
-    public static function ForeignPatientData($searchdepartment,$targetDate){
+    public static function ForeignPatientData($searchdepartment, $targetDate) {
         $foreignPatientData = DB::table('clinical_departments')
                                             ->where('clinical_departments.clinical_department',$searchdepartment)
                                             ->join('reservation_data','clinical_departments.clinical_department',
@@ -252,7 +252,7 @@ class ClinicalDepartmentsDataModel extends Model
 
 
     //1日の予約数を得る為のリレーション⇒予約数獲得
-    public static function ForeignReservation($searchdepartment,$targetDate){
+    public static function ForeignReservation($searchdepartment, $targetDate) {
         $foreignReservationDepartment = DB::table('clinical_departments')
                                             ->where('clinical_departments.clinical_department',$searchdepartment)
                                             ->join('reservation_data','clinical_departments.clinical_department',
@@ -265,7 +265,7 @@ class ClinicalDepartmentsDataModel extends Model
 
     }
     //一コマ単位の予約数を得る為のリレーション⇒予約数獲得
-    public static function OclockForeignReservation($searchdepartment,$targetDate,$schedulTime){
+    public static function OclockForeignReservation($searchdepartment, $targetDate, $schedulTime) {
         $foreignReservationDepartment = DB::table('clinical_departments')
                                             ->where('clinical_departments.clinical_department',$searchdepartment)
                                             ->join('reservation_data','clinical_departments.clinical_department',

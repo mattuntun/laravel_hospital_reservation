@@ -12,7 +12,7 @@ class HospitalCalendar
     {
 
         //1日の予約数のパーセンテージを計算・表示形式指定
-        function DayPossible($search_Department,$year,$month,$day,$doubleCircleReservationValue,$circleReservationValue,$triangleReservationValue){
+        function DayPossible($search_Department,$year,$month,$day,$doubleCircleReservationValue,$circleReservationValue,$triangleReservationValue) {
             
             //年月日のデータを作成
             $targetDate = strval($year).strval($month).strval(str_pad($day, 2, 0, STR_PAD_LEFT));
@@ -26,7 +26,7 @@ class HospitalCalendar
             //1日の予約空き状況を計算
             $emptyParcent = ClinicalDepartmentsDataModel::OneDayCalculation($search_Department,$reservedNumber,$oneDayMaxFrame);
 
-            switch($emptyParcent){
+            switch($emptyParcent) {
                 case($emptyParcent > $doubleCircleReservationValue):
                     return '&#9678';      // ◎ 
                 break;
@@ -78,23 +78,23 @@ EOS;
                     // 先月・来月の日付の場合
                     $this->html .= "<td>&nbsp;</td>";
                 
-                } elseif ($i ==0 ){   //隔週の休診日を追加する場合は "|| $i ==6"等を足す
+                } elseif ($i ==0 ) {   //隔週の休診日を追加する場合は "|| $i ==6"等を足す
                     $this->html .="<td style = color:#E9E9E9;>". $day . "</td>";
                 
-                } elseif ($day < $today){
+                } elseif ($day < $today) {
                     $this->html .="<td style = color:#E9E9E9;>". $day . "</td>";
                 
-                }  else {
-                   $this->html .="<td>
-                   <button type='submit' class='btn btn-lg btn-block' style='background: white;' onclick='location.href=/edit_patient_appoimtment_information/select_time_reservation>
-                   <input type='hidden' name='target_day' value='".$day."'>
-                   <input type='hidden' name='target_month' value='".$month."'>
-                   <input type='hidden' name='target_year' value='".$year."'>
-                   <input type='hidden' name='search_pt_id' value = '".$search_pt_id."'>
-                   <input type='hidden' name='search_Department' value = '".$search_Department."'>"
-                   .$day."
-                   <br>".DayPossible($search_Department,$year,$month,$day,$doubleCircleReservationValue,$circleReservationValue,$triangleReservationValue)."
-                   </button></td>"; 
+                } else {
+                    $this->html .="<td>
+                    <button type='submit' class='btn btn-lg btn-block' style='background: white;' onclick='location.href=/edit_patient_appoimtment_information/select_time_reservation>
+                    <input type='hidden' name='target_day' value='".$day."'>
+                    <input type='hidden' name='target_month' value='".$month."'>
+                    <input type='hidden' name='target_year' value='".$year."'>
+                    <input type='hidden' name='search_pt_id' value = '".$search_pt_id."'>
+                    <input type='hidden' name='search_Department' value = '".$search_Department."'>"
+                    .$day."
+                    <br>".DayPossible($search_Department,$year,$month,$day,$doubleCircleReservationValue,$circleReservationValue,$triangleReservationValue)."
+                    </button></td>"; 
                 }
                $day++;
             }

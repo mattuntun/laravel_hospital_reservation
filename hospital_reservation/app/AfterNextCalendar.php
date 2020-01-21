@@ -10,10 +10,10 @@ class AfterNextCalendar
     private $html;  
    
     //翌々月カレンダー
-    public function showMonthAfterNextCalendarTag($search_pt_id,$search_Department,$doubleCircleReservationValue,$circleReservationValue,$triangleReservationValue){
+    public function showMonthAfterNextCalendarTag($search_pt_id, $search_Department, $doubleCircleReservationValue, $circleReservationValue, $triangleReservationValue) {
 
         //1日の予約数のパーセンテージを計算・表示形式指定
-        function AfterNextMouthDayPossible($search_Department,$year_after_next,$month_after_next,$month_after_next_day,$doubleCircleReservationValue,$circleReservationValue,$triangleReservationValue){
+        function AfterNextMouthDayPossible($search_Department, $year_after_next, $month_after_next, $month_after_next_day, $doubleCircleReservationValue, $circleReservationValue, $triangleReservationValue){
             
             //年月日のデータを作成
             $targetDate = strval($year_after_next).strval($month_after_next).strval(str_pad($month_after_next_day, 2, 0, STR_PAD_LEFT));
@@ -108,12 +108,12 @@ EOS;
                     $this->html .="<td style = color:#E9E9E9;>". $month_after_next_day . "</td>";
 
                 //予約表示が✕の時クリック不可
-                } elseif (AfterNextMouthDayPossible($search_Department,$year_after_next,$month_after_next,$month_after_next_day,$doubleCircleReservationValue,$circleReservationValue,$triangleReservationValue) == '&#10005'){
+                } elseif (AfterNextMouthDayPossible($search_Department, $year_after_next, $month_after_next, $month_after_next_day, $doubleCircleReservationValue, $circleReservationValue, $triangleReservationValue) == '&#10005'){
                     $this->html .="<td style = color:#E9E9E9;>". $month_after_next_day."
-                    <br>".AfterNextMouthDayPossible($search_Department,$year_after_next,$month_after_next,$month_after_next_day,$doubleCircleReservationValue,$circleReservationValue,$triangleReservationValue)."</td>";
+                    <br>".AfterNextMouthDayPossible($search_Department, $year_after_next, $month_after_next, $month_after_next_day, $doubleCircleReservationValue, $circleReservationValue, $triangleReservationValue)."</td>";
 
                 //診療科別・全診療科休日DBに値があれば休診日表示
-                } elseif (($get_after_next_Holiday = getDepartmentAfterNextMonthHolidayData($search_Department, $year_after_next, $month_after_next, $month_after_next_day) != null) || ($getAfterNextAllDepartmentHoliday = getAllDepartmentAfterNextMonthHolidayData($year_after_next, $month_after_next, $month_after_next_day) != null)){
+                } elseif (($get_after_next_Holiday = getDepartmentAfterNextMonthHolidayData($search_Department, $year_after_next, $month_after_next, $month_after_next_day) != null) || ($getAfterNextAllDepartmentHoliday = getAllDepartmentAfterNextMonthHolidayData($year_after_next, $month_after_next, $month_after_next_day) != null)) {
                     $this->html .="<td align='center' valign='middle' style = color:#E9E9E9;>". $month_after_next_day . "<br>休診日</td>";
                 
                 //通常表記(ボタンクリック可)
@@ -126,7 +126,7 @@ EOS;
                     <input type='hidden' name='search_pt_id' value = '".$search_pt_id."'>
                     <input type='hidden' name='search_Department' value = '".$search_Department."'>"
                     .$month_after_next_day."
-                   <br>".AfterNextMouthDayPossible($search_Department,$year_after_next,$month_after_next,$month_after_next_day,$doubleCircleReservationValue,$circleReservationValue,$triangleReservationValue)."</button></td>"; 
+                   <br>".AfterNextMouthDayPossible($search_Department, $year_after_next, $month_after_next, $month_after_next_day, $doubleCircleReservationValue, $circleReservationValue, $triangleReservationValue)."</button></td>"; 
                 }
                 $month_after_next_day++;
             }

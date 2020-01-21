@@ -147,7 +147,7 @@ class ApointmentEditController extends Controller
     }
     
     //予約完了
-    public function CompleteAddReservation(Request $request){
+    public function CompleteAddReservation(Request $request) {
         //患者IDと予約診療科名の取得
         $search_pt_id =$request->search_pt_id;
         $search_department = $request->clinical_department;
@@ -168,7 +168,7 @@ class ApointmentEditController extends Controller
     }
 
     //紹介状登録
-    public function RegistrationLetterOfIntroduction(Request $request){
+    public function RegistrationLetterOfIntroduction(Request $request) {
         
         $ptDatas = PatientDataModel::getPtData($request->search_pt_id);
 
@@ -176,7 +176,7 @@ class ApointmentEditController extends Controller
     }
 
     //紹介状登録完了
-    public function CompleteLetterOfIntroduction(Request $request){
+    public function CompleteLetterOfIntroduction(Request $request) {
         //患者ＩＤ取得
         $pt_id = $request->pt_id;
             
@@ -213,11 +213,11 @@ class ApointmentEditController extends Controller
         $all_reservations_and_pt_datas = ClinicalDepartmentsDataModel::ForeignPatientData($selectedDepartment,$target_date);
 
 
-        if($all_reservations_and_pt_datas->isEmpty() == true){
+        if($all_reservations_and_pt_datas->isEmpty() == true) {
             return view('hospital_menu.edit_patient_appoimtment_information.edit_reservation.target_date_all_reservation_check',['target_date'=>$target_date,
             'selectedDepartment'=>$selectedDepartment,
             'all_reservations_and_pt_datas'=>null]);
-        }else{
+        } else {
             return view('hospital_menu.edit_patient_appoimtment_information.edit_reservation.target_date_all_reservation_check',['target_date'=>$target_date,
             'selectedDepartment'=>$selectedDepartment,
             'all_reservations_and_pt_datas'=>$all_reservations_and_pt_datas]);

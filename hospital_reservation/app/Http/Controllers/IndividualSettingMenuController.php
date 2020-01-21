@@ -9,15 +9,15 @@ use App\Models\holiday;
 class IndividualSettingMenucontroller extends Controller
 {
     //診療科個別設定メニュー画面
-    public function IndividualSettingMenu(){
+    public function IndividualSettingMenu() {
         return view('hospital_menu.common_reservation_setting_screen.individual_setting.individual_setting_menu');
     }
     //新規診療科追加画面
-    public function AddNewDepartment(){
+    public function AddNewDepartment() {
         return view('hospital_menu.common_reservation_setting_screen.individual_setting.add_new_department');
     }
     //新規診療科設定完了画面
-    public function CompleteAddNewDepartment(Request $request){
+    public function CompleteAddNewDepartment(Request $request) {
         $open_time_hour = $request->h_open_time;                //開院時間(時)
         $open_time_min = $request->m_open_time;                 //開院時間(分)
         $close_time_hour = $request->h_close_time;              //閉院時間(時)
@@ -65,7 +65,7 @@ class IndividualSettingMenucontroller extends Controller
     }
 
     //診療科削除検索画面
-    public function SearchDeleteDepartment(){
+    public function SearchDeleteDepartment() {
         //診療科テーブルの情報全てを取得するメソッド呼び出し
         $getDepartments = ClinicalDepartmentsDataModel::GetDepartmentsData();
         foreach($getDepartments as $getDepartment){
@@ -76,7 +76,7 @@ class IndividualSettingMenucontroller extends Controller
     }
 
     //診療科削除完了画面
-    public function CompleteDeleteDepartment(Request $request){
+    public function CompleteDeleteDepartment(Request $request) {
         
         $deleteValue = $request->search_delete_department;
         //診療科情報削除のメソッドの呼び出し
@@ -86,17 +86,17 @@ class IndividualSettingMenucontroller extends Controller
     }
 
     //個別診療科別開院等設定変更の検索画面へ
-    public function IndividualChangeDepartment(){
+    public function IndividualChangeDepartment() {
         //診療科テーブルの情報全てを取得するメソッド呼び出し
         $getDepartments = ClinicalDepartmentsDataModel::GetDepartmentsData();
-        foreach($getDepartments as $getDepartment){
+        foreach($getDepartments as $getDepartment) {
             $kindDepartments[] = $getDepartment->clinical_department;
         }
         return view('hospital_menu.common_reservation_setting_screen.individual_setting.search_individual_Change_department',['kindDepartments'=>$kindDepartments]);
     }
     
     //個別診療科別開院等変更の設定コントローラ
-    public function SetIndividualChangeDepartment(Request $request){
+    public function SetIndividualChangeDepartment(Request $request) {
         //診療科個別でのデータ取得メソッド呼び出し
         $department_data =ClinicalDepartmentsDataModel::GetIndividualDepartmentdatas($request->search_individual_department);
         $department = $department_data->clinical_department;
@@ -105,7 +105,7 @@ class IndividualSettingMenucontroller extends Controller
     }
 
     //個別診療科別開院等変更完了のコントローラ
-    public function CompleteIndividualChangeDepartment(Request $request){
+    public function CompleteIndividualChangeDepartment(Request $request) {
         $open_time_hour = $request->h_open_time;        //開院時間(時)
         $open_time_min = $request->m_open_time;         //開院時間(分)
         $close_time_hour = $request->h_close_time;      //閉院時間(時)
@@ -147,12 +147,12 @@ class IndividualSettingMenucontroller extends Controller
     }
 
     //診療科別の予約可能枠に関する設定⇒診療科検索画面
-    public function SearchDepartmentPossibleNumber(){
+    public function SearchDepartmentPossibleNumber() {
         
         //全診療科のデータを取得
         $getDepartments = ClinicalDepartmentsDataModel::GetDepartmentsData();
         //全診療科診療科名の配列を作成
-        foreach($getDepartments as $getDepartment){
+        foreach($getDepartments as $getDepartment) {
             $kindDepartments[] = $getDepartment->clinical_department;
         }
 
@@ -160,7 +160,7 @@ class IndividualSettingMenucontroller extends Controller
     }
 
     //個別診療科予約可能数の設定へ
-    public function NumberOfReservationScreen(Request $request){
+    public function NumberOfReservationScreen(Request $request) {
 
         //全画面で取診した療科名を取得
         $search_individual_department = $request->search_individual_department;
@@ -169,7 +169,7 @@ class IndividualSettingMenucontroller extends Controller
     }
 
     //個別診療科予約空き状況設定画面へ
-    public function IndividualStatusDisplaySetting(Request $request){
+    public function IndividualStatusDisplaySetting(Request $request) {
         //前画面から診療科名、予約可能数を取得
         $possible_number = $request->possible_number;
         $search_individual_department = $request->search_individual_department;
@@ -181,7 +181,7 @@ class IndividualSettingMenucontroller extends Controller
     }
 
     //個別診療科予約可能数・予約空き状況設定完了
-    public function CompleteNumberAndStatusSetting(Request $request){
+    public function CompleteNumberAndStatusSetting(Request $request) {
         //前画面から診療科名を取得
         $search_individual_department = $request->search_individual_department;
 
@@ -205,18 +205,18 @@ class IndividualSettingMenucontroller extends Controller
 
 
     //休診日設定を変更する診療科を選択
-    public function SelectDepartmentHolidaySet(){
+    public function SelectDepartmentHolidaySet() {
         
         //診療科名を取得⇒配列にして渡す
         $getDepartments = ClinicalDepartmentsDataModel::GetDepartmentsData();
-        foreach($getDepartments as $getDepartment){
+        foreach($getDepartments as $getDepartment) {
             $kindDepartments[] = $getDepartment->clinical_department;
         }
         return view('hospital_menu.common_reservation_setting_screen.individual_setting.search_set_holidays',['kindDepartments'=>$kindDepartments]);
     }
 
     //休診日設定に対し、日付指定で追加・隔週で追加の選択画面
-    public function HolidaySetIndividualChoice(Request $request){
+    public function HolidaySetIndividualChoice(Request $request) {
 
         //前画面から選択された診療科名を取得
         $search_individual_department = $request->search_individual_department;
@@ -225,7 +225,7 @@ class IndividualSettingMenucontroller extends Controller
     }
 
     //休診日設定に対し、隔週で追加の画面
-    public function WeekHolidaySetIndividualChoice(Request $request){
+    public function WeekHolidaySetIndividualChoice(Request $request) {
 
         //前画面から選択された診療科名を取得
         $search_individual_department = $request->search_individual_department;
@@ -234,7 +234,7 @@ class IndividualSettingMenucontroller extends Controller
     }
 
     //休診日設定に対し、日付指定で休日追加の画面
-    public function DateSpecificationHolidaySetIndividualChoice(Request $request){
+    public function DateSpecificationHolidaySetIndividualChoice(Request $request) {
 
         //前画面から選択された診療科名を取得
         $search_individual_department = $request->search_individual_department;
@@ -243,23 +243,23 @@ class IndividualSettingMenucontroller extends Controller
         $get_holiday_datas = holiday::GetHolidaysDatas($search_individual_department);
 
         //同ビュー画面において休日情報が入力されたら追加メソッド呼び出しする
-        if(isset($request->check_Date)){
+        if(isset($request->check_Date)) {
             $add_holiday_datas = array('search_individual_department'=>$search_individual_department,
                                         'check_Date'=>$request->check_Date,
                                         'holiday_reason'=>$request->holiday_reason);
 
             $add_new_holiday = holiday::AddHoliday($add_holiday_datas);            
         return view('hospital_menu.common_reservation_setting_screen.individual_setting.date_specification_holiday_set_individual',['search_individual_department'=>$search_individual_department,'get_holiday_datas'=>$get_holiday_datas,'add_new_holiday'=>$add_new_holiday]);
-        }else{
+        } else {
         return view('hospital_menu.common_reservation_setting_screen.individual_setting.date_specification_holiday_set_individual',['search_individual_department'=>$search_individual_department,'get_holiday_datas'=>$get_holiday_datas]);}
     }
 
                 
     //休診日設定画面で削除ボタンが押された場合
-    public function DeleteHolidaySet(Request $request){
+    public function DeleteHolidaySet(Request $request) {
 
         //同ビュー画面にて削除ボタン押されたら
-        if(isset($request->delete)){
+        if(isset($request->delete) ) {
             $delete_holiday = holiday::DeleteHoliday($request->id);
             //$holiday = Holiday::where('id','=',$request->id)->first();
             //$holiday->delete();
@@ -272,14 +272,14 @@ class IndividualSettingMenucontroller extends Controller
         $get_holiday_datas = holiday::GetHolidaysDatas($search_individual_department);
 
         //同ビュー画面において休日情報が入力されたら追加メソッド呼び出しする
-        if(isset($request->check_Date)){
+        if(isset($request->check_Date) ) {
             $add_holiday_datas = array('search_individual_department'=>$search_individual_department,
                                         'check_Date'=>$request->check_Date,
                                         'holiday_reason'=>$request->holiday_reason);
 
             $add_new_holiday = holiday::AddHoliday($add_holiday_datas);            
         return view('hospital_menu.common_reservation_setting_screen.individual_setting.date_specification_holiday_set_individual',['search_individual_department'=>$search_individual_department,'get_holiday_datas'=>$get_holiday_datas,'add_new_holiday'=>$add_new_holiday]);
-        }else{
+        } else {
         return view('hospital_menu.common_reservation_setting_screen.individual_setting.date_specification_holiday_set_individual',['search_individual_department'=>$search_individual_department,'get_holiday_datas'=>$get_holiday_datas]);
 
         }

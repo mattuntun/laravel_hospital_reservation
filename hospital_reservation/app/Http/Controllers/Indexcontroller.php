@@ -13,7 +13,7 @@ class Indexcontroller extends Controller
         $this->middleware('auth');
     }
 
-    public function Index(){
+    public function Index() {
         return view('index');
     }
 /*

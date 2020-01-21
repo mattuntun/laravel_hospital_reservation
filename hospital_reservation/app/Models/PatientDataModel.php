@@ -17,7 +17,7 @@ class PatientDataModel extends Model
     //}
 
     //クエリビルダjoinでリレーション
-    public static function ForeignReservationData($serach_pt_id){
+    public static function ForeignReservationData($serach_pt_id) {
         $ForeignPtData = \DB::table('pt_data')
                               ->where('pt_data.pt_id',$serach_pt_id)
                                 ->join('reservation_data','pt_data.pt_id','=','reservation_data.pt_id')
@@ -39,7 +39,7 @@ class PatientDataModel extends Model
     
 
     //テーブル患者情報入力
-    public static function AddNewPtData($request){
+    public static function AddNewPtData($request) {
         $newPtAdd = new PatientDataModel;
         $newPtAdd->pt_id = $request->input('pt_id');
         $newPtAdd->pt_last_name = $request->input('pt_last_name');
@@ -53,7 +53,7 @@ class PatientDataModel extends Model
     }
 
     //テーブル患者情報変更
-    public static function ChangePtData($request){
+    public static function ChangePtData($request) {
         $ChangePts = new PatientDataModel;
         $ChangePts = PatientDataModel::where('pt_id',$request->search_pt_id)->first();
         $ChangePts->pt_last_name = $request->change_pt_last_name;
@@ -65,7 +65,7 @@ class PatientDataModel extends Model
 
 
     //テーブル患者情報削除
-    public static function DeletePatientData($search_pt_id){
+    public static function DeletePatientData($search_pt_id) {
         $deletePt = DB::table('pt_data')->where('pt_id',$search_pt_id)->delete();
         return $deletePt;
 

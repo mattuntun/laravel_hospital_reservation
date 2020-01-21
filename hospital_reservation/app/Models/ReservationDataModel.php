@@ -12,25 +12,25 @@ class ReservationDataModel extends Model{
     protected $guarded = array('No');
 
     //予約情報の取得(患者IDから全てを取得)
-    public static function SearchReservation($search_pt_id){
+    public static function SearchReservation($search_pt_id) {
         $reservationDatas = DB::table('reservation_data')->where('pt_id',$search_pt_id)->get();
         return $reservationDatas;
     }
     
     //予約情報の取得(予約Noから個別で取得)
-    public static function SearchReservationSeparate($resNo){
+    public static function SearchReservationSeparate($resNo) {
         $reservationDatas = DB::table('reservation_data')->where('No',$resNo)->get();
         return $reservationDatas;
     }
 
     //予約情報の取得(日付から全取得)
-    public static function SearchReservationFromDate($target_date){
+    public static function SearchReservationFromDate($target_date) {
         $reservationDatas = DB::table('reservation_data')->where('reservation_date',$target_date)->get();
         return $reservationDatas;
     }
 
     //クエリビルダで患者モデルとリレーション
-    public static function ForeignPatientsDatas($search_pt_id){
+    public static function ForeignPatientsDatas($search_pt_id) {
         $foreignPatientsDatas = DB::table('reservation_data')
                                         ->where('reservation_data.pt_id',$search_pt_id)
                                         ->join('pt_data','reservation_data.pt_id','=','pt_data.pt_id') 
@@ -51,7 +51,7 @@ class ReservationDataModel extends Model{
     }
 
     //予約情報の新規登録(患者マイページからの登録)
-    public static function AppReservationDatas($search_pt_id,$search_department,$reserveDate,$reserveTime){
+    public static function AppReservationDatas($search_pt_id, $search_department, $reserveDate, $reserveTime){
         $reservationDatas = new ReservationDataModel;
         $reservationDatas->reservation_date = $reserveDate;
         $reservationDatas->reservation_time = $reserveTime;
@@ -66,7 +66,7 @@ class ReservationDataModel extends Model{
     }
 
     //予約情報の紹介状の情報追加
-    public static function AppIntroduceDatas($pt_id,$hp_name,$hp_tell,$lastDate){
+    public static function AppIntroduceDatas($pt_id, $hp_name, $hp_tell, $lastDate) {
 
         $reservationDatas = new ReservationDataModel;
         $reservationDatas = ReservationDataModel::where('pt_id',$pt_id)->orderBy('created_at', 'desc')->first();
@@ -80,7 +80,7 @@ class ReservationDataModel extends Model{
         }
 
     //テーブルの診療予約の削除
-    public static function DeleteReservationData($reservationNo){
+    public static function DeleteReservationData($reservationNo) {
         $deleteReservation = DB::table('reservation_data')->where('No',$reservationNo)->delete();
         return $deleteReservation;
 
