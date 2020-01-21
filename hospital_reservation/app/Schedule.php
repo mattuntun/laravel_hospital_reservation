@@ -43,7 +43,7 @@ class Schedule
     $target_week = date('w', strtotime($targetDate));
 
     
-    /*半日条件の曜日とカレンダーで指定した日付の曜日が同ではなかった場合
+    /*半日条件の曜日とカレンダーで指定した日付の曜日が同じではなかった場合
       通常の表示*/
     if( $half_week_day_point != $target_week ){
 

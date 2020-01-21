@@ -122,14 +122,15 @@ class ApointmentEditController extends Controller
         $search_pt_id = $request->search_pt_id;
         $clinical_department = $request->search_Department;
 
+        //診療科から半日条件を取得(0:日曜日～6:土曜日　7:半日なし)
+        $half_week_day_point = ClinicalDepartmentsDataModel::GetHalfWeekData($clinical_department);
+
         //診療年月日の文字列データ作成
         $targetDate = strval($target_year).strval($target_month).strval(str_pad($target_day, 2, 0, STR_PAD_LEFT));
 
         //スケジュールphpを呼び出し・取得
         $make_Schedule = new HospitalSchedule;
-        $show_Schedule = $make_Schedule->MakeSchedule($clinical_department
-                                                        ,$targetDate
-                                                        ,$search_pt_id);
+        $show_Schedule = $make_Schedule->MakeSchedule($clinical_department, $targetDate, $half_week_day_point, $search_pt_id);
 
 
         //患者情報取得
