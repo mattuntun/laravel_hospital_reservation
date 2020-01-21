@@ -29,6 +29,14 @@
                  @endslot
 
                  @slot('form_item4')
+                 <br>
+                 <br>
+                 
+                     {{-- このビューページ専用のサブビューを参照します --}}
+                     @include('sab_view_item.only_half_opening_closing_time')
+                 @endslot
+
+                 @slot('form_item5')
                  {{-- タグ付ボタン(スモール) --}}
                      @include('sab_view_item.small_tagged_buttom',
                              ['tagged_value'=>'内容を確認して情報を登録',

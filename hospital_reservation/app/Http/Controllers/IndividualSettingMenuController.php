@@ -106,25 +106,39 @@ class IndividualSettingMenucontroller extends Controller
 
     //個別診療科別開院等変更完了のコントローラ
     public function CompleteIndividualChangeDepartment(Request $request){
-        $open_time_hour = $request->h_open_time;
-        $open_time_min = $request->m_open_time;
-        $close_time_hour = $request->h_close_time;
-        $close_time_min = $request->m_close_stop;
-        $restStart_time_hour = $request->h_rest_start;
-        $restStart_time_min = $request->m_rest_start;
-        $restStop_time_hour = $request->h_rest_stop;
-        $restStop_time_min = $request->m_rest_stop;
+        $open_time_hour = $request->h_open_time;        //開院時間(時)
+        $open_time_min = $request->m_open_time;         //開院時間(分)
+        $close_time_hour = $request->h_close_time;      //閉院時間(時)
+        $close_time_min = $request->m_close_stop;       //閉院時間(分)
+        $restStart_time_hour = $request->h_rest_start;  //休憩開始時間(時)
+        $restStart_time_min = $request->m_rest_start;   //休憩開始時間(分)
+        $restStop_time_hour = $request->h_rest_stop;    //休憩終了時間(時)
+        $restStop_time_min = $request->m_rest_stop;     //休憩終了時間(分)
 
-        $search_change_deparment = $request->search_deparment;
-        $open_time = "$open_time_hour"."$open_time_min"."00";
-        $close_time ="$close_time_hour"."$close_time_min"."00";
-        $restStart_time ="$restStart_time_hour"."$restStart_time_min"."00";
-        $restStop_time ="$restStop_time_hour"."$restStop_time_min"."00";
+        $half_open_time_hour = $request->half_h_open_time;      //半日開始時間(時)
+        $half_open_time_min = $request->half_m_open_time;       //半日開始時間(分)
+        $half_close_time_hour = $request->half_h_close_time;    //半日終了時間(時)
+        $half_close_time_min = $request->half_m_close_stop;     //半日終了時間(分)
+
+        $search_change_deparment = $request->search_deparment;                  //選択診療科
+        $open_time = "$open_time_hour"."$open_time_min"."00";                   //診療開始時間時間表示
+        $close_time ="$close_time_hour"."$close_time_min"."00";                 //診療終了時間時間表示
+        $restStart_time ="$restStart_time_hour"."$restStart_time_min"."00";     //休憩開始時間時間表示
+        $restStop_time ="$restStop_time_hour"."$restStop_time_min"."00";        //休憩終了時間時間表示
+
+        $half_open_week = $request->half_week_day;           //半日診療曜日取得(0:日曜日～6:土曜日 7:半日設定なし)
+        $half_open_time = "$half_open_time_hour"."$half_open_time_min"."00";    //半日診療開院時間
+        $half_close_time = "$half_close_time_hour"."$half_close_time_min"."00"; //半日診療閉院時間
         
-        $changeTimes = array('search_change_deparment'=>$search_change_deparment,
-                            'open_time'=>$open_time,
-                            'close_time'=>$close_time,
-                            'restStart_time'=>$restStart_time,'restStop_time'=>$restStop_time);
+        $changeTimes = array('search_change_deparment'=>$search_change_deparment,   //選択診療科
+                            'open_time'=>$open_time,                                //診療開始時間
+                            'close_time'=>$close_time,                              //診療終了時間
+                            'restStart_time'=>$restStart_time,                      //休憩開始時間
+                            'restStop_time'=>$restStop_time,                        //休憩終了時間
+                            'half_week_day'=>$half_open_week,                       //半日設定曜日
+                            'half_open_time'=>$half_open_time,                      //半日開始時間
+                            'half_close_time'=>$half_close_time                     //半日終了時間
+                        );
         
         //診療科別の診療科設定変更メソッドの呼び出し
         $getDepartmentData = ClinicalDepartmentsDataModel::IndividualChangeDepartment($changeTimes);

@@ -32,7 +32,7 @@
 
         {{-- シンプルボタン(middle) --}}
         @include('sab_view_item.middle_simple_buttom',
-                  ['middle_buttom_value'=>'開診･休憩･閉診設定',
+                  ['middle_buttom_value'=>'開診･休憩･閉診・半日設定',
                    'middle_buttom_access'=>'/common_reservation_setting_screen/opening_rest_closing_time'])
 
         {{-- シンプルボタン(middle) --}}

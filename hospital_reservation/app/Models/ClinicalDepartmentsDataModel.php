@@ -25,6 +25,12 @@ class ClinicalDepartmentsDataModel extends Model
             $newTime->close_time = $changeTimes['close_time'];
             $newTime->break_time_start = $changeTimes['restStart_time'];
             $newTime->break_time_close = $changeTimes['restStop_time'];
+
+            $newTime->half_open_week = $changeTimes['half_week_day'];
+            $newTime->half_open_start = $changeTimes['half_open_time'];
+            $newTime->half_open_close = $changeTimes['half_close_time'];
+
+
             $newTime->save();    
         }
     }
@@ -95,6 +101,9 @@ class ClinicalDepartmentsDataModel extends Model
             $IndividualChange->close_time = $changeTimes['close_time'];
             $IndividualChange->break_time_start = $changeTimes['restStart_time'];
             $IndividualChange->break_time_close = $changeTimes['restStop_time'];
+            $IndividualChange->half_open_week = $changeTimes['half_week_day'];
+            $IndividualChange->half_open_start = $changeTimes['half_open_time'];
+            $IndividualChange->half_open_close = $changeTimes['half_close_time'];
             $IndividualChange->save();
         }
     }

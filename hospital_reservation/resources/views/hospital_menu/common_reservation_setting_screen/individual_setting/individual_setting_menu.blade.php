@@ -29,12 +29,12 @@
 
 {{-- シンプルボタン(large) --}}
         @include('sab_view_item.large_simple_buttom',
-                  ['large_buttom_value'=>'診療科別開診･休憩･閉診時間設定',
+                  ['large_buttom_value'=>'開診･休憩･閉診・半日時間設定',
                    'large_buttom_access'=>'/individual_setting_menu/search_individual_change_department'])
 
 {{-- シンプルボタン(middle) --}}
         @include('sab_view_item.large_simple_buttom',
-                  ['large_buttom_value'=>'診療科別予約数・状況表示設定',
+                  ['large_buttom_value'=>'予約数・状況表示設定',
                    'large_buttom_access'=>'/individual_setting_menu/search_department_possible_number'])
 
 {{-- シンプルボタン(large) --}}
@@ -43,9 +43,11 @@
                    'large_buttom_access'=>'/individual_setting_menu/search_departmen_horiday_setting'])
 
 {{-- シンプルボタン(large) --}}
+{{--
         @include('sab_view_item.large_simple_buttom',
                   ['large_buttom_value'=>'未搭載　診療科　追加・削除用パスワード設定',
                    'large_buttom_access'=>'/index'])
+                   --}}
                    
 @endsection
 

@@ -2,8 +2,6 @@
     <link rel="stylesheet" href="{{asset('sab_view_item_css/only_opening_rest_closing_time.css')}}">
 </head>
 
-<br>
-
 <h2>半日診療にする曜日を選択してください</h2>
 <div class = "setting">
     <table>
@@ -26,8 +24,9 @@
             </td>
         </tr>
     </table>
-<br>
-<br>
+</div>
+
+<div class = "setting">
 
 <h2>半日診療での開院時間を設定してください</h2>
 
@@ -54,12 +53,11 @@
             </td>             
         </tr>
     </table>
-<br>
-<br>
-
+</div>
 
 <!--終了　開院時間　終了-->
 <!--開始　閉院時間　開始-->
+<div class = "setting">
 
 <h2>半日診療での閉院時間を設定してください</h2>  
 
