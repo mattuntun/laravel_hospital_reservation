@@ -38,6 +38,18 @@ class ReservationDataModel extends Model{
         return $foreignPatientsDatas;
     }
 
+    /*
+    //全ての患者予約と患者情報取得
+    public static function ForeignAllPatientsDatas() {
+        $foreignPatientsDatas = DB::table('reservation_data')
+                                        ->join('pt_data','reservation_data.pt_id','=','pt_data.pt_id')
+                                        ->latest('reservation_data.created_at')
+                                        ->paginate(10);
+                                        
+        return $foreignPatientsDatas;
+    }
+    */
+
     //予約情報テーブルの主キー取得
     //public static function MainKey($search_pt_id){
     //    $mainKeys = DB::table('reservation_data')->where('pt_id',$search_pt_id)->get('No');
