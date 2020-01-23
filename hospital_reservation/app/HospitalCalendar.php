@@ -8,11 +8,11 @@ class HospitalCalendar
     private $html;  
     
     //当月のカレンダー
-    public function showCalendarTag($search_pt_id,$search_Department,$doubleCircleReservationValue,$circleReservationValue,$triangleReservationValue)
+    public function showCalendarTag($search_pt_id, $search_Department, $doubleCircleReservationValue, $circleReservationValue, $triangleReservationValue)
     {
 
         //1日の予約数のパーセンテージを計算・表示形式指定
-        function DayPossible($search_Department,$year,$month,$day,$doubleCircleReservationValue,$circleReservationValue,$triangleReservationValue) {
+        function DayPossible($search_Department, $year, $month, $day, $doubleCircleReservationValue,$circleReservationValue, $triangleReservationValue) {
             
             //年月日のデータを作成
             $targetDate = strval($year).strval($month).strval(str_pad($day, 2, 0, STR_PAD_LEFT));
@@ -93,7 +93,7 @@ EOS;
                     <input type='hidden' name='search_pt_id' value = '".$search_pt_id."'>
                     <input type='hidden' name='search_Department' value = '".$search_Department."'>"
                     .$day."
-                    <br>".DayPossible($search_Department,$year,$month,$day,$doubleCircleReservationValue,$circleReservationValue,$triangleReservationValue)."
+                    <br>".DayPossible($search_Department, $year, $month,$day, $doubleCircleReservationValue, $circleReservationValue, $triangleReservationValue)."
                     </button></td>"; 
                 }
                $day++;

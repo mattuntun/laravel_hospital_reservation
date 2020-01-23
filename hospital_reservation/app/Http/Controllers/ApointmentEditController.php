@@ -159,7 +159,7 @@ class ApointmentEditController extends Controller
         $targetDate = $request->targetDate;
         $targetTime = $request->targetTime;
 
-        //予約モデルの新規登録追加メソッド呼び出し
+        //予約モデルの新規登録追加メソッドを用いてDBへ登録
         $addReserve = ReservationDataModel::AppReservationDatas($search_pt_id,$search_department,$targetDate,$targetTime);
 
         

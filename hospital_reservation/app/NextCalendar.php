@@ -109,12 +109,12 @@ EOS;
                     $this->html .="<td style = color:#E9E9E9;>". $next_month_day . "</td>";
                 
                 //予約表示が✕の時クリック不可
-                } elseif (NextMouthDayPossible($search_Department,$next_year,$next_month,$next_month_day,$doubleCircleReservationValue,$circleReservationValue,$triangleReservationValue) == '&#10005') {
+                } elseif (NextMouthDayPossible($search_Department, $next_year, $next_month, $next_month_day, $doubleCircleReservationValue, $circleReservationValue, $triangleReservationValue) == '&#10005') {
                     $this->html .="<td style = color:#E9E9E9;>". $next_month_day ."
-                    <br>".NextMouthDayPossible($search_Department,$next_year,$next_month,$next_month_day,$doubleCircleReservationValue,$circleReservationValue,$triangleReservationValue)."</td>";  
+                    <br>".NextMouthDayPossible($search_Department, $next_year, $next_month, $next_month_day, $doubleCircleReservationValue, $circleReservationValue, $triangleReservationValue)."</td>";  
 
                 //診療科別・全診療科休日DBに値があれば休診日表示
-                } elseif (($getNextMonthHoliday = getNextMonthDepartmentHolidayData($search_Department, $next_year,$next_month,$next_month_day) != null) || ($getNextMonthAllDepartmentHoliday = getNextMonthAllDepartmentHolidayData($next_year,$next_month,$next_month_day) != null)) {
+                } elseif (($getNextMonthHoliday = getNextMonthDepartmentHolidayData($search_Department,  $next_year, $next_month, $next_month_day) != null) || ($getNextMonthAllDepartmentHoliday = getNextMonthAllDepartmentHolidayData($next_year, $next_month, $next_month_day) != null)) {
                     $this->html .="<td align='center' valign='middle' style = color:#E9E9E9;>". $next_month_day . "<br>休診日</td>";
 
                 //通常表記(ボタンクリック可)
@@ -127,7 +127,7 @@ EOS;
                     <input type='hidden' name='search_pt_id' value = '".$search_pt_id."'>
                    <input type='hidden' name='search_Department' value = '".$search_Department."'>"
                     .$next_month_day."
-                   <br>".NextMouthDayPossible($search_Department,$next_year,$next_month,$next_month_day,$doubleCircleReservationValue,$circleReservationValue,$triangleReservationValue)."</button></td>"; 
+                   <br>".NextMouthDayPossible($search_Department ,$next_year ,$next_month, $next_month_day, $doubleCircleReservationValue, $circleReservationValue, $triangleReservationValue)."</button></td>"; 
                 }
                 $next_month_day++;
             }

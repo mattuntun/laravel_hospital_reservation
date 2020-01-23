@@ -10,7 +10,7 @@ class Calendar
     private $html;  
     
     //当月のカレンダー
-    public function showCalendarTag($search_pt_id, $search_Department, $doubleCircleReservationValue, $circleReservationValue, $triangleReservationValue){
+    public function showCalendarTag($search_pt_id, $search_Department, $doubleCircleReservationValue, $circleReservationValue, $triangleReservationValue) {
 
         //1日の予約数のパーセンテージを計算・表示形式指定
         function DayPossible($search_Department, $year, $month, $day, $doubleCircleReservationValue, $circleReservationValue, $triangleReservationValue) {
@@ -105,17 +105,17 @@ EOS;
                     // 先月・来月の日付の場合
                     $this->html .= "<td>&nbsp;</td>";
                 
-                } elseif ($i ==0  ){  //隔週の休診日を追加する場合は "|| $i ==6"等を足す
+                } elseif ($i ==0  ) {  //隔週の休診日を追加する場合は "|| $i ==6"等を足す
                     $this->html .="<td align='center' valign='middle' style = color:#E9E9E9;>". $day . "</td>";
 
                 // 今日より＋１日まではボタンクリック不可
-                } elseif ($day < $today+1){
+                } elseif ($day < $today+1) {
                     $this->html .="<td align='center' valign='middle' style = color:#E9E9E9;>". $day . "</td>";
 
                 //予約表示が✕の時クリック不可
-                } elseif (DayPossible($search_Department,$year,$month,$day,$doubleCircleReservationValue,$circleReservationValue,$triangleReservationValue) == '&#10005'){
+                } elseif (DayPossible($search_Department, $year, $month, $day, $doubleCircleReservationValue, $circleReservationValue, $triangleReservationValue) == '&#10005') {
                     $this->html .="<td align='center' valign='middle' style = color:#E9E9E9;>". $day ."
-                    <br>".DayPossible($search_Department,$year,$month,$day,$doubleCircleReservationValue,$circleReservationValue,$triangleReservationValue)."</td>";
+                    <br>".DayPossible($search_Department, $year, $month, $day, $doubleCircleReservationValue, $circleReservationValue, $triangleReservationValue)."</td>";
 
                 //診療科別・全診療科休日DBに値があれば休診日表示
                 } elseif (($getHoliday = getDepartmentHolidayData($search_Department, $year, $month, $day) != null) || ($getAllDepartmentHoliday = getAllDepartmentHolidayData($year, $month, $day) != null)){
@@ -131,7 +131,7 @@ EOS;
                    <input type='hidden' name='search_pt_id' value = '".$search_pt_id."'>
                    <input type='hidden' name='search_Department' value = '".$search_Department."'>"
                    .$day."
-                   <br>".DayPossible($search_Department,$year,$month,$day,$doubleCircleReservationValue,$circleReservationValue,$triangleReservationValue)."</button></td>"; 
+                   <br>".DayPossible($search_Department, $year, $month,$day, $doubleCircleReservationValue, $circleReservationValue, $triangleReservationValue)."</button></td>"; 
                 }
                $day++;
             }

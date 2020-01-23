@@ -9,10 +9,10 @@ class HospitalNextCalendar
     private $html;  
    
     //翌月カレンダー
-    public function showNextMonthCalendarTag($search_pt_id,$search_Department,$doubleCircleReservationValue,$circleReservationValue,$triangleReservationValue) {
+    public function showNextMonthCalendarTag($search_pt_id, $search_Department, $doubleCircleReservationValue, $circleReservationValue, $triangleReservationValue) {
 
         //1日の予約数のパーセンテージを計算・表示形式指定
-        function NextMouthDayPossible($search_Department,$next_year,$next_month,$next_month_day,$doubleCircleReservationValue,$circleReservationValue,$triangleReservationValue) {
+        function NextMouthDayPossible($search_Department, $next_year, $next_month, $next_month_day, $doubleCircleReservationValue, $circleReservationValue, $triangleReservationValue) {
     
             //年月日のデータを作成
             $targetDate = strval($next_year).strval($next_month).strval(str_pad($next_month_day, 2, 0, STR_PAD_LEFT));
