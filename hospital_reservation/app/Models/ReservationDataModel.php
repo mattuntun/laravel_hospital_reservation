@@ -41,26 +41,62 @@ class ReservationDataModel extends Model{
     
     //全ての患者予約と患者情報取得
     public static function ForeignAllPatientsDatas() {
+        //joinした際に、患者モデルでのNoカラムをviewする際に優先してしまうためselect使用
+        //exportでも使用するため、エクセルに吐き出す順番としてもselectの調整で調整
         $foreignPatientsDatas = DB::table('reservation_data')
                                         ->join('pt_data','reservation_data.pt_id','=','pt_data.pt_id')
-                                        ->select('reservation_data.No',
-                                        'reservation_data.reservation_date',
-                                        'reservation_data.reservation_time',
-                                        'reservation_data.reservation_department',
-                                        'reservation_data.pt_id','letter_of_introduction','reservation_data.introduction_hp',
-                                        'reservation_data.introduction_hp_tell',
-                                        'reservation_data.introduction_hp_date',
-                                        'reservation_data.created_at',
-                                        'reservation_data.updated_at',
-                                        'pt_data.No as ptNo',
-                                        'pt_data.pt_last_name',
-                                        'pt_data.pt_name',
-                                        'pt_data.birthday',)
+                                        ->select(
+                                        'reservation_data.No',                      //予約No
+                                        'reservation_data.reservation_department',  //診療科名
+                                        'reservation_data.pt_id',                   //患者ID
+                                        'pt_data.pt_last_name',                     //患者姓
+                                        'pt_data.pt_name',                          //患者名
+                                        'pt_data.birthday',                         //患者生年月日
+                                        'reservation_data.reservation_date',        //予約日
+                                        'reservation_data.reservation_time',        //予約時間
+                                        'letter_of_introduction',                   //紹介状有無
+                                        'reservation_data.introduction_hp',         //紹介元病院
+                                        'reservation_data.introduction_hp_tell',    //紹介元病院TEL
+                                        'reservation_data.introduction_hp_date',    //紹介元受診日
+                                        'reservation_data.created_at',              //作成日
+                                        'reservation_data.updated_at',              //更新日
+                                        )
                                         ->distinct()
                                         ->orderBy('reservation_date', 'desc')
                                         ->orderBy('reservation_time', 'asc')
                                         ->orderBy('reservation_department', 'asc')
                                         ->paginate(10);
+                                        
+        return $foreignPatientsDatas;
+    }
+
+    //全ての患者予約と患者情報取得
+    public static function ForeignAllPatientsDatasForExcel() {
+        //joinした際に、患者モデルでのNoカラムをviewする際に優先してしまうためselect使用
+        //exportでも使用するため、エクセルに吐き出す順番としてもselectの調整で調整
+        $foreignPatientsDatas = DB::table('reservation_data')
+                                        ->join('pt_data','reservation_data.pt_id','=','pt_data.pt_id')
+                                        ->select(
+                                        'reservation_data.No',                      //予約No
+                                        'reservation_data.reservation_department',  //診療科名
+                                        'reservation_data.pt_id',                   //患者ID
+                                        'pt_data.pt_last_name',                     //患者姓
+                                        'pt_data.pt_name',                          //患者名
+                                        'pt_data.birthday',                         //患者生年月日
+                                        'reservation_data.reservation_date',        //予約日
+                                        'reservation_data.reservation_time',        //予約時間
+                                        'letter_of_introduction',                   //紹介状有無
+                                        'reservation_data.introduction_hp',         //紹介元病院
+                                        'reservation_data.introduction_hp_tell',    //紹介元病院TEL
+                                        'reservation_data.introduction_hp_date',    //紹介元受診日
+                                        'reservation_data.created_at',              //作成日
+                                        'reservation_data.updated_at',              //更新日
+                                        )
+                                        ->distinct()
+                                        ->orderBy('reservation_date', 'desc')
+                                        ->orderBy('reservation_time', 'asc')
+                                        ->orderBy('reservation_department', 'asc')
+                                        ->get();
                                         
         return $foreignPatientsDatas;
     }

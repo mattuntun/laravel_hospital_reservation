@@ -29,6 +29,7 @@ class CsvController extends Controller
 
         ob_end_clean(); // エクセルでの最初の行の空白削除
         ob_start(); // エクセルでの最後の行の空白削除
+
         return Excel::download( new ReservationExport,'reservation.xlsx');
 
     }

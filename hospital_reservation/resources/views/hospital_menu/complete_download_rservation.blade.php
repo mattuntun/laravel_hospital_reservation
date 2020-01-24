@@ -48,7 +48,8 @@ table {
                 <th nowrap>紹介状有無</th>
                 <th nowrap>紹介元病院</th>
                 <th nowrap>紹介元病院TEL</th>
-                <th nowrap>登録日</th>
+                <th nowrap>紹介元最終受診日</th>
+                <th nowrap>予約更新日時</th>
             </tr>
         </thead>
         <tbody>
@@ -70,6 +71,7 @@ table {
                         <td nowrap>{{$row->letter_of_introduction}}</td>
                         <td nowrap>{{$row->introduction_hp_tell}}</td>
                         <td nowrap>{{$row->introduction_hp_date}}</td>
+                        <td nowrap>{{$row->updated_at}}</td>
                     @endif
                     <td nowrap>{{$row->created_at}}</td>
                 </tr>
@@ -80,7 +82,7 @@ table {
 
     <br>
     <br>
-    
+
 
     <h2>
         設定画面トップへ戻ってください
