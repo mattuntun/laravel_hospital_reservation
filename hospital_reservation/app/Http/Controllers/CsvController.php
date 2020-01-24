@@ -26,7 +26,9 @@ class CsvController extends Controller
     //予約情報エクスポート
     public function CsvExport() {
 
-        return Excel::download( new ReservationExport,'reservation.csv');
+        ob_end_clean(); // this 最初の行の空白削除
+        ob_start(); // and this 最後の行の空白削除
+        return Excel::download( new ReservationExport,'reservation.xlsx');
 
     }
 
