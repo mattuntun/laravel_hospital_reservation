@@ -15,8 +15,13 @@ class CsvController extends Controller
 {
     //予約情報インポート・エクスポートビューページ
     public function DownloadReservation() {
-        $data = ReservationDataModel::latest()->paginate(10);
-        //$data = ReservationDataModel::ForeignAllPatientsDatas();
+        //予約全情報を10ずつ表示※日付降順⇒時間昇順⇒診療科昇順
+        $data = ReservationDataModel::ForeignAllPatientsDatas();
+        /*
+                                        ->orderBy('reservation_date', 'desc')
+                                        ->orderBy('reservation_time', 'asc')
+                                        ->orderBy('reservation_department', 'asc')
+                                        ->paginate(10);                           */        
         $i = (request()->input('page',1) -1)*10;
 
         return view('hospital_menu.complete_download_rservation',['data'=>$data,

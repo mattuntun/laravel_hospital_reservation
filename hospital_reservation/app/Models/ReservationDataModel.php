@@ -38,17 +38,35 @@ class ReservationDataModel extends Model{
         return $foreignPatientsDatas;
     }
 
-    /*
+    
     //全ての患者予約と患者情報取得
     public static function ForeignAllPatientsDatas() {
         $foreignPatientsDatas = DB::table('reservation_data')
+                                        //->select('reservation_data.*')
                                         ->join('pt_data','reservation_data.pt_id','=','pt_data.pt_id')
-                                        ->latest('reservation_data.created_at')
+                                        ->select('reservation_data.No',
+                                        'reservation_data.reservation_date',
+                                        'reservation_data.reservation_time',
+                                        'reservation_data.reservation_department',
+                                        'reservation_data.pt_id','letter_of_introduction','reservation_data.introduction_hp',
+                                        'reservation_data.introduction_hp_tell',
+                                        'reservation_data.introduction_hp_date',
+                                        'reservation_data.created_at',
+                                        'reservation_data.updated_at',
+                                        'pt_data.No as ptNo',
+                                        'pt_data.pt_last_name',
+                                        'pt_data.pt_name',
+                                        'pt_data.birthday',)
+                                        ->distinct()
+                                        //->latest('reservation_data.created_at')
+                                        ->orderBy('reservation_date', 'desc')
+                                        ->orderBy('reservation_time', 'asc')
+                                        ->orderBy('reservation_department', 'asc')
                                         ->paginate(10);
                                         
         return $foreignPatientsDatas;
     }
-    */
+    
 
     //予約情報テーブルの主キー取得
     //public static function MainKey($search_pt_id){
