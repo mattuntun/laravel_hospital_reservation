@@ -42,7 +42,6 @@ class ReservationDataModel extends Model{
     //全ての患者予約と患者情報取得
     public static function ForeignAllPatientsDatas() {
         $foreignPatientsDatas = DB::table('reservation_data')
-                                        //->select('reservation_data.*')
                                         ->join('pt_data','reservation_data.pt_id','=','pt_data.pt_id')
                                         ->select('reservation_data.No',
                                         'reservation_data.reservation_date',
@@ -58,7 +57,6 @@ class ReservationDataModel extends Model{
                                         'pt_data.pt_name',
                                         'pt_data.birthday',)
                                         ->distinct()
-                                        //->latest('reservation_data.created_at')
                                         ->orderBy('reservation_date', 'desc')
                                         ->orderBy('reservation_time', 'asc')
                                         ->orderBy('reservation_department', 'asc')
