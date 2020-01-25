@@ -5,16 +5,6 @@
 @section('web_title','予約情報DL')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
-<style type="text/css">
-
-table {
-  display: block;
-  overflow-x: scroll;
-  white-space: nowrap;
-  -webkit-overflow-scrolling: touch;
-}
-</style>
-
 
 {{-- ヘッダー --}}
 

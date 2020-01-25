@@ -47,11 +47,11 @@
                   ['footerbuttom1'=>'設定画面トップ',
                   'footerbuttom2'=>'ログイン画面へ',
                   'footerbuttom3'=>'医療機関HPトップ',
-                  'footerbuttom4'=>'予約情報ダウンロード',
+                  'footerbuttom4'=>'患者情報ダウンロード',
                   'footerbuttom_access1'=>'/index/hospital_menu',
                   'footerbuttom_access2'=>'/admin/index',
                   'footerbuttom_access3'=>'/admin/index',
-                  'footerbuttom_access4'=>'/admin/index' ])
+                  'footerbuttom_access4'=>'/hospital_menu/complete_download_pt_data' ])
 @endsection
 
 
