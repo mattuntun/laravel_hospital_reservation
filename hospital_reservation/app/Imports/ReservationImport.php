@@ -15,9 +15,14 @@ class ReservationImport implements ToModel
     public function model(array $row)
     {
         return new ReservationDataModel([
-            'No'=> $row["No"],
-            'pt_id' => $rou["pt_id"],
-            'reservation_date' => $row["reservation_date"]
+            'reservation_date'=> $row['reservation_date'],
+            'reservation_time'=> $row['reservation_time'],
+            'reservation_department'=> $row['reservation_department'],
+            'pt_id'=> $row['pt_id'],
+            'letter_of_introduction'=> $row['letter_of_introduction'],
+            'introduction_hp'=> $row['introduction_hp'],
+            'introduction_hp_tell'=> $row['introduction_hp_tell'],
+            'introduction_hp_date'=> $row['introduction_hp_dated'],
         ]);
     }
 }

@@ -35,9 +35,48 @@ class CsvController extends Controller
     }
 
     //予約情報インポート
-    public function CsvImport() {
-      Excel::import( new ReservationImport, request()->file('file'));
+    public function CsvImport(Request $request) {
+        $this->validate($request,[
+            'select_file'=>'required|mimes:xls,xlsx'
+        ]);
+
+        //$path = $request->file('select_file')->getRealPath();
+        $file = request()->file('select_file')->getRealPath();
+
+        //$data = Excel::import($path)->get();
+
+        $data = Excel::import(new ReservationDataModel,$file);
+            /*
+        if($data->count() > 0) {
+            foreach($data->toArray() as $key =>$value) {
+                foreach($value as $row) {
+                    $insert_data[] = array(
+                        'reservation_date'=>$row['reservation_date'],
+                        'reservation_time'=>$row['reservation_time'],
+                        'reservation_department'=>$row['reservation_department'],
+                        'pt_id'=>$row['pt_id'],
+                        'letter_of_introduction'=>$row['letter_of_introduction'],
+                        'introduction_hp'=>$row['introduction_hp'],
+                        'introduction_hp_tell'=>$row['introduction_hp_tell'],
+                        'introduction_hp_date'=>$row['introduction_hp_date'],
+
+
+                    );
+                }
+            }
+
+            if(!empty($insert_data)) {
+                DB::table('reservation_data')->insert($insert_data);
+            }
+        }*/
+        return back()->with('success','アップロードされました');
+
+/*
+        $file = request()->file('file');
+      Excel::import( new ReservationImport, $file);
       return back();
+
+      */
     }
 
 

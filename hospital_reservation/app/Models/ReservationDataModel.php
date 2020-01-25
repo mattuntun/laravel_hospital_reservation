@@ -9,7 +9,18 @@ class ReservationDataModel extends Model{
 
     protected $table = 'reservation_data';
     protected $primaryKey ='No';
-    protected $guarded = array('No');
+    //protected $guarded = array('No');
+    protected $fillabele = [
+        //'data_maked_day',
+        'reservation_date',
+        'reservation_time',
+        'reservation_department',
+        'pt_id',
+        'letter_of_introduction',
+        'introduction_hp',
+        'introduction_hp_tell',
+        'introduction_hp_date'
+    ];
 
     //予約情報の取得(患者IDから全てを取得)
     public static function SearchReservation($search_pt_id) {

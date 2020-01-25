@@ -3,6 +3,7 @@
 
 {{-- ヘッド --}}
 @section('web_title','予約情報DL')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
 <style type="text/css">
 
@@ -26,12 +27,31 @@ table {
 @section('main_content')
 <h3>予約情報をアップロードする際は所定の書式のCSVでお願いします</h3>
 
+@if(count($errors) > 0)
+    <div class = "alert alert-danger">
+        アップロードエラー<br><br>
+        <ul>
+            @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+@if($message = Session::get('success'))
+<div class ="alert alert-success alart-block">
+    <button type="buttom" class = "close" data-dismiss="alert">x</button>
+    <strong>{{ $message }}</strong>
+</div>
+@endif
+
 <form action="{{ route('reservation_import') }}" method = "post" enctype = "multipart/form-data">
   {{csrf_field()}}
-  <input type="file" name = "reservation_file" accept = ".csv">
+  <input type="file" name = "select_file" accept = "text/csv">
   <br>
   <br>
-  <button class = "btn btn-success">予約データをアップロード</button>
+  <input type = "submit" class = "btn btn-success" value = "予約データをアップロード">
+
   <a class = "btn btn-warning" href="{{ route('reservation_export') }}">全予約情報をxlsxでダウンロード</a>
 </form>
 
