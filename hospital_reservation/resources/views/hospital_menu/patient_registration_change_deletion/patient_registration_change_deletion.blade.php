@@ -34,6 +34,11 @@
 
 {{-- シンプルボタン(large) --}}
         @include('sab_view_item.large_simple_buttom',
+                  ['large_buttom_value'=>'患者一括登録(エクセル)',
+                   'large_buttom_access'=>'/hospital_menu/complete_download_pt_data'])
+
+{{-- シンプルボタン(large) --}}
+        @include('sab_view_item.large_simple_buttom',
                   ['large_buttom_value'=>'患者削除用パスワード設定',
                    'large_buttom_access'=>'/patient_registration_change_deletion/delete_password_patient_change'])
                    

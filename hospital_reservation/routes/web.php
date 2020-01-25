@@ -50,13 +50,19 @@ Route::post('index/hospital_menu','HospitalController@HospitalMenu');
 //病院menuページへ
 Route::get('index/hospital_menu','HospitalController@HospitalMenu');
 
-//予約情報CSVダウンロードビューページ
+//予約情報エクセル　ダウンロードビューページ
 Route::get('hospital_menu/complete_download','ExcelReservationController@DownloadReservation');
-
 //予約情報をエクスポート
 Route::get('hospital_menu/complete_download/export','ExcelReservationController@Export')->name('reservation_export');
 //予約情報をインポート
 Route::post('hospital_menu/complete_download/import','ExcelReservationController@Import')->name('reservation_import');
+
+//患者情報エクセル　ダウンロードビューページ
+Route::get('hospital_menu/complete_download_pt_data','ExcelPtDataController@DownloadReservation');
+//患者情報をエクスポート
+Route::get('hospital_menu/complete_download_pt_data/export','ExcelPtDataController@Export')->name('pt_data_export');
+//患者情報をインポート
+Route::post('hospital_menu/complete_download_pt_data/import','ExcelPtDataController@Import')->name('pt_data_import');
 
 //全科共通予約画面設定のページへ
 Route::get('hospital_menu/Common_reservation_setting_screen','HospitalController@CommonReservationSettingScreen');

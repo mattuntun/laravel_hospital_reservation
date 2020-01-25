@@ -18,6 +18,7 @@ class ReservationExport implements FromCollection,WithHeadings
         return ReservationDataModel::ForeignAllPatientsDatasForExcel();
     }
 
+    //出力されるエクセルのヘッダー名を作成
     public function headings():array
 	{
 		return [
