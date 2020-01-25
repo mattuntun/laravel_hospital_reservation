@@ -51,12 +51,12 @@ Route::post('index/hospital_menu','HospitalController@HospitalMenu');
 Route::get('index/hospital_menu','HospitalController@HospitalMenu');
 
 //予約情報CSVダウンロードビューページ
-Route::get('hospital_menu/complete_download','CsvController@DownloadReservation');
+Route::get('hospital_menu/complete_download','ExcelReservationController@DownloadReservation');
 
 //予約情報をエクスポート
-Route::get('hospital_menu/complete_download/export','CsvController@Export')->name('reservation_export');
+Route::get('hospital_menu/complete_download/export','ExcelReservationController@Export')->name('reservation_export');
 //予約情報をインポート
-Route::post('hospital_menu/complete_download/import','CsvController@Import')->name('reservation_import');
+Route::post('hospital_menu/complete_download/import','ExcelReservationController@Import')->name('reservation_import');
 
 //全科共通予約画面設定のページへ
 Route::get('hospital_menu/Common_reservation_setting_screen','HospitalController@CommonReservationSettingScreen');

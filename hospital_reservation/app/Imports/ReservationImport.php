@@ -3,7 +3,6 @@
 namespace App\Imports;
 
 use App\Models\ReservationDataModel;
-//use App\Reservation_data;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 

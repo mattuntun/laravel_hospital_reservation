@@ -39,7 +39,7 @@ class ReservationDataModel extends Model{
     }
 
     
-    //全ての患者予約と患者情報取得
+    //全ての患者予約と患者情報取得(予約エクスポートビューで使用)
     public static function ForeignAllPatientsDatas() {
         //joinした際に、患者モデルでのNoカラムをviewする際に優先してしまうためselect使用
         //exportでも使用するため、エクセルに吐き出す順番としてもselectの調整で調整
@@ -70,7 +70,7 @@ class ReservationDataModel extends Model{
         return $foreignPatientsDatas;
     }
 
-    //全ての患者予約と患者情報取得
+    //全ての患者予約と患者情報取得(予約エクスポートで使用)
     public static function ForeignAllPatientsDatasForExcel() {
         //joinした際に、患者モデルでのNoカラムをviewする際に優先してしまうためselect使用
         //exportでも使用するため、エクセルに吐き出す順番としてもselectの調整で調整
