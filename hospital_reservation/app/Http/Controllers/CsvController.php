@@ -7,9 +7,6 @@ use App\Models\ReservationDataModel;
 use App\Exports\ReservationExport;
 use App\Imports\ReservationImport;
 use Maatwebsite\Excel\Facades\Excel;
-//use Excel;
-
-
 
 class CsvController extends Controller
 {
@@ -25,7 +22,7 @@ class CsvController extends Controller
     }
 
     //予約情報エクスポート
-    public function CsvExport() {
+    public function Export() {
 
         ob_end_clean(); // エクセルでの最初の行の空白削除
         ob_start(); // エクセルでの最後の行の空白削除
@@ -35,48 +32,18 @@ class CsvController extends Controller
     }
 
     //予約情報インポート
-    public function CsvImport(Request $request) {
+    public function Import(Request $request) {
         $this->validate($request,[
             'select_file'=>'required|mimes:xls,xlsx'
         ]);
 
-        //$path = $request->file('select_file')->getRealPath();
-        $file = request()->file('select_file')->getRealPath();
+        var_dump(request()->file('select_file')->getRealPath());
+        $file = request()->file('select_file');
 
-        //$data = Excel::import($path)->get();
-
-        $data = Excel::import(new ReservationDataModel,$file);
-            /*
-        if($data->count() > 0) {
-            foreach($data->toArray() as $key =>$value) {
-                foreach($value as $row) {
-                    $insert_data[] = array(
-                        'reservation_date'=>$row['reservation_date'],
-                        'reservation_time'=>$row['reservation_time'],
-                        'reservation_department'=>$row['reservation_department'],
-                        'pt_id'=>$row['pt_id'],
-                        'letter_of_introduction'=>$row['letter_of_introduction'],
-                        'introduction_hp'=>$row['introduction_hp'],
-                        'introduction_hp_tell'=>$row['introduction_hp_tell'],
-                        'introduction_hp_date'=>$row['introduction_hp_date'],
-
-
-                    );
-                }
-            }
-
-            if(!empty($insert_data)) {
-                DB::table('reservation_data')->insert($insert_data);
-            }
-        }*/
+        Excel::import(new ReservationImport,$file);
+        
         return back()->with('success','アップロードされました');
 
-/*
-        $file = request()->file('file');
-      Excel::import( new ReservationImport, $file);
-      return back();
-
-      */
     }
 
 

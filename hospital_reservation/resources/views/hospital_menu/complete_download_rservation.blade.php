@@ -25,7 +25,7 @@ table {
 
 {{-- メイン --}}
 @section('main_content')
-<h3>予約情報をアップロードする際は所定の書式のCSVでお願いします</h3>
+<h3>予約情報をアップロードする際は所定の書式のエクセルでお願いします</h3>
 
 @if(count($errors) > 0)
     <div class = "alert alert-danger">
@@ -40,7 +40,7 @@ table {
 
 @if($message = Session::get('success'))
 <div class ="alert alert-success alart-block">
-    <button type="buttom" class = "close" data-dismiss="alert">x</button>
+    <button type="button" class = "close" data-dismiss="alert">x</button>
     <strong>{{ $message }}</strong>
 </div>
 @endif
