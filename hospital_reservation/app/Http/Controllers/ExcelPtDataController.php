@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\PatientDataModel;
 use App\Exports\PtDataExport;
+use App\Exports\DefaultPtDataExport;
 use App\imports\PtDataImport;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -26,6 +27,15 @@ class ExcelPtDataController extends Controller
         ob_start(); // エクセルでの最後の行の空白削除
 
         return Excel::download(new PtDataExport,'pt_data.xlsx');
+    }
+
+    //患者情報インポート用のエクセルをエクスポート
+    public function ExportForImportDefault() {
+        
+        ob_end_clean(); // エクセルでの最初の行の空白削除
+        ob_start(); // エクセルでの最後の行の空白削除
+
+        return Excel::download(new DefaultPtDataExport,'import_default_pt.xlsx');
     }
 
     //患者情報インポート

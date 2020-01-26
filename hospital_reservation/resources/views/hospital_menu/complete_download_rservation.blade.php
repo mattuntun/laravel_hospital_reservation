@@ -173,7 +173,7 @@
     </ul>
 
 <table>
-<colgroup span="7" style="background:#ffe6e6;border:solid 2px #ef534f">
+<colgroup span="8" style="background:#ffe6e6;border:solid 2px #ef534f">
 
         <tr align="center">
             <th border:dashed 2px #f44336;>エクセル内語句</th>
@@ -182,6 +182,7 @@
             <th border:dashed 2px #f44336;>reservation_department</th>
             <th border:dashed 2px #f44336;>letter_of_introduction</th>
             <th border:dashed 2px #f44336;>introduction_hp</th>
+            <th border:dashed 2px #f44336;>introduction_hp_tell</th>
             <th border:dashed 2px #f44336;>introduction_hp_date</th>
         </tr>
         <tr border:dashed 2px #f44336;>
@@ -192,9 +193,14 @@
             <td>&nbsp;紹介状有無を入力。有の場合1、無の場合は2を入力&nbsp;</td>
             <td>&nbsp;紹介元病院を入力。紹介状無の場合、空白&nbsp;</td>
             <td>&nbsp;紹介元病院telを入力。紹介状無の場合、空白&nbsp;</td>
+            <td>&nbsp;紹介元病院最終受診日を入力。紹介状無の場合、空白&nbsp;</td>
         </tr>
 </table>
-<a class = "btn btn-warning" href="{{ route('reservation_import_excel') }}">全予約情報をxlsxでダウンロード</a>
+
+<br>
+<br>
+
+<a class = "btn btn-warning" href="{{ route('reservation_import_excel') }}">予約情報アップロードの為のxlsxをダウンロード</a>
 
 </div>
 

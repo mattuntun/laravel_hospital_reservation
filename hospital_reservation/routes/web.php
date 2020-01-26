@@ -63,6 +63,8 @@ Route::post('hospital_menu/complete_download/import','ExcelReservationController
 Route::get('hospital_menu/complete_download_pt_data','ExcelPtDataController@DownloadReservation');
 //患者情報をエクスポート
 Route::get('hospital_menu/complete_download_pt_data/export','ExcelPtDataController@Export')->name('pt_data_export');
+//患者情報インポート用のエクセルダウンロード
+Route::get('hospital_menu/complete_download_pt_data/export_for_import_excel','ExcelPtDataController@ExportForImportDefault')->name('pt_data_import_excel');
 //患者情報をインポート
 Route::post('hospital_menu/complete_download_pt_data/import','ExcelPtDataController@Import')->name('pt_data_import');
 
