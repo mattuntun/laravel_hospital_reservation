@@ -54,6 +54,8 @@ Route::get('index/hospital_menu','HospitalController@HospitalMenu');
 Route::get('hospital_menu/complete_download','ExcelReservationController@DownloadReservation');
 //予約情報をエクスポート
 Route::get('hospital_menu/complete_download/export','ExcelReservationController@Export')->name('reservation_export');
+//予約情報インポート用のエクセルダウンロード
+Route::get('hospital_menu/complete_download/export_for_import_excel','ExcelReservationController@ExportForImportDefault')->name('reservation_import_excel');
 //予約情報をインポート
 Route::post('hospital_menu/complete_download/import','ExcelReservationController@Import')->name('reservation_import');
 

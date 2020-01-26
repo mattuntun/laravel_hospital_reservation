@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\ReservationDataModel;
 use App\Exports\ReservationExport;
+use App\Exports\DefaultReservationExport;
 use App\Imports\ReservationImport;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -30,6 +31,17 @@ class ExcelReservationController extends Controller
         return Excel::download( new ReservationExport,'reservation.xlsx');
 
     }
+
+    //予約情報インポート用のエクセルをエクスポート
+    public function ExportForImportDefault() {
+
+        ob_end_clean(); // エクセルでの最初の行の空白削除
+        ob_start(); // エクセルでの最後の行の空白削除
+
+        return Excel::download( new DefaultReservationExport,'import_default.xlsx');
+
+    }
+
 
     //予約情報インポート
     public function Import(Request $request) {

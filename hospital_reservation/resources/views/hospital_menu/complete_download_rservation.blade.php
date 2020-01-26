@@ -5,6 +5,49 @@
 @section('web_title','予約情報DL')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
+<style>
+.box27 {
+    position: relative;
+    margin: 2em 0;
+    padding: 0.5em 1em;
+    border: solid 3px #62c1ce;
+    
+}
+.box27 th,td{
+    border:solid 1px #aaaaaa;
+    
+}
+
+.box27 .box-title {
+    position: absolute;
+    display: inline-block;
+    top: -27px;
+    left: -3px;
+    padding: 0 9px;
+    height: 25px;
+    line-height: 25px;
+    font-size: 17px;
+    background: #62c1ce;
+    color: #ffffff;
+    font-weight: bold;
+    border-radius: 5px 5px 0 0;
+}
+.box27 ol {
+    margin: 2px; 
+    padding: 0;
+    font-weight: bold;
+}
+.box27 ul {
+    margin: 2px; 
+    padding: 0;
+    font-weight: bold;
+    color:red;
+
+}
+
+
+</style>
+
 
 {{-- ヘッダー --}}
 
@@ -107,6 +150,54 @@
                         'buttom_access'=>'/index/hospital_menu'])
             </div>
     </form>
+
+<br>
+<br>
+
+
+<div class="box27">
+    <span class="box-title">アップロード用Excelダウンロード</span>
+    <ol>
+        <li>下にあるボタンをクリックするとアップロード用のExcelをダウンロード出来ます。</li>
+        <li>実際の予約の内、1つの予約情報が例として入力されます。</li>
+        <li>アップロードをする際は例を参考に入力内容を変更後、アップロードしてください。</li>
+    </ol>
+    <br>
+    <ul>
+        <li>注意事項1：全てのセルの書式設定を"文字列"としてください</li>
+        <li>注意事項2：例としてデフォルト入力された予約情報は"行削除"してください</li>
+        <li>注意事項3：1列目に入力されているヘッダータイトルは”編集不可”です。</li>
+        <li>注意事項4：日付入力は"20200101"等8桁半角入力(若しくはデフォルト入力に従う)</li>
+        <li>注意事項5：時間入力は"30分単位"、”24時間表記”として入力。<br>
+        exa:午後3時30分と入力したい場合は"15:30:00"とし、必ず秒単位は:00を入力してください</li>
+    </ul>
+
+<table>
+<colgroup span="7" style="background:#ffe6e6;border:solid 2px #ef534f">
+
+        <tr align="center">
+            <th border:dashed 2px #f44336;>エクセル内語句</th>
+            <th border:dashed 2px #f44336;>reservation_date</th>
+            <th border:dashed 2px #f44336;>reservation_time</th>
+            <th border:dashed 2px #f44336;>reservation_department</th>
+            <th border:dashed 2px #f44336;>letter_of_introduction</th>
+            <th border:dashed 2px #f44336;>introduction_hp</th>
+            <th border:dashed 2px #f44336;>introduction_hp_date</th>
+        </tr>
+        <tr border:dashed 2px #f44336;>
+            <th border:dashed 2px #f44336;>エクセル内語句説明</th>
+            <td>&nbsp;この列には予約日を入力&nbsp;</td>
+            <td>&nbsp;この列には予約時間を入力&nbsp;</td>
+            <td>&nbsp;この列には診療科を入力&nbsp;</td>
+            <td>&nbsp;紹介状有無を入力。有の場合1、無の場合は2を入力&nbsp;</td>
+            <td>&nbsp;紹介元病院を入力。紹介状無の場合、空白&nbsp;</td>
+            <td>&nbsp;紹介元病院telを入力。紹介状無の場合、空白&nbsp;</td>
+        </tr>
+</table>
+<a class = "btn btn-warning" href="{{ route('reservation_import_excel') }}">全予約情報をxlsxでダウンロード</a>
+
+</div>
+
 
 @endsection
 
