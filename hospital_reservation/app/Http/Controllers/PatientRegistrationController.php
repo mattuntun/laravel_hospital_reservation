@@ -21,7 +21,7 @@ class PatientRegistrationController extends Controller
             'pt_id'=>'required|integer|digits_between:1,10:',
             'pt_last_name'=>'required|string|max:100',
             'pt_name'=>'required|string|max:100',
-            'pt_last_name_kata'=>'required|string|max:100',
+            'pt_last_name_kata'=>'required|kana|max:100',
             'pt_name_kata'=>'required|string|max:100',
             'birthday'=>'required|date',
             'email_adress'=>'required|email',

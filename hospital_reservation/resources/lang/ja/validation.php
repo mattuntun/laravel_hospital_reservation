@@ -71,6 +71,7 @@ return [
     'timezone'             => ':attributeは正しいタイムゾーンをしていしてください。',
     'unique'               => ':attributeは既に存在します。',
     'url'                  => ':attributeを正しい書式にしてください。',
+    'kana'                  => ':attributeを半角カタカナにしてください',
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines
@@ -98,6 +99,15 @@ return [
     */
     'attributes' => [
         'day'=>'日付',
-        'description'=>'説明'
+        'description'=>'説明',
+        'pt_id'=>'患者ID',
+        'pt_last_name'=>'患者姓',
+        'pt_name'=>'患者名',
+        'pt_last_name_kata'=>'患者姓(ｶﾀ)',
+        'pt_name_kata'=>'患者名(ｶﾀ)',
+        'birthday'=>'生年月日',
+        'sex'=>'性別',
+
+        
     ],
 ];
