@@ -36,7 +36,8 @@ return [
     'exists'               => '選択された:attributeは正しくありません。',
     'image'                => ':attributeは画像にしてください。',
     'in'                   => '選択された:attributeは正しくありません。',
-    'integer'              => ':attributeは整数にしてください。',
+//    'integer'              => ':attributeは整数にしてください。',
+    'integer'              => ':attributeは整数(半角)にしてください。',
     'ip'                   => ':attributeを正しいIPアドレスにしてください。',
     'max'                  => [
         'numeric' => ':attributeは:max以下にしてください。',

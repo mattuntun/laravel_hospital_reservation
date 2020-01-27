@@ -18,7 +18,7 @@ class PatientRegistrationController extends Controller
     public function CompleteNewPatient(Request $request) {
         //前入力画面のバリデーション
         $request->validate([
-            'pt_id'=>'required|integer|digits_between:1,10:',
+            'pt_id'=>'required|integer|digits_between:1,10:|unique:pt_data,pt_id',
             'pt_last_name'=>'required|string|max:100',
             'pt_name'=>'required|string|max:100',
             'pt_last_name_kata'=>'required|kana|max:100',
