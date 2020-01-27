@@ -8,7 +8,7 @@
     <label class="control-label" id={{$label_id}}>
         <strong>{{$label_value}}</strong>
     </label>
-    <input class="form-control" id={{$input_id}} type="text" name={{$input_name}}>
+    <input class="form-control" id={{$input_id}} type="text" name={{$input_name}} value ="{{old($input_name)}}">
 </div>
 <br>
 {{-- 使用例・使用方法 --}}

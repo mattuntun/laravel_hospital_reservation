@@ -13,8 +13,21 @@ class PatientRegistrationController extends Controller
     public function NewPatient() {
         return view('hospital_menu.patient_registration_change_deletion.patient_information.new_patient_registration');
     }
+
     //新規患者登録完了
     public function CompleteNewPatient(Request $request) {
+        //前入力画面のバリデーション
+        $request->validate([
+            'pt_id'=>'required|integer|digits_between:1,10:',
+            'pt_last_name'=>'required|string|max:100',
+            'pt_name'=>'required|string|max:100',
+            'pt_last_name_kata'=>'required|string|max:100',
+            'pt_name_kata'=>'required|string|max:100',
+            'birthday'=>'required|date',
+            'email_adress'=>'required|email',
+            'sex'=>'required|integer|between:1,2:',
+        ]);
+
         //モデルから新規患者データ登録メソッド呼び出し
         $appNewPt = PatientDataModel::AddNewPtData($request);
         //モデルから患者データ検索メソッド呼び出し
