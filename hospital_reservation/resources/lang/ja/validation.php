@@ -131,6 +131,7 @@ return [
         'triangleReservationValue'=>'△となる値指定',
         'search_delete_department'=>'診療科指定',
         'search_individual_department'=>'診療科指定',
+ 
 
         
     ],

@@ -165,25 +165,6 @@ class IndividualSettingMenucontroller extends Controller
                 ->withInput();
         }
         
-        /*
-        $request->validate([
-            'h_open_time'=>'required',
-            'm_open_time'=>'required',
-            'h_rest_start'=>'required',
-            'm_rest_start'=>'required',
-            'h_rest_stop'=>'required',
-            'm_rest_stop'=>'required',
-            'h_close_time'=>'required',
-            'm_close_stop'=>'required',
-            'half_week_day'=>'required',
-            'half_h_open_time'=>'required',
-            'half_m_open_time'=>'required',
-            'half_h_close_time'=>'required',
-            'half_m_close_stop'=>'required',
-        ]);
-        */
-
-
         //前画面の入力データを取得
         $open_time_hour = $request->h_open_time;        //開院時間(時)
         $open_time_min = $request->m_open_time;         //開院時間(分)
@@ -241,6 +222,11 @@ class IndividualSettingMenucontroller extends Controller
     //個別診療科予約可能数の設定へ
     public function NumberOfReservationScreen(Request $request) {
 
+        //前画面でのバリデーション
+        $request->validate([
+            'search_individual_department'=>'required',
+        ]);
+
         //全画面で取診した療科名を取得
         $search_individual_department = $request->search_individual_department;
     
@@ -249,6 +235,18 @@ class IndividualSettingMenucontroller extends Controller
 
     //個別診療科予約空き状況設定画面へ
     public function IndividualStatusDisplaySetting(Request $request) {
+
+        //前画面でのバリデーション
+        $validator = validator::make($request->all(),[
+            'possible_number'=>'required',
+        ]);
+        //バリデーションが発生した場合、エラーページへ遷移する
+        if($validator->fails()) {
+            return redirect('error_page')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
         //前画面から診療科名、予約可能数を取得
         $possible_number = $request->possible_number;
         $search_individual_department = $request->search_individual_department;
@@ -296,6 +294,11 @@ class IndividualSettingMenucontroller extends Controller
 
     //休診日設定に対し、日付指定で追加・隔週で追加の選択画面
     public function HolidaySetIndividualChoice(Request $request) {
+
+        //前画面でのバリデーション
+        $request->validate([
+            'search_individual_department'=>'required',
+        ]);
 
         //前画面から選択された診療科名を取得
         $search_individual_department = $request->search_individual_department;

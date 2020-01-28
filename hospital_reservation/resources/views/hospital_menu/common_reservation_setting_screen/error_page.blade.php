@@ -2,7 +2,7 @@
 @extends('layout.layout_hospital_base')
 
 {{-- ヘッド --}}
-@section('web_title','全科共通時間設定')
+@section('web_title','エラーページ')
 
 <style type="text/css">
 .PtInfo{
