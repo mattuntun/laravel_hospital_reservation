@@ -5,6 +5,16 @@
 {{-- ヘッド --}}
 @section('web_title','患者情報削除')
 
+<style>
+.errors {
+    width: 500px;
+    font-size: 20px;
+    color: #e95353;
+    border: 1px solid #e95353;
+    background-color: #f2dede;
+}
+</style>
+
 
 {{-- ヘッダー --}}
 
@@ -16,6 +26,17 @@
 {{-- メイン --}}
 @section('main_content')
 <h2>削除したい患者IDを入力してください</h2>
+
+@if($errors->any())
+<div class = "errors">
+        <ul>
+        @foreach($errors->all() as $error)
+                <li>{{$error}}</li>
+        @endforeach
+        </ul>
+
+</div>
+@endif
 
         {{-- このコンポーネントはformとしての囲い(メソッドはpost) --}}
         @component('component_item.form')

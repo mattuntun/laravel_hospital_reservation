@@ -19,20 +19,18 @@
     <tr>
         <td style="white-space: nowrap;">
             <select name="doubleCircleReservationValue" class="form-control" size="1" style="height: 100px; font-size: 32px;">
-                <option disabled selected value>選択してください</option>
                 @for($i = 60; $i <= 90; $i = $i + 10)
                 <option value="{{$i}}">{{$i}}%</option>
                 @endfor
                             </select>
         </td>
         <td style="white-space: nowrap;">
-            <p class="term">以上の時◎</p>
+            <p class="term">以上の時&#x25CE;</p>
         </td>
     </tr>
     <tr>
         <td style="white-space: nowrap;">
             <select name="circleReservationValue" class="form-control" size="1" style="height: 100px; font-size: 32px;">
-                <option disabled selected value>選択してください</option>
                 @for($i = 30; $i < 60; $i = $i + 10)
                 <option value="{{$i}}">{{$i}}%</option>
                 @endfor
@@ -45,7 +43,6 @@
     <tr>
         <td style="white-space: nowrap;">
             <select name="triangleReservationValue" class="form-control" size="1" style="height: 100px; font-size: 32px;">
-                <option disabled selected value>選択してください</option>
                 @for($i = 0; $i < 30; $i = $i + 10)
                 <option value="{{$i}}">{{$i}}%</option>
                 @endfor            </select>

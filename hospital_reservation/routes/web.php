@@ -50,6 +50,9 @@ Route::post('index/hospital_menu','HospitalController@HospitalMenu');
 //病院menuページへ
 Route::get('index/hospital_menu','HospitalController@HospitalMenu');
 
+//病院ページ内のエラービューページ
+Route::get('error_page','CommonSettingScreenController@ErrorPageView');
+
 //予約情報エクセル　ダウンロードビューページ
 Route::get('hospital_menu/complete_download','ExcelReservationController@DownloadReservation');
 //予約情報をエクスポート
@@ -96,6 +99,7 @@ Route::post('common_reservation_setting_screen/status_display_setting
 //全科共通の予約数・状況表示設定完了画面
 Route::post('common_reservation_setting_screen/number_of_reservation/status_display/complete
 ','CommonSettingScreenController@CompleteNumberAndStatusSetting');
+
 
 //診療不可設定
 //個別診療科設定メニュー画面へ

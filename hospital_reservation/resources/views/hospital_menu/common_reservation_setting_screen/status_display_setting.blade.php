@@ -4,6 +4,18 @@
 {{-- ヘッド --}}
 @section('web_title','予約数・予約状況表示設定')
 
+<style type="text/css">
+
+.errors {
+    width: 500px;
+    font-size: 20px;
+    color: #e95353;
+    border: 1px solid #e95353;
+    background-color: #f2dede;
+}
+
+</style>
+
 {{-- ヘッダー --}}
 @section('header_content')
     @include('sab_view_item.header',
@@ -13,6 +25,18 @@
 
 {{-- メイン --}}
 @section('main_content')
+@if($errors->any())
+    <div class = "errors">
+    <ul>
+        @foreach($errors->all() as $error)
+                <li>{{$error}}</li>
+        @endforeach
+        </ul>
+    </div>
+
+@endif
+
+
     {{-- このコンポーネントはformとしての囲い(メソッドはpost) --}}
     @component('component_item.form')
                  @slot('form_action')

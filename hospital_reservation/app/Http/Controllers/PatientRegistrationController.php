@@ -39,8 +39,14 @@ class PatientRegistrationController extends Controller
     public function SearchChangePatient() {
         return view('hospital_menu.patient_registration_change_deletion.patient_information.search_change_patient_information');
     }
+    
     //患者情報、サーチ後の画面
     public function ChangePatient(Request $request) {
+        //前入力画面のバリデーション
+        $request->validate([
+            'search_pt_id'=>'required|integer|digits_between:1,10:|exists:pt_data,pt_id'
+        ]);
+
         //モデルから患者データ検索メソッド呼び出し
         $pt_datas = PatientDataModel::getPtData($request->search_pt_id);
         return view('hospital_menu.patient_registration_change_deletion.patient_information.change_patient_information',['pt_datas'=>$pt_datas]);
@@ -64,6 +70,12 @@ class PatientRegistrationController extends Controller
     }
     //患者情報削除、サーチ後の画面
     public function DeletePatient(Request $request) {
+        
+        //前入力画面のバリデーション
+        $request->validate([
+            'search_pt_id'=>'required|integer|digits_between:1,10:|exists:pt_data,pt_id'
+        ]);
+
         //モデルから患者データ検索メソッド呼び出し
         $pt_datas = PatientDataModel::getPtData($request->search_pt_id);
         return view('hospital_menu.patient_registration_change_deletion.patient_information.delete_patient_information',['pt_datas'=>$pt_datas]);
