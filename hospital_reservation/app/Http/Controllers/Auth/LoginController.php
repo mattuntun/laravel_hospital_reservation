@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -25,7 +26,13 @@ class LoginController extends Controller
      *
      * @var string
      */
+
+    //初期状態
+    protected $redirectTo = RouteServiceProvider::HOME;
+
+    /*
     protected $redirectTo = 'user_index';
+    */
 
     /**
      * Create a new controller instance.
