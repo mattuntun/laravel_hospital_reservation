@@ -9,12 +9,12 @@ use Auth;
 class HospitalController extends Controller
 {
 
-    /*
+    
     public function __construct()
     {
         $this->middleware('auth:admin');  //変更
     }
-    */
+    
 
     //管理者用インデックスページへ
     public function AdminIndex() {

@@ -29,10 +29,10 @@ class LoginController extends Controller
      * @var string
      */
     //初期状態
-    protected $redirectTo = '/admin/home';
+    //protected $redirectTo = '/admin/home';
 
 
-    //protected $redirectTo = '/admin/index'; // ログイン後のリダイレクト先
+    protected $redirectTo = '/admin/index'; // ログイン後のリダイレクト先
 
 
 
