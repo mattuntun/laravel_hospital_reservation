@@ -38,7 +38,6 @@
         <div class="wrapper"><!--body全体のclassをラッパーとする-->
 
         <header>
-        <!--
             <div id="app">
                 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
                     <div class="container">
@@ -51,42 +50,20 @@
                         
                 
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-
-                            -->
-
-
                                 <!-- Left Side Of Navbar -->
-
-                                <!--
                                 <ul class="navbar-nav mr-auto">
                                 </ul>
 
-                                -->
-
                                 <!-- Right Side Of Navbar -->
-<!--
-
-
-
-                                
                                 <ul class="navbar-nav ml-auto">
 
-
-                                -->
-
                                 <!-- Authentication Links -->
-<!--
-
-
                                     @guest
                                         <li class="nav-item">
                                             <a class="nav-link" href="{{ route('admin.login') }}">{{ __('Login') }}</a>
                                         </li>
 
-
-                                        -->
-                                        <!--
+                                        <!-- 
                                         @if (Route::has('register'))
                                             <li class="nav-item">
                                                 <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
@@ -94,8 +71,6 @@
                                         @endif
                                         -->
 
-
-<!--
                                     @else
                                         <li class="nav-item dropdown">
                                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -123,9 +98,6 @@
             </div>
 
             </header>
-
-            -->
-
          
         <main>
         <h1 class = "pageTitle">○○医院<br>予約フォーム</h1>

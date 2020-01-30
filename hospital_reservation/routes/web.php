@@ -257,6 +257,7 @@ Route::group(['prefix' => 'admin'], function() {
     
     //追加
     Route::get('/',         function () { return redirect('/admin/index'); });
+    
     Route::get('login',     'Admin\LoginController@showLoginForm')->name('admin.login');
     Route::post('login',    'Admin\LoginController@login');
 });
