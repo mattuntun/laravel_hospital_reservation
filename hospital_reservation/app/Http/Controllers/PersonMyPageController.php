@@ -16,6 +16,7 @@ use Auth;
 
 class PersonMyPageController extends Controller{   
 
+    /*
     //ログインの為のAuthデータ取得画面呼び出し
     public function __construct()
     {
@@ -26,9 +27,11 @@ class PersonMyPageController extends Controller{
         }
         
     }
+    */
 
     //患者用インデックスページへ
     public function UesrIndex(){
+       /*
         if($this->middleware('auth:admin') == null){                 //adminデータ取得不可の場合
             
             $auths = Auth::user();
@@ -42,6 +45,8 @@ class PersonMyPageController extends Controller{
 
         //$auths = Auth::user();
         //return view('user_index' ,[ 'auths' => $auths ]);
+        */
+        return view('user_index');
     }
 
     //患者マイページへ
