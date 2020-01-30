@@ -20,7 +20,7 @@ class PersonMyPageController extends Controller{
 //authで認証させる。全てのページで、アクセスがあった場合にログインされていない状態だと login のページへ強制的にリダイレクト
 public function __construct(){
        
-    $this->middleware('auth');
+    $this->middleware('auth:admin,user');
        
 }
 
