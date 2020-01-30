@@ -29,8 +29,9 @@ class PersonMyPageController extends Controller{
     }
     */
 
+
     //患者用インデックスページへ
-    public function UesrIndex(){
+   // public function UesrIndex(){
        /*
         if($this->middleware('auth:admin') == null){                 //adminデータ取得不可の場合
             
@@ -46,8 +47,24 @@ class PersonMyPageController extends Controller{
         //$auths = Auth::user();
         //return view('user_index' ,[ 'auths' => $auths ]);
         */
-        return view('user_index');
-    }
+        
+    //    return view('user_index');
+    //}
+
+
+//authで認証させる。全てのページで、アクセスがあった場合にログインされていない状態だと login のページへ強制的にリダイレクト
+public function __construct(){
+    $this->middleware('auth');
+}
+
+
+//患者用インデックスページへ
+public function UesrIndex(){
+    
+    //コントローラファイルからbladeファイルへユーザー情報を渡す
+    $auth = Auth::user();
+     return view('user_index',['auth'=>$auth]);
+ }
 
     //患者マイページへ
     public function MyPageMenu(Request $request){
