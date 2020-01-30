@@ -100,6 +100,8 @@
             </header>
          
         <main>
+
+        
         <h1 class = "pageTitle">○○医院<br>予約フォーム</h1>
             <form action="/index/mypage_menu" method="POST" name="patient-data"><!--患者のカテゴリー-->
             {{csrf_field()}}

@@ -21,7 +21,6 @@ class HospitalController extends Controller
         $auths = Auth::user();
 
         return view('admin_index' ,[ 'auths' => $auths ]);
-        //return view('admin_index');
     }
 
     //管理画面メニュー・トップ

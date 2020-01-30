@@ -210,7 +210,6 @@ Route::post('edit_patient_appoimtment_information/target_date_all_reservation_ch
 
 
 Auth::routes();
- 
 
 Route::get('/home', 'HomeController@index')->name('home');
 /*
@@ -218,9 +217,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 | 1) User 認証不要
 |--------------------------------------------------------------------------
 */
-//Route::get('/', function () { return redirect('/login'); });
 
-//初期
 Route::get('/', function () { return redirect('/home'); });
  
 /*
@@ -229,20 +226,10 @@ Route::get('/', function () { return redirect('/home'); });
 |--------------------------------------------------------------------------
 */
 
-//初期状態
 Route::group(['middleware' => 'auth:user'], function() {
     Route::get('/home', 'HomeController@index')->name('home');
 });
 
-/*
-Route::group(['middleware' => 'auth:user'], function() {
-
-    Route::get('/user_index', 'PersonMyPageController@UesrIndex')->name('user_index');
-    Route::post('/user_index', 'PersonMyPageController@UesrIndex')->name('user_index');
-
-});
-
-*/
  
 /*
 |--------------------------------------------------------------------------
@@ -252,25 +239,12 @@ Route::group(['middleware' => 'auth:user'], function() {
 
 //初期状態
 Route::group(['prefix' => 'admin'], function() {
-    //初期
-    //Route::get('/',         function () { return redirect('/admin/home'); });
-    
-    //追加
-    Route::get('/',         function () { return redirect('/admin/index'); });
-    
+   
+    Route::get('/',         function () { return redirect('/admin/index'); });    
     Route::get('login',     'Admin\LoginController@showLoginForm')->name('admin.login');
     Route::post('login',    'Admin\LoginController@login');
 });
 
-
-/*
-Route::group(['prefix' => 'admin'], function() {
-    Route::get('/',         function () { return redirect('/admin/index'); });
-    Route::get('login',     'Admin\LoginController@showLoginForm')->name('admin.login');
-    Route::post('login',    'Admin\LoginController@login');
-    
-});
-*/
  
 /*
 |--------------------------------------------------------------------------
@@ -283,12 +257,3 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function() {
     Route::post('logout',   'Admin\LoginController@logout')->name('admin.logout');
     Route::get('home',      'Admin\HomeController@index')->name('admin.home');
 });
-
-
-/*
-Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function() {
-    Route::post('logout',   'Admin\LoginController@logout')->name('admin.logout');
-
-});
-
-*/

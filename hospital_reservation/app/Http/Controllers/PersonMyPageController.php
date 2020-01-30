@@ -16,45 +16,12 @@ use Auth;
 
 class PersonMyPageController extends Controller{   
 
-    /*
-    //ログインの為のAuthデータ取得画面呼び出し
-    public function __construct()
-    {
-        if($this->middleware('auth:admin') == null){    //adminデータ取得不可の場合
-        $this->middleware('auth');                      //ユーザーデータ取得
-        }else{                                          //adminデータ取得可能の場合
-            $this->middleware('auth:admin');            //adminデータ取得
-        }
-        
-    }
-    */
-
-
-    //患者用インデックスページへ
-   // public function UesrIndex(){
-       /*
-        if($this->middleware('auth:admin') == null){                 //adminデータ取得不可の場合
-            
-            $auths = Auth::user();
-            return view('user_index' ,[ 'auths' => $auths ]);        //ユーザーデータ取得
-
-            }else{                                                   //adminデータ取得可能の場合
-            
-            $auths = Auth::user();
-            return view('user_index' ,[ 'auths' => $auths ]);       //adminデータ取得
-            }
-
-        //$auths = Auth::user();
-        //return view('user_index' ,[ 'auths' => $auths ]);
-        */
-        
-    //    return view('user_index');
-    //}
-
 
 //authで認証させる。全てのページで、アクセスがあった場合にログインされていない状態だと login のページへ強制的にリダイレクト
 public function __construct(){
+       
     $this->middleware('auth');
+       
 }
 
 
