@@ -9,6 +9,12 @@ use Validator;
 
 class IndividualSettingMenucontroller extends Controller
 {
+    //adminでログインしていないとビュー不可
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+
     //診療科個別設定メニュー画面
     public function IndividualSettingMenu() {
         return view('hospital_menu.common_reservation_setting_screen.individual_setting.individual_setting_menu');

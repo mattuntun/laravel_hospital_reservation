@@ -11,6 +11,12 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class ExcelReservationController extends Controller
 {
+    //adminでログインしていないとビュー不可
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+
     //予約情報インポート・エクスポートビューページ
     public function DownloadReservation() {
     

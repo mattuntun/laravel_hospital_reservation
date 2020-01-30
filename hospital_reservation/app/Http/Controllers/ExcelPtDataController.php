@@ -11,6 +11,12 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class ExcelPtDataController extends Controller
 {
+    //adminでログインしていないとビュー不可
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+
     public function DownloadReservation() {
 
         $all_pt_data = PatientDataModel::AllPtData();

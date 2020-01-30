@@ -9,6 +9,12 @@ use App\Models\PatientDataModel;
 
 class PatientRegistrationController extends Controller
 {
+    //adminでログインしていないとビュー不可
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+
     //新規患者登録、データ入力画面
     public function NewPatient() {
         return view('hospital_menu.patient_registration_change_deletion.patient_information.new_patient_registration');

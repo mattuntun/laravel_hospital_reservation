@@ -15,6 +15,12 @@ use App\HospitalSchedule;
 
 class ApointmentEditController extends Controller
 {
+    //adminでログインしていないとビュー不可
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+
     //予約新規追加の患者検索のコントローラ
     public function SearchPtNewReservation() {
         return view('hospital_menu.edit_patient_appoimtment_information.edit_reservation.search_pt_new_reservation');

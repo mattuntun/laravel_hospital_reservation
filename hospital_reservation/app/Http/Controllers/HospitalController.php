@@ -9,10 +9,10 @@ use Auth;
 class HospitalController extends Controller
 {
 
-    
+    //adminでログインしていないとビュー不可
     public function __construct()
     {
-        $this->middleware('auth:admin');  //変更
+        $this->middleware('auth:admin');
     }
     
 

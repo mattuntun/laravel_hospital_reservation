@@ -8,6 +8,12 @@ use App\Models\AllDepartmentHoliday;
 
 class CommonSettingScreenController extends Controller
 {
+    //adminでログインしていないとビュー不可
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+
     //エラーページビュー
     public function SetPeriodAndDeadline() {
         return view('hospital_menu.common_reservation_setting_screen.set_period_and_deadline');
