@@ -30,7 +30,7 @@ class PatientRegistrationController extends Controller
             'pt_last_name_kata'=>'required|kana|max:100',
             'pt_name_kata'=>'required|string|max:100',
             'birthday'=>'required|date',
-            'email_adress'=>'required|email',
+            'email_adress'=>'required|email|unique:pt_data,email_adress',
             'sex'=>'required|integer|between:1,2:',
         ]);
 

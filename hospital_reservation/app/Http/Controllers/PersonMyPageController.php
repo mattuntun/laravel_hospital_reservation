@@ -46,17 +46,16 @@ public function UesrIndex(){
         
         //患者情報モデルから患者情報取得
         $ptDatas = PatientDataModel::getPtData($request->search_pt_id);
-        var_dump($ptDatas);
-
+        
         //患者情報モデルから患者生年月日を取得
         foreach($ptDatas as $items) {
             $pt_birthday = $items->birthday ;
         }
 
-        //入力した患者生年月日とDBの生年月日が一致か確認
+        //入力された生年月日を取得
         $input_pass = $request->patient_pass;
-        echo $input_pass;
 
+        //入力した患者生年月日とDBの生年月日が一致か確認
         if($pt_birthday == $input_pass)
         //入力したパスワードと患者生年月日が同じだった場合、マイページを表示
         {
@@ -73,8 +72,7 @@ public function UesrIndex(){
                 return view('patient_menu.mypage_menu',['ptDatas'=>$ptDatas,'foreignReservationDatas'=>$foreignReservationDatas]);
             }
 
-        } else {
-            //$test = "患者IDとパスワードが一致していません";
+        } else {//患者IDと、患者IDが所持する生年月日が一致しなかった場合
             return back()->with('result', '患者IDとパスワードが一致していません')->withInput();
         }
     }

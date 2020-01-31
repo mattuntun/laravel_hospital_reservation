@@ -132,6 +132,7 @@ return [
         'search_delete_department'=>'診療科指定',
         'search_individual_department'=>'診療科指定',
         'patient_pass'=>'患者パスワード',
+        'email_adress'=>'メールアドレス',
  
 
         
