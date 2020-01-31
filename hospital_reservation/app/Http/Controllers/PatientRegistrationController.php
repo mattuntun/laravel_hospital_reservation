@@ -63,7 +63,11 @@ class PatientRegistrationController extends Controller
                                'ptLastName'=>$request->change_pt_last_name,
                                'ptName'=>$request->change_pt_name,
                                'ptLastNameKata'=>$request->change_pt_last_name_kata,
-                               'ptNameKata'=>$request->change_pt_name_kata,);
+                               'ptNameKata'=>$request->change_pt_name_kata,
+                               'sex'=>$request->sex,
+                               'birthday '=>$request->birthday,
+                               'email_adress '=>$request->email_adress,
+                            );
         //モデルから患者情報変更メソッドの呼び出し
         PatientDataModel::ChangePtData($request);
         return view('hospital_menu.patient_registration_change_deletion.patient_information.complete_change_patient_information',['changePtDatas'=>$changePtDatas]);

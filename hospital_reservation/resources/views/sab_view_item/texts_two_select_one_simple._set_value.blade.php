@@ -9,15 +9,20 @@
         <tr>
             <td>
                 <label class="control-label">{{$label_value1}}</label>
-                <input class="form-control" type="text" name={{$input_name1}} value={{$}}>
+                <input class="form-control" type="text" name={{$input_name1}} value={{$defaultValue1}}>
             </td>
             <td>
                 <label class="control-label">{{$label_value2}}</label>
-                <input class="form-control" type="text" name={{$input_name2}} value={{$}}>
+                <input class="form-control" type="text" name={{$input_name2}} value={{$defaultValue2}}>
             </td>
         </tr>
         <tr>
             <td>
+            @if($request->sex == 1)
+
+            @elseif($request->sex == 2)
+
+            @endif
             <label class="control-label">{{$select_label}}</label>
                         <select name={{$select_name}} class="form-control">
                             <option value={{$option_value1}} class="form-control">{{$option_lavel1}}</option>
