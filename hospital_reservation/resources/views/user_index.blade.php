@@ -33,6 +33,20 @@
     
       </style>-->
 
+<!-- バリデーション時のレイアウト-->
+<style type="text/css">
+
+.errors {
+    width: 500px;
+    font-size: 20px;
+    color: #e95353;
+    border: 1px solid #e95353;
+    background-color: #f2dede;
+    align:center;
+    margin:0 auto
+}
+
+</style>
   </head>
   
   <body>
@@ -104,31 +118,47 @@
       
       <main>
       <h1 class = "pageTitle">○○医院<br>予約フォーム</h1>
-        <form action="/index/mypage_menu" method="POST" name="patient-data"><!--患者のカテゴリー-->
-        {{csrf_field()}}
+      <!--患者のカテゴリー-->
+      
           <section class="patient">
-            <div class="id">
+          @if($errors->any())
+          <div class = "errors">
               <ul>
-                <li>患者ID</li>
-                <li><input type="number" name="search_pt_id"></li>
+          @foreach($errors->all() as $error)
+                  <li>{{$error}}</li>
+          @endforeach
               </ul>
-            </div>
+          </div>
+          @endif
 
-            <div class="pass">
-              <ul>
-                <li>生年月日</li>
-                <li><input type="text" name="patient-pass"></li>
-              </ul>
-            </div>
-            <br>
+          <div class = "errors">
+              {{ session('result') }}
+          </div>
+          
+          <form action="/index/mypage_menu" method="POST" name="patient-data">
+          {{csrf_field()}}
+              <div class="id">
+                  <ul>
+                      <li>患者ID</li>
+                      <li><input type="number" name="search_pt_id"></li>
+                  </ul>
+              </div>
 
-            <div class="switch">
-              <input type="submit" value="ログイン">
-              <input type="submit" value="初めての来院の方">
-            </div>
-          </section>
-        </form><!--終了　患者のカテゴリー　終了-->
+              <div class="pass">
+                  <ul>
+                      <li>患者パスワード</li>
+                      <li><input type="text" name="patient_pass"></li>
+                  </ul>
+              </div>
+              
+              <br>
 
+              <div class="switch">
+                  <input type="submit" value="マイページへ">
+                  <input type="submit" value="初めての来院の方">
+              </div>          
+          </form><!--終了　患者のカテゴリー　終了-->
+      </section>
 
       </main>
 

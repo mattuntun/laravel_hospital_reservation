@@ -21,7 +21,7 @@ Route::get('index','Indexcontroller@Index');
 //管理者indexページへ
 Route::get('admin/index','HospitalController@AdminIndex');
 //ユーザーindexページへ
-Route::get('user/index','PersonMyPageController@UesrIndex');
+Route::any('user/index','PersonMyPageController@UesrIndex');
 
 
 //マイページへ
