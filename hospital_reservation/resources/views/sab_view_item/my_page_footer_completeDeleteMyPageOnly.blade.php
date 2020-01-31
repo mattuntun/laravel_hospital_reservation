@@ -9,15 +9,15 @@
   <table class="footer-table">
       <tr>
         <td>
-          <button type="button" class="btn btn-outline-info" onclick="location.href='/index'">ログイン画面へ</button>
+          <button type="button" class="btn btn-outline-info" onclick="location.href='/login'">予約フォームトップ画面へ</button>
         </td>
         <td>
-          <button type="button" class="btn btn-outline-info" onclick="location.href='/index'">医療機関HPトップ</button></a>
+          <button type="button" class="btn btn-outline-info" onclick="location.href='/login'">医療機関HPトップ</button></a>
         </td>
       </tr>
       <tr>
         <td>
-          <button type="button" class="btn btn-outline-info" onclick="location.href='/index'">予約情報ダウンロード</button>
+          <button type="button" class="btn btn-outline-info" onclick="location.href='/admin'">病院管理者画面</button>
         </td>
         <td>
             <form action="/index/mypage_menu" method =post>
