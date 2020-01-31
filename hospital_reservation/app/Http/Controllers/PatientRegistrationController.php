@@ -65,8 +65,8 @@ class PatientRegistrationController extends Controller
                                'ptLastNameKata'=>$request->change_pt_last_name_kata,
                                'ptNameKata'=>$request->change_pt_name_kata,
                                'sex'=>$request->sex,
-                               'birthday '=>$request->birthday,
-                               'email_adress '=>$request->email_adress,
+                               'birthday'=>$request->birthday,
+                               'email_adress'=>$request->email_adress,
                             );
         //モデルから患者情報変更メソッドの呼び出し
         PatientDataModel::ChangePtData($request);

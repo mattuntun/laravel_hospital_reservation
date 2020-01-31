@@ -58,9 +58,11 @@
 
                  
         {{-- シンプルボタン(large) --}}
+        {{--
         @include('sab_view_item.large_simple_buttom',
                   ['large_buttom_value'=>'カレンダーから確認する場合はこちら',
                    'large_buttom_access'=>'/index'])
+                   --}}
 
 
 @endsection

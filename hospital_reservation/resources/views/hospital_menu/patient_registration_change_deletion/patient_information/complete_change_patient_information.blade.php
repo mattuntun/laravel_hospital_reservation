@@ -16,21 +16,121 @@
 @section('main_content')
 <h2>該当患者情報</h2>
 <h3>患者情報を変更しました</h3>
-<h3>{{var_dump($changePtDatas)}}</h3>
+
+<br>
+
+<h2>患者ID：{{ $changePtDatas['search_pt_id'] }}</h2>
+
+<br>
+
+<h3><b>患者姓名</b></h3>
+
+
+
+<div class="form-group">
+    <table border="1" style="border-collapse: collapse table-layout: fixed; width: 50%;">
+        <tr bgcolor="#DBDBDB">
+            <th>
+                <h4>患者姓</h4>
+            </th>
+            <th>
+                <h4>患者名</h4>
+            </th>
+        </tr>
+        <tr bgcolor="white">
+            <td>
+                <h4>{{ $changePtDatas['ptLastName'] }}</h4>
+            </td>
+            <td>
+                <h4>{{ $changePtDatas['ptName'] }}</h4>
+            </td>
+        </tr>
+        <tr bgcolor="#DBDBDB">
+            <th>
+                <h4>患者姓(ｶﾀ)</h4>
+            </th>
+            <th>
+                <h4>患者名(ｶﾀ)</h4>
+            </th>
+        </tr>
+        <tr  bgcolor="white">
+            <td>
+                <h4>{{ $changePtDatas['ptLastNameKata'] }}</h4>
+            </td>
+            <td>
+                <h4>{{ $changePtDatas['ptNameKata'] }}</h4>
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+<br>
+<br>
+
+
+
+<h3><b>患者生年月日・アドレス・性別</b></h3>
+<div class="form-group">
+    <table border="1" style="border-collapse: collapse table-layout: fixed; width: 50%;">
+        <tr bgcolor="#DBDBDB">
+            <th>
+                <h4>生年月日</h4>
+            </th>
+            <th>
+                <h4>性別</h4>
+            </th>
+        </tr>
+        <tr bgcolor="white">
+            <td>
+                <h4>{{ $changePtDatas['birthday'] }}</h4>
+            </td>
+            <td>
+                <h4>
+                    @if( $changePtDatas['sex'] == 1 )
+                        男
+                    @elseif( $changePtDatas['sex'] == 2 )
+                        女
+                    @endif
+            </h4>
+            </td>
+        </tr>
+        <tr bgcolor="#DBDBDB">
+            <th colspan="2">
+                <h4>メールアドレス</h4>
+            </th>
+
+        </tr>
+        <tr  bgcolor="white">
+            <td colspan="2">
+                <h4>
+                   {{$changePtDatas['email_adress']}}
+                </h4>
+            </td>
+
+        </tr>
+    </table>
+</div>
+
+<br>
+<br>
+
+
+
 
         {{-- このコンポーネントはformとしての囲い(メソッドはpost) --}}
         @component('component_item.form')
                  @slot('form_action')
-                 /index
+                 /index/hospital_menu
                  @endslot
 
                  
                  @slot('form_item3')
                         {{-- タグ付ボタン(スモール) --}}
                         @include('sab_view_item.small_tagged_buttom',
-                                        ['tagged_value'=>'登録内容確認後、登録',
-                                        'buttom_value'=>'登録',
-                                        'buttom_access'=>'/index'])
+                                        ['tagged_value'=>'設定画面トップへ',
+                                        'buttom_value'=>'設定画面トップ',
+                                        'buttom_access'=>'/index/hospital_menu'])
                  @endslot
 
                  @slot('form_name')
