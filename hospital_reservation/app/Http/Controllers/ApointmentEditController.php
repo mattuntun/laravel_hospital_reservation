@@ -217,6 +217,12 @@ class ApointmentEditController extends Controller
 
     //直接日付入力による確認画面
     public function TargetDateAllReservationCheck(Request $request) {
+       
+        //全画面のバリデーション
+        $request->validate([
+            'check_Date'=>'required|date_format:"Y-m-d"|after:tomorrow',
+        ]);
+
         //前画面より指定した予約確認日と診療科名を取得
         $target_date = $request->check_Date;
         $selectedDepartment = $request->selectedDepartment;

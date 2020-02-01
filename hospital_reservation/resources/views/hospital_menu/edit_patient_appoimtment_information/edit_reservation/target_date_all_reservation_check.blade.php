@@ -77,13 +77,11 @@
 @endif
 
 
-            <form action="/mypage/select_add_new_my_data_reservation" method = post>
-            {{csrf_field()}}
-            <input type="text"  name = "search_pt_id" value = "インプットの中身を要加筆"> 
+            <form action="/edit_patient_appoimtment_information/search_pt_new_reservation" method = get>
                 {{-- タグ付きボタン(large) --}}
                 @include('sab_view_item.middle_submit_simple_buttom',
                            ['middle_buttom_value'=>'新規予約追加',
-                            'middle_buttom_access'=>'/mypage/select_add_new_my_data_reservation"'])
+                            'middle_buttom_access'=>'edit_patient_appoimtment_information/search_pt_new_reservation"'])
             </form>
 @endsection
 
@@ -91,7 +89,15 @@
 {{-- フッター --}}
 
 @section('footer_content')
-
+@include('sab_view_item.footer',
+                  ['footerbuttom1'=>'設定画面トップ',
+                  'footerbuttom2'=>'ログイン画面へ',
+                  'footerbuttom3'=>'医療機関HPトップ',
+                  'footerbuttom4'=>'予約情報ダウンロード',
+                  'footerbuttom_access1'=>'/index/hospital_menu',
+                  'footerbuttom_access2'=>'/admin/index',
+                  'footerbuttom_access3'=>'/admin/index',
+                  'footerbuttom_access4'=>'/hospital_menu/complete_download' ])
 
 
 @endsection
