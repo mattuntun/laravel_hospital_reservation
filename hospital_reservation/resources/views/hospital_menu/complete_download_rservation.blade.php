@@ -6,6 +6,15 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
 <style>
+/*全てのテーブルを横スクロールさせる*/
+table {
+  display: block;
+  overflow-x: scroll;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+
 .box27 {
     position: relative;
     margin: 2em 0;
@@ -98,7 +107,6 @@
                 <th nowrap>生年月日</th>
                 <th nowrap>予約日</th>
                 <th nowrap>予約時間帯</th>
-                <th nowrap>紹介状有無</th>
                 <th nowrap>紹介元病院</th>
                 <th nowrap>紹介元病院TEL</th>
                 <th nowrap>紹介元最終受診日</th>
@@ -108,24 +116,24 @@
         <tbody>
             @foreach($data as $row)
                 <tr>
-                    <td nowrap>{{$row->No}}</td>
-                    <td nowrap>{{$row->reservation_department}}</td>
-                    <td nowrap>{{$row->pt_id}}</td>
-                    <td nowrap>{{$row->pt_last_name}}&nbsp;{{$row->pt_name}}</td>
-                    <td nowrap>{{$row->birthday}}</td>
-                    <td nowrap>{{$row->reservation_date}}</td>
-                    <td nowrap>{{$row->reservation_time}}</td>
+                    <td nowrap>{{$row->No}}</td>                                        <!-- 予約番号 -->
+                    <td nowrap>{{$row->reservation_department}}</td>                    <!-- 診療科 -->
+                    <td nowrap>{{$row->pt_id}}</td>                                     <!-- 患者ID -->
+                    <td nowrap>{{$row->pt_last_name}}&nbsp;{{$row->pt_name}}</td>       <!-- 患者氏名 -->
+                    <td nowrap>{{$row->birthday}}</td>                                  <!-- 生年月日 -->
+                    <td nowrap>{{$row->reservation_date}}</td>                          <!-- 予約日 -->
+                    <td nowrap>{{$row->reservation_time}}</td>                          <!-- 予約時間 -->
                     
-                    @if($row->letter_of_introduction == 2)
+                    @if($row->letter_of_introduction == 2)                              <!-- if紹介状無 -->
                         <td nowrap>登録なし</td>
                         <td nowrap>登録なし</td>
                         <td nowrap>登録なし</td>
-                    @else($row->letter_of_introduction == 1)
-                        <td nowrap>{{$row->letter_of_introduction}}</td>
-                        <td nowrap>{{$row->introduction_hp_tell}}</td>
-                        <td nowrap>{{$row->introduction_hp_date}}</td>
+                    @else($row->letter_of_introduction == 1)                            <!-- if紹介状有 -->
+                        <td nowrap>{{$row->introduction_hp }}</td>                      <!-- 紹介元病院名 -->
+                        <td nowrap>{{$row->introduction_hp_tell}}</td>                  <!-- 紹介元TEL -->
+                        <td nowrap>{{$row->introduction_hp_date}}</td>                  <!-- 紹介元受診日 -->
                     @endif
-                    <td nowrap>{{$row->updated_at}}</td>
+                    <td nowrap>{{$row->updated_at}}</td>                                <!--  -->
                 </tr>
             @endforeach        
         </tbody>
