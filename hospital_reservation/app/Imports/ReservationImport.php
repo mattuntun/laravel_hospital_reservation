@@ -3,7 +3,6 @@
 namespace App\Imports;
 
 use App\Models\ReservationDataModel;
-use App\Models\ClinicalDepartmentsDataModel;
 use Illuminate\Validation\Rule;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\Importable;
@@ -42,8 +41,8 @@ class ReservationImport implements ToModel, WithValidation, WithHeadingRow
             'reservation_time' => ['required', 'date_format:"H:i:s"'],//
             'reservation_department' => ['required', 'exists:clinical_departments,clinical_department'],//
             'pt_id' => ['required','integer','digits_between:1,10:','exists:pt_data,pt_id'],//
-            'letter_of_introduction' => ['required', 'int','max:2'],//
-            'introduction_hp' => ['string','max:30'],//
+            'letter_of_introduction' => ['required', 'int','between:1,2'],//
+            'introduction_hp' => ['string','max:100'],//
             'introduction_hp_tell' => ['string','max:30'],
             'introduction_hp_date' => ['date_format:Y-m-d'],
 

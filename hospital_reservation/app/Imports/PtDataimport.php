@@ -3,10 +3,15 @@
 namespace App\Imports;
 
 use App\Models\PatientDataModel;
+use Illuminate\Validation\Rule;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\Importable;
+use Maatwebsite\Excel\Concerns\WithValidation;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Concerns\SkipsOnFailure;
+use Maatwebsite\Excel\Concerns\WithEvents;
 
-class PtDataimport implements ToModel,WithHeadingRow
+class PtDataimport implements ToModel, WithHeadingRow, WithValidation
 {
     /**
     * @param array $row
@@ -26,4 +31,32 @@ class PtDataimport implements ToModel,WithHeadingRow
             'email_adress'=> $row['email_adress'],
         ]);
     }
+
+    /**
+     * バリデーションルール
+     * @return array
+     */
+    public function rules():array {
+
+        return [
+            'pt_id'=>['required','integer','digits_between:1,10:','unique:pt_data,pt_id'],
+            'pt_last_name' => ['required','string','max:100'],//
+            'pt_name' => ['required','string','max:100'],//
+            'pt_last_name_kata' => ['required','string','max:100'],//
+            'pt_name_kata' => ['required','string','max:100'],//
+            'sex' => ['required','int','between:1,2'],//
+            'birthday' => ['required','date_format:Y-m-d'],
+            'email_adress' => ['required','email','unique:pt_data,email_adress'],
+
+        ];
+    }
+
+
+
+
+
+
+
+
+
 }
