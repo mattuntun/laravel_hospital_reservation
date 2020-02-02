@@ -49,36 +49,5 @@ class ReservationImport implements ToModel, WithValidation, WithHeadingRow
         ];
     }
 
-    /**
-     * バリデーションエラー時の処理
-     * @param Failure ...$failures
-     */
-   /*
-    public function onFailure(Failure ...$failures)
-    {
-        foreach ($failures as $failure) {
-            //
-        }
-    }
-    */
-
-    /**
-     * WithEvents interface needs `registerEvents()`
-     */
-
-    /*
-    public function registerEvents(): array
-    {
-        return [
-            // Handle by a closure.
-            AfterImport::class => function(AfterImport $event) {
-                // エラーを纏めて、Excelに出力する
-            }
-        ];
-    }
-    */
-
-
-
 
 }
