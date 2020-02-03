@@ -12,6 +12,19 @@
 
 {{-- メイン --}}
 @section('main_content')
+
+@if($errors->any())
+        <div class = "errors">
+            <ul>
+                @foreach($errors->all() as $error)
+                <li>{{$error}}</li>
+                @endforeach
+            </ul>
+        </div>
+@endif
+<br>
+<br>
+
 <h2>診療科【{{$department}}】の設定を変更します</h2>
     {{-- このコンポーネントはformとしての囲い(メソッドはpost) --}}
     @component('component_item.form')

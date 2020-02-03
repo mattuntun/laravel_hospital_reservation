@@ -4,7 +4,6 @@
 {{-- ヘッド --}}
 @section('web_title','休診日追加')
 
-
 {{-- ヘッダー --}}
 
 @section('header_content')
@@ -17,6 +16,19 @@
 <h2>
     <b>変更する診療科を選択し、設定変更画面へ移行して下さい</b>
 </h2>
+
+<br>
+
+
+@if($errors->any())
+        <div class = "errors">
+            <ul>
+                @foreach($errors->all() as $error)
+                <li>{{$error}}</li>
+                @endforeach
+            </ul>
+        </div>
+@endif
     
     <form action="/individual_setting_menu/choice_horiday_setting" method = post>
     {{csrf_field()}}

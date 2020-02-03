@@ -36,6 +36,16 @@
 <h2>
     <b>変更する診療科を選択し、設定変更画面へ移行して下さい</b>
 </h2>
+
+@if($errors->any())
+        <div class = "errors">
+            <ul>
+                @foreach($errors->all() as $error)
+                <li>{{$error}}</li>
+                @endforeach
+            </ul>
+        </div>
+@endif
     
     <form action="/individual_setting_menu/number_of_reservation_screen" method = post>
     {{csrf_field()}}

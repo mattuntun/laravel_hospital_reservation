@@ -36,7 +36,8 @@ return [
     'exists'               => '選択された:attributeは正しくありません。',
     'image'                => ':attributeは画像にしてください。',
     'in'                   => '選択された:attributeは正しくありません。',
-    'integer'              => ':attributeは整数にしてください。',
+//    'integer'              => ':attributeは整数にしてください。',
+    'integer'              => ':attributeは整数(半角)にしてください。',
     'ip'                   => ':attributeを正しいIPアドレスにしてください。',
     'max'                  => [
         'numeric' => ':attributeは:max以下にしてください。',
@@ -71,6 +72,7 @@ return [
     'timezone'             => ':attributeは正しいタイムゾーンをしていしてください。',
     'unique'               => ':attributeは既に存在します。',
     'url'                  => ':attributeを正しい書式にしてください。',
+    'kana'                  => ':attributeを半角カタカナにしてください',
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines
@@ -98,6 +100,39 @@ return [
     */
     'attributes' => [
         'day'=>'日付',
-        'description'=>'説明'
+        'description'=>'説明',
+        'pt_id'=>'患者ID',
+        'search_pt_id'=>'患者ID',
+        'pt_last_name'=>'患者姓',
+        'pt_name'=>'患者名',
+        'pt_last_name_kata'=>'患者姓(ｶﾀ)',
+        'pt_name_kata'=>'患者名(ｶﾀ)',
+        'birthday'=>'生年月日',
+        'sex'=>'性別',
+        'check_Date'=>'日付指定',
+        'holiday_reason'=>'休診理由',
+        'h_open_time'=>'開診時間(時)',
+        'm_open_time'=>'開診時間(分)',
+        'h_rest_start'=>'休診開始時間(時)',
+        'm_rest_start'=>'休診開始時間(分)',
+        'h_rest_stop'=>'休診終了時間(時)',
+        'm_rest_stop'=>'休診終了時間(分)',
+        'h_close_time'=>'診察終了時間(時)',
+        'm_close_stop'=>'診察終了時間(分)',
+        'half_week_day'=>'半日診療曜日',
+        'half_h_open_time'=>'半日診療開始時間(時)',
+        'half_m_open_time'=>'半日診療開始時間(分)',
+        'half_h_close_time'=>'半日診療終了時間(時)',
+        'half_m_close_stop'=>'半日診療終了時間(分)',
+        'possible_number'=>'予約可能人数指定',
+        'new_department'=>'新規診療科名',
+        'doubleCircleReservationValue'=>'◎となる値指定',
+        'circleReservationValue'=>'〇となる値指定',
+        'triangleReservationValue'=>'△となる値指定',
+        'search_delete_department'=>'診療科指定',
+        'search_individual_department'=>'診療科指定',
+ 
+
+        
     ],
 ];

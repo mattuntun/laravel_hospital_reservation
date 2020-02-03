@@ -22,6 +22,12 @@ class ApointmentEditController extends Controller
     
     //予約新規追加の患者情報確認画面コントローラ
     public function NewReservation(Request $request) {
+
+        //前画面入力値のバリデーション
+        $request->validate([
+            'search_pt_id'=>'required|integer|digits_between:1,10:|exists:pt_data,pt_id'
+        ]);
+
         //患者情報を取得
         $pt_datas = PatientDataModel::getPtData($request->search_pt_id);
 

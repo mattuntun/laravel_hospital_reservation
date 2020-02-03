@@ -4,6 +4,7 @@
 {{-- ヘッド --}}
 @section('web_title','全科共通 開院・閉診設定')
 
+
 {{-- ヘッダー --}}
 @section('header_content')
     @include('sab_view_item.header',
@@ -13,6 +14,18 @@
 
 {{-- メイン --}}
 @section('main_content')
+
+@if($errors->any())
+    <div class = "errors">
+    <ul>
+        @foreach($errors->all() as $error)
+                <li>{{$error}}</li>
+        @endforeach
+        </ul>
+    </div>
+
+@endif
+
     {{-- このコンポーネントはformとしての囲い(メソッドはpost) --}}
     @component('component_item.form')
                  @slot('form_action')

@@ -12,6 +12,11 @@ class CommonSettingScreenController extends Controller
     public function SetPeriodAndDeadline() {
         return view('hospital_menu.common_reservation_setting_screen.set_period_and_deadline');
     }
+    
+    //エラーページビュー
+    public function ErrorPageView() {
+        return view('hospital_menu.common_reservation_setting_screen.error_page');
+    }
 
 
     //休診日設定に対し、日付指定で追加・隔週で追加の選択画面
@@ -34,6 +39,12 @@ class CommonSettingScreenController extends Controller
 
     //休診日設定に対し全診療科共通へ日付指定で追加(休日追加時)
     public function PostDateSpecificationHolidaySetAllDepartment(Request $request) {
+        //日付指定された時のバリデーション
+        $request->validate([
+            'check_Date'=>'required|date_format:Y-m-d|',
+            'holiday_reason'=>'required|string|max:30'
+        ]);
+
         //全休診日データを取得
         $get_holiday_datas = AllDepartmentHoliday::GetAllDepartmentHolidays();
 
@@ -81,6 +92,25 @@ class CommonSettingScreenController extends Controller
     }
     //設定完了全科共通 開院・休憩・閉診設定
     public function CompleteOpeningRestClosingTime(Request $request){
+        
+        //前画面でのバリデーション
+        $request->validate([
+            'h_open_time'=>'required',
+            'm_open_time'=>'required|',
+            'h_rest_start'=>'required',
+            'm_rest_start'=>'required',
+            'h_rest_stop'=>'required',
+            'm_rest_stop'=>'required',
+            'h_close_time'=>'required',
+            'm_close_stop'=>'required',
+            'half_week_day'=>'required',
+            'half_h_open_time'=>'required',
+            'half_m_open_time'=>'required',
+            'half_h_close_time'=>'required',
+            'half_m_close_stop'=>'required',
+        ]);
+
+        //前画面より入力情報取得
         $open_time_hour = $request->h_open_time;            //開診時間取得(時) 
         $open_time_min = $request->m_open_time;             //開診時間取得(分)
         $close_time_hour = $request->h_close_time;          //閉診時間取得(時)
@@ -124,12 +154,27 @@ class CommonSettingScreenController extends Controller
     }
     //予約状況表示　設定編集画面
     public function StatusDisplaySetting(Request $request) {
+
+        //前画面でのバリデーション
+        $request->validate([
+            'possible_number'=>'required|integer',
+        ]);
+        
+        //予約可能人数の登録メソッドを呼び出し
         $possibleNumber = $request->possible_number;
         $chagePossiblePeople = ClinicalDepartmentsDataModel::ChangePossibleNumber($possibleNumber);
         return view('hospital_menu.common_reservation_setting_screen.status_display_setting',['possibleNumber'=>$possibleNumber]);
     }
     //予約数・予約状況表示　設定編集画面
     public function CompleteNumberAndStatusSetting(Request $request) {
+        
+        //前画面でのバリデーション
+        $request->validate([
+            'doubleCircleReservationValue'=>'required|integer',
+            'circleReservationValue'=>'required|integer',
+            'triangleReservationValue'=>'required|integer',
+        ]);
+
         //前画面より◎、〇、△の値を取得
         $doubleCircle = $request->doubleCircleReservationValue;
         $circle = $request->circleReservationValue;

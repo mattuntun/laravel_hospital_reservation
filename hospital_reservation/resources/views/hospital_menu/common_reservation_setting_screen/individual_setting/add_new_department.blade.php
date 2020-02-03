@@ -18,6 +18,16 @@
 
 @section('main_content')
 
+@if($errors->any())
+        <div class = "errors">
+            <ul>
+                @foreach($errors->all() as $error)
+                <li>{{$error}}</li>
+                @endforeach
+            </ul>
+        </div>
+@endif
+
 {{-- このコンポーネントはformとしての囲い(メソッドはpost) --}}
         @component('component_item.form')
                  @slot('form_action')

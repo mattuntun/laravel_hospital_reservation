@@ -36,6 +36,16 @@
 <h2>
     <b>削除する診療科を選択・確認し、削除実行ボタンを押して下さい</b>
 </h2>
+
+@if($errors->any())
+        <div class = "errors">
+            <ul>
+                @foreach($errors->all() as $error)
+                <li>{{$error}}</li>
+                @endforeach
+            </ul>
+        </div>
+@endif
     
     <form action="/individual_setting_menu/complete_delete_department" method = post>
     {{csrf_field()}}
