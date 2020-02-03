@@ -7,10 +7,70 @@ use App\Models\ClinicalDepartmentsDataModel;
 class HospitalAfterNextCalendar
 {
     private $html;  
+
+    /*
+    //1日の予約数のパーセンテージを計算・表示形式指定
+    public static function AfterNextMouthDayPossible($search_Department,$year_after_next,$month_after_next,$month_after_next_day,$doubleCircleReservationValue,$circleReservationValue,$triangleReservationValue){
+            
+        //年月日のデータを作成
+        $targetDate = strval($year_after_next).strval($month_after_next).strval(str_pad($month_after_next_day, 2, 0, STR_PAD_LEFT));
+
+        //1日の最大予約枠数を計算
+        $oneDayMaxFrame = ClinicalDepartmentsDataModel::OneDayPossibleFrame($search_Department,$targetDate);
+
+        //現在の予約済数を獲得
+        $reservedNumber = ClinicalDepartmentsDataModel::ForeignReservation($search_Department,$targetDate);
+
+        //1日の予約空き状況を計算
+        $emptyParcent = ClinicalDepartmentsDataModel::OneDayCalculation($search_Department,$reservedNumber,$oneDayMaxFrame);
+        */
+
+        /*
+        switch($emptyParcent){
+            case($emptyParcent > $doubleCircleReservationValue):
+                return '&#9678';      // ◎ 
+                break;
+            
+            case($emptyParcent > $circleReservationValue):
+                return  '&#9675';     // 〇
+                break;
+
+            case($emptyParcent > $triangleReservationValue):
+                return  '&#9651';     // △
+                break;
+
+            default:
+                return  '&#10005';    // ✕
+            }
+            */
+
+        /*
+        if ( $emptyParcent > $doubleCircleReservationValue ) {
+        
+            return '&#9678';      // ◎
+
+        } elseif ( $emptyParcent > $circleReservationValue ) {
+
+            return  '&#9675';     // 〇
+
+        } elseif ( $emptyParcent > $triangleReservationValue ) {
+
+            return  '&#9651';     // △
+
+        } else {
+
+            return  '&#10005';    // ✕
+
+        }
+        
+    }
+    */
+    
    
     //翌々月カレンダー
     public function showMonthAfterNextCalendarTag($search_pt_id, $search_Department, $doubleCircleReservationValue, $circleReservationValue, $triangleReservationValue) {
 
+        
         //1日の予約数のパーセンテージを計算・表示形式指定
         function AfterNextMouthDayPossible($search_Department, $year_after_next, $month_after_next, $month_after_next_day, $doubleCircleReservationValue, $circleReservationValue, $triangleReservationValue) {
             
@@ -26,24 +86,45 @@ class HospitalAfterNextCalendar
             //1日の予約空き状況を計算
             $emptyParcent = ClinicalDepartmentsDataModel::OneDayCalculation($search_Department,$reservedNumber,$oneDayMaxFrame);
 
-            switch($emptyParcent) {
+            /*
+            switch($emptyParcent){
                 case($emptyParcent > $doubleCircleReservationValue):
                     return '&#9678';      // ◎ 
-                break;
+                    break;
                 
                 case($emptyParcent > $circleReservationValue):
                     return  '&#9675';     // 〇
-                break;
+                    break;
 
                 case($emptyParcent > $triangleReservationValue):
                     return  '&#9651';     // △
-                break;
+                    break;
 
                 default:
                     return  '&#10005';    // ✕
                 }
+                */
+
+            if ( $emptyParcent > $doubleCircleReservationValue ) {
+            
+                return '&#9678';      // ◎
+
+            } elseif ( $emptyParcent > $circleReservationValue ) {
+
+                return  '&#9675';     // 〇
+
+            } elseif ( $emptyParcent > $triangleReservationValue ) {
+
+                return  '&#9651';     // △
+
+            } else {
+
+                return  '&#10005';    // ✕
+
+            }
             
         }
+        
 
 
         //カレンダー本体　翌々月の設定
@@ -75,14 +156,15 @@ EOS;
         // カレンダーの日付部分を生成する
         while ($month_after_next_day <= $month_after_next_lastday) {
             $this->html .= "<tr align='center' valign='middle'>";
-            // 各週を描画するHTMLソースを生成する
+            // 各週を描画するHTMLソースを生成する $iは曜日 0:日曜日 6土曜日
             for ($i = 0; $i < 7; $i++) {
                 if ($month_after_next_day <= 0 || $month_after_next_day > $month_after_next_lastday) {
                     // 先月・来月の日付の場合
                     $this->html .= "<td>&nbsp;</td>";
-                } elseif($i ==0 ) {   //隔週の休診日を追加する場合は "|| $i ==6"等を足す
+                } elseif($i == 0 ) {   //隔週の休診日を追加する場合は "|| $i ==6"等を足す
                     $this->html .="<td style = color:#E9E9E9;>". $month_after_next_day . "</td>";
 
+                //その他の条件の時はクリック可のボタンと◎等の表示
                 } else {                    
                     $this->html .="<td>
                     <button type='submit' class='btn btn-lg btn-block' style='background: white;' onclick='location.href=/edit_patient_appoimtment_information/select_time_reservation>

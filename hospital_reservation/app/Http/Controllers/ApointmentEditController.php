@@ -155,7 +155,7 @@ class ApointmentEditController extends Controller
         'search_pt_id'=>$search_pt_id,
         'ptDatas'=>$ptDatas,
         'clinical_department'=>$clinical_department,
-        'show_Schedule'=>$show_Schedule]);
+        'show_schedule'=>$show_schedule]);
     }
     
     //予約完了
