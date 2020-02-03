@@ -13,14 +13,6 @@
         border-bottom: 5px dotted rgb(6, 71, 250);
 }
 
-.errors {
-    width: 500px;
-    font-size: 20px;
-    color: #e95353;
-    border: 1px solid #e95353;
-    background-color: #f2dede;
-}
-
 </style>
 
 
