@@ -20,29 +20,31 @@
 
 @section('main_content')
         {{-- シンプルボタン(middle) --}}
-        @include('sab_view_item.middle_simple_buttom',
+     {{--   @include('sab_view_item.middle_simple_buttom',
                   ['middle_buttom_value'=>'予約表示設定　機能未搭載',
                    'middle_buttom_access'=>'/common_reservation_setting_screen/set_period_and_deadline'])
+                   --}}
 
         {{-- シンプルボタン(middle) --}}      
         @include('sab_view_item.middle_simple_buttom',
                   ['middle_buttom_value'=>'休診日設定',
-                   'middle_buttom_access'=>'/common_reservation_setting_screen/horiday_setting'])
+                   'middle_buttom_access'=>'/common_reservation_setting_screen/choice_horiday_setting'])
 
         {{-- シンプルボタン(middle) --}}
         @include('sab_view_item.middle_simple_buttom',
-                  ['middle_buttom_value'=>'開診･休憩･閉診設定',
+                  ['middle_buttom_value'=>'開診･休憩･閉診・半日設定',
                    'middle_buttom_access'=>'/common_reservation_setting_screen/opening_rest_closing_time'])
 
         {{-- シンプルボタン(middle) --}}
         @include('sab_view_item.middle_simple_buttom',
-                  ['middle_buttom_value'=>'予約数・状況表示設定　機能未搭載',
+                  ['middle_buttom_value'=>'予約数・状況表示設定',
                    'middle_buttom_access'=>'/common_reservation_setting_screen/number_of_reservation_screen'])
 
         {{-- シンプルボタン(middle) --}}
-        @include('sab_view_item.middle_simple_buttom',
+        {{--   @include('sab_view_item.middle_simple_buttom',
                   ['middle_buttom_value'=>'診療不可設定(訪問診療・往診等)　機能未搭載',
                    'middle_buttom_access'=>'/index'])
+                   --}}
 
         {{-- シンプルボタン(middle) --}}
         @include('sab_view_item.middle_simple_buttom',
@@ -60,9 +62,9 @@
                   ['footerbuttom1'=>'設定画面トップ',
                   'footerbuttom2'=>'ログイン画面へ',
                   'footerbuttom3'=>'医療機関HPトップ',
-                  'footerbuttom4'=>'患者情報ダウンロード',
+                  'footerbuttom4'=>'予約情報ダウンロード',
                   'footerbuttom_access1'=>'/index/hospital_menu',
-                  'footerbuttom_access2'=>'/index',
-                  'footerbuttom_access3'=>'/index',
-                  'footerbuttom_access4'=>'/index' ])
+                  'footerbuttom_access2'=>'/admin/index',
+                  'footerbuttom_access3'=>'/admin/index',
+                  'footerbuttom_access4'=>'/hospital_menu/complete_download' ])
 @endsection

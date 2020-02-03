@@ -10,6 +10,8 @@
                   ['main_theme'=>'',
                   'sub_theme'=>'ご希望の時間を選択してください'])
 
+                  <h2 align="center">時刻を選択すると予約が確定されます</h2>
+
 
 @endsection
 
@@ -25,11 +27,11 @@
 <br>
 
 
-<h1>選択日時：{{$target_year}}年{{$target_month}}月{{$target_day}}日</h1>
+<h2>選択日時：{{$target_year}}年{{$target_month}}月{{$target_day}}日</h2>
 
 <br>
 
-<h1>{{$clinical_department}}予約状況</h1>
+<h2>診療科：{{$clinical_department}}</h2>
 <br>
 <br>
 
@@ -40,145 +42,13 @@ $targetDate = strval($target_year).strval($target_month).strval(str_pad($target_
 
 @endphp
 
-
-<table class="table table-bordered" style="background: white;         table-layout: fixed; width: 100%;">
-    <tr>
-        <th style="background: #AEC4E5; text-align:center; width: 70%; font-size:30px;" scope="col">時間</th>
-        <th style="background: #AEC4E5; text-align:center; width: 30%; font-size:30px" scope="col">予約空き状況</th>
-    </tr>
-    <tr>
-        <td>
-            <form action="/mypage/complete_add_new_reservation" method="post">
-            {{csrf_field()}}
-            <input type="hidden" name = "search_pt_id" value = "{{$ptData->pt_id}}">
-            <input type="hidden" name = "clinical_department" value = "{{$clinical_department}}">
-            <input type="hidden" name = "targetDate" value= "{{$targetDate}}">
-            <input type="hidden" name = "targetTime" value= "100000">            
-                <button type = "submit" class="btn btn-lg btn-block" style="background: white; font-size:30px;" onclick="location.href=/mypage/complete_add_new_reservation">10:00</button>
-            </form>
-        </td>
-        <td style="font-size:30px; text-align:center;">◎</td>
-    </tr>
-    <tr>
-    <td>
-            <form action="/mypage/complete_add_new_reservation" method="post">
-            {{csrf_field()}}
-            <input type="hidden" name = "search_pt_id" value = "{{$ptData->pt_id}}">
-            <input type="hidden" name = "clinical_department" value = "{{$clinical_department}}">
-            <input type="hidden" name = "targetDate" value= "{{$targetDate}}">
-            <input type="hidden" name = "targetTime" value= "110000">            
-                <button type = "submit" class="btn btn-lg btn-block" style="background: white; font-size:30px;" onclick="location.href=/mypage/complete_add_new_reservation">11:00</button>
-            </form>
-        </td>
-        <td style="font-size:30px; text-align:center;">◎</td>
-    </tr>
-    <tr>
-    <td>
-            <form action="/mypage/complete_add_new_reservation" method="post">
-            {{csrf_field()}}
-            <input type="hidden" name = "search_pt_id" value = "{{$ptData->pt_id}}">
-            <input type="hidden" name = "clinical_department" value = "{{$clinical_department}}">
-            <input type="hidden" name = "targetDate" value= "{{$targetDate}}">
-            <input type="hidden" name = "targetTime" value= "120000">            
-                <button type = "submit" class="btn btn-lg btn-block" style="background: white; font-size:30px;" onclick="location.href=/mypage/complete_add_new_reservation">12:00</button>
-            </form>
-        </td>
-        <td style="font-size:30px; text-align:center;">◎</td>
-    </tr>
-    <tr>
-    <td>
-            <form action="/mypage/complete_add_new_reservation" method="post">
-            {{csrf_field()}}
-            <input type="hidden" name = "search_pt_id" value = "{{$ptData->pt_id}}">
-            <input type="hidden" name = "clinical_department" value = "{{$clinical_department}}">
-            <input type="hidden" name = "targetDate" value= "{{$targetDate}}">
-            <input type="hidden" name = "targetTime" value= "130000">            
-                <button type = "submit" class="btn btn-lg btn-block" style="background: white; font-size:30px;" onclick="location.href=/mypage/complete_add_new_reservation">13:00</button>
-            </form>
-        </td>
-        <td style="font-size:30px; text-align:center;">◎</td>
-    </tr>
-    <tr>
-    <td>
-            <form action="/mypage/complete_add_new_reservation" method="post">
-            {{csrf_field()}}
-            <input type="hidden" name = "search_pt_id" value = "{{$ptData->pt_id}}">
-            <input type="hidden" name = "clinical_department" value = "{{$clinical_department}}">
-            <input type="hidden" name = "targetDate" value= "{{$targetDate}}">
-            <input type="hidden" name = "targetTime" value= "140000">            
-                <button type = "submit" class="btn btn-lg btn-block" style="background: white; font-size:30px;" onclick="location.href=/mypage/complete_add_new_reservation">14:00</button>
-            </form>
-        </td>
-        <td style="font-size:30px; text-align:center;">◎</td>
-    </tr>
-    <tr>
-    <td>
-            <form action="/mypage/complete_add_new_reservation" method="post">
-            {{csrf_field()}}
-            <input type="hidden" name = "search_pt_id" value = "{{$ptData->pt_id}}">
-            <input type="hidden" name = "clinical_department" value = "{{$clinical_department}}">
-            <input type="hidden" name = "targetDate" value= "{{$targetDate}}">
-            <input type="hidden" name = "targetTime" value= "150000">            
-                <button type = "submit" class="btn btn-lg btn-block" style="background: white; font-size:30px;" onclick="location.href=/mypage/complete_add_new_reservation">15:00</button>
-            </form>
-        </td>
-        <td style="font-size:30px; text-align:center;">◎</td>
-    </tr>
-    <tr>
-    <td>
-            <form action="/mypage/complete_add_new_reservation" method="post">
-            {{csrf_field()}}
-            <input type="hidden" name = "search_pt_id" value = "{{$ptData->pt_id}}">
-            <input type="hidden" name = "clinical_department" value = "{{$clinical_department}}">
-            <input type="hidden" name = "targetDate" value= "{{$targetDate}}">
-            <input type="hidden" name = "targetTime" value= "160000">            
-                <button type = "submit" class="btn btn-lg btn-block" style="background: white; font-size:30px;" onclick="location.href=/mypage/complete_add_new_reservation">16:00</button>
-            </form>
-        </td>
-        <td style="font-size:30px; text-align:center;">◎</td>
-    </tr>
-    <tr>
-    <td>
-            <form action="/mypage/complete_add_new_reservation" method="post">
-            {{csrf_field()}}
-            <input type="hidden" name = "search_pt_id" value = "{{$ptData->pt_id}}">
-            <input type="hidden" name = "clinical_department" value = "{{$clinical_department}}">
-            <input type="hidden" name = "targetDate" value= "{{$targetDate}}">
-            <input type="hidden" name = "targetTime" value= "170000">            
-                <button type = "submit" class="btn btn-lg btn-block" style="background: white; font-size:30px;" onclick="location.href=/mypage/complete_add_new_reservation">17:00</button>
-            </form>
-        </td>
-        <td style="font-size:30px; text-align:center;">◎</td>
-    </tr>
-    <tr>
-    <td>
-            <form action="/mypage/complete_add_new_reservation" method="post">
-            {{csrf_field()}}
-            <input type="hidden" name = "search_pt_id" value = "{{$ptData->pt_id}}">
-            <input type="hidden" name = "clinical_department" value = "{{$clinical_department}}">
-            <input type="hidden" name = "targetDate" value= "{{$targetDate}}">
-            <input type="hidden" name = "targetTime" value= "180000">            
-                <button type = "submit" class="btn btn-lg btn-block" style="background: white; font-size:30px;" onclick="location.href=/mypage/complete_add_new_reservation">18:00</button>
-            </form>
-        </td>
-        <td style="font-size:30px; text-align:center;">◎</td>
-    </tr>
-    <tr>
-    <td>
-            <form action="/mypage/complete_add_new_reservation" method="post">
-            {{csrf_field()}}
-            <input type="hidden" name = "search_pt_id" value = "{{$ptData->pt_id}}">
-            <input type="hidden" name = "clinical_department" value = "{{$clinical_department}}">
-            <input type="hidden" name = "targetDate" value= "{{$targetDate}}">
-            <input type="hidden" name = "targetTime" value= "190000">            
-                <button type = "submit" class="btn btn-lg btn-block" style="background: white; font-size:30px;" onclick="location.href=/mypage/complete_add_new_reservation">19:00</button>
-            </form>
-        </td>
-        <td style="font-size:30px; text-align:center;">◎</td>
-    </tr>
-</table>
-
+{{-- スケジュール表を作成 --}}
+<form action="/mypage/complete_add_new_reservation" method =post>
+{{csrf_field()}}
+{!!$show_schedule!!}
 </form>
+
+
 <br>
 <br>
 

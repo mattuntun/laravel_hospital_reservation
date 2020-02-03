@@ -11,6 +11,6 @@ class ClinicalDepartmentsSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\clinical_departments::class,5)->create();
+        factory(App\clinical_departments::class,1)->create();
     }
 }

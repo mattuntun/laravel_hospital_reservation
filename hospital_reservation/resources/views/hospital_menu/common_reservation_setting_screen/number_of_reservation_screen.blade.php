@@ -3,6 +3,17 @@
 
 {{-- ヘッド --}}
 @section('web_title','予約数・予約状況表示設定')
+<style type="text/css">
+
+.errors {
+    width: 500px;
+    font-size: 20px;
+    color: #e95353;
+    border: 1px solid #e95353;
+    background-color: #f2dede;
+}
+
+</style>
 
 {{-- ヘッダー --}}
 @section('header_content')
@@ -13,6 +24,19 @@
 
 {{-- メイン --}}
 @section('main_content')
+
+@if($errors->any())
+    <div class = "errors">
+    <ul>
+        @foreach($errors->all() as $error)
+                <li>{{$error}}</li>
+        @endforeach
+        </ul>
+    </div>
+
+@endif
+
+
     {{-- このコンポーネントはformとしての囲い(メソッドはpost) --}}
     @component('component_item.form')
                  @slot('form_action')
@@ -27,7 +51,7 @@
                  @slot('form_item3')
                  {{-- タグ付ボタン(スモール) --}}
                      @include('sab_view_item.small_tagged_buttom',
-                             ['tagged_value'=>'内容を確認して予約空き情報表示設定へ進む',
+                             ['tagged_value'=>'空き情報表示設定へ進むと上記が登録されます',
                               'buttom_value'=>'空き情報表示へ進む',
                               'buttom_access'=>'/common_reservation_setting_screen/status_display_setting'])
                  @endslot
@@ -49,9 +73,9 @@
                   'footerbuttom3'=>'医療機関HPトップ',
                   'footerbuttom4'=>'患者情報ダウンロード',
                   'footerbuttom_access1'=>'/index/hospital_menu',
-                  'footerbuttom_access2'=>'/index',
-                  'footerbuttom_access3'=>'/index',
-                  'footerbuttom_access4'=>'/index' ])
+                  'footerbuttom_access2'=>'/admin/index',
+                  'footerbuttom_access3'=>'/admin/index',
+                  'footerbuttom_access4'=>'/hospital_menu/complete_download' ])
 @endsection
 
 

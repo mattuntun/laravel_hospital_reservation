@@ -9,12 +9,31 @@ use App\Models\PatientDataModel;
 
 class PatientRegistrationController extends Controller
 {
+    //adminでログインしていないとビュー不可
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+
     //新規患者登録、データ入力画面
     public function NewPatient() {
         return view('hospital_menu.patient_registration_change_deletion.patient_information.new_patient_registration');
     }
+
     //新規患者登録完了
     public function CompleteNewPatient(Request $request) {
+        //前入力画面のバリデーション
+        $request->validate([
+            'pt_id'=>'required|integer|digits_between:1,10:|unique:pt_data,pt_id',
+            'pt_last_name'=>'required|string|max:100',
+            'pt_name'=>'required|string|max:100',
+            'pt_last_name_kata'=>'required|kana|max:100',
+            'pt_name_kata'=>'required|string|max:100',
+            'birthday'=>'required|date',
+            'email_adress'=>'required|email|unique:pt_data,email_adress',
+            'sex'=>'required|integer|between:1,2:',
+        ]);
+
         //モデルから新規患者データ登録メソッド呼び出し
         $appNewPt = PatientDataModel::AddNewPtData($request);
         //モデルから患者データ検索メソッド呼び出し
@@ -26,8 +45,14 @@ class PatientRegistrationController extends Controller
     public function SearchChangePatient() {
         return view('hospital_menu.patient_registration_change_deletion.patient_information.search_change_patient_information');
     }
+    
     //患者情報、サーチ後の画面
     public function ChangePatient(Request $request) {
+        //前入力画面のバリデーション
+        $request->validate([
+            'search_pt_id'=>'required|integer|digits_between:1,10:|exists:pt_data,pt_id'
+        ]);
+
         //モデルから患者データ検索メソッド呼び出し
         $pt_datas = PatientDataModel::getPtData($request->search_pt_id);
         return view('hospital_menu.patient_registration_change_deletion.patient_information.change_patient_information',['pt_datas'=>$pt_datas]);
@@ -38,7 +63,11 @@ class PatientRegistrationController extends Controller
                                'ptLastName'=>$request->change_pt_last_name,
                                'ptName'=>$request->change_pt_name,
                                'ptLastNameKata'=>$request->change_pt_last_name_kata,
-                               'ptNameKata'=>$request->change_pt_name_kata,);
+                               'ptNameKata'=>$request->change_pt_name_kata,
+                               'sex'=>$request->sex,
+                               'birthday'=>$request->birthday,
+                               'email_adress'=>$request->email_adress,
+                            );
         //モデルから患者情報変更メソッドの呼び出し
         PatientDataModel::ChangePtData($request);
         return view('hospital_menu.patient_registration_change_deletion.patient_information.complete_change_patient_information',['changePtDatas'=>$changePtDatas]);
@@ -51,6 +80,12 @@ class PatientRegistrationController extends Controller
     }
     //患者情報削除、サーチ後の画面
     public function DeletePatient(Request $request) {
+        
+        //前入力画面のバリデーション
+        $request->validate([
+            'search_pt_id'=>'required|integer|digits_between:1,10:|exists:pt_data,pt_id'
+        ]);
+
         //モデルから患者データ検索メソッド呼び出し
         $pt_datas = PatientDataModel::getPtData($request->search_pt_id);
         return view('hospital_menu.patient_registration_change_deletion.patient_information.delete_patient_information',['pt_datas'=>$pt_datas]);

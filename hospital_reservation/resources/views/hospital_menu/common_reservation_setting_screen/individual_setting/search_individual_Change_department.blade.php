@@ -22,6 +22,14 @@
         margin:20px;
 }
 
+.errors {
+    width: 500px;
+    font-size: 20px;
+    color: #e95353;
+    border: 1px solid #e95353;
+    background-color: #f2dede;
+}
+
 </style>
 
 {{-- ヘッダー --}}
@@ -36,6 +44,16 @@
 <h2>
     <b>変更する診療科を選択し、設定変更画面へ移行して下さい</b>
 </h2>
+
+@if($errors->any())
+        <div class = "errors">
+            <ul>
+                @foreach($errors->all() as $error)
+                <li>{{$error}}</li>
+                @endforeach
+            </ul>
+        </div>
+@endif
     
     <form action="/individual_setting_menu/set_individual_change_department" method = post>
     {{csrf_field()}}
@@ -66,7 +84,7 @@
                   'footerbuttom3'=>'医療機関HPトップ',
                   'footerbuttom4'=>'予約情報ダウンロード',
                   'footerbuttom_access1'=>'/index/hospital_menu',
-                  'footerbuttom_access2'=>'/index',
-                  'footerbuttom_access3'=>'/index',
-                  'footerbuttom_access4'=>'/index' ])
+                  'footerbuttom_access2'=>'/admin/index',
+                  'footerbuttom_access3'=>'/admin/index',
+                  'footerbuttom_access4'=>'/hospital_menu/complete_download' ])
 @endsection

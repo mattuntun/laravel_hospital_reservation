@@ -1,75 +1,86 @@
 {{-- レイアウトベースはlayout_hospital_base --}}
 @extends('layout.layout_hospital_base')
 
-
 {{-- ヘッド --}}
-@section('web_title','予約削除')
+@section('web_title','予約情報削除')
 
+<style type="text/css">
+.PtInfo{
+        margin-bottom: 50px ;
+        padding-bottom: 50px;
+        border-bottom: 5px dotted rgb(6, 71, 250);
+               
+}
+.ResInfo{
+        margin-bottom: 50px ;
+        padding-bottom: 50px;
+        border-bottom: 5px solid rgb(6, 71, 250);             
+}
+
+.delete_buttom{
+        text-align:right;
+        margin:20px;
+}
+
+</style>
 
 {{-- ヘッダー --}}
 
 @section('header_content')
         @include('sab_view_item.header',
-                  ['main_theme'=>'患者予約情報変更',
-                   'sub_theme'=>'予約削除'])
+                  ['main_theme'=>'予約情報削除',
+                  'sub_theme'=>'選択した予約を削除します'])
 @endsection
 
+
 {{-- メイン --}}
+
 @section('main_content')
-<h2>予約を削除したい患者のIDを入力</h2>
 
-        {{-- このコンポーネントはformとしての囲い(メソッドはpost) --}}
-        @component('component_item.form')
-                 @slot('form_action')
-                 /index
-                 @endslot
 
-                 @slot('form_item1')
-                        {{-- 1箇所テキスト(ロング) --}}
-                        @include('sab_view_item.texts_one_long',
-                                ['label_value'=>'患者ID検索',
-                                'label_id'=>'pt_id_search',
-                                'input_id'=>'pt_id_search',
-                                'input_name'=>'pt_id'])
-                 @endslot
-                       
-                 @slot('form_item2')
-                        {{-- タグ付ボタン(スモール) --}}
-                        @include('sab_view_item.small_tagged_buttom',
-                                        ['tagged_value'=>'IDの確認後、検索',
-                                        'buttom_value'=>'患者ID検索',
-                                        'buttom_access'=>'/index'])
-                 @endslot
+@foreach($pt_datas as $pt_data)    
+        <div class = "PtInfo">
+                <h2>患者ID：{{$pt_data->pt_id}}</h2>
+                <h2>カナ氏名：{{$pt_data->pt_last_name_kata}}　{{$pt_data->pt_name_kata}}</h2>
 
-                 @slot('form_name')
-                 pt_search
-                 @endslot
+                <h2>患者氏名：{{$pt_data->pt_last_name}}　{{$pt_data->pt_name}}　様</h2>
+            </div>
+@endforeach
 
-         @endcomponent
+
+@foreach($reservationDatas as $reservationData)
+@endforeach
+
+        <div class = "ResInfo">
+        <h2 style="font-size:40px; padding-bottom:30px;">削除する情報を確認してください</h2>
+            <ul>
+                <li style="font-size:40px; padding-bottom:30px;"><b>予約診療科:</b>{{$reservationData->reservation_department}}</li>
+                <li style="font-size:40px;"><b>予約診療時間</b>　{{$reservationData->reservation_time}}　より診療開始</li>
+
+                <h2 style="font-size:40px; padding-bottom:30px;">予約情報</h2>
+                
+                {{-- タグ付ボタン(スモール) --}}
+                <form action="/edit_patient_appoimtment_information/complete_delete_reservation" method = post>
+                {{csrf_field()}}
+                    
+                    <input type="hidden" name = "searchReservationNo" value ="{{$reservationData->No}}">
+                    <input type="hidden" name = "search_pt_id" value ="{{$pt_data->pt_id}}">
+                    <div class = "delete_buttom">
+                    @include('sab_view_item.small_tagged_buttom',
+                            ['tagged_value'=>'',
+                            'buttom_value'=>'予約削除',
+                            'buttom_access'=>'/edit_patient_appoimtment_information/complete_delete_reservation'])
+                </div>
+                </form>
+            </ul>
+        </div>
 
 @endsection
 
 {{-- フッター --}}
+
 @section('footer_content')
-        @include('sab_view_item.footer',
-                  ['footerbuttom1'=>'設定画面トップ',
-                  'footerbuttom2'=>'ログイン画面へ',
-                  'footerbuttom3'=>'医療機関HPトップ',
-                  'footerbuttom4'=>'予約情報ダウンロード',
-                  'footerbuttom_access1'=>'/index/hospital_menu',
-                  'footerbuttom_access2'=>'/index',
-                  'footerbuttom_access3'=>'/index',
-                  'footerbuttom_access4'=>'/index' ])
+
+
+
 @endsection
-
-
-
-
-
-
-
-
-
-
-
-
