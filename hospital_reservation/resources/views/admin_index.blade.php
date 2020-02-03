@@ -22,6 +22,8 @@
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
         <link rel="stylesheet" href="{{asset('index_css/style.css')}}">
 
+        
+
         <title>予約アプリ 管理者index</title>
 
         <!--適用したらアウトライン生成-->
@@ -31,6 +33,21 @@
         }
     
         </style>-->
+
+<!-- バリデーション時のレイアウト-->
+<style type="text/css">
+
+.errors {
+    width: 500px;
+    font-size: 20px;
+    color: #e95353;
+    border: 1px solid #e95353;
+    background-color: #f2dede;
+    align:center;
+    margin:0 auto
+}
+
+</style>
 
     </head>
   
@@ -47,21 +64,23 @@
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                         <span class="navbar-toggler-icon"></span>
                         </button>
+                        
                 
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <!-- Left Side Of Navbar -->
                                 <ul class="navbar-nav mr-auto">
-
                                 </ul>
 
                                 <!-- Right Side Of Navbar -->
                                 <ul class="navbar-nav ml-auto">
+
                                 <!-- Authentication Links -->
                                     @guest
                                         <li class="nav-item">
                                             <a class="nav-link" href="{{ route('admin.login') }}">{{ __('Login') }}</a>
                                         </li>
-                                        <!--
+
+                                        <!-- 
                                         @if (Route::has('register'))
                                             <li class="nav-item">
                                                 <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
@@ -96,33 +115,50 @@
             </div>
 
             </header>
-
          
         <main>
+        
         <h1 class = "pageTitle">○○医院<br>予約フォーム</h1>
-            <form action="/index/mypage_menu" method="POST" name="patient-data"><!--患者のカテゴリー-->
-            {{csrf_field()}}
-                <section class="patient">
+            <!--患者のカテゴリー-->
+            
+            <section class="patient">
+                @if($errors->any())
+                <div class = "errors">
+                    <ul>
+                @foreach($errors->all() as $error)
+                        <li>{{$error}}</li>
+                @endforeach
+                    </ul>
+                </div>
+                @endif
+
+                <div class = "errors">
+                    {{ session('result') }}
+                </div>
+
+                <form action="/index/mypage_menu" method="POST" >
+                {{csrf_field()}}
                     <div class="id">
                         <ul>
                             <li>患者ID</li>
-                            <li><input type="number" name="search_pt_id"></li>
+                            <li><input type="number" name="search_pt_id" value="{{ old('search_pt_id') }}"></li>
                         </ul>
                     </div>
 
                     <div class="pass">
                         <ul>
-                            <li>生年月日</li>
-                            <li><input type="text" name="patient-pass"></li>
+                            <li>患者パスワード</li>
+                            <li><input type="text" name="patient_pass" value="{{ old('patient_pass') }}"></li>
                         </ul>
                     </div>
                     <br>
                     <div class="switch">
-                        <input type="submit" value="ログイン">
+                        <input type="submit" value="マイページへ">
                         <input type="submit" value="初めての来院の方">
                     </div>
-                </section>
-            </form><!--終了　患者のカテゴリー　終了-->
+                </form>
+            </section>
+            <!--終了　患者のカテゴリー　終了-->
 
 
             <form action="/index/hospital_menu" method="POST" name="hospital-menu"><!--病院のカテゴリー-->

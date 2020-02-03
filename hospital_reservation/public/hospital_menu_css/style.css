@@ -38,6 +38,15 @@ body {
 
 }
 
+/*全てのテーブルを横スクロール適応させる
+table {
+  display: block;
+  overflow-x: scroll;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+*/
+
 @media(max-width:767px){
 	.wrapper{
 		margin: 0 8px ;

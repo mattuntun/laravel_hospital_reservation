@@ -39,7 +39,6 @@
             <div class = "PtInfo">
                 <h2>患者ID：{{$foreignPatientData->pt_id}}</h2>
                 <h2>カナ氏名：{{$foreignPatientData->pt_last_name_kata}}　{{$foreignPatientData->pt_name_kata}}</h2>
-
                 <h2>患者氏名：{{$foreignPatientData->pt_last_name}}　{{$foreignPatientData->pt_name}}　様</h2>
             </div>
 
@@ -55,6 +54,17 @@
                 <li style="font-size:40px; padding-bottom:30px;"><b>予約診療科:</b>{{$reservation_data->reservation_department}}</li>
                 <li style="font-size:40px;"><b>予約日:</b>　{{$reservation_data->reservation_date}}</li>
                 <li style="font-size:40px;"><b>診療開始予定時間:</b>　{{$reservation_data->reservation_time}}　より診療開始</li>
+                @if($reservation_data->letter_of_introduction == 1)
+                        <li style="font-size:30px;"><b>紹介状：有</b></li>
+                        <li style="font-size:20px;"><b>紹介元病院：{{$reservation_data->introduction_hp}}</b></li>
+                        <li style="font-size:20px;"><b>紹介元TEL：{{$reservation_data->introduction_hp_tell}}</b></li>
+                        <li style="font-size:20px;"><b>紹介元最終受診日：{{$reservation_data->introduction_hp_date}}</b></li>
+
+                @elseif($reservation_data->letter_of_introduction == 2)
+
+                        <li style="font-size:30px;"><b>紹介状：無</b></li>
+
+                @endif
                 
                 
                 {{-- タグ付ボタン(スモール) --}}
@@ -97,7 +107,7 @@
                   'footerbuttom_access1'=>'/index/hospital_menu',
                   'footerbuttom_access2'=>'/admin/index',
                   'footerbuttom_access3'=>'/admin/index',
-                  'footerbuttom_access4'=>'/admin/index' ])
+                  'footerbuttom_access4'=>'/hospital_menu/complete_download' ])
 @endsection
 
 

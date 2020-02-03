@@ -21,7 +21,7 @@ Route::get('index','Indexcontroller@Index');
 //管理者indexページへ
 Route::get('admin/index','HospitalController@AdminIndex');
 //ユーザーindexページへ
-Route::get('user_index','PersonMyPageController@UesrIndex');
+Route::any('user/index','PersonMyPageController@UesrIndex');
 
 
 //マイページへ
@@ -49,6 +49,27 @@ Route::get('mypage/complete_add_letter_of_introduction','PersonMyPageController@
 Route::post('index/hospital_menu','HospitalController@HospitalMenu');
 //病院menuページへ
 Route::get('index/hospital_menu','HospitalController@HospitalMenu');
+
+//病院ページ内のエラービューページ
+Route::get('error_page','CommonSettingScreenController@ErrorPageView');
+
+//予約情報エクセル　ダウンロードビューページ
+Route::get('hospital_menu/complete_download','ExcelReservationController@DownloadReservation');
+//予約情報をエクスポート
+Route::get('hospital_menu/complete_download/export','ExcelReservationController@Export')->name('reservation_export');
+//予約情報インポート用のエクセルダウンロード
+Route::get('hospital_menu/complete_download/export_for_import_excel','ExcelReservationController@ExportForImportDefault')->name('reservation_import_excel');
+//予約情報をインポート
+Route::post('hospital_menu/complete_download/import','ExcelReservationController@Import')->name('reservation_import');
+
+//患者情報エクセル　ダウンロードビューページ
+Route::get('hospital_menu/complete_download_pt_data','ExcelPtDataController@DownloadReservation');
+//患者情報をエクスポート
+Route::get('hospital_menu/complete_download_pt_data/export','ExcelPtDataController@Export')->name('pt_data_export');
+//患者情報インポート用のエクセルダウンロード
+Route::get('hospital_menu/complete_download_pt_data/export_for_import_excel','ExcelPtDataController@ExportForImportDefault')->name('pt_data_import_excel');
+//患者情報をインポート
+Route::post('hospital_menu/complete_download_pt_data/import','ExcelPtDataController@Import')->name('pt_data_import');
 
 //全科共通予約画面設定のページへ
 Route::get('hospital_menu/Common_reservation_setting_screen','HospitalController@CommonReservationSettingScreen');
@@ -78,6 +99,7 @@ Route::post('common_reservation_setting_screen/status_display_setting
 //全科共通の予約数・状況表示設定完了画面
 Route::post('common_reservation_setting_screen/number_of_reservation/status_display/complete
 ','CommonSettingScreenController@CompleteNumberAndStatusSetting');
+
 
 //診療不可設定
 //個別診療科設定メニュー画面へ
@@ -188,7 +210,6 @@ Route::post('edit_patient_appoimtment_information/target_date_all_reservation_ch
 
 
 Auth::routes();
- 
 
 Route::get('/home', 'HomeController@index')->name('home');
 /*
@@ -196,38 +217,43 @@ Route::get('/home', 'HomeController@index')->name('home');
 | 1) User 認証不要
 |--------------------------------------------------------------------------
 */
-Route::get('/', function () { return redirect('/login'); });
+
+Route::get('/', function () { return redirect('/home'); });
  
 /*
 |--------------------------------------------------------------------------
 | 2) User ログイン後
 |--------------------------------------------------------------------------
 */
+
 Route::group(['middleware' => 'auth:user'], function() {
-
-    Route::get('/user_index', 'PersonMyPageController@UesrIndex')->name('user_index');
-    Route::post('/user_index', 'PersonMyPageController@UesrIndex')->name('user_index');
-
+    Route::get('/home', 'HomeController@index')->name('home');
 });
+
  
 /*
 |--------------------------------------------------------------------------
 | 3) Admin 認証不要
 |--------------------------------------------------------------------------
 */
+
+//初期状態
 Route::group(['prefix' => 'admin'], function() {
-    Route::get('/',         function () { return redirect('/admin/index'); });
+   
+    Route::get('/',         function () { return redirect('/admin/index'); });    
     Route::get('login',     'Admin\LoginController@showLoginForm')->name('admin.login');
     Route::post('login',    'Admin\LoginController@login');
-    
 });
+
  
 /*
 |--------------------------------------------------------------------------
 | 4) Admin ログイン後
 |--------------------------------------------------------------------------
 */
+
+//初期状態
 Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function() {
     Route::post('logout',   'Admin\LoginController@logout')->name('admin.logout');
-
+    Route::get('home',      'Admin\HomeController@index')->name('admin.home');
 });

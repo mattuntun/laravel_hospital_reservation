@@ -13,6 +13,14 @@
         border-bottom: 5px dotted rgb(6, 71, 250);
 }
 
+.errors {
+    width: 500px;
+    font-size: 20px;
+    color: #e95353;
+    border: 1px solid #e95353;
+    background-color: #f2dede;
+}
+
 </style>
 
 
@@ -31,6 +39,17 @@
 <div class = "PtInfo">
     <h2>全診療科共通　休診日変更</h2>
 </div>
+
+@if($errors->any())
+    <div class = "errors">
+    <ul>
+        @foreach($errors->all() as $error)
+                <li>{{$error}}</li>
+        @endforeach
+        </ul>
+    </div>
+
+@endif
 
 {{-- このコンポーネントはformとしての囲い(メソッドはpost) --}}
         @component('component_item.form')
@@ -153,5 +172,5 @@
                   'footerbuttom_access1'=>'/index/hospital_menu',
                   'footerbuttom_access2'=>'/admin/index',
                   'footerbuttom_access3'=>'/admin/index',
-                  'footerbuttom_access4'=>'/admin/index' ])
+                  'footerbuttom_access4'=>'/hospital_menu/complete_download' ])
 @endsection

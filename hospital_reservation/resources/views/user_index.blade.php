@@ -33,6 +33,20 @@
     
       </style>-->
 
+<!-- バリデーション時のレイアウト-->
+<style type="text/css">
+
+.errors {
+    width: 500px;
+    font-size: 20px;
+    color: #e95353;
+    border: 1px solid #e95353;
+    background-color: #f2dede;
+    align:center;
+    margin:0 auto
+}
+
+</style>
   </head>
   
   <body>
@@ -41,31 +55,34 @@
 
       <header>
       <body>
+
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="https://www.google.com/?hl=ja">
                     ○○医院トップページ
                 </a>
+                
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
+
                     <ul class="navbar-nav mr-auto">
 
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav ml-auto">  <!-- -->
                         <!-- Authentication Links -->
+
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
-                            <!--
+
                             @if (Route::has('register'))
                                
                                     <li class="nav-item">
@@ -73,7 +90,6 @@
                                 </li>
                                 
                             @endif
-                            -->
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -102,31 +118,47 @@
       
       <main>
       <h1 class = "pageTitle">○○医院<br>予約フォーム</h1>
-        <form action="/index/mypage_menu" method="POST" name="patient-data"><!--患者のカテゴリー-->
-        {{csrf_field()}}
+      <!--患者のカテゴリー-->
+      
           <section class="patient">
-            <div class="id">
+          @if($errors->any())
+          <div class = "errors">
               <ul>
-                <li>患者ID</li>
-                <li><input type="number" name="search_pt_id"></li>
+          @foreach($errors->all() as $error)
+                  <li>{{$error}}</li>
+          @endforeach
               </ul>
-            </div>
+          </div>
+          @endif
 
-            <div class="pass">
-              <ul>
-                <li>生年月日</li>
-                <li><input type="text" name="patient-pass"></li>
-              </ul>
-            </div>
-            <br>
+          <div class = "errors">
+              {{ session('result') }}
+          </div>
+          
+          <form action="/index/mypage_menu" method="POST" name="patient-data">
+          {{csrf_field()}}
+              <div class="id">
+                  <ul>
+                      <li>患者ID</li>
+                      <li><input type="number" name="search_pt_id"></li>
+                  </ul>
+              </div>
 
-            <div class="switch">
-              <input type="submit" value="ログイン">
-              <input type="submit" value="初めての来院の方">
-            </div>
-          </section>
-        </form><!--終了　患者のカテゴリー　終了-->
+              <div class="pass">
+                  <ul>
+                      <li>患者パスワード</li>
+                      <li><input type="text" name="patient_pass"></li>
+                  </ul>
+              </div>
+              
+              <br>
 
+              <div class="switch">
+                  <input type="submit" value="マイページへ">
+                  <input type="submit" value="初めての来院の方">
+              </div>          
+          </form><!--終了　患者のカテゴリー　終了-->
+      </section>
 
       </main>
 

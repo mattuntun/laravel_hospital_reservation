@@ -19,9 +19,13 @@
 
 @section('main_content')
         {{-- シンプルボタン(middle) --}}
+
+        {{--
         @include('sab_view_item.middle_simple_buttom',
                   ['middle_buttom_value'=>'隔週の休日設定を追加 未実装',
                    'middle_buttom_access'=>'/common_reservation_setting_screen/horiday_setting'])
+
+                   --}}
 
         {{-- シンプルボタン(middle) --}}      
         @include('sab_view_item.middle_simple_buttom',
@@ -42,5 +46,5 @@
                   'footerbuttom_access1'=>'/index/hospital_menu',
                   'footerbuttom_access2'=>'/admin/index',
                   'footerbuttom_access3'=>'/admin/index',
-                  'footerbuttom_access4'=>'/admin/index' ])
+                  'footerbuttom_access4'=>'/hospital_menu/complete_download' ])
 @endsection

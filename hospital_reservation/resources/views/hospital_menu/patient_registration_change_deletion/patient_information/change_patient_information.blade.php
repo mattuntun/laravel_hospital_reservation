@@ -17,11 +17,11 @@
 
 {{-- メイン --}}
 @section('main_content')
-<h2>該当患者情報</h2>
-@foreach($pt_datas as $pt_data)
-<h6>{{var_dump($pt_datas)}}</h6>
 
-<h3>ID:{{$pt_data->pt_id}}</h3>
+@foreach($pt_datas as $pt_data)
+
+
+<h2>該当患者情報　ID:{{$pt_data->pt_id}}</h2>
 
 @php
 $ptId = $pt_data->pt_id;
@@ -29,35 +29,11 @@ $ptLastName = $pt_data->pt_last_name;
 $ptName = $pt_data->pt_name;
 $ptLastNameKata = $pt_data->pt_last_name_kata;
 $ptNameKata = $pt_data->pt_name_kata;
+$ptSex = $pt_data->sex;
+$ptBirthday  = $pt_data->birthday ;
+$ptEmail_adress  = $pt_data->email_adress ;
 
-switch($pt_data->sex){
-    case 1;
-    $ptSeX = '男';
-    break;
-    case 2;
-    $ptSeX = '女';
-    break;
-}
-
-echo $ptSeX;
 @endphp
-
-{{--
-<form action="/change_patient_information/complete_change_patient_information" method = post>
-{{ csrf_field() }}
-<input type="hidden" name = "search_pt_id" value="{{$pt_data->pt_id}}">
-<input type="hidden" name = "change_pt_last_name" value="{{$pt_data->pt_last_name}}"> 
-<input type="hidden" name = "change_pt_name" value="{{$pt_data->pt_last_name_kata}}"> 
-<input type="hidden" name = "change_pt_last_name_kata" value="{{$ptLastNameKata}}"> 
-<input type="hidden" name = "change_pt_name_kata" value="{{$pt_data->pt_name_kata}}">
-@include('sab_view_item.small_tagged_buttom',
-                                        ['tagged_value'=>'登録内容確認後、登録',
-                                        'buttom_value'=>'登録',
-                                        'buttom_access'=>'/change_patient_information/complete_change_patient_information'])
-
-</form> --}}
-
-
 
         {{-- このコンポーネントはformとしての囲い(メソッドはpost) --}}
         @component('component_item.form')
@@ -87,12 +63,48 @@ echo $ptSeX;
                  @endslot
 
                  @slot('form_item3')
+
+                 <div class="form-group">
+                    <table>
+                        <tr>
+                            <td>
+                                <label class="control-label">生年月日</label>
+                                <input class="form-control" type="text" name="birthday" value={{$ptBirthday}}>
+                            </td>
+                            <td>
+                                <label class="control-label">メールアドレス</label>
+                                <input class="form-control" type="text" name="email_adress" value={{$ptEmail_adress}}>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            @if($ptSex == 1)
+                            <label class="control-label">性別</label>
+                                <select name="sex" class="form-control">
+                                    <option selected value=1 class="form-control">男</option>
+                                    <option value=2 class="form-control">女</option>
+                                </select>
+
+                            @elseif($ptSex == 2)
+                            <label class="control-label">性別</label>
+                                <select name="sex" class="form-control">
+                                    <option value="1" class="form-control">男</option>
+                                    <option selected value="2" class="form-control">女</option>
+                                </select>
+
+                            @endif
+
+                            </td>
+                        </tr>
+
+                    </table>
+                </div>
                  
                  @endslot
 
 
 
-                 @slot('form_item3')
+                 @slot('form_item4')
                         {{-- タグ付ボタン(スモール) --}}
                         @include('sab_view_item.small_tagged_buttom',
                                         ['tagged_value'=>'登録内容確認後、登録',
@@ -114,11 +126,11 @@ echo $ptSeX;
                   ['footerbuttom1'=>'設定画面トップ',
                   'footerbuttom2'=>'ログイン画面へ',
                   'footerbuttom3'=>'医療機関HPトップ',
-                  'footerbuttom4'=>'予約情報ダウンロード',
+                  'footerbuttom4'=>'患者情報ダウンロード',
                   'footerbuttom_access1'=>'/index/hospital_menu',
                   'footerbuttom_access2'=>'/admin/index',
                   'footerbuttom_access3'=>'/admin/index',
-                  'footerbuttom_access4'=>'/admin/index' ])
+                  'footerbuttom_access4'=>'/hospital_menu/complete_download_pt_data' ])
 @endsection
 
 

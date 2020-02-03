@@ -28,7 +28,14 @@ class LoginController extends Controller
      *
      * @var string
      */
+    //初期状態
+    //protected $redirectTo = '/admin/home';
+
+
     protected $redirectTo = '/admin/index'; // ログイン後のリダイレクト先
+
+
+
     /**
      * Create a new controller instance.
      *
@@ -39,6 +46,9 @@ class LoginController extends Controller
     {
         $this->middleware('guest:admin')->except('logout'); //変更
     }
+
+
+    
  
     //ログイン画面
     public function showLoginForm()

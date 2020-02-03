@@ -15,6 +15,12 @@ use App\HospitalSchedule;
 
 class ApointmentEditController extends Controller
 {
+    //adminでログインしていないとビュー不可
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+
     //予約新規追加の患者検索のコントローラ
     public function SearchPtNewReservation() {
         return view('hospital_menu.edit_patient_appoimtment_information.edit_reservation.search_pt_new_reservation');
@@ -22,6 +28,12 @@ class ApointmentEditController extends Controller
     
     //予約新規追加の患者情報確認画面コントローラ
     public function NewReservation(Request $request) {
+
+        //前画面入力値のバリデーション
+        $request->validate([
+            'search_pt_id'=>'required|integer|digits_between:1,10:|exists:pt_data,pt_id'
+        ]);
+
         //患者情報を取得
         $pt_datas = PatientDataModel::getPtData($request->search_pt_id);
 
@@ -205,6 +217,12 @@ class ApointmentEditController extends Controller
 
     //直接日付入力による確認画面
     public function TargetDateAllReservationCheck(Request $request) {
+       
+        //全画面のバリデーション
+        $request->validate([
+            'check_Date'=>'required|date_format:"Y-m-d"|after:tomorrow',
+        ]);
+
         //前画面より指定した予約確認日と診療科名を取得
         $target_date = $request->check_Date;
         $selectedDepartment = $request->selectedDepartment;

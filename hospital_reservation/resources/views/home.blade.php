@@ -15,6 +15,17 @@
                     @endif
 
                     You are logged in!
+                    <br>
+                    <br>
+                    ”予約する”を押して予約フォームへ移動してください
+                        <div>
+                        <br>
+                            <form action="/user/index">
+                                <button type="submit" class="btn btn-primary">
+                                    予約する
+                                </button>
+                            </form>
+                        </div>
                 </div>
             </div>
         </div>

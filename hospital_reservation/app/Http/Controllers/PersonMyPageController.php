@@ -12,51 +12,68 @@ use App\NextCalendar;
 use App\AfterNextCalendar;
 use App\Schedule;
 
+
 use Auth;
 
 class PersonMyPageController extends Controller{   
 
-    //ログインの為のAuthデータ取得画面呼び出し
-    public function __construct()
-    {
-        if($this->middleware('auth:admin') == null){    //adminデータ取得不可の場合
-        $this->middleware('auth');                      //ユーザーデータ取得
-        }else{                                          //adminデータ取得可能の場合
-            $this->middleware('auth:admin');            //adminデータ取得
-        }
-        
-    }
 
-    //患者用インデックスページへ
-    public function UesrIndex(){
-        if($this->middleware('auth:admin') == null){                 //adminデータ取得不可の場合
-            
-            $auths = Auth::user();
-            return view('user_index' ,[ 'auths' => $auths ]);        //ユーザーデータ取得
+//authで認証させる。全てのページで、アクセスがあった場合にログインされていない状態だと login のページへ強制的にリダイレクト
+public function __construct(){
+       
+    $this->middleware('auth:admin,user');
+       
+}
 
-            }else{                                                   //adminデータ取得可能の場合
-            
-            $auths = Auth::user();
-            return view('user_index' ,[ 'auths' => $auths ]);       //adminデータ取得
-            }
 
-        //$auths = Auth::user();
-        //return view('user_index' ,[ 'auths' => $auths ]);
-    }
+//患者用インデックスページへ
+public function UesrIndex(){
+    
+    //コントローラファイルからbladeファイルへユーザー情報を渡す
+    $auth = Auth::user();
+     return view('user_index',['auth'=>$auth]);
+ }
 
     //患者マイページへ
     public function MyPageMenu(Request $request){
         
+
+        //前画面入力値のバリデーション
+        $request->validate([
+            'search_pt_id'=>'required|integer|digits_between:1,10:|exists:pt_data,pt_id',
+            'patient_pass'=>'required',            
+        ]);
+        
         //患者情報モデルから患者情報取得
         $ptDatas = PatientDataModel::getPtData($request->search_pt_id);
-
-        //モデルのjoinを利用して個人情報⇒予約情報リレーション
-        $foreignReservationDatas =\App\Models\PatientDataModel::ForeignReservationData($request->search_pt_id);
         
-        if($foreignReservationDatas->isEmpty() == true){
-            return view('patient_menu.mypage_menu',['ptDatas'=>$ptDatas,'foreignReservationDatas'=>null]);
-        }else{
-            return view('patient_menu.mypage_menu',['ptDatas'=>$ptDatas,'foreignReservationDatas'=>$foreignReservationDatas]);
+        //患者情報モデルから患者生年月日を取得
+        foreach($ptDatas as $items) {
+            $pt_birthday = $items->birthday ;
+        }
+
+        //入力された生年月日を取得
+        $input_pass = $request->patient_pass;
+
+        //入力した患者生年月日とDBの生年月日が一致か確認
+        if($pt_birthday == $input_pass)
+        //入力したパスワードと患者生年月日が同じだった場合、マイページを表示
+        {
+            //モデルのjoinを利用して個人情報⇒予約情報リレーション
+            $foreignReservationDatas =\App\Models\PatientDataModel::ForeignReservationData($request->search_pt_id);
+            
+            if($foreignReservationDatas->isEmpty() == true)
+            //患者IDで検索して予約情報がなかった場合、予約情報をnullでデータを渡す
+            {
+                return view('patient_menu.mypage_menu',['ptDatas'=>$ptDatas,'foreignReservationDatas'=>null]);
+            } 
+            else//患者IDで検索して予約情報があった場合予約情報を渡す
+             {
+                return view('patient_menu.mypage_menu',['ptDatas'=>$ptDatas,'foreignReservationDatas'=>$foreignReservationDatas]);
+            }
+
+        } else {//患者IDと、患者IDが所持する生年月日が一致しなかった場合
+            return back()->with('result', '患者IDとパスワードが一致していません')->withInput();
         }
     }
     

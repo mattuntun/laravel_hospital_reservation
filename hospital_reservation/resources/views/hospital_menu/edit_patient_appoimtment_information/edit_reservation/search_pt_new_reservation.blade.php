@@ -5,6 +5,16 @@
 {{-- ヘッド --}}
 @section('web_title','予約追加')
 
+<style>
+.errors {
+    width: 500px;
+    font-size: 20px;
+    color: #e95353;
+    border: 1px solid #e95353;
+    background-color: #f2dede;
+}
+</style>
+
 
 {{-- ヘッダー --}}
 
@@ -17,6 +27,16 @@
 {{-- メイン --}}
 @section('main_content')
 <h2>予約を確認・変更したい患者のIDを入力</h2>
+
+@if($errors->any())
+<div class = "errors">
+        <ul>
+                @foreach($errors->all() as $error)
+                        <li>{{$error}}</li>
+                @endforeach
+        </ul>
+</div>
+@endif
 
         {{-- このコンポーネントはformとしての囲い(メソッドはpost) --}}
         @component('component_item.form')
@@ -59,7 +79,7 @@
                   'footerbuttom_access1'=>'/index/hospital_menu',
                   'footerbuttom_access2'=>'/admin/index',
                   'footerbuttom_access3'=>'/admin/index',
-                  'footerbuttom_access4'=>'/admin/index' ])
+                  'footerbuttom_access4'=>'/hospital_menu/complete_download' ])
 @endsection
 
 
