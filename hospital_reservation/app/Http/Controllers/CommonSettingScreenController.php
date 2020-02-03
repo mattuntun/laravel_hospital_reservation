@@ -8,13 +8,12 @@ use App\Models\AllDepartmentHoliday;
 
 class CommonSettingScreenController extends Controller
 {
-    //エラーページビュー
+    //予約期間、期限の編集
     public function SetPeriodAndDeadline() {
         return view('hospital_menu.common_reservation_setting_screen.set_period_and_deadline');
     }
     
-
-    //予約期間、期限の編集
+    //エラーページビュー
     public function ErrorPageView() {
         return view('hospital_menu.common_reservation_setting_screen.error_page');
     }
