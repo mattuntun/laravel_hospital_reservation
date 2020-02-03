@@ -4,18 +4,6 @@
 {{-- ヘッド --}}
 @section('web_title','休診日追加')
 
-<style>
-.errors {
-    width: 500px;
-    font-size: 20px;
-    color: #e95353;
-    border: 1px solid #e95353;
-    background-color: #f2dede;
-}
-</style>
-
-
-
 {{-- ヘッダー --}}
 
 @section('header_content')

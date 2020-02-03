@@ -4,16 +4,6 @@
 {{-- ヘッド --}}
 @section('web_title','診療科別設定')
 
-<style>
-.errors {
-    width: 500px;
-    font-size: 20px;
-    color: #e95353;
-    border: 1px solid #e95353;
-    background-color: #f2dede;
-}
-</style>
-
 {{-- ヘッダー --}}
 @section('header_content')
     @include('sab_view_item.header',
