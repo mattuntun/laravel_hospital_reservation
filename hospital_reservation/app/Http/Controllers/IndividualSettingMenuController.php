@@ -166,7 +166,7 @@ class IndividualSettingMenucontroller extends Controller
         ]);
 
         if($validator->fails()) {
-            return redirect('error_page')
+            return redirect('error')
                 ->withErrors($validator)
                 ->withInput();
         }
@@ -248,7 +248,7 @@ class IndividualSettingMenucontroller extends Controller
         ]);
         //バリデーションが発生した場合、エラーページへ遷移する
         if($validator->fails()) {
-            return redirect('error_page')
+            return redirect('error')
                 ->withErrors($validator)
                 ->withInput();
         }

@@ -51,7 +51,7 @@ Route::post('index/hospital_menu','HospitalController@HospitalMenu');
 Route::get('index/hospital_menu','HospitalController@HospitalMenu');
 
 //病院ページ内のエラービューページ
-Route::get('error_page','CommonSettingScreenController@ErrorPageView');
+Route::get('error','CommonSettingScreenController@ErrorPageView');
 
 //予約情報エクセル　ダウンロードビューページ
 Route::get('hospital_menu/complete_download','ExcelReservationController@DownloadReservation');
