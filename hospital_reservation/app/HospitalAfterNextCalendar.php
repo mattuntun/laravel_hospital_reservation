@@ -8,7 +8,7 @@ class HospitalAfterNextCalendar
 {
     private $html;  
 
-    /*
+    
     //1日の予約数のパーセンテージを計算・表示形式指定
     public static function AfterNextMouthDayPossible($search_Department,$year_after_next,$month_after_next,$month_after_next_day,$doubleCircleReservationValue,$circleReservationValue,$triangleReservationValue){
             
@@ -23,28 +23,8 @@ class HospitalAfterNextCalendar
 
         //1日の予約空き状況を計算
         $emptyParcent = ClinicalDepartmentsDataModel::OneDayCalculation($search_Department,$reservedNumber,$oneDayMaxFrame);
-        */
-
-        /*
-        switch($emptyParcent){
-            case($emptyParcent > $doubleCircleReservationValue):
-                return '&#9678';      // ◎ 
-                break;
-            
-            case($emptyParcent > $circleReservationValue):
-                return  '&#9675';     // 〇
-                break;
-
-            case($emptyParcent > $triangleReservationValue):
-                return  '&#9651';     // △
-                break;
-
-            default:
-                return  '&#10005';    // ✕
-            }
-            */
-
-        /*
+        
+       
         if ( $emptyParcent > $doubleCircleReservationValue ) {
         
             return '&#9678';      // ◎
@@ -64,68 +44,10 @@ class HospitalAfterNextCalendar
         }
         
     }
-    */
-    
+       
    
     //翌々月カレンダー
     public function showMonthAfterNextCalendarTag($search_pt_id, $search_Department, $doubleCircleReservationValue, $circleReservationValue, $triangleReservationValue) {
-
-        
-        //1日の予約数のパーセンテージを計算・表示形式指定
-        function AfterNextMouthDayPossible($search_Department, $year_after_next, $month_after_next, $month_after_next_day, $doubleCircleReservationValue, $circleReservationValue, $triangleReservationValue) {
-            
-            //年月日のデータを作成
-            $targetDate = strval($year_after_next).strval($month_after_next).strval(str_pad($month_after_next_day, 2, 0, STR_PAD_LEFT));
-
-            //1日の最大予約枠数を計算
-            $oneDayMaxFrame = ClinicalDepartmentsDataModel::OneDayPossibleFrame($search_Department,$targetDate);
-
-            //現在の予約済数を獲得
-            $reservedNumber = ClinicalDepartmentsDataModel::ForeignReservation($search_Department,$targetDate);
-
-            //1日の予約空き状況を計算
-            $emptyParcent = ClinicalDepartmentsDataModel::OneDayCalculation($search_Department,$reservedNumber,$oneDayMaxFrame);
-
-            /*
-            switch($emptyParcent){
-                case($emptyParcent > $doubleCircleReservationValue):
-                    return '&#9678';      // ◎ 
-                    break;
-                
-                case($emptyParcent > $circleReservationValue):
-                    return  '&#9675';     // 〇
-                    break;
-
-                case($emptyParcent > $triangleReservationValue):
-                    return  '&#9651';     // △
-                    break;
-
-                default:
-                    return  '&#10005';    // ✕
-                }
-                */
-
-            if ( $emptyParcent > $doubleCircleReservationValue ) {
-            
-                return '&#9678';      // ◎
-
-            } elseif ( $emptyParcent > $circleReservationValue ) {
-
-                return  '&#9675';     // 〇
-
-            } elseif ( $emptyParcent > $triangleReservationValue ) {
-
-                return  '&#9651';     // △
-
-            } else {
-
-                return  '&#10005';    // ✕
-
-            }
-            
-        }
-        
-
 
         //カレンダー本体　翌々月の設定
         $year = date("Y");
@@ -174,7 +96,7 @@ EOS;
                     <input type='hidden' name='search_pt_id' value = '".$search_pt_id."'>
                     <input type='hidden' name='search_Department' value = '".$search_Department."'>"
                     .$month_after_next_day."
-                   <br>".AfterNextMouthDayPossible($search_Department, $year_after_next, $month_after_next, $month_after_next_day, $doubleCircleReservationValue, $circleReservationValue, $triangleReservationValue)."</button></td>"; 
+                   <br>".HospitalAfterNextCalendar::AfterNextMouthDayPossible($search_Department, $year_after_next, $month_after_next, $month_after_next_day, $doubleCircleReservationValue, $circleReservationValue, $triangleReservationValue)."</button></td>"; 
                 }
                 $month_after_next_day++;
             }
