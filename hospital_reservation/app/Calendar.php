@@ -9,7 +9,7 @@ class Calendar
 {
     private $html;  
 
-    /*
+    
     //1日の予約数のパーセンテージを計算・表示形式指定
     public static function DayPossible($search_Department, $year, $month, $day, $doubleCircleReservationValue, $circleReservationValue, $triangleReservationValue){
 
@@ -26,25 +26,6 @@ class Calendar
         //1日の予約空き状況を計算
         $emptyParcent = ClinicalDepartmentsDataModel::OneDayCalculation($search_Department,$reservedNumber,$oneDayMaxFrame);
 
-        /*
-        switch($emptyParcent){
-            case($emptyParcent > $doubleCircleReservationValue):
-                return '&#9678';      // ◎ 
-                break;
-            
-            case($emptyParcent > $circleReservationValue):
-                return  '&#9675';     // 〇
-                break;
-
-            case($emptyParcent > $triangleReservationValue):
-                return  '&#9651';     // △
-                break;
-
-            default:
-                return  '&#10005';    // ✕
-            }
-            */
-        /*
         if ( $emptyParcent > $doubleCircleReservationValue ) {
             
             return '&#9678';      // ◎
@@ -64,90 +45,34 @@ class Calendar
         }
         
     }  
-    */
+
+    //診療科別の休診日を獲得
+    public static function getDepartmentHolidayData($search_Department, $year, $month, $day) {
+
+        //年月日のデータを作成
+        $targetDate = strval($year).strval($month).strval(str_pad($day, 2, 0, STR_PAD_LEFT ) );
+                        
+        //日付指定で休日データを取得
+        $horlidayDatas = holiday::GetTargetDateHolidaysDatas($search_Department, $targetDate);
+        
+        return $horlidayDatas;                
+    }
+
+    //全診療科の休診日を獲得
+    public static function getAllDepartmentHolidayData($year, $month, $day) {
+
+        //年月日のデータを作成
+        $targetDate = strval($year).strval($month).strval(str_pad($day, 2, 0, STR_PAD_LEFT ) );
+                        
+        //日付指定で休日データを取得
+        $AllDepartmentHorlidayDatas = AllDepartmentHoliday::GetAllDepartmentTargetHolidays($targetDate);
+        
+        return $AllDepartmentHorlidayDatas;                
+    }
+    
     
     //当月のカレンダー
     public function showCalendarTag($search_pt_id, $search_Department, $doubleCircleReservationValue, $circleReservationValue, $triangleReservationValue) {
-
-        
-        //1日の予約数のパーセンテージを計算・表示形式指定
-        function DayPossible($search_Department, $year, $month, $day, $doubleCircleReservationValue, $circleReservationValue, $triangleReservationValue) {
-
-            
-            //年月日のデータを作成
-            $targetDate = strval($year).strval($month).strval(str_pad($day, 2, 0, STR_PAD_LEFT));
-
-            //1日の最大予約枠数を計算
-            $oneDayMaxFrame = ClinicalDepartmentsDataModel::OneDayPossibleFrame($search_Department,$targetDate);
-
-            //現在の予約済数を獲得
-            $reservedNumber = ClinicalDepartmentsDataModel::ForeignReservation($search_Department,$targetDate);
-            
-            //1日の予約空き状況を計算
-            $emptyParcent = ClinicalDepartmentsDataModel::OneDayCalculation($search_Department,$reservedNumber,$oneDayMaxFrame);
-
-            /*
-            switch($emptyParcent){
-                case($emptyParcent > $doubleCircleReservationValue):
-                    return '&#9678';      // ◎ 
-                    break;
-                
-                case($emptyParcent > $circleReservationValue):
-                    return  '&#9675';     // 〇
-                    break;
-
-                case($emptyParcent > $triangleReservationValue):
-                    return  '&#9651';     // △
-                    break;
-
-                default:
-                    return  '&#10005';    // ✕
-                }
-                */
-            
-            if ( $emptyParcent > $doubleCircleReservationValue ) {
-                
-                return '&#9678';      // ◎
-
-            } elseif ( $emptyParcent > $circleReservationValue ) {
-
-                return  '&#9675';     // 〇
-
-            } elseif ( $emptyParcent > $triangleReservationValue ) {
-
-                return  '&#9651';     // △
-
-            } else {
-
-                return  '&#10005';    // ✕
-
-            }
-            
-        }
-
-            //診療科別の休診日を獲得
-            function getDepartmentHolidayData($search_Department, $year, $month, $day) {
-
-                //年月日のデータを作成
-                $targetDate = strval($year).strval($month).strval(str_pad($day, 2, 0, STR_PAD_LEFT ) );
-                                
-                //日付指定で休日データを取得
-                $horlidayDatas = holiday::GetTargetDateHolidaysDatas($search_Department, $targetDate);
-                
-                return $horlidayDatas;                
-            }
-
-            //全診療科の休診日を獲得
-            function getAllDepartmentHolidayData($year, $month, $day) {
-
-                //年月日のデータを作成
-                $targetDate = strval($year).strval($month).strval(str_pad($day, 2, 0, STR_PAD_LEFT ) );
-                                
-                //日付指定で休日データを取得
-                $AllDepartmentHorlidayDatas = AllDepartmentHoliday::GetAllDepartmentTargetHolidays($targetDate);
-                
-                return $AllDepartmentHorlidayDatas;                
-            }
 
         //カレンダー本体　当月の設定
         $year = date("Y");
@@ -191,12 +116,12 @@ EOS;
                     $this->html .="<td align='center' valign='middle' style = color:#E9E9E9;>". $day . "</td>";
 
                 //予約表示が✕の時クリック不可
-                } elseif (DayPossible($search_Department, $year, $month, $day, $doubleCircleReservationValue, $circleReservationValue, $triangleReservationValue) == '&#10005') {
+                } elseif (Calendar::DayPossible($search_Department, $year, $month, $day, $doubleCircleReservationValue, $circleReservationValue, $triangleReservationValue) == '&#10005') {
                     $this->html .="<td align='center' valign='middle' style = color:#E9E9E9;>". $day ."
-                    <br>".DayPossible($search_Department, $year, $month, $day, $doubleCircleReservationValue, $circleReservationValue, $triangleReservationValue)."</td>";
+                    <br>".Calendar::DayPossible($search_Department, $year, $month, $day, $doubleCircleReservationValue, $circleReservationValue, $triangleReservationValue)."</td>";
 
                 //診療科別・全診療科休日DBに値があれば休診日表示
-                } elseif (($getHoliday = getDepartmentHolidayData($search_Department, $year, $month, $day) != null) || ($getAllDepartmentHoliday = getAllDepartmentHolidayData($year, $month, $day) != null)){
+                } elseif (($getHoliday = Calendar::getDepartmentHolidayData($search_Department, $year, $month, $day) != null) || ($getAllDepartmentHoliday = Calendar::getAllDepartmentHolidayData($year, $month, $day) != null)){
                     $this->html .="<td align='center' valign='middle' style = color:#E9E9E9;>". $day . "<br>休診日</td>";
                 
                 //通常表記(ボタンクリック可)
@@ -209,7 +134,7 @@ EOS;
                    <input type='hidden' name='search_pt_id' value = '".$search_pt_id."'>
                    <input type='hidden' name='search_Department' value = '".$search_Department."'>"
                    .$day."
-                   <br>".DayPossible($search_Department, $year, $month,$day, $doubleCircleReservationValue, $circleReservationValue, $triangleReservationValue)."</button></td>"; 
+                   <br>".Calendar::DayPossible($search_Department, $year, $month,$day, $doubleCircleReservationValue, $circleReservationValue, $triangleReservationValue)."</button></td>"; 
                 }
                $day++;
             }
@@ -222,3 +147,4 @@ EOS;
  
                 
 ?>
+
