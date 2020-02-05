@@ -58,7 +58,7 @@ class Schedule
     
     
         //テーブル本体　ユニックスタイムで30分は1800
-            for($schdule = $startTime; $schdule < $finishTime; $schdule =$schdule+1800){
+            for($schdule = $startTime; $schdule < $finishTime; $schdule =$schdule+1800) {
                 $time_value = 'H:i';//dateの表示形式設定
                 $schedule_break_start = date($time_value,$breakTime_Start);//休憩時間をユニックス⇒時間表示
                 $schedule_break_finish = date($time_value,$break_Finish);//休憩時間をユニックス⇒時間表示
@@ -86,7 +86,7 @@ class Schedule
     
                 //開院時間をforで繰り返し
                 $this->table.="<tr align='center'>";
-                                    
+                                    //もし％の値が△以下だったらボタンにしない
                                     if($parcents <= $triangleReservationValue){
     
                     $this->table.= "<td style = 'color:#E9E9E9;'>
@@ -96,7 +96,7 @@ class Schedule
                                         {$parcents}%完成時に消す</br>&#10005;
                                     </td>";
     
-                                    } else {
+                                    } else {  //もし％の値が△以上だったらボタンにする
     
                     $this->table.="<td><button type='submit'
                                         class='btn btn-lg btn-block'
@@ -114,24 +114,18 @@ class Schedule
     
                                         </button>
                                     </td>";
-                                    
-                                    switch($parcents) {
-                                        case($parcents > $doubleCircleReservationValue):
-                                            $this->table.="<td style = 'font-size:20px;'>{$parcents}%完成時に消す</br>&#9678;</td>";   // ◎
-                                            break;
-    
-                                        case($parcents > $circleReservationValue):
-                                            $this->table.="<td style = 'font-size:20px;'>{$parcents}%完成時に消す</br>&#9675;</td>";   // 〇
-                                            break;
-                                            
-                                        case($parcents > $triangleReservationValue):
-                                            $this->table.="<td style = 'font-size:20px;'>{$parcents}%完成時に消す</br>&#9651;</td>";   // △ 
-                                            break;
-    
-                                        default:
-                                            $this->table.="<td style = 'font-size:20px;'>{$parcents}%完成時に消す</br>&#10005;</td>";    // ✕
-                                        }
+                                    //%の値によって◎等の表示を変化
+                                    if($parcents > $doubleCircleReservationValue) {
+                                        $this->table.="<td style = 'font-size:20px;'>{$parcents}%完成時に消す</br>&#9678;</td>";   // ◎
+                                    } elseif($parcents > $circleReservationValue) {
+                                        $this->table.="<td style = 'font-size:20px;'>{$parcents}%完成時に消す</br>&#9675;</td>";   // 〇
+                                    } elseif($parcents > $triangleReservationValue) {
+                                        $this->table.="<td style = 'font-size:20px;'>{$parcents}%完成時に消す</br>&#9651;</td>";   // △ 
+                                    } else {
+                                        $this->table.="<td style = 'font-size:20px;'>{$parcents}%完成時に消す</br>&#10005;</td>";    // ✕
                                     }
+
+                                }
     
             }//テーブル本体を構成するforのカッコ
     
@@ -164,7 +158,8 @@ class Schedule
     
                 //開院時間をforで繰り返し
                 $this->table.="<tr align='center'>";
-                                    
+
+                                    //もし％の値が△以下だったらボタンにしない
                                     if ($parcents <= $triangleReservationValue){
     
                     $this->table.= "<td style = 'color:#E9E9E9;'>
@@ -174,7 +169,7 @@ class Schedule
                                         {$parcents}%完成時に消す</br>&#10005;
                                     </td>";
     
-                                    } else {
+                                    } else {  //もし％の値が△より上だったらボタンにする
     
                     $this->table.="<td><button type='submit'
                                         class='btn btn-lg btn-block'
@@ -193,23 +188,17 @@ class Schedule
                                         </button>
                                     </td>";
                                     
-                                    switch($parcents) {
-                                        case($parcents > $doubleCircleReservationValue):
-                                            $this->table.="<td style = 'font-size:20px;'>{$parcents}%完成時に消す</br>&#9678;</td>";   // ◎
-                                            break;
-    
-                                        case($parcents > $circleReservationValue):
-                                            $this->table.="<td style = 'font-size:20px;'>{$parcents}%完成時に消す</br>&#9675;</td>";   // 〇
-                                            break;
-                                            
-                                        case($parcents > $triangleReservationValue):
-                                            $this->table.="<td style = 'font-size:20px;'>{$parcents}%完成時に消す</br>&#9651;</td>";   // △ 
-                                            break;
-    
-                                        default:
-                                            $this->table.="<td style = 'font-size:20px;'>{$parcents}%完成時に消す</br>&#10005;</td>";    // ✕
-                                        }
+                                    if($parcents > $doubleCircleReservationValue) {
+                                        $this->table.="<td style = 'font-size:20px;'>{$parcents}%完成時に消す</br>&#9678;</td>";   // ◎
+                                    } elseif($parcents > $circleReservationValue) {
+                                        $this->table.="<td style = 'font-size:20px;'>{$parcents}%完成時に消す</br>&#9675;</td>";   // 〇
+                                    } elseif($parcents > $triangleReservationValue) {
+                                        $this->table.="<td style = 'font-size:20px;'>{$parcents}%完成時に消す</br>&#9651;</td>";   // △ 
+                                    } else {
+                                        $this->table.="<td style = 'font-size:20px;'>{$parcents}%完成時に消す</br>&#10005;</td>";    // ✕
                                     }
+                                }
+
     
             }//テーブル本体を構成するforのカッコ
     
