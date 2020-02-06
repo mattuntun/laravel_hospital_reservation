@@ -28,7 +28,7 @@ class IndividualSettingMenucontroller extends Controller
 
         //前画面でのバリデーション
         $request->validate([
-            'new_department'=>'required|string|max:30',
+            'new_department'=>'required|string|max:30|unique:clinical_departments,clinical_department',
             'h_open_time'=>'required',
             'm_open_time'=>'required',
             'h_rest_start'=>'required',
@@ -61,7 +61,8 @@ class IndividualSettingMenucontroller extends Controller
         $half_open_time_min = $request->half_m_open_time;       //半日診療開院時間(分)
         $half_close_time_hour = $request->half_h_close_time;    //半日診療閉院時間(時)
         $half_close_time_min = $request->half_m_close_stop;     //半日診療閉院時間(時)
-
+        
+        //DB登録用文字列操作
         $new_department = $request->new_department;                             //追加診療科名
         $possible_people = $request->possible_number;                           //1コマ当たりの予約可能人数
         $open_time = "$open_time_hour"."$open_time_min"."00";                   //開院時間
@@ -75,7 +76,19 @@ class IndividualSettingMenucontroller extends Controller
         $half_open_time = "$half_open_time_hour"."$half_open_time_min"."00";    //半日診療開院時間
         $half_close_time = "$half_close_time_hour"."$half_close_time_min"."00"; //半日診療閉院時間
 
-        //前画面からの入力情報を配列に収納
+        //ビュー画面用の文字列操作
+        $open_time_for_view = "$open_time_hour".":"."$open_time_min";                   //開院時間
+        $close_time_for_view ="$close_time_hour".":"."$close_time_min";                 //閉院時間(時)
+        $restStart_time_for_view ="$restStart_time_hour".":"."$restStart_time_min";     //休憩開始時間
+        $restStop_time_for_view ="$restStop_time_hour".":"."$restStop_time_min";        //休憩終了時間
+        $half_week_day = $request->half_week_day;                               //半日診療曜日
+        $half_open_time_for_view = "$half_open_time_hour".":"."$half_open_time_min";    //半日診療開院時間
+        $half_close_time_for_view = "$half_close_time_hour".":"."$half_close_time_min"; //半日診療閉院時間
+        //曜日を配列に収納し、入力された値を各曜日の文字列へ
+        $half_week = array("日曜日","月曜日","火曜日","水曜日","木曜日","金曜日","土曜日","半日診療無し",);
+        $half_week_day_for_view = $half_week[$half_week_day];
+        
+        //前画面からの入力情報を配列に収納(DB用)
         $changeTimes = array('new_department'=>$new_department,
                             'possible_people'=>$possible_people,
                             'open_time'=>$open_time,
@@ -88,11 +101,26 @@ class IndividualSettingMenucontroller extends Controller
                             'half_week_day'=>$half_week_day,
                             'half_open_time'=>$half_open_time,
                             'half_close_time'=>$half_close_time,);
+
+        //前画面からの入力情報を配列に収納(ビューページ用)
+        $changeTimesForView = array('new_department'=>$new_department,                  //診療科
+                            'possible_people'=>$possible_people,                        //1コマ当たりの診療可能数
+                            'open_time_for_view'=>$open_time_for_view,                  //開院時間
+                            'close_time_for_view'=>$close_time_for_view,                //閉院時間
+                            'restStart_time_for_view'=>$restStart_time_for_view,        //休憩開始時間
+                            'restStop_time_for_view'=>$restStop_time_for_view,          //休憩終了時間
+                            'more_than_enough_capacity'=>$more_than_enough_capacity,    //◎の値
+                            'enough_capacity'=>$enough_capacity,                        //〇の値
+                            'not_enough_capacity'=>$not_enough_capacity,                //△の値
+                            'half_week_day_for_view'=>$half_week_day_for_view,          //半日診療曜日
+                            'half_open_time_for_view'=>$half_open_time_for_view,        //半日診療開院時間
+                            'half_close_time_for_view'=>$half_close_time_for_view,      //半日診療閉院時間
+                        );
         
         //診療科新規追加のメソッドの呼び出し
         $add = ClinicalDepartmentsDataModel::AddNewDepartment($changeTimes);
 
-        return view('hospital_menu.common_reservation_setting_screen.individual_setting.complete_add_new_department',['changeTimes'=>$changeTimes]);
+        return view('hospital_menu.common_reservation_setting_screen.individual_setting.complete_add_new_department',['changeTimesForView'=>$changeTimesForView]);
     }
 
     //診療科削除検索画面
