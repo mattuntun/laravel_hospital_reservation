@@ -330,8 +330,21 @@ class IndividualSettingMenucontroller extends Controller
         //休日モデルからデータ全データ取得
         $get_holiday_datas = holiday::GetHolidaysDatas($search_individual_department);
 
+               
+
         //同ビュー画面において休日情報が入力されたら追加メソッド呼び出しする
         if(isset($request->check_Date)) {
+
+            //入力された情報をバリデートする⇒エラーページへ画面遷移
+            $validator = Validator::make($request->all(),[
+                'check_Date'=>'required|date_format:Y-m-d',
+                'holiday_reason'=>'required|string|max:30'
+            ]);
+            if($validator->fails()) {
+                return redirect('error');
+            }
+            
+            //休日情報を配列にしてDBへ登録
             $add_holiday_datas = array('search_individual_department'=>$search_individual_department,
                                         'check_Date'=>$request->check_Date,
                                         'holiday_reason'=>$request->holiday_reason);
