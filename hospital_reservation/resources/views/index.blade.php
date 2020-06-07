@@ -49,7 +49,7 @@
 
             <div class="switch">
               <input type="submit" value="ログイン">
-              <input type="submit" value="初めての来院の方">
+              <!-- <input type="submit" value="初めての来院の方"> -->
             </div>
           </section>
         </form><!--終了　患者のカテゴリー　終了-->

@@ -155,7 +155,7 @@
 
               <div class="switch">
                   <input type="submit" value="マイページへ">
-                  <input type="submit" value="初めての来院の方">
+                  <!-- <input type="submit" value="初めての来院の方"> -->
               </div>          
           </form><!--終了　患者のカテゴリー　終了-->
       </section>

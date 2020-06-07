@@ -10,9 +10,9 @@ $factory->define(App\Reservation_data::class, function (Faker $faker) {
     $reservationDepartments = App\clinical_departments::pluck('clinical_department')->all();
     
     $sample_days = [
-        '20200220',
-        '20200221',
-        '20200222',
+        '20200701',
+        '20200702',
+        '20200703',
     ];
     $sample_times = [
         '09:00:00',
