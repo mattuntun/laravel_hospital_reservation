@@ -20,3 +20,10 @@ table.footer-table{
 	border-collapse:separate;/*tdの要素を分割(セパレートする)*/
 	border-spacing:40px;/*tableの間隔を空ける*/
 }
+/*全てのテーブルを横スクロールさせる*/
+table.footer-table {
+  display: block;
+  overflow-x: scroll;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}

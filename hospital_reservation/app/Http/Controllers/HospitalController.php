@@ -4,8 +4,30 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Auth;
+
 class HospitalController extends Controller
 {
+
+    //adminでログインしていないとビュー不可
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+    
+
+    //管理者用インデックスページへ
+    public function AdminIndex() {
+
+        $auths = Auth::user();
+        return view('admin_index' ,[ 'auths' => $auths ]);
+    }
+
+    //管理画面メニュー・トップ
+    public function HospitalMenu() {
+        return view('hospital_menu.hospital_menu');
+    }
+
     //全科共通予約画面設定へのアクション
     public function CommonReservationSettingScreen() {
         return view('hospital_menu.common_reservation_setting_screen.common_reservation_setting_screen');

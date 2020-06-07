@@ -47,9 +47,23 @@
     @foreach($foreignReservationDatas as $foreignReservationData)
         <div class = "ResInfo">
             <ul>
+                <li style="font-size:20px;"><b>予約No.{{$foreignReservationData->No}}</b></li>
                 <li style="font-size:40px; padding-bottom:30px;"><b>予約診療科:</b>{{$foreignReservationData->reservation_department}}</li>
-                <li style="font-size:40px;"><b>予約診療時間</b>　{{$foreignReservationData->reservation_time}}　より診療開始</li>
-                
+                <li style="font-size:40px;"><b>予約日:</b>　{{$foreignReservationData->reservation_date}}</li>
+                <li style="font-size:40px;"><b>診療開始予定時間:</b>　{{$foreignReservationData->reservation_time}}</li>
+                @if($foreignReservationData->letter_of_introduction == 1)
+
+                    <li style="font-size:30px;"><b>紹介状：有</b></li>
+                    <li style="font-size:20px;"><b>紹介元病院：{{$foreignReservationData->introduction_hp}}</b></li>
+                    <li style="font-size:20px;"><b>紹介元TEL：{{$foreignReservationData->introduction_hp_tell}}</b></li>
+                    <li style="font-size:20px;"><b>紹介元最終受診日：{{$foreignReservationData->introduction_hp_date}}</b></li>
+
+                @elseif($foreignReservationData->letter_of_introduction == 2)
+ 
+                    <li style="font-size:30px;"><b>紹介状：無</b></li>
+ 
+                @endif
+              
                 
                 {{-- タグ付ボタン(スモール) --}}
                 <form action="/mypage/delete_my_data_reservation" method = post>

@@ -34,8 +34,15 @@
 
 {{-- シンプルボタン(large) --}}
         @include('sab_view_item.large_simple_buttom',
+                  ['large_buttom_value'=>'患者一括登録(エクセル)',
+                   'large_buttom_access'=>'/hospital_menu/complete_download_pt_data'])
+
+{{-- シンプルボタン(large) --}}
+{{-- 
+        @include('sab_view_item.large_simple_buttom',
                   ['large_buttom_value'=>'患者削除用パスワード設定',
                    'large_buttom_access'=>'/patient_registration_change_deletion/delete_password_patient_change'])
+                   --}}
                    
 @endsection
 
@@ -47,9 +54,9 @@
                   ['footerbuttom1'=>'設定画面トップ',
                   'footerbuttom2'=>'ログイン画面へ',
                   'footerbuttom3'=>'医療機関HPトップ',
-                  'footerbuttom4'=>'予約情報ダウンロード',
+                  'footerbuttom4'=>'患者情報ダウンロード',
                   'footerbuttom_access1'=>'/index/hospital_menu',
-                  'footerbuttom_access2'=>'/index',
-                  'footerbuttom_access3'=>'/index',
-                  'footerbuttom_access4'=>'/index' ])
+                  'footerbuttom_access2'=>'/admin/index',
+                  'footerbuttom_access3'=>'/admin/index',
+                  'footerbuttom_access4'=>'/hospital_menu/complete_download_pt_data' ])
 @endsection

@@ -18,6 +18,16 @@
 
 @section('main_content')
 
+@if($errors->any())
+        <div class = "errors">
+            <ul>
+                @foreach($errors->all() as $error)
+                <li>{{$error}}</li>
+                @endforeach
+            </ul>
+        </div>
+@endif
+
 {{-- このコンポーネントはformとしての囲い(メソッドはpost) --}}
         @component('component_item.form')
                  @slot('form_action')
@@ -45,6 +55,16 @@
                  @endslot
 
                  @slot('form_item4')
+                 {{-- このビューページ専用のサブビューを参照します --}}
+                     @include('sab_view_item.only_status_display_setting_at_add_new_pt')
+                @endslot
+
+                @slot('form_item5')
+                 {{-- このビューページ専用のサブビューを参照します --}}
+                     @include('sab_view_item.only_half_opening_closing_time')
+                @endslot
+
+                 @slot('form_item6')
                         {{-- タグ付ボタン(スモール) --}}
                         @include('sab_view_item.small_tagged_buttom',
                                         ['tagged_value'=>'内容を確認して情報を登録',
@@ -70,7 +90,7 @@
                   'footerbuttom3'=>'医療機関HPトップ',
                   'footerbuttom4'=>'予約情報ダウンロード',
                   'footerbuttom_access1'=>'/index/hospital_menu',
-                  'footerbuttom_access2'=>'/index',
-                  'footerbuttom_access3'=>'/index',
-                  'footerbuttom_access4'=>'/index' ])
+                  'footerbuttom_access2'=>'/admin/index',
+                  'footerbuttom_access3'=>'/admin/index',
+                  'footerbuttom_access4'=>'/hospital_menu/complete_download' ])
 @endsection

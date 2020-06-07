@@ -19,17 +19,12 @@
 @section('main_content')
 {{-- シンプルボタン(large) --}}
         @include('sab_view_item.large_simple_buttom',
-                  ['large_buttom_value'=>'新規追加',
+                  ['large_buttom_value'=>'患者別予約確認・編集',
                    'large_buttom_access'=>'/edit_patient_appoimtment_information/search_pt_new_reservation'])
 
 {{-- シンプルボタン(large) --}}
         @include('sab_view_item.large_simple_buttom',
-                  ['large_buttom_value'=>'予約削除',
-                   'large_buttom_access'=>'/edit_patient_appoimtment_information/deretereservation'])
-
-{{-- シンプルボタン(large) --}}
-        @include('sab_view_item.large_simple_buttom',
-                  ['large_buttom_value'=>'予約状況確認',
+                  ['large_buttom_value'=>'日付別予約状況確認',
                    'large_buttom_access'=>'/edit_patient_appoimtment_information/check_reservation_status'])
 @endsection
 
@@ -43,7 +38,7 @@
                   'footerbuttom3'=>'医療機関HPトップ',
                   'footerbuttom4'=>'予約情報ダウンロード',
                   'footerbuttom_access1'=>'/index/hospital_menu',
-                  'footerbuttom_access2'=>'/index',
-                  'footerbuttom_access3'=>'/index',
-                  'footerbuttom_access4'=>'/index' ])
+                  'footerbuttom_access2'=>'/admin/index',
+                  'footerbuttom_access3'=>'/admin/index',
+                  'footerbuttom_access4'=>'/hospital_menu/complete_download' ])
 @endsection

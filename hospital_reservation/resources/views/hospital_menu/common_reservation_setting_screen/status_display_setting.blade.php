@@ -4,6 +4,7 @@
 {{-- ヘッド --}}
 @section('web_title','予約数・予約状況表示設定')
 
+
 {{-- ヘッダー --}}
 @section('header_content')
     @include('sab_view_item.header',
@@ -13,10 +14,22 @@
 
 {{-- メイン --}}
 @section('main_content')
+@if($errors->any())
+    <div class = "errors">
+    <ul>
+        @foreach($errors->all() as $error)
+                <li>{{$error}}</li>
+        @endforeach
+        </ul>
+    </div>
+
+@endif
+
+
     {{-- このコンポーネントはformとしての囲い(メソッドはpost) --}}
     @component('component_item.form')
                  @slot('form_action')
-                     /index
+                     /common_reservation_setting_screen/number_of_reservation/status_display/complete
                  @endslot
 
                  @slot('form_item2')
@@ -29,7 +42,7 @@
                      @include('sab_view_item.small_tagged_buttom',
                              ['tagged_value'=>'内容を確認して登録',
                               'buttom_value'=>'登録',
-                              'buttom_access'=>'/index'])
+                              'buttom_access'=>'/common_reservation_setting_screen/number_of_reservation/status_display/complete'])
                  @endslot
 
 
@@ -47,11 +60,11 @@
                   ['footerbuttom1'=>'設定画面トップ',
                   'footerbuttom2'=>'ログイン画面へ',
                   'footerbuttom3'=>'医療機関HPトップ',
-                  'footerbuttom4'=>'患者情報ダウンロード',
+                  'footerbuttom4'=>'予約情報ダウンロード',
                   'footerbuttom_access1'=>'/index/hospital_menu',
-                  'footerbuttom_access2'=>'/index',
-                  'footerbuttom_access3'=>'/index',
-                  'footerbuttom_access4'=>'/index' ])
+                  'footerbuttom_access2'=>'/admin/index',
+                  'footerbuttom_access3'=>'/admin/index',
+                  'footerbuttom_access4'=>'/hospital_menu/complete_download' ])
 @endsection
 
 

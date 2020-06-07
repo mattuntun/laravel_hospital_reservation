@@ -12,6 +12,19 @@
 
 {{-- メイン --}}
 @section('main_content')
+
+@if($errors->any())
+        <div class = "errors">
+            <ul>
+                @foreach($errors->all() as $error)
+                <li>{{$error}}</li>
+                @endforeach
+            </ul>
+        </div>
+@endif
+<br>
+<br>
+
 <h2>診療科【{{$department}}】の設定を変更します</h2>
     {{-- このコンポーネントはformとしての囲い(メソッドはpost) --}}
     @component('component_item.form')
@@ -29,6 +42,14 @@
                  @endslot
 
                  @slot('form_item4')
+                 <br>
+                 <br>
+                 
+                     {{-- このビューページ専用のサブビューを参照します --}}
+                     @include('sab_view_item.only_half_opening_closing_time')
+                 @endslot
+
+                 @slot('form_item5')
                  {{-- タグ付ボタン(スモール) --}}
                      @include('sab_view_item.small_tagged_buttom',
                              ['tagged_value'=>'内容を確認して情報を登録',
@@ -51,11 +72,11 @@
                   ['footerbuttom1'=>'設定画面トップ',
                   'footerbuttom2'=>'ログイン画面へ',
                   'footerbuttom3'=>'医療機関HPトップ',
-                  'footerbuttom4'=>'患者情報ダウンロード',
+                  'footerbuttom4'=>'予約情報ダウンロード',
                   'footerbuttom_access1'=>'/index/hospital_menu',
-                  'footerbuttom_access2'=>'/index',
-                  'footerbuttom_access3'=>'/index',
-                  'footerbuttom_access4'=>'/index' ])
+                  'footerbuttom_access2'=>'/admin/index',
+                  'footerbuttom_access3'=>'/admin/index',
+                  'footerbuttom_access4'=>'/hospital_menu/complete_download' ])
 @endsection
 
 

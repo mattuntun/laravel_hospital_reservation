@@ -5,7 +5,6 @@
 {{-- ヘッド --}}
 @section('web_title','新規患者登録')
 
-
 {{-- ヘッダー --}}
 
 @section('header_content')
@@ -16,6 +15,16 @@
 {{-- メイン --}}
 @section('main_content')
 
+@if($errors->any())
+        <div class = "errors">
+            <ul>
+                @foreach($errors->all() as $error)
+                <li>{{$error}}</li>
+                @endforeach
+            </ul>
+        </div>
+@endif
+
         {{-- このコンポーネントはformとしての囲い(メソッドはpost) --}}
         @component('component_item.form')
                  @slot('form_action')
@@ -23,6 +32,11 @@
                  @endslot
 
                  @slot('form_item1')
+                 
+                 @endslot
+
+
+                 @slot('form_item2')
                         {{-- 1箇所テキスト(ロング) --}}
                         @include('sab_view_item.texts_one_long',
                                 ['label_value'=>'患者ID登録',
@@ -31,7 +45,7 @@
                                 'input_name'=>'pt_id'])
                  @endslot
                        
-                 @slot('form_item2')
+                 @slot('form_item3')
                         {{-- 4箇所入力テキスト(タグ付き) --}}
                         @include('sab_view_item.texts_four_tagged',
                                         ['tagged_value'=>'患者名登録',
@@ -46,7 +60,7 @@
                  @endslot
 
                  
-                 @slot('form_item3')
+                 @slot('form_item4')
                         {{-- 2箇所入力+1箇所セレクトテキスト(タグ付き) --}}
                         @include('sab_view_item.texts_two_select_one_tagged',
                                         ['tagged_value'=>'生年月日・性別・アドレス登録',
@@ -62,7 +76,7 @@
                                         'option_value2'=>'2'])
                  @endslot
 
-                 @slot('form_item4')
+                 @slot('form_item5')
                         {{-- タグ付ボタン(スモール) --}}
                         @include('sab_view_item.small_tagged_buttom',
                                         ['tagged_value'=>'内容を確認して情報を登録',
@@ -84,11 +98,11 @@
                   ['footerbuttom1'=>'設定画面トップ',
                   'footerbuttom2'=>'ログイン画面へ',
                   'footerbuttom3'=>'医療機関HPトップ',
-                  'footerbuttom4'=>'予約情報ダウンロード',
+                  'footerbuttom4'=>'患者情報ダウンロード',
                   'footerbuttom_access1'=>'/index/hospital_menu',
-                  'footerbuttom_access2'=>'/index',
-                  'footerbuttom_access3'=>'/index',
-                  'footerbuttom_access4'=>'/index' ])
+                  'footerbuttom_access2'=>'/admin/index',
+                  'footerbuttom_access3'=>'/admin/index',
+                  'footerbuttom_access4'=>'/hospital_menu/complete_download_pt_data' ])
 @endsection
 
 

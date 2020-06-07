@@ -9,11 +9,11 @@
         <tr>
             <td>
                 <label class="control-label">{{$label_value1}}</label>
-                <input class="form-control" type="text" name={{$input_name1}}>
+                <input class="form-control" type="text" name={{$input_name1}} value ="{{old($input_name1)}}">
             </td>
             <td>
                 <label class="control-label">{{$label_value2}}</label>
-                <input class="form-control" type="text" name={{$input_name2}}>
+                <input class="form-control" type="text" name={{$input_name2}} value ="{{old($input_name2)}}">
             </td>
         </tr>
         <tr>
